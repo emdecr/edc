@@ -1,0 +1,74 @@
+.sectionAbout {
+	font-family: 'Montserrat';
+	padding-top: 50px;
+	@media #{$mobile} {
+		padding-top: 10px;
+	} 
+	h2, h3 {
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+		color: #000;
+	}
+	h2 {
+		font-size: 30px;
+		@media #{$mobile} {
+			font-size: 15px;
+		} 
+	}
+	h3 {
+		font-size: 25px;
+		letter-spacing: 3px;
+		margin: 50px 0;
+		@media #{$mobile} {
+			font-size: 15px;
+			margin: 20px 0;
+		} 
+	}
+}
+
+.aboutBio {
+	max-width: 900px;
+	font-size: 12px;
+	letter-spacing: 2px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	img {
+		flex: 1 0 auto;
+	}
+	.myBiography {
+		// text-align: center;
+		flex: 1 0 auto;
+		font-family: 'Open Sans';
+		font-weight: 400;
+	}
+}
+
+.shelfOne, 
+.shelfTwo {
+	display: flex;
+	margin: 25px auto 50px;
+	width: 80%;
+	border-bottom: 15px solid rgba(0,0,0,0.5);
+	@media #{$mobile} {
+	width: 100%;
+	margin: 25px auto;
+	flex-direction: column;
+	border: none;
+	} 
+	.shelf-item {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		flex: 1 0 25%;
+		img{
+		}
+		@media #{$mobile} {
+		} 
+	}
+}

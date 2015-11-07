@@ -1,0 +1,157 @@
+/*
+Theme Name: Personal Site V1
+Theme URI: http://underscores.me/
+Author: Emily Dela Cruz
+Author URI: http://emilydelacruz.com
+Description: My personal site. Version 1.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: personalsite_vone
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Personal Site V1 is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+    ## Posts and pages
+	## Asides
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "normalize";
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+@import "typography/typography";
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+@import "elements/elements";
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+@import "forms/forms";
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+@import "navigation/navigation";
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+@import "modules/accessibility";
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+@import "modules/alignments";
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+@import "modules/clearings";
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+@import "site/secondary/widgets";
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+@import "site/site";
+@import "site/header";
+@import "site/home";
+@import "site/about";
+@import "site/blog";
+@import "site/projects";
+@import "site/single-pro";
+@import "site/contact";
+@import "site/footer";
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+@import "modules/infinite-scroll";
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+@import "media/media";
+
+
+// GLOBAL STYLING ============================
+
+body {
+	background-color: #fff;
+}
+
+// .content-area {
+// 	width: 100%;
+// 	// float: left;
+// 	// margin: 0 (-$size__site-sidebar) 0 0;
+// 	// width: $size__site-main;
+// }
+
+// .site-main {
+// 	// max-width: 1200px;
+// 	// margin: 0 $size__site-sidebar 0 0;
+// }
+
+.wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+#page {
+	margin: 25px 25px 0 25px;
+	background-color: $color__background-screen;
+	padding: 40px;
+	@media #{$mobile} {
+		margin: 15px;
+		padding: 20px;
+	} 
+	animation-duration: 2s;
+}
+
+#pageHome {
+	margin: 25px 25px 0 25px;
+	@media #{$mobile} {
+		margin: 15px;
+	} 
+}

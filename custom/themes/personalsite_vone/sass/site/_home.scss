@@ -1,0 +1,348 @@
+.fadeInItem {
+    opacity:0;
+}
+
+.emilyBio, 
+.featProjects,
+.homeContact {
+	min-height: 50vh;
+	padding: 50px;
+	margin-top: 25px;
+	background-color: #000;
+	background-size: cover;
+	background-attachment: fixed;
+	@media #{$mobile} {
+		padding: 25px;
+	} 
+}
+
+.emilyBio {
+	// background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 10%);
+	margin-top: 25px;
+}
+
+.emilyBio h2, 
+.featProjects h2,
+.homeContact h2 {
+	max-width: 700px;
+	color: #fff;
+	// background-color: rgba(255,255,255,0.1);
+	// font-family: 'Oswald';
+	font-family: 'Montserrat';
+	// font-weight: 300;
+	font-weight: 700;
+	font-size: 35px;
+	letter-spacing: 5px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 10px 20px; 
+	// border-top: 3px solid rgba(255,255,255,0.3);
+	border-bottom: 2px solid rgba(255,255,255,0.7);
+	// border: 5px solid rgba(255,255,255,0.3);
+	margin: 10px auto 25px;
+	@media #{$mobile} {
+		font-size: 20px;
+	} 
+}
+
+// ABOUT ME ============================
+
+.emilyBio {
+	h2 {
+		// padding: 20px;
+		// margin-bottom: 20px;
+	}
+	color: #fff;
+	font-family: 'Open Sans';
+	font-size: 12px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	.homeBio {
+		max-width: 650px;
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+		// padding: 0 100px;
+		@media #{$mobile} {
+			flex-direction: column;
+		} 
+		.homePic {
+			flex: 1 0 30%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-right: 20px;
+			@media #{$mobile} {
+				padding: 5px;
+			} 
+		}
+		.homeBioText {
+			flex: 1 0 70%;
+			line-height: 20px;
+		}
+	}
+	.btnRow {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.moreAbout,
+		.resumeBtn {
+			min-width: 110px;
+			min-height: 40px;
+			color: #000;
+			background-color: rgba(255,255,255,0.9);
+			text-align: center;
+			text-transform: uppercase;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 2px;
+			margin: 20px 20px 0 0;
+			padding: 10px;
+			border-radius: 5px;
+			&:hover {
+				background-color: rgba(255,255,255,0.4);
+				color: #fff;
+			}
+			p {
+				margin: 0;
+				padding-top: 3px;
+			}
+			@media #{$mobile} {
+				padding: 5px;
+				margin: 5px;
+			} 
+		}
+	}
+}
+
+// FEATURED PROJECTS ============================
+
+.featProjects {
+	h2 {
+		margin-bottom: 70px;
+	}
+}
+
+.projects-container {
+	max-width: 1000px;
+}
+
+
+.feat-item {
+	margin-bottom: 70px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	@media #{$mobile} {
+		flex-direction: column;
+		margin-bottom: 30px;
+		border-bottom: 1px solid #fff;
+	} 
+	.feat-image {
+		flex: 1 0 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		img {
+			max-width: 70%;
+			margin-left: 40px;
+			@media #{$mobile} {
+				max-width: 100%;
+				margin-left: 0;
+			} 
+		}
+	}
+	.feat-details {
+		flex: 1 0 50%;
+		// display: flex;
+		// flex-direction: column;
+		// align-items: center;
+		// justify-content: center;
+		border-left: 1px solid lightgrey;
+		@media #{$mobile} {
+			border-left: 0;
+			// border-top: 1px solid lightgrey;
+		} 
+		padding-left: 50px;
+		padding-right: 50px;
+	}			
+}
+
+.feat-details {
+	padding: 20px 0;
+	font-family: 'Open Sans';
+	color: #fff;
+	a {
+		color: #fff;
+		font-size: 20px;
+		h3 {
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+			font-weight: 400;
+			letter-spacing: 4px;
+			margin: 0;
+			@media #{$mobile} {
+				font-size: 18px;
+				text-align: center;
+			} 
+		}
+	}
+	h4 {
+		text-transform: uppercase;
+		font-weight: 400;
+		font-size: 13px;
+		letter-spacing: 5px;
+		background-color: rgba(255,255,255,0.2);
+		margin: 0;
+		margin-right: 30%;
+		padding: 3px 10px;
+		@media #{$mobile} {
+			margin: 0;
+			text-align: center;
+		} 
+	}
+	p.techUsed {
+		background-color: rgba(255,255,255,0.9);
+		color: #000;
+		text-transform: uppercase;
+		font-size: 12px;
+		letter-spacing: 3px; 
+		padding: 5px 20px;
+		margin-right: 20%;
+		@media #{$mobile} {
+			margin: 10px 0 0;
+			text-align: center;
+		} 
+	}
+	p.shrtDesc {
+		text-transform: uppercase;
+		font-size: 12px;
+		font-weight: 200;
+		letter-spacing: 2px;
+		line-height: 20px;
+	}
+}
+
+#hideArrow {
+	display: none;
+}
+
+h3#unhide{
+	&:hover #hideArrow {
+		display: inline;
+	}
+}
+
+.btnBox {
+	display: flex;
+}
+
+.moreInfoBtn, .liveDemoBtn {
+	width: 110px;
+	height: 40px;
+	color: #000;
+	background-color: rgba(255,255,255,0.9);
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	margin: 0 10px 0 0;
+	@media #{$mobile} {
+		margin: 5px;
+	} 
+	padding-top: 1px;
+	border-radius: 5px;
+	&:hover {
+		background-color: rgba(255,255,255,0.4);
+		color: #fff;
+	}
+}
+
+.moreBtn {
+	width: 200px;
+	height: 40px;
+	color: #000;
+	background-color: rgba(255,255,255,0.9);
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	margin: 0 auto;
+	padding-top: 1px;
+	border-radius: 5px;
+	&:hover {
+		background-color: rgba(255,255,255,0.4);
+		color: #fff;
+	}
+}
+
+// CONTACT ============================
+
+.homeContact {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Open Sans';
+	font-size: 12px;
+	font-weight: 300;
+	letter-spacing: 3px;
+	color: #fff;
+	p.panel-intro {
+		// margin-top: 25px;
+	}
+}
+
+
+.social {
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  font-size: 20px;
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media #{$mobile} {
+		padding: 5px;
+		margin-top: 20px;
+  } 
+}
+
+.social a, .contact .social a:visited {
+  color: #ffffff;
+  padding: 20px;
+  margin: 0 20px;
+  border: 1px solid #fff;
+  @media #{$mobile} {
+		margin: 5px;
+		padding: 5px;
+		border: none;
+  } 
+}
+
+.contact .social a:hover {
+  color: #000;
+  background: #fff;
+}
+
+.social a:last-child {
+  padding: 20px 22px;
+  @media #{$mobile} {
+		padding: 5px;
+  } 
+}
+
+.spreadtext a {
+	display: inline;
+	letter-spacing: 5px;
+	color: #000;
+	background-color: #fff;
+	padding: 5px;
+	font-weight: 400;
+	@media #{$mobile} {
+		padding: 2px 5px;
+		letter-spacing: 2px;
+	} 
+}
