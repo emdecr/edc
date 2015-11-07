@@ -3,6 +3,7 @@
 .sass-cache/
 robots.txt
 node_modules/
+backup-admin/
 
 # Projects
 commentary/
@@ -15,6 +16,7 @@ wordpresstheme/
 # Wordpress specific
 wordpress/
 wordpress/*
+wp-content/
 wp-config.php
 uploads/
 upgrade/*
