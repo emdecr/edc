@@ -19,6 +19,8 @@ wordpress/*
 wp-content/
 wp-config.php
 uploads/
+uploads/*
+upgrade/
 upgrade/*
 backup-db/*
 advanced-cache.php
