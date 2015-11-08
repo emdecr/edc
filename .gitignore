@@ -4,6 +4,8 @@
 robots.txt
 node_modules/
 backup-admin/
+deploy/
+deploy/*
 
 # Projects
 commentary/
