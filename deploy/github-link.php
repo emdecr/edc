@@ -17,7 +17,7 @@
 **/
 
 // Set Variables
-$LOCAL_ROOT         = "/public_html";
+$LOCAL_ROOT         = "/home/emilyd9/public_html";
 $LOCAL_REPO         = "{$LOCAL_ROOT}";
 
 if ($_SERVER['HTTP_X_GITHUB_EVENT'] == 'push') {
