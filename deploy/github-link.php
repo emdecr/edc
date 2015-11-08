@@ -26,7 +26,7 @@ if ($_SERVER['HTTP_X_GITHUB_EVENT'] == 'push') {
   if( file_exists($LOCAL_REPO) ) {
     
     // If there is a repo, just run a git pull to grab the latest changes
-    shell_exec("cd {$LOCAL_REPO} && git reset --hard HEAD && git pull edc master");
+    shell_exec("git pull edc master");
     die("done " . mktime());
   } else {
     
