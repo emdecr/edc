@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Commentary | Director's Commentary for your webpage</title>
+
+	<!-- FONTS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/mainDemo.css">
+
+	<!-- SCRIPT -->
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<!-- FAVICON -->
+	<link rel="icon" type="image" href="images/favicon.ico">
+</head>
+<body>
+
+	<header class="mainNav">
+		
+	</header>
+
+	<div id="onButton">
+		<p>On</p>
+	</div>
+
+	<div id="offButton">
+		<p>Off</p>
+	</div>
+
+	<section class="heroImage">
+		<h1><span class="cmmtRef">Commentary</span><span class="cmmtBub smallHeader">A jQuery Plugin</span></h1>
+		<h3>Director's Commentary for your webpage.</h3>
+		<a href="https://github.com/emdecr/commentary" target="_blank"><p id="downloadBtn">Download on GitHub</p></a>
+	</section>
+
+	<section class="description">
+		<div class="container">
+			
+			<!-- What is commentary? -->
+			<h2 id="what-is-commentary-">What is &#39;Commentary&#39;?</h2>
+			<p><strong><em>Commentary</em></strong> is a jQuery plugin that allows you to add hidden notes to your page that are only visible once the plugin is turned on. [<strong>Try it</strong>: <em>Click the 'on' button in the top right corner ;)</em>]</p>
+			<p>When <em>Commentary</em> is turned on by the user, they&#39;ll see chunks of highlighted text/content. When the user clicks on the highlights, new commentary written by you will appear close by. It&#39;s like the Director&#39;s Commentary in the Special Features on DVDs (<em>I still buy them</em>) – but for the web. </p>
+
+			<!-- Getting Started -->
+			<h2 id="getting-started">Getting Started</h2>
+
+			<p>Add the <em>Commentary</em> folder to your project.</p>
+
+			<p>Include the following in the <code>&lt;head&gt;</code> section of your html document to link to jQuery and <em>Commentary</em>&#39;s styling.</p>
+
+			<p>HTML</p> 
+			<code>&lt;script src=&quot;http://code.jquery.com/jquery-1.11.3.min.js&quot;&gt;&lt;/script&gt;</code><br/>
+			<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;commentary/commentary.css&quot;&gt;</code>
+
+			<h4>Call the .commentaryOn() and .commentaryOff() methods.</h4>
+			<p>Include this right before the end of your <code>&lt;/body&gt;</code>.</p>
+
+			<p>HTML</p>
+			<p>
+				<code>&lt;script src=&quot;commentary/commentary.js&quot;&gt;&lt;/script&gt;</code><br/>
+				<code>&lt;script&gt; <br/>$(&#39;#onButton&#39;).commentaryOn(); <br/>$(&#39;#offButton&#39;).commentaryOff();<br/>&lt;/script&gt;</code>
+			</p>
+
+			&nbsp;
+
+			<p><code>#onButton</code> and <code>#offButton</code> are to be replaced with whatever elements (div, img, etc.) that will act as the &#39;on&#39; and &#39;off&#39; switches, respectively.</p>
+			<p>On this page I used two divs with fixed positions as the buttons, so they were visible all the way down the page. I gave the &#39;on&#39; button an id of <code>#onButton</code> and the &#39;off&#39; button an id <code>#offButton</code>. This just makes things a bit more semantic, and easier for you to distinguish these key components.</p>
+
+			<!-- Adding actual commentary -->
+			<h2 id="adding-actual-commentary">Adding <span class="cmmtRef">Highlights</span> + Comment Bubbles <span class="cmmtBub">This is a comment bubble.</span></h2>
+			
+			<p><em>Commentary</em> relies on <code>&lt;span&gt;</code> tags.</p>
+			&nbsp;
+
+			<p>Wrap the text that will act as the highlighted cue that a user will click on in the following span:</p>
+			<p><code>&lt;span class=&quot;cmmtRef&quot;&gt;HIGHLIGHTED CUE TEXT GOES HERE&lt;/span&gt;</code></p>
+			<p><strong><em>OPTION</em></strong>: You can change the colour of highlighted text by going into the <code>commentary.css</code> file, and changing the <code>background-color</code> property for <code>.highlight</code>.</p>
+			&nbsp;
+
+			<p>For the content that will appear when the highlighted span in clicked, wrap it in the following span.
+			<code>&lt;span class=&quot;cmmtBub&quot;&gt;CONTENT THAT WILL APPEAR&lt;/span&gt;</code></p>
+
+			<p><strong><em>OPTION</em></strong>: You can change the styling of the comment bubble by changing the css of <code>.cmmtBub</code> in the <code>commentary.css</code> file.</p>
+			&nbsp;
+
+			<p><strong>Note</strong>: You <em>must</em> put the <code>.cmmtBub</code> <code>&lt;span&gt;</code> after the  <code>.cmmtRef</code> <code>&lt;span&gt;</code>. Do <strong>not</strong> put another <code>&lt;span&gt;</code> in between these two <code>&lt;span&gt;</code>s. The jQuery used in this plugin relies on the <code>.next()</code> method. This method targets the immediately following sibling. </p>
+
+			<h2>Possible Uses</h2>
+			<h4 id="easter-eggs">Easter Eggs</h4>
+			<p>Use this plugin to make an &#39;easter egg&#39;-version of your site. Include little inside jokes or after thoughts about content on the page.</p>
+			<h4 id="use2">Create an interactive &#39;before and after&#39; site for a piece of writing</h4>
+			<p>Maybe you want to display how you <span class="cmmtRef">edited</span> an article. <span class="cmmtBub">I edited this page a bunch of times...</span></p>
+			<h4 id="use-3">Just for highlighting</h4>
+			<p>You could just use this plugin for highlighting text -shrugs-. Maybe you want to highlight certain terms or links? Cool. <span class="cmmtRef">You can do that.</span> Just skip the addition of the <code>.cmmtBub</code> <code>&lt;span&gt;</code>.</p>
+
+			<h2>Styling Tips</h2>
+			<p>The use of this plugin relies on styling and plcement choice. Be strategic about where you place the comment bubbles (<code>.cmmtBub</code>). The content is within a <code>&lt;span&gt;</code>, which means it&#39;s an inline element. Once the highlighted text is clicked and they&#39;re revealed, they <span class="cmmtRef">may disrupt the flow of whatever container they&#39;re in</span><span class="cmmtBub"><iframe src="//giphy.com/embed/Xixu8VcU7CuAg" width="245" height="164" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><br/>Even Beyonc&eacute; can't help this poor placement choice...</span>. Try adding the comment bubble spans to the end of the container, so it <span class="cmmtRef">doesn&#39;t disrupt as much content.</span><span class="span cmmtBub">Placement = Beyonc&eacute; approved</span></p>
+			<br/>
+			<hr>
+			<br/>
+			<center><p>This jQuery plugin was created for Week 6 of <a href="http://hackeryou.com/">HackerYou</a>&#39;s Full-time Front-End Bootcamp &lt;3 <span class="cmmtRef">#hythe6ix</span><span class="cmmtBub"><img src="images/hy6ix.png" height="300" width="300"><br/>Logo created by <a href="http://jenniferyeung.ca/" target="_blank">Jennifer Yeung</a>.</span></p></center>
+			<br/>
+			<center><p>I&#39;m working on adding options, and more individualized indications for each comment (ie. puttings numbers next to each comment and their respective comment bubbles, so it&#39;s easier to tell which highlights and bubbles go together). I'm also trying to make <em>Commentary</em> less intrusive to the html content, so V2 may make the <code>.cmmtBub</code> spans appear in a tooltip-like bubble when you hover over the highlighted text. Stay tuned!</p>
+			<p class="forkThis"><a href="https://github.com/emdecr/commentary" target="_blank">Click here to fork this project and submit pull requests :)</a></p></center>
+		</div>
+	</section>
+
+	<footer>
+		<p>Emily Dela Cruz &copy; 2015.</p>
+		<a href="http://emilydelacruz.com" title="Personal Website" target="_blank"><i class="fa fa-link"></i></a>
+		<a href="http://twitter.com/emdecr" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+		<a href="https://medium.com/@emdecr" title="Medium Blog" target="_blank"><i class="fa fa-quote-left"></i></i></a>
+		<a href="https://github.com/emdecr" title="Github" target="_blank"><i class="fa fa-code-fork"></i></a>
+	</footer>
+
+	<script src="commentary/commentary.js"></script>
+	<script>
+		$('#onButton').commentaryOn();
+		$('#offButton').commentaryOff();
+	</script>
+</body>
+</html

@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GOStudy</title>
+
+	<!-- FONTS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Lora:400,700,400italic' rel='stylesheet' type='text/css'>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- SCRIPT -->
+	<script src="js/modernizr.custom.js"></script>
+
+	<!-- FAVICON -->
+	<link rel="icon" type="image" href="images/favicon.ico">
+</head>
+<body>
+
+<!-- LANDING PANEL - HEADER -->
+<header>
+	<div class="headerContainer">
+		<section class="appInfo">
+			<h1><span class="go">Go</span>Study</h1>
+			<div class="description clearfix">
+				<p><strong>GOStudy</strong> is an application that helps you find study spots + Spotify playlists that you can listen to while nerding out.</p>
+				<p>First, pick the desired noise level of your study environment (quiet = library, loud = cafe).</p>
+				<p>Next, pick how you want to get there. Choose 'walk' to find nearby places. Choose 'bike' or 'drive' if you want to find places that are further away from your regular area. <strong>A change of scenery might be a good idea!</strong></p>
+				<p>Finally, pick a music type. Sometimes you need a good studying playlist. We can help you with that.</p>
+
+				<p>Now, <span class="go"><strong>GO STUDY</strong></span>! :)</p>
+				<!-- <p><strong><span class="go">NOTE</span></strong>: Depending on the amount of cafes or libraries in your area, the 'bike' and 'drive' options may not display accurate results. They may only show venues closest to you. We're working on fixing this.</p> -->
+			</div>
+		</section>
+		<div id="trigger-overlay">
+				<i class="fa fa-question-circle"></i>
+		</div>
+		<section class="selections">
+			<section class="noise">
+				<h3>Pick a noise level:</h3>
+				<div class="wrapper flex">
+					<label for="noNoise">
+						<div class="noiseLevel">
+							<img src="images/bubbleEx.png">
+							<h4>Quiet</h4>
+							<h4>Space</h4>
+							<input class="noiseLoc" id="noNoise" type="radio" name="noiseLoc" value="library">
+						</div>
+					</label>
+					<label for="yesNoise">
+						<div class="noiseLevel">
+							<img src="images/bubble.png">
+							<h4>Loud</h4>
+							<h4>Space</h4>
+							<input class="noiseLoc" id="yesNoise" type="radio" name="noiseLoc" value="cafe">
+						</div>
+					</label>
+				</div>
+			</section>
+			
+			<section class="distance">
+				<h3>Pick a mode of transportation:</h3>
+				<div class="wrapper flex">
+					<label for="walking">
+						<div class="distanceType">
+							<img src="images/walk.png">
+							<h4>Walk</h4>
+							<input class="transport" id="walking" type="radio" name="transport" value="2000">
+						</div>
+					</label>
+					<label for="biking">
+						<div class="distanceType">
+							<img src="images/bike.png">
+							<h4>Bike</h4>
+							<input class="transport" id="biking" type="radio" name="transport" value="5000">
+						</div>
+					</label>
+					<label for="driving">
+						<div class="distanceType">
+							<img src="images/drive.png">
+							<h4>Drive</h4>
+							<input class="transport" id="driving" type="radio" name="transport" value="10000">
+						</div>
+					</label>
+				</div>
+			</section>
+
+			<section class="spotifyPlaylists">
+				<h3>Pick a music type:</h3>
+				<div class="wrapper flex">
+					<label for="instrumental">
+						<div class="musicType">
+<!-- 							<img src="images/walk.png"> -->
+							<h4>Instrumental</h4>
+							<input class="music" id="instrumental" type="radio" name="music" value="instrumental">
+						</div>
+					</label>
+					<label for="edm">
+						<div class="musicType">
+							<!-- <img src="images/bike.png"> -->
+							<h4>EDM</h4>
+							<input class="music" id="edm" type="radio" name="music" value="edm">
+						</div>
+					</label>
+					<label for="pop">
+						<div class="musicType">
+							<!-- <img src="images/drive.png"> -->
+							<h4>Pop</h4>
+							<input class="music" id="pop" type="radio" name="music" value="pop">
+						</div>
+					</label>
+					<label for="random">
+						<div class="musicType">
+							<!-- <img src="images/drive.png"> -->
+							<h4>Random</h4>
+							<input class="music" id="random" type="radio" name="music" value="">
+						</div>
+					</label>
+				</div>
+			</section>
+
+			<section class="search">
+				<div class="wrapper">
+					<input type="submit" id="submit" class="submit" value="Let's go study!">
+				</div>
+			</section>
+		</section>
+	</div>
+</header>
+<!-- MAP TEST MAP TEST MAP TEST MAP TEST  -->
+<summary class="mapContainer">
+	<div class="wrapper">
+<!-- 		<select id="mode" onchange="calcRoute();">
+		    <option value="DRIVING">Driving</option>
+		    <option value="WALKING">Walking</option>
+		    <option value="BICYCLING">Bicycling</option>
+		    <option value="TRANSIT">Transit</option>
+		</select> -->
+		<div id="map">
+			
+		</div>
+	</div>
+</summary>
+<!-- ALL THE RESULTS ALL THE RESULTS ALL THE RESULTS ALL THE RESULTS -->
+<summary class="printContainer clearfix hidden">
+	<div class="wrapper">
+		<div class="printItems">
+			<!-- <h4>STUDY VENUES</h4> -->
+		</div>
+		<div class="musicContainer">
+			<h4>STUDY PLAYLISTS</h4>
+			<div class="musicItems">
+				
+			</div>
+		</div>
+	</div>
+</summary>
+
+<div class="backToTop hidden">
+	<div id="upTop">
+			<p>Click this bar to go back to the top!</p>
+	</div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+	<p class="rights">This application was developed using the <a href="https://developer.foursquare.com/" target="_blank">Foursquare</a>, <a href="https://developer.spotify.com/web-api/">Spotify</a> + <a href="https://developers.google.com/maps/documentation/geolocation/" target="_blank">Google Geolocation</a> APIs, and is not an official service of either. <a href="http://emilydelacruz.com/" target="_blank">Emily Dela Cruz</a>, <a href="http://rylegarcia.com/" target="_blank">Ryle Garcia</a> + <a href="http://jenniferyeung.ca/" target="_blank">Jennifer Yeung</a> &copy; 2015.</p>
+</footer>
+
+<!-- CONTACT OVERLAY -->
+<div class="overlay overlay-contentpush">
+	<p class="overlayDes">This app was created by <a href="http://emilydelacruz.com/" target="_blank">Emily Dela Cruz</a>, <a href="http://rylegarcia.com/" target="_blank">Ryle Garcia</a> + <a href="http://jenniferyeung.ca/" target="_blank">Jennifer Yeung</a>. We used the <a href="https://developer.foursquare.com/" target="_blank">Foursquare</a>, <a href="https://developer.spotify.com/web-api/">Spotify</a> + <a href="https://developers.google.com/maps/documentation/geolocation/" target="_blank">Google Geolocation</a> APIs. All content is the property of its respective owner(s). Background image courtesy of <a href="https://unsplash.com/" target="_blank">Unsplash.com</a>. Google Fonts included on this page: <a href="https://www.google.com/fonts/specimen/Lato" target="_blank">Lato</a> + <a href="https://www.google.com/fonts/specimen/Lora" target="_blank">Lora</a>. Fullscreen overlay effect created by <a href="http://tympanus.net/codrops/2014/02/06/fullscreen-overlay-effects/" target="_blank">crnacura</a>. Favicon created by <a href="http://www.favicon.cc/?action=icon&file_id=740276" target="_blank">El_Lamos</a>.</p>
+	<p class="forkDesc">Fork this project on github <a href="https://github.com/GarciaDelaYeung/gostudy" target="_blank"><i class="fa fa-code-fork forkLink"></i></a></p>
+	<button type="button" class="overlay-close">Close</button>
+</div>
+
+<script type="text/javascript"
+	     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCly51JcgEgTAEDOyMrQHm46fjCJyOlgYU">
+	   </script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/app.js"></script>
+<!-- <script src="js/newApp.js"></script> -->
+<!-- <script src="js/spotify.js"></script> -->
+<!-- <script src="js/1019p.js"></script> -->
+<script src="js/classie.js"></script>
+<script src="js/demo7.js"></script>
+</body>
+</html>

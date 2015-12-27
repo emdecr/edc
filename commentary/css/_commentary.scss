@@ -1,0 +1,32 @@
+//'Commentary' was created by Emily Dela Cruz
+	// http://emilydelacruz.com
+// Fork this on GitHub
+	// https://github.com/emdecr/commentary
+
+// ==============  ON/OFF - HIGHLIGHTED TEXT
+
+
+// This is the colour of the highlight
+	//Feel free to change this
+.highlight {
+	background-color: yellow;
+}
+
+.noHighlight {
+	background-color: none;
+}
+
+// ==============  COMMENT BUBBLE
+
+// This styles the span that holds the comment section
+	// that will appear when the highlighted text is clicked
+.cmmtBub {
+	margin: 0 auto;
+	text-align: center;
+	padding: 2px;
+	background: rgba(0,0,0,0.2);
+}
+
+// Tip: give each .cmmtBub an id 
+	//to style each one differently 
+

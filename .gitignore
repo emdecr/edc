@@ -8,10 +8,10 @@ deploy/
 deploy/*
 
 # Projects
-commentary/
-goodmornings/
-gostudy/
-lady/
+#commentary/
+#goodmornings/
+#gostudy/
+#lady/
 ladytest/
 wordpresstheme/
 

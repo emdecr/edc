@@ -1,0 +1,167 @@
+@import "../css/_normalize.scss";
+@import "../css/_commentary.scss";
+
+// VARIALBLES
+$mobile: "(max-width: 480px)";
+$mobile-landscape: "(max-height: 450px)";
+$tablet: "(max-width: 768px)";
+$small-desktop: "(max-width: 940px)";
+
+body {
+	background-color: #fff;
+	font-family: 'Open Sans';
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 45px;
+	letter-spacing: 10px;
+	background-color: rgba(255,255,255,0.7);
+	padding: 10px;
+	// margin: 100px 25% 0;
+	max-width: 900px;
+	margin: 100px auto 0;
+	@media #{$mobile} {
+		font-size: 25px;
+	}
+}
+
+h2 {
+	font-size: 30px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 14px;
+	background-color: rgba(255,255,255,0.5);
+	padding: 10px;
+	letter-spacing: 3px;
+	// margin: 20px 27%;
+	margin: 20px auto;
+	max-width: 700px;
+}
+
+h4 {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+a {
+	color: #000;
+	// text-decoration: none;
+}
+
+p {
+	line-height: 20px;
+	letter-spacing: 2px;
+	font-size: 12px;
+}
+
+.container {
+	background-color: #fff;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 50px;
+}
+
+code {
+	background-color: rgba(0,0,0,0.05);
+	font-size: 12px;
+	padding: 3px;
+}
+
+// ============== ON/OFF BUTTONS
+
+#onButton, #offButton {
+	position: fixed;
+	width: 70px;
+	height: 30px;
+	text-align: center;
+	border: 1px solid #e3e3e3;
+	&:hover {
+		cursor: pointer;
+	}
+	p {
+		position: relative;
+		top: -8px;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+}
+
+#onButton {
+	top: 15px;
+	right: 100px;
+	background-color: #fff;
+}
+
+#offButton {
+	top: 15px;
+	right: 15px;
+	background-color: lightgrey;
+}
+
+// ==============  HERO IMAGE
+
+.heroImage {
+	min-height: 70vh;
+	text-align: center;
+	text-transform: uppercase;
+	background-image: url('../images/heroimage.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 -200px; 
+	padding: 20px;
+	a {
+		text-decoration: none;
+	}
+}
+
+.smallHeader {
+	font-size: 25px;
+	text-transform: none;
+	letter-spacing: 6px;
+}
+
+#downloadBtn {
+	max-width: 250px;
+	height: 55px;
+	background-color: rgba(255,255,255,0.5);
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 3px;
+	margin: 25px auto 0;
+	padding: 15px 20px;
+	border: 2px solid #fff;
+	border-radius: 5px;
+}
+
+// ==============  OUTRO
+
+.forkThis {
+	max-width: 500px;
+	background-color: rgba(0,0,0,0.2);
+	margin-top: 40px;
+	padding: 10px;
+	border-radius: 5px;
+	a {
+		text-decoration: none;
+	}
+}
+
+// ==============  FOOTER
+
+footer {
+	min-height: 70px;
+	background-color: #e3e3e3;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 10px;
+}
+
+i {
+	padding: 2px 10px;
+	margin-bottom: 10px;
+}
