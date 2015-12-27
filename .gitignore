@@ -15,6 +15,10 @@ lady/
 ladytest/
 wordpresstheme/
 
+#Add-On Domain
+makeslowhaste.com/
+makeslowhaste.com/*
+
 # Wordpress specific
 wordpress/
 wordpress/*
