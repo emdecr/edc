@@ -246,9 +246,18 @@ studyApp.mapDisplay = function($locLatLng, $locLat, $locLng) {
 studyApp.getMap = function($locLatLng, $locLat, $locLng) {
   console.log($locLatLng)
   //console.log(locLat);
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var isDraggable = false;
+  } else {
+    var isDraggable = true;
+  }
+  
   var mapOptions = {
     center: {lat: $locLat, lng: $locLng},
     zoom:18,
+    scrollwheel: false,
+    draggable: isDraggable,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   
