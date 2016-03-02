@@ -53,6 +53,14 @@
 		column-gap:20px;
 		margin-top:50px;
 		margin-bottom:20px;
+		a {
+			color: #b2b2b2;
+			&:hover {
+				color: black;
+				border-bottom: 1px solid black;
+				background-color: #fff;
+			}
+		}
 		p {
 			margin: 0;
 		}
