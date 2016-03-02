@@ -40,10 +40,25 @@
 		flex: 1 0 auto;
 	}
 	.myBiography {
-		// text-align: center;
-		flex: 1 0 auto;
-		font-family: 'Open Sans';
-		font-weight: 400;
+		-webkit-flex:1 0 auto;
+		-ms-flex:1 0 auto;
+		flex:1 0 auto;
+		font-family:'Open Sans';
+		font-weight:400;
+		-webkit-column-count:3;
+		-moz-column-count:3;
+		column-count:3;
+		-webkit-column-gap:20px;
+		-moz-column-gap:20px;
+		column-gap:20px;
+		margin-top:50px;
+		margin-bottom:20px;
+		p {
+			margin: 0;
+		}
+		p + p {
+			margin-bottom: 15px;
+		}
 	}
 }
 

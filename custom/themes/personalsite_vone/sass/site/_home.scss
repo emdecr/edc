@@ -334,6 +334,8 @@ h3#unhide{
   } 
 }
 
+.social{text-align:center;padding:25px 25px 10px;margin-top:20px;font-size:20px;color:#ffffff;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}@media (max-width: 480px),(max-height: 450px){.social{padding:5px;margin-top:20px;}}.social a,.contact .social a:visited{color:#ffffff;padding:10px 15px;margin:0 20px;border:1px solid #fff}@media (max-width: 480px),(max-height: 450px){.social a,.contact .social a:visited{margin:5px;padding:5px;border:none;}}.contact .social a:hover{color:#000;background:#fff}.social a:last-child{padding:10px 17px}@media (max-width: 480px),(max-height: 450px){.social a:last-child{padding:5px;}}.spreadtext a{display:inline;letter-spacing:5px;color:#000;background-color:#fff;padding:5px;font-weight:400}@media (max-width: 480px),(max-height: 450px){.spreadtext a{padding:2px 5px;letter-spacing:2px;}}
+
 .spreadtext a {
 	display: inline;
 	letter-spacing: 5px;

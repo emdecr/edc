@@ -27,7 +27,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script> -->
 
 <!-- FAVICON -->
-<link rel="icon" type="image" href="images/favicon.ico">
+<link rel="icon" type="image" href="<?php echo home_url(); ?>/images/favicon.ico">
 
 <?php wp_head(); ?>
 </head>

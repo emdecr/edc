@@ -112,7 +112,7 @@ add_action( 'widgets_init', 'personalsite_vone_widgets_init' );
  * Enqueue scripts and styles.
  */
 function personalsite_vone_scripts() {
-	wp_enqueue_style( 'personalsite_vone-style', get_template_directory_uri() . '/css/style.css'  );
+	wp_enqueue_style( 'personalsite_vone-style', get_template_directory_uri() . '/dist/css/style.css'  );
 
 	wp_enqueue_style( 'personalsite_vone-animate', get_template_directory_uri() . '/css/animate.css');
 

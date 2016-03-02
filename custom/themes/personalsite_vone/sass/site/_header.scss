@@ -88,6 +88,8 @@ h1 {
 	} 
 }
 
+.homeHeaderMain{padding:40px;padding-bottom:15%;min-height:100vh;background-attachment:fixed;background-size:cover;background-color:#000}@media (max-width: 480px),(max-height: 450px){.homeHeaderMain{padding:20px;}}h1.site-title-home{font-size:35px;letter-spacing:5px}h1.site-title-home a{color:rgba(255,255,255,0.8)}@media (max-width: 480px),(max-height: 450px){h1.site-title-home{font-size:20px;}}
+
 h1.site-title-home {
 	font-size: 35px;
 	letter-spacing: 5px;
