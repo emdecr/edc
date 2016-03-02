@@ -7,6 +7,6 @@ June 2015
 ![Image of my personal site - version one](http://emilydelacruz.com/custom/uploads/2015/12/version-one.jpg)
 
 Version 2.0.0
-Dec 2015/Jan 2016
+2016
 
 ##Cheers!
