@@ -79,18 +79,16 @@ h1 {
 	padding: 40px;
 	padding-bottom: 15%;
 	min-height: 95vh;
-	background-attachment: fixed;
 	// -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
 	// background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 10%);
 	@media #{$large} {
+		background-attachment: fixed;
 		background-size: cover;
 	} 
 	@media #{$mobile} {
 		padding: 20px;
 	} 
 }
-
-.homeHeaderMain{padding:40px;padding-bottom:15%;min-height:100vh;background-attachment:fixed;background-size:cover;background-color:#000}@media (max-width: 480px),(max-height: 450px){.homeHeaderMain{padding:20px;}}h1.site-title-home{font-size:35px;letter-spacing:5px}h1.site-title-home a{color:rgba(255,255,255,0.8)}@media (max-width: 480px),(max-height: 450px){h1.site-title-home{font-size:20px;}}
 
 h1.site-title-home {
 	font-size: 35px;
@@ -174,7 +172,7 @@ h1.site-title-home {
 		@media #{$mobile} {
 			margin-top: 10vw;
 			font-size: 10vw;
-			line-height: 12vw;
+			line-height: 13vw;
 		} 
 	}
 	animation-duration: 1s;

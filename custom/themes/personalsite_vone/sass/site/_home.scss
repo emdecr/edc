@@ -9,12 +9,13 @@
 	padding: 50px;
 	margin-top: 25px;
 	background-color: #000;
-	background-attachment: fixed;
 	@media #{$large} {
 		background-size: cover;
+		background-attachment: fixed;
 	}
 	@media #{$mobile} {
 		padding: 25px;
+		background-position: left top;
 	} 
 }
 
