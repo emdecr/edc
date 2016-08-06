@@ -253,6 +253,10 @@ h3#unhide{
 
 .btnBox {
 	display: flex;
+	@media #{$mobile} {
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 .moreInfoBtn, .liveDemoBtn {
