@@ -1,18 +1,23 @@
 .pro-container {
 	margin-top: 50px;
-	display: flex;
 	font-family: 'Open Sans';
+	@media #{$large} {
+		display: flex;
+	} 
 	@media #{$mobile} {
-		flex-direction: column;
+		display: flex;
+		flex-wrap: wrap;
 		margin-top: 20px;
 	} 
 	.image-container {
-		flex: 1 0 60%;
 		margin: 0 auto;
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 		// justify-content: center;
+		@media #{$large} {
+			display: flex;
+			flex: 1 0 60%;
+		} 
 		@media #{$mobile} {
 			order: -1;
 		}
@@ -26,11 +31,14 @@
 	.full-details {
 		// background-color: rgba(0,0,0,0.1);
 		padding-right: 50px;
+		@media #{$large} {
+			flex: 1 0 40%;
+		}
 		@media #{$mobile} {
 			// text-align: center;
+			flex: 100%;
 			padding: 0;
 		} 
-		flex: 1 0 40%;
 		h2 {
 			text-transform: uppercase;
 			margin: 0 auto;
@@ -56,6 +64,9 @@
 			letter-spacing: 3px;
 			padding-bottom: 10px;
 			border-bottom: 1px solid grey;
+			@media #{$mobile} {
+				border-bottom: none;
+			}
 		}
 		.techUsed {
 			background-color: rgba(255,255,255,0.9);
@@ -77,6 +88,9 @@
 			letter-spacing: 2px;
 			line-height: 20px;
 			// padding-right: 25px;
+			@media #{$mobile} {
+				margin-top: 30px;
+			} 
 		}
 		.liveDemoBtn {
 			width: 110px;
