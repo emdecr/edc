@@ -118,7 +118,7 @@ function personalsite_vone_scripts() {
 
 	wp_enqueue_script( 'personalsite_vone-jqeury', 'http://code.jquery.com/jquery-1.11.3.min.js', array(), '20150603', true );	
 
-	wp_enqueue_script( 'personalsite_vone-mainjs', get_template_directory_uri() . '/js/main.js', array(), '20150603', true );	
+	wp_enqueue_script( 'personalsite_vone-mainjs', get_template_directory_uri() . '/dist/js/app.min.js', array(), '20150603', true );	
 
 	wp_enqueue_script( 'personalsite_vone-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 

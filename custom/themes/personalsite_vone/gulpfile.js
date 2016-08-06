@@ -19,6 +19,7 @@ var scriptList = [
   'js/navigation.js',
   'js/skip-link-focus-fix.js',
   'js/script.js',
+  'js/wow.min.js',
   'js/main.js'
 ];
 

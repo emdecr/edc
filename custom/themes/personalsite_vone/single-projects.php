@@ -8,19 +8,19 @@
         <section class="pro-container clearfix">
           <div class="full-details">
             <h2><?php the_title(); ?></h2>
-            <h4>
+            <h3>
               <?php the_field( 'project_name' ); ?>
-            </h4>
+            </h3>
             <p class="techUsed">
               <?php the_field( 'tech_used' ); ?>
             </p>
-            <h3><strong>Client: </strong> <?php the_field('client_name'); ?></h3>
+            <h4><strong>Client: </strong> <?php the_field('client_name'); ?></h4>
             <a href="<?php the_field( 'project_url' ); ?>" target="_blank">
               <div class="liveDemoBtn">
                 <p>View Live</p>
               </div>
             </a>
-            <p class="longDesc"><?php the_field('long_descrip'); ?></p>
+            <div class="longDesc"><?php the_field('long_descrip'); ?></div>
           </div>
           <div class="image-container">
             <img src="<?php the_field('project_screenshot'); ?>">

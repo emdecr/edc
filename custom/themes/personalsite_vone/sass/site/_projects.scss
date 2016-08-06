@@ -23,21 +23,27 @@
 		margin: 10px auto 70px;
 		@media #{$mobile} {
 			font-size: 25px;
-			margin: 10px auto 40px;
+			margin: 10px auto 0px;
 		} 
 	}
 }
 
 .feat-item-projects-page {
-	margin-bottom: 70px;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-	flex-wrap: wrap;
+	@media #{$large} {
+		margin-bottom: 70px;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+	} 
 	@media #{$mobile}, #{$tablet} {
 		flex-direction: column;
-		margin-bottom: 25px;
+		margin: 0;
+		padding: 40px 0;
 		border-bottom: 1px solid grey;
+		&:first-child {
+			padding: 20px 0 40px 0;
+		}
 	} 
 	.feat-image {
 		flex: 1 0 50%;
@@ -70,11 +76,16 @@
 		border-left: 1px solid lightgrey;
 		// padding-left: 50px;
 		// padding-right: 50px;
-		padding: 20px 50px;
 		font-family: 'Open Sans';
 		color: #fff;
+		@media #{$large} {
+			padding: 20px 50px;
+		} 
 		@media #{$tablet} {
 			border: 0;
+		} 
+		@media #{$mobile} {
+			padding: 20px 0 0 0;
 		} 
 		a {
 			color: #000;
@@ -154,3 +165,4 @@
 		}
 	}
 }
+

@@ -51,7 +51,7 @@ Template Name: Front-Page
 										$portfolioQuery->the_post();
 										?>
 
-									<div class="feat-item fadeInItem">
+									<div class="feat-item fadeInItem wow fadeIn">
 										<div class="feat-image">
 											<img src="<?php the_field( 'project_mockup' ); ?>" alt="A mockup picture of the project.">
 										</div>

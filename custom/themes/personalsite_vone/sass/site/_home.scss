@@ -1,5 +1,5 @@
 .fadeInItem {
-    opacity:0;
+    // opacity:0;
 }
 
 .emilyBio, 
@@ -9,8 +9,10 @@
 	padding: 50px;
 	margin-top: 25px;
 	background-color: #000;
-	background-size: cover;
 	background-attachment: fixed;
+	@media #{$large} {
+		background-size: cover;
+	}
 	@media #{$mobile} {
 		padding: 25px;
 	} 

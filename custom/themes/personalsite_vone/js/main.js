@@ -1,36 +1,20 @@
 $(document).ready(function() {
 
-// $(window).scroll(function () {
-
-//     var scrollTop = $(window).scrollTop();
-//     var height = $(window).height();
-
-//     $('.textFade').css({
-//         'opacity': ((height - scrollTop) / height);
-//     }); 
-// });
-
-$(function() {
-    $(window).scroll( function(){
-    
-       
-        $('.fadeInItem').each( function(i){
-            
-            var bottom_of_object = $(this).position().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-            
-            // The lower '100' is, the longer it takes to fade in
-            bottom_of_window = bottom_of_window + 100;  
-          
-            if( bottom_of_window > bottom_of_object ){
-                
-                $(this).animate({'opacity':'1'},500);
-                    
-            }
-        }); 
-    
-    });
-});
+    var wow = new WOW(
+      {
+        boxClass:     'wow',      // animated element css class (default is wow)
+        animateClass: 'animated', // animation css class (default is animated)
+        offset:       0,          // distance to the element when triggering the animation (default is 0)
+        mobile:       false,       // trigger animations on mobile devices (default is true)
+        live:         true,       // act on asynchronously loaded content (default is true)
+        callback:     function(box) {
+          // the callback is fired every time an animation is started
+          // the argument that is passed in is the DOM node being animated
+        },
+        scrollContainer: null // optional scroll container selector, otherwise use window
+      }
+    );
+    wow.init();
 
 
 });
