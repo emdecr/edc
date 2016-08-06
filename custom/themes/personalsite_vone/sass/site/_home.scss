@@ -78,6 +78,7 @@
 			} 
 			@media #{$mobile} {
 				padding: 5px;
+				text-align: center;
 				img {
 					max-width: 200px;
 				}
@@ -128,7 +129,10 @@
 
 .featProjects {
 	h2 {
-		margin-bottom: 70px;
+		
+		@media #{$large} {
+			margin-bottom: 70px;
+		} 
 	}
 }
 
@@ -148,7 +152,7 @@
 	@media #{$mobile} {
 		flex-direction: column;
 		margin-bottom: 30px;
-		border-bottom: 1px solid #fff;
+		// border-bottom: 1px solid #fff;
 	} 
 	.feat-image {
 		@media #{$large} {
@@ -156,6 +160,9 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		} 
+		@media #{$mobile} {
+			text-align: center;
 		} 
 		img {
 			max-width: 70%;
@@ -170,12 +177,12 @@
 		border-left: 1px solid lightgrey;
 		@media #{$large} {
 			flex: 1 0 50%;
+			padding-left: 50px;
+			padding-right: 50px;
 		} 
 		@media #{$mobile} {
 			border-left: 0;
 		} 
-		padding-left: 50px;
-		padding-right: 50px;
 	}			
 }
 
