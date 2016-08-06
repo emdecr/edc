@@ -119,6 +119,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 body {
 	background-color: #fff;
+	overflow-x: hidden;
 }
 
 // .content-area {
@@ -139,19 +140,21 @@ body {
 }
 
 #page {
-	margin: 25px 25px 0 25px;
+	border: 25px 25px 0 25px solid #fff;
 	background-color: $color__background-screen;
 	padding: 40px;
 	@media #{$mobile} {
-		margin: 15px;
+		// margin: 15px;
+		border: 25px 25px 0 25px solid #fff;
 		padding: 20px;
 	} 
 	animation-duration: 2s;
 }
 
 #pageHome {
-	margin: 25px 25px 0 25px;
+	overflow-x: hidden;
+	border: 25px 25px 0 25px solid #fff;
 	@media #{$mobile} {
-		margin: 15px;
+		border: 20px 20px 0 20px solid #fff;
 	} 
 }

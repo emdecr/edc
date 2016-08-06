@@ -170,8 +170,9 @@ h1.site-title-home {
 		letter-spacing: 3px;
 		color: rgba(255,255,255,0.9);
 		@media #{$mobile} {
-			font-size: 35px;
-			line-height: 60px;
+			margin-top: 10vw;
+			font-size: 10vw;
+			line-height: 12vw;
 		} 
 	}
 	animation-duration: 1s;

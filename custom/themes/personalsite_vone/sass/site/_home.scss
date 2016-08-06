@@ -5,7 +5,7 @@
 .emilyBio, 
 .featProjects,
 .homeContact {
-	min-height: 50vh;
+	// min-height: 50vh;
 	padding: 50px;
 	margin-top: 25px;
 	background-color: #000;
@@ -74,6 +74,9 @@
 			padding-right: 20px;
 			@media #{$mobile} {
 				padding: 5px;
+				img {
+					max-width: 200px;
+				}
 			} 
 		}
 		.homeBioText {
@@ -148,7 +151,7 @@
 			max-width: 70%;
 			margin-left: 40px;
 			@media #{$mobile} {
-				max-width: 100%;
+				max-width: 90%;
 				margin-left: 0;
 			} 
 		}

@@ -53,6 +53,14 @@
 		column-gap:20px;
 		margin-top:50px;
 		margin-bottom:20px;
+		@media #{$mobile} {
+			-webkit-column-count:1;
+			-moz-column-count:1;
+			column-count:1;
+			-webkit-column-gap:0;
+			-moz-column-gap:0;
+			column-gap:0;
+		} 
 		a {
 			color: #b2b2b2;
 			&:hover {
