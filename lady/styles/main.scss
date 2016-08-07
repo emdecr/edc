@@ -1228,19 +1228,20 @@ ul.footer-quick-links {
 
 // TAGS
 .tags-wrap {
-	display: flex;
-	flex-wrap: wrap;
-	@media #{$mobile} {
-		align-items: center;
-		justify-content: center;
-		margin: 0 20px;
-	}
+	// display: flex;
+	// flex-wrap: wrap;
+	// @media #{$mobile} {
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	margin: 0 20px;
+	// }
 }
 
 .tag-item {
 	background-color: #1D1D1D;
 	padding: 10px 20px;
 	margin: 5px 10px 5px 0;
+	display: inline-block;
 	a{
 		@media #{$small-desktop} {
 			font-size: 11px;
