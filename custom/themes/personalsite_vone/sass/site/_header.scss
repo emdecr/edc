@@ -78,7 +78,7 @@ h1 {
 .homeHeaderMain {
 	padding: 40px;
 	padding-bottom: 15%;
-	min-height: 95vh;
+	min-height: 100vh;
 	// -webkit-mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
 	// background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,1) 10%);
 	@media #{$large} {

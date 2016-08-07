@@ -3,6 +3,7 @@ $mobile: "(max-width: 480px)";
 $mobile-landscape: "(max-height: 450px)";
 $tablet: "(max-width: 768px)";
 $small-desktop: "(max-width: 940px)";
+$large: "(min-width: 960px)";
 
 @import "normalize";
 @import "flickity";
@@ -422,15 +423,24 @@ nav .fa-bars {
 // ================= TRENDING =================
 
 .trending-gallery {
+	position: relative;
+	overflow-x: hidden;
 	display: flex;
-	min-height: 876px;
+	// min-height: 876px;
 	margin-top: 50px;
 	background: #fff;
+	// @media #{$large} {
+	// 	min-height: 1000px;
+	// }
 	@media #{$mobile}, #{$mobile-landscape}, #{$small-desktop} {
 		flex-direction: column;  
 		align-items: center;
 		justify-content: center;
 		padding-bottom: 40px;
+	}
+	img {
+		width: 100%;
+		height: auto;
 	}
 }
 
@@ -442,12 +452,29 @@ p.trending-byline {
 	display: flex;
 	flex: 2 0 50%;
 	flex-direction: column;
+	> .trending-square {
+		flex: 0 0 65%;
+		.square-rectangle {
+			img {
+
+			}
+		}
+	}
+	> .trending-rectangle {
+		flex: 0 0 35%;
+	}
 }
 
 .trending-gallery-column-right {
 	display: flex;
 	flex: 2 0 50%;
 	flex-direction: column-reverse;
+	> .trending-square {
+		flex: 0 0 65%;
+	}
+	> .trending-rectangle {
+		flex: 0 0 35%;
+	}
 }
 
 .trending-gallery-column-left .trending-square .square-rectangle,
