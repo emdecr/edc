@@ -45,7 +45,3 @@
 </style>
 </body>
 </html>
-
-<!-- <a href="<?php echo esc_url( __( 'http://wordpress.org/', 'personalsite_vone' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'personalsite_vone' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'personalsite_vone' ), 'personalsite_vone', '<a href="http://emilydelacruz.com" rel="designer">Emily Dela Cruz</a>' ); ?> -->

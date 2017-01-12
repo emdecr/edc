@@ -12,7 +12,6 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <!-- GA Analytics -->
@@ -28,8 +27,8 @@
 </script>
 
 <!-- FONTS -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:100,200,300,400,700|Karla:400,400italic,700,700italic|Montserrat:400,700|Oswald:300,400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:100,200,300,400,700|Karla:400,400italic,700,700italic|Montserrat:400,700|Oswald:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <!-- CSS -->
 <!-- <link rel="stylesheet" href="style.css"> -->

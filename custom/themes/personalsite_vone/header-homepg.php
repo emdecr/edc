@@ -28,15 +28,15 @@
 </script>
 
 <!-- FONTS -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:100,200,300,400,700|Karla:400,400italic,700,700italic|Montserrat:400,700|Oswald:300,400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:100,200,300,400,700|Karla:400,400italic,700,700italic|Montserrat:400,700|Oswald:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <!-- CSS -->
 <!-- <link rel="stylesheet" href="style.css"> -->
 
 <!-- JS -->
 <!-- <script src="js/modernizr.custom.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script> -->
 
 <!-- FAVICON -->
 <link rel="icon" type="image" href="images/favicon.ico">
