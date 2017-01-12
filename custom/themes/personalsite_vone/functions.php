@@ -116,15 +116,17 @@ function personalsite_vone_scripts() {
 
 	wp_enqueue_style( 'personalsite_vone-animate', get_template_directory_uri() . '/css/animate.css');
 
-	wp_enqueue_script( 'personalsite_vone-jqeury', 'http://code.jquery.com/jquery-1.11.3.min.js', array(), '20150603', true );	
+	// wp_enqueue_script( 'personalsite_vone-jqeury', 'https://code.jquery.com/jquery-1.11.3.min.js', array(), '20150603', true );	
 
-	wp_enqueue_script( 'personalsite_vone-mainjs', get_template_directory_uri() . '/dist/js/app.min.js', array(), '20150603', true );	
+	wp_enqueue_script('jquery');
 
-	wp_enqueue_script( 'personalsite_vone-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'personalsite_vone-mainjs', get_template_directory_uri() . '/dist/js/app.min.js', array('jquery'), '20150603', true );	
 
-	wp_enqueue_script( 'personalsite_vone-form', get_template_directory_uri() . '/js/script.js', array(), '20150606', true );
+	wp_enqueue_script( 'personalsite_vone-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20120206', true );
 
-	wp_enqueue_script( 'personalsite_vone-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'personalsite_vone-form', get_template_directory_uri() . '/js/script.js', array('jquery'), '20150606', true );
+
+	wp_enqueue_script( 'personalsite_vone-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array('jquery'), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
