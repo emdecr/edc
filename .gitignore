@@ -1,6 +1,7 @@
 .htaccess
 .DS_Store
 .sass-cache/
+.ftpquota
 robots.txt
 node_modules/
 backup-admin/
@@ -18,9 +19,12 @@ google5b392b6c91552e37.html
 ladytest/
 wordpresstheme/
 
+
 #Add-On Domain
 makeslowhaste.com/
 makeslowhaste.com/*
+hisandhermag.com/
+hisandhermag.com/*
 
 # Wordpress specific
 wordpress/
