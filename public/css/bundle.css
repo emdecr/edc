@@ -35,7 +35,7 @@ h1 {
   @media (max-width: 600px) {
     h1 {
       font-size: 15vw;
-      line-height: 16vw;
+      line-height: 15vw;
       margin-bottom: 10px; } }
 
 p {
