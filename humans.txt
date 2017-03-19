@@ -1,0 +1,20 @@
+/* TEAM */
+	Designer + Developer: Emily Dela Cruz
+	Twitter: @emdecr
+	Github: @emdecr	
+	From: Toronto, Ontario, Canada
+
+/* THANKS */
+	Resources that got me started:
+		Author: Andrey Pokrovskiy
+		Link: https://medium.freecodecamp.com/how-to-build-react-apps-on-top-of-the-wordpress-rest-api-bcc632808025#.2ql1fv7ev
+
+		Author: Wes Bos
+		Link: https://reactforbeginners.com/
+
+/* SITE */
+	Last update: 2017/03
+	Language: English
+	Standards: HTML5, CSS3, ES2015
+	Components: ReactJS, Webpack v2
+	Software: Sublime Text, Sketch

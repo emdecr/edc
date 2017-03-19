@@ -13,9 +13,10 @@ class Home extends React.Component {
                 	Tripped over a random wire.
                 </h1>
                 <p>Back in a bit...</p>
-                <a href="https://github.com/emdecr" target="_blank"><i className="fa fa-github" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/emdecr" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="http://hypenotic.com/author/edelacruz/" target="_blank"><i className="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="https://emilydelacruz.com/archive/v1/" title="Archived Site" target="_blank"><i className="fa fa-archive" aria-hidden="true"></i></a>
+                <a href="https://github.com/emdecr" title="Github" target="_blank"><i className="fa fa-github" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/emdecr" title="Twitter" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="http://hypenotic.com/author/edelacruz/" title="Hypenotic Articles" target="_blank"><i className="fa fa-pencil" aria-hidden="true"></i></a>
             </div>
         );
     }
