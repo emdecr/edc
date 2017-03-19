@@ -112,21 +112,27 @@ add_action( 'widgets_init', 'personalsite_vone_widgets_init' );
  * Enqueue scripts and styles.
  */
 function personalsite_vone_scripts() {
-	wp_enqueue_style( 'personalsite_vone-style', get_template_directory_uri() . '/dist/css/style.css'  );
+	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+	if (strpos($url,'dela') !== false) {
+	    $theprefix =; 'https://emilydelacruz.com';
+	} else {
+	    $theprefix =; 'http://edv.dev';
+	}
+	wp_enqueue_style( 'personalsite_vone-style', $theprefix . '/archive/v1/custom/themes/personalsite_vone/dist/css/style.css'  );
 
-	wp_enqueue_style( 'personalsite_vone-animate', get_template_directory_uri() . '/css/animate.css');
+	wp_enqueue_style( 'personalsite_vone-animate', $theprefix . '/archive/v1/custom/themes/personalsite_vone/css/animate.css');
 
 	wp_enqueue_script( 'personalsite_vone-jqeury', 'https://code.jquery.com/jquery-1.11.3.min.js', array(), '20150603', true );	
 
 	// wp_enqueue_script('jquery');
 
-	wp_enqueue_script( 'personalsite_vone-mainjs', get_template_directory_uri() . '/dist/js/app.min.js', array('personalsite_vone-jqeury'), '20150603', true );	
+	wp_enqueue_script( 'personalsite_vone-mainjs', $theprefix . '/archive/v1/custom/themes/personalsite_vone/dist/js/app.min.js', array('personalsite_vone-jqeury'), '20150603', true );	
 
-	wp_enqueue_script( 'personalsite_vone-navigation', get_template_directory_uri() . '/js/navigation.js', array('personalsite_vone-jqeury'), '20120206', true );
+	wp_enqueue_script( 'personalsite_vone-navigation', $theprefix . '/archive/v1/custom/themes/personalsite_vone/js/navigation.js', array('personalsite_vone-jqeury'), '20120206', true );
 
-	wp_enqueue_script( 'personalsite_vone-form', get_template_directory_uri() . '/js/script.js', array('personalsite_vone-jqeury'), '20150606', true );
+	wp_enqueue_script( 'personalsite_vone-form', $theprefix . '/archive/v1/custom/themes/personalsite_vone/js/script.js', array('personalsite_vone-jqeury'), '20150606', true );
 
-	wp_enqueue_script( 'personalsite_vone-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array('personalsite_vone-jqeury'), '20130115', true );
+	wp_enqueue_script( 'personalsite_vone-skip-link-focus-fix', $theprefix . '/archive/v1/custom/themes/personalsite_vone/js/skip-link-focus-fix.js', array('personalsite_vone-jqeury'), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
