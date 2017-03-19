@@ -12,8 +12,8 @@ module.exports = {
         historyApiFallback: true, // This will make the server understand "/some-link" routes instead of "/#/some-link"
     },
     entry: [
-        'webpack-dev-server/client?http://127.0.0.1:8080/', // Specify the local server port
-        'webpack/hot/only-dev-server', // Enable hot reloading
+        // 'webpack-dev-server/client?http://127.0.0.1:8080/', // Specify the local server port
+        // 'webpack/hot/only-dev-server', // Enable hot reloading
         './src/index.js' // This is where Webpack will be looking for the entry index.js file
     ],
     output: {

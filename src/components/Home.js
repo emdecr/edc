@@ -6,8 +6,7 @@ class Home extends React.Component {
     render() {
     	let allData = DataStore.getAll();
         console.log('Whoops!'); 
-        console.log(allData);
-
+        // console.log(allData);
         return (
             <div>
                 <h1 className="headingthing">
