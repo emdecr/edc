@@ -114,9 +114,9 @@ add_action( 'widgets_init', 'personalsite_vone_widgets_init' );
 function personalsite_vone_scripts() {
 	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 	if (strpos($url,'dela') !== false) {
-	    $theprefix =; 'https://emilydelacruz.com';
+	    $theprefix = 'https://emilydelacruz.com';
 	} else {
-	    $theprefix =; 'http://edv.dev';
+	    $theprefix = 'http://edv.dev';
 	}
 	wp_enqueue_style( 'personalsite_vone-style', $theprefix . '/archive/v1/custom/themes/personalsite_vone/dist/css/style.css'  );
 
