@@ -94,6 +94,13 @@ module.exports = {
             // disable: false,
             allChunks: true
         }),
+        new webpack.DefinePlugin({ // <-- key to reducing React's size
+              'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+              }
+            }),
+        new webpack.optimize.UglifyJsPlugin(), //minify everything
+        new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
         new webpack.HotModuleReplacementPlugin(), // Hot reloading
         new webpack.NoEmitOnErrorsPlugin() // Webpack will let you know if there are any errors
     ]

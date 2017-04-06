@@ -9,6 +9,9 @@
 		Author: Andrey Pokrovskiy
 		Link: https://medium.freecodecamp.com/how-to-build-react-apps-on-top-of-the-wordpress-rest-api-bcc632808025#.2ql1fv7ev
 
+		Author: J.C. Hiatt
+		Link: https://dev.to/jchiatt/headless-wordpress-with-react
+
 		Author: Wes Bos
 		Link: https://reactforbeginners.com/
 
