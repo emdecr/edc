@@ -27,6 +27,8 @@ hisandhermag.com/
 hisandhermag.com/*
 
 # Wordpress specific
+cms/
+cms/*
 wordpress/
 wordpress/*
 wp-content/
