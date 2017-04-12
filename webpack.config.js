@@ -12,8 +12,8 @@ module.exports = {
         historyApiFallback: true, // This will make the server understand "/some-link" routes instead of "/#/some-link"
     },
     entry: [
-        // 'webpack-dev-server/client?http://127.0.0.1:8080/', // Specify the local server port
-        // 'webpack/hot/only-dev-server', // Enable hot reloading
+        'webpack-dev-server/client?http://127.0.0.1:8080/', // Specify the local server port
+        'webpack/hot/only-dev-server', // Enable hot reloading
         './src/index.js' // This is where Webpack will be looking for the entry index.js file
     ],
     output: {
@@ -47,25 +47,6 @@ module.exports = {
                     }
                 ]
             },
-            // {
-            //     test: /\.scss$/,
-            //     use: [
-            //         { 
-            //             loader: "style-loader" 
-            //         },
-            //         { 
-            //             loader: "css-loader", 
-            //             options: { sourceMaps: true } 
-            //         },
-            //         { 
-            //             loader: "postcss-loader" 
-            //         },
-            //         { 
-            //             loader: "sass-loader", 
-            //             options: { sourceMaps: true } 
-            //         }
-            //     ]
-            // }
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
@@ -83,7 +64,6 @@ module.exports = {
                         }
                     ],
                     fallback: "style-loader"
-                    // publicPath: "/dist"
                 })
             }
         ]
@@ -91,10 +71,9 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin({
             filename: "css/bundle.css",
-            // disable: false,
             allChunks: true
         }),
-        new webpack.DefinePlugin({ // <-- key to reducing React's size
+        new webpack.DefinePlugin({
               'process.env': {
                 'NODE_ENV': JSON.stringify('production')
               }

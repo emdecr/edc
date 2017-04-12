@@ -1,5 +1,5 @@
 import React from 'react';
-// import Nav from '../components/Nav.js';
+import Nav from '../components/Nav.js';
 import '../sass/app.scss';
 
 export default class App extends React.Component {
@@ -11,6 +11,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="wrapper">
+                <Nav/>
                 {this.props.children}
             </div>
         );

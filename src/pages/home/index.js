@@ -1,6 +1,5 @@
 import React        from 'react';
 import DataStore    from './../../stores/DataStore.js';
-import Nav          from './../../components/Nav.js';
 
 class Home extends React.Component {
 
@@ -8,7 +7,10 @@ class Home extends React.Component {
     	let allData = DataStore.getAll();
         console.log('Whoops!');
         console.log('New site coming soon...'); 
-        // console.log(allData);
+        console.log('Headless CMS setup.'); 
+        console.log('I\'m excited.');
+        console.log('Here\'s an object with some placeholder data...');
+        console.log(allData);
         return (
             <div>
                 <h1 className="headingthing">

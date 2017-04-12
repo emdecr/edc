@@ -1,56 +1,43 @@
-
 import React        from 'react';
 import {render}     from 'react-dom';
-import App          from './base/App.js';
+import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+
 import Home         from './pages/home/index.js';
-import views        from './base/views.js';
+import About        from './pages/about/index.js';
+import Projects     from './pages/projects/index.js';
+import Articles     from './pages/articles/index.js';
+import NotFound     from './pages/not-found/index.js';
 
-import {
-  browserHistory,
-  IndexRoute,
-  Redirect,
-  Route,
-  Router
-} from 'react-router';
+const Root = () => {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/projects">Projects</Link></li>
+          <li><Link to="/articles">Articles</Link></li>
+        </ul>
 
-import DataActions  from './actions/DataActions.js';
-
-class AppInitializer {
-
-  buildRoutes(data) {
-          return data.pages.map((page, i) => {
-              const component = views[page.slug];
-              return (
-                  <Route
-                      getComponent={(nextState, cb) => {
-                          require.ensure([], (require) => {
-                              cb(null, require(component).default);
-                          });
-                      }}
-                      key={ page.id }
-                      path={`/${page.slug}`}
-                  />                  
-              );
-          });
-      }
-
-      run() {
-          DataActions.getPages((response)=>{
-              render(
-                  <Router history={browserHistory}>
-                      <Route path="/" component={ App } >
-                          <IndexRoute component={ Home } />
-
-                          {this.buildRoutes(response)}
-                      </Route>
-                      <Redirect from="*" to="/" />
-                  </Router>
-
-                  , document.getElementById('app')
-              );
-          });
-      }
-  
+        <hr/>
+        <CSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/projects" component={Projects}/>
+            <Route path="/about" component={Articles}/>
+            <Route component={NotFound}/>
+            <Redirect from="*" to="/" />
+          </Switch>
+        </CSSTransitionGroup>
+        
+      </div>
+    </Router>
+  )
 }
 
-new AppInitializer().run();
+render(<Root/>, document.querySelector('#app'));
