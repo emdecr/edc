@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../components/Nav.js';
+import Nav from '../scripts/components/nav.js';
 import '../sass/app.scss';
 
 export default class App extends React.Component {

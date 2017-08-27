@@ -1,5 +1,5 @@
 import React    	from 'react';
-import DataStore    from './../../stores/DataStore.js';
+// import DataStore    from './../../stores/DataStore.js';
 import PinShelf 	from './components/shelf/index.js';
 import Tweet 		from './../../components/twitter.js';
 

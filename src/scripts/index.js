@@ -3,6 +3,7 @@ import {render}     from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
+// import Nav          from './components/hardnav.js';
 import Home         from './pages/home/index.js';
 import About        from './pages/about/index.js';
 import Projects     from './pages/projects/index.js';
@@ -13,14 +14,6 @@ const Root = () => {
   return (
     <Router>
       <div>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/projects">Projects</Link></li>
-          <li><Link to="/articles">Articles</Link></li>
-        </ul>
-
-        <hr/>
         <CSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={500}

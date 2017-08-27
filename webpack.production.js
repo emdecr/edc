@@ -2,30 +2,32 @@
 var webpack = require('webpack');
 var path    = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 // Consts
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-    devtool: 'inline-source-map', // This will show line numbers where errors are accured in the terminal
+    devtool: 'source-map', // This will show line numbers where errors are accured in the terminal
     devServer: {
         historyApiFallback: true, // This will make the server understand "/some-link" routes instead of "/#/some-link"
     },
     entry: [
-        'webpack-dev-server/client?http://127.0.0.1:8080/', // Specify the local server port
-        'webpack/hot/only-dev-server', // Enable hot reloading
-        './src/index.js' // This is where Webpack will be looking for the entry index.js file
+        './src/scripts' // This is where Webpack will be looking for the entry index.js file
     ],
     output: {
-        path: path.join(__dirname, 'public'), // This is used to specify folder for producion bundle.
-        filename: 'js/bundle.js' // Filename for production bundle
+        path: path.resolve(__dirname, 'build'), // This is used to specify folder for producion bundle
+        filename: 'bundle.js', // Filename for production bundle
+        publicPath: '/'
     },
     resolve: {
-        // Folders where Webpack is going to look for files to bundle together
         modules: [
-            path.resolve(__dirname, "src"),
-            "node_modules"
-        ]
+            'node_modules', 
+            'src',
+            path.resolve(__dirname, 'src/scripts'),
+            path.resolve(__dirname, 'node_modules')
+        ], // Folders where Webpack is going to look for files to bundle together
+        extensions: ['.jsx', '.js'] // Extensions that Webpack is going to expect
     },
     module: {
         // Loaders allow you to preprocess files as you require() or “load” them. Loaders are kind of like “tasks” in other build tools, and provide a powerful way to handle frontend build steps.
@@ -33,7 +35,7 @@ module.exports = {
             {
                 test: /\.jsx?$/, // Here we're going to use JS for react components but including JSX in case this extension is prefered
                 exclude: [
-                    /node_modules/ // Speaks for itself
+                    path.resolve(__dirname, "node_modules/") // Speaks for itself
                 ],
                 use: [
                     {
@@ -41,8 +43,10 @@ module.exports = {
                     },
                     {  
                         loader: "babel-loader",
-                        options: {
-                            presets: ["react", "es2015"]
+                        // Options to configure babel with
+                        query: {
+                            plugins: ['transform-runtime'],
+                            presets: ['es2015', 'stage-0', 'react'],
                         }
                     }
                 ]
@@ -78,7 +82,7 @@ module.exports = {
                 'NODE_ENV': JSON.stringify('production')
               }
             }),
-        new webpack.optimize.UglifyJsPlugin(), //minify everything
+        // new webpack.optimize.UglifyJsPlugin(), //minify everything
         new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
         new webpack.HotModuleReplacementPlugin(), // Hot reloading
         new webpack.NoEmitOnErrorsPlugin() // Webpack will let you know if there are any errors

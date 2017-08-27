@@ -1,16 +1,16 @@
 import React        from 'react';
-import DataStore    from './../../stores/DataStore.js';
+// import DataStore    from './../../stores/DataStore.js';
 
 class Home extends React.Component {
 
     render() {
-    	let allData = DataStore.getAll();
+    	// let allData = DataStore.getAll();
         console.log('Whoops!');
         console.log('New site coming soon...'); 
         console.log('Headless CMS setup.'); 
         console.log('I\'m excited.');
         console.log('Here\'s an object with some placeholder data...');
-        console.log(allData);
+        // console.log(allData);
         return (
             <div>
                 <h1 className="headingthing">

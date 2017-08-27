@@ -1,5 +1,5 @@
 import React    from 'react';
-import DataStore    from './../../stores/DataStore.js';
+// import DataStore    from './../../stores/DataStore.js';
 
 class Projects extends React.Component {
 
