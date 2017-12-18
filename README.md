@@ -1,25 +1,14 @@
-# ReduxSimpleStarter
+# emily dela cruz
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+This is my [personal site](https://emilydelacruz.com/).
 
-### Getting Started
+### Special Thanks
+All these folks helped me get my feet off the ground:
+[Alexis Mangin](https://medium.com/@alexmngn/how-to-better-organize-your-react-applications-2fd3ea1920f1), [Andrey Pokrovskiy](https://medium.freecodecamp.com/how-to-build-react-apps-on-top-of-the-wordpress-rest-api-bcc632808025#.2ql1fv7ev), [J.C. Hiatt](https://dev.to/jchiatt/headless-wordpress-with-react), [Wes Bos](https://reactforbeginners.com/), [Stephen Grider](https://github.com/StephenGrider/ReactStarter/releases)
 
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
-```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
-```
-
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-> npm install
-> npm start
-```
+#### Deats
+Last update: 2017/12
+Language: English
+Standards: HTML5, CSS3, ES2015, ES6
+Components: ReactJS, Webpack
+Software: VSC, Sketch
