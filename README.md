@@ -1,12 +1,25 @@
-# My Personal Site
-You can find it at [www.emilydelacruz.com](http://emilydelacruz.com).
+# ReduxSimpleStarter
 
-Version 1.0.0
-June 2015
+Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
-![Image of my personal site - version one](http://emilydelacruz.com/custom/uploads/2015/12/version-one.jpg)
+### Getting Started
 
-Version 2.0.0
-2017
+There are two methods for getting started with this repo.
 
-## Cheers!
+#### Familiar with Git?
+Checkout this repo, install dependencies, then start the gulp process with the following:
+
+```
+> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
+> cd ReduxSimpleStarter
+> npm install
+> npm start
+```
+
+#### Not Familiar with Git?
+Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+
+```
+> npm install
+> npm start
+```

@@ -18,9 +18,12 @@
 		Author: Wes Bos
 		Link: https://reactforbeginners.com/
 
+		Author: Stephen Grider
+		Link: https://www.udemy.com/react-redux/learn/v4/overview
+
 /* SITE */
-	Last update: 2017/03
+	Last update: 2017/12
 	Language: English
-	Standards: HTML5, CSS3, ES2015
-	Components: ReactJS, Webpack v2
+	Standards: HTML5, CSS3, ES2015, ES6
+	Components: ReactJS, Webpack
 	Software: Sublime Text, Sketch
