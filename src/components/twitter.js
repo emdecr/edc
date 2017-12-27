@@ -1,67 +1,35 @@
-import React 		from 'react';
-import axios 		from 'axios';
-import { timeAgo } 	from './../base/helpers';
-import { ify } 		from './../base/helpers';
+import React    from 'react';
+import axios from 'axios';
+// import DataStore    from './../../../../stores/DataStore.js';
 
 class Tweet extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     tweets: {}
-  //   }
-  // }
 
-  // get data ready before rendering
-  componentWillMount() {
-    var t = this;
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: []
+        };
+    }
 
-    // GET Pinterest Shelf
-    axios.get('https://api.pinterest.com/v1/boards/emdecr/edccom-shelf/pins/?access_token=AXIBjGg-3D-G49apiRgQZPKfIaQ6FKUeaAd2D1FDzUV-V4ApqQAAAAA&fields=id,url,link,note,image,created_at,metadata', {
-      
-    })
-    .then(function (result) {
-      console.log(result);
-      // set state with retrieved tweet data
-      t.setState({
-        tweets: result.data
-      });
-    });
+    componentWillMount() {
+        axios.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=emdecr&count=1',{ headers: { Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAK4RywAAAAAAH1G3CRnpJS9xEHFjr2iYEpf%2BkSg%3D8dUMUD4hbDDrb8R8RzMZ3SlkvR5O01e0K5fBEyr9uoN8zWp42m' } })
+        .then((result)=> {
+        //   const thisData = result;
+          console.log(result.data.items)
+          this.setState({
+            items: result.data.items
+          });               
+        })
+    }
 
-    // GET latest track from Last.fm
-    axios.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=emdecr&api_key=1e7b9d74a65097851e5895356eae94a5&format=json&limit=1', {
-      
-    })
-    .then(function (result) {
-      console.log(result);
-      // set state with retrieved tweet data
-      t.setState({
-        tweets: result.data
-      });
-    });
-
-    // GET most recent events from Github
-    axios.get('https://api.github.com/users/emdecr/events', {
-      
-    })
-    .then(function (result) {
-      console.log(result);
-      // set state with retrieved tweet data
-      t.setState({
-        tweets: result.data
-      });
-    });
-  }
-
-  render() {   
-
-    var th = this;
-
-    return (
-      <div>
-        <h1>tweet</h1>
-      </div> 
-    )
-  }    
+    render() {
+            
+        return (
+            <div>
+                <h1>This is the Twitter Component</h1>
+            </div>
+        );
+    }
 }
 
-export default Tweet;  
+export default Tweet;
