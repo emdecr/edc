@@ -14,7 +14,7 @@ class Track extends React.Component {
     }
 
     componentWillMount() {
-        axios.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=emdecr&api_key=1e7b9d74a65097851e5895356eae94a5&format=json&limit=1')
+        axios.get('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=emdecr&api_key=1e7b9d74a65097851e5895356eae94a5&format=json&limit=1')
         .then((result)=> {
           console.log(result.data.recenttracks.track[0])
           this.setState({
