@@ -15,23 +15,23 @@ opacity: 0.5;
 
 class Github extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            githubEvents: []
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         githubEvents: []
+    //     };
+    // }
 
-    componentWillMount() {
-        axios.get('https://api.github.com/users/emdecr/events')
-        .then((result)=> {
-          let latest = result.data.slice(0, 5)
-        //   console.log(result.data)
-          this.setState({
-            githubEvents: latest
-          });               
-        })
-    }
+    // componentWillMount() {
+    //     axios.get('https://api.github.com/users/emdecr/events')
+    //     .then((result)=> {
+    //       let latest = result.data.slice(0, 5)
+    //     //   console.log(result.data)
+    //       this.setState({
+    //         githubEvents: latest
+    //       });               
+    //     })
+    // }
 
     render() {
             
@@ -39,7 +39,7 @@ class Github extends React.Component {
             <div>
                 <h2><a href="https://github.com/emdecr" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> Github Event Feed</h2>
                 <List>
-                {this.state.githubEvents.map((event) =>
+                {this.props.github.map((event) =>
                     {
                         let newType = event.type.replace(/([A-Z])/g, ' $1').trim()
                         let type = newType.replace(" Event", "")

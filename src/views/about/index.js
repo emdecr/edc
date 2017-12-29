@@ -1,6 +1,6 @@
 import React    	from 'react';
 import { connect } from 'react-redux';
-import { fetchShelf } from '../../actions'; 
+import { fetchShelf, fetchTracks, fetchGithub } from '../../actions'; 
 import axios from 'axios';
 // import DataStore    from './../../stores/DataStore.js';
 import PinShelf 	from './components/shelf/index.js';
@@ -60,6 +60,20 @@ class About extends React.Component {
             console.log('shelf does not exists')
             this.props.fetchShelf();
         }
+        if (this.props.tracks.hasOwnProperty('name')) {
+            console.log('tracks exists', this.props.tracks)
+            return
+        } else {
+            console.log('tracks does not exists')
+            this.props.fetchTracks();
+        }
+        if (this.props.github.length > 0) {
+            console.log('github exists', this.props.github)
+            return
+        } else {
+            console.log('github does not exists')
+            this.props.fetchGithub();
+        }
         
     }
 
@@ -74,8 +88,8 @@ class About extends React.Component {
                     </div>
                     <PinShelf shelf={this.props.shelf}/>
                     <Flex_2_1>
-                        <Padding40><Track/></Padding40>
-                        <Padding40><Github/></Padding40>
+                        <Padding40><Track tracks={this.props.tracks}/></Padding40>
+                        <Padding40><Github github={this.props.github}/></Padding40>
                     </Flex_2_1>
                 </Buffer>
             </DefaultContainer>
@@ -87,10 +101,12 @@ class About extends React.Component {
 const mapStateToProps = function(state){
     return {
         data: state.pages['about'],
-        shelf: state.shelf
+        shelf: state.shelf,
+        tracks: state.tracks,
+        github: state.github
     }
 }
   
 
-export default connect(mapStateToProps, { fetchShelf })(About)
+export default connect(mapStateToProps, { fetchShelf, fetchTracks, fetchGithub })(About)
 // export default About;

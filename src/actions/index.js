@@ -37,3 +37,37 @@ export function fetchShelf() {
         payload: request
     };
 }
+
+export function fetchTracks() {
+    const url = 'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=emdecr&api_key=1e7b9d74a65097851e5895356eae94a5&format=json&limit=1';
+    const request = axios.get(url)
+    .then((result)=> {
+        console.log('action',result.data)
+        const trackName = result.data.recenttracks.track[0].name
+        const trackArtist = result.data.recenttracks.track[0].artist['#text']
+        const trackImage = result.data.recenttracks.track[0].image[1]['#text']
+        let trackInfo = {artist:trackArtist, name:trackName, image:trackImage}
+        console.log('action',trackInfo)
+        return trackInfo         
+    })
+
+    return {
+        type: types.FETCH_TRACKS,
+        payload: request
+    };
+}
+
+export function fetchGithub() {
+    const url = 'https://api.github.com/users/emdecr/events';
+    const request = axios.get(url)
+    .then((result)=> {
+        console.log('action',result.data)
+        let latest = result.data.slice(0, 5)
+        return latest           
+    })
+
+    return {
+        type: types.FETCH_GITHUB_EVENTS,
+        payload: request
+    };
+}
