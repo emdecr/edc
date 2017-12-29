@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+
+const DefaultNav = styled.nav`
+padding: 0 32px;
+`;
 
 const List = styled.ul`
 list-style-type: none;
@@ -15,6 +19,9 @@ margin: 0 10px;
 
 const RegLink = styled.a`
 text-decoration: none;
+&:hover {
+    border-bottom: 1px solid blue;
+}
 `;
 
 const activeClassName = 'nav-item-active'
@@ -26,8 +33,13 @@ const NavItem = styled(NavLink).attrs({
     color: blue;
     text-decoration: none;
 
+    &:hover {
+        border-bottom: 1px solid blue;
+    }
+
     &.${activeClassName} {
-        color: black;
+        color: blue;
+        border-bottom: 1px solid blue;
     }
 `;
 
@@ -40,11 +52,10 @@ export default class Nav extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         axios.get('https://data.emilydelacruz.com/wp-json/wp-api-menus/v2/menus/2')
         .then((result)=> {
-        //   const thisData = result;
-          console.log(result.data.items)
+        //   console.log(result.data.items)
           this.setState({
             menuItems: result.data.items
           });               
@@ -53,11 +64,11 @@ export default class Nav extends Component {
 
     render() {
         return (
-            <nav>
+            <DefaultNav>
                 <List>
                 {this.state.menuItems.map((item) =>
                     {if (item.object_slug == 'home'){
-                       return <ListItem><NavItem to="/" key={item.id} activeClassName={activeClassName}>{item.title}</NavItem></ListItem>
+                       return <ListItem><NavItem to="/" key={item.id} exact={true} activeClassName={activeClassName}>{item.title}</NavItem></ListItem>
                     }else if(item.object_slug == 'records'){
                         return<ListItem><RegLink href={item.url} activeClassName={activeClassName} target="_blank">{item.title}</RegLink></ListItem>
                     }else{
@@ -65,7 +76,7 @@ export default class Nav extends Component {
                     }}
                 )}
                 </List>
-            </nav>
+            </DefaultNav>
         );
     }
 }

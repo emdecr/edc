@@ -50,6 +50,7 @@
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.1",
     "redux": "^3.0.4",
+    "redux-promise-middleware": "^5.0.0",
     "sass-extract": "^2.0.0",
     "sass-extract-js": "^0.3.0",
     "sass-loader": "^6.0.6",

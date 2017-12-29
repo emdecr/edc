@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import PageReducer from './reducer_pages';
+import ShelfReducer from './reducer_shelf';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  pages: PageReducer,
+  shelf: ShelfReducer
 });
 
 export default rootReducer;

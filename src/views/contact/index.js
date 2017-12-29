@@ -1,6 +1,7 @@
-import React    from 'react';
+import React        from 'react';
 import { connect } from 'react-redux';
-import styled   from 'styled-components';
+// import DataStore    from './../../stores/DataStore.js';
+import styled from 'styled-components';
 
 const DefaultContainer = styled.div`
 max-width: 960px;
@@ -18,15 +19,13 @@ padding: 50px 0;
 }
 `;
 
-class Projects extends React.Component {
+class Contact extends React.Component {
 
     render() {
-            
         return (
             <DefaultContainer>
                 <Buffer>
-                    <h1>Projects</h1>
-                    <p>Coming soon.</p>
+                    <h1>Contact</h1>
                 </Buffer>
             </DefaultContainer>
         );
@@ -35,10 +34,10 @@ class Projects extends React.Component {
 
 const mapStateToProps = function(state){
     return {
-        data: state.pages['projects']
+        data: state.pages['contact']
     }
 }
   
 
-export default connect(mapStateToProps)(Projects)
-// export default Projects;
+export default connect(mapStateToProps)(Contact)
+// export default Contact;

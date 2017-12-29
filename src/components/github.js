@@ -5,6 +5,12 @@ import styled from 'styled-components';
 
 const List = styled.ul`
 list-style-type: none;
+margin: 0;
+padding: 0;
+`;
+
+const ItemLabel = styled.small`
+opacity: 0.5;
 `;
 
 class Github extends React.Component {
@@ -20,7 +26,7 @@ class Github extends React.Component {
         axios.get('https://api.github.com/users/emdecr/events')
         .then((result)=> {
           let latest = result.data.slice(0, 5)
-          console.log(result.data)
+        //   console.log(result.data)
           this.setState({
             githubEvents: latest
           });               
@@ -31,7 +37,7 @@ class Github extends React.Component {
             
         return (
             <div>
-                <h2>Github</h2>
+                <h2><a href="https://github.com/emdecr" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> Github Event Feed</h2>
                 <List>
                 {this.state.githubEvents.map((event) =>
                     {
@@ -40,11 +46,11 @@ class Github extends React.Component {
                         if (event.type == 'PushEvent'){
                             let branchArray = event.payload.ref.split("/")
                             let branch = branchArray[2]
-                            return <li key={event.id}><small><Moment fromNow date={event.created_at} /> - {type}</small><p>B: {branch}, CM: <a href={event.payload.commits[0].url} target="_blank>">{event.payload.commits[0].message}</a></p></li>
+                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p>B: {branch}, CM: <a href={'https://github.com/' + event.repo.name + '/commit/' + event.payload.commits[0].sha} target="_blank>">{event.payload.commits[0].message}</a></p></li>
                         }else if (event.type == 'WatchEvent'){
-                            return <li key={event.id}><small><Moment fromNow date={event.created_at} /> - {type}</small><p><a href={event.repo.url} target="_blank>">{event.repo.name}</a></p></li>
+                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={'https://github.com/' + event.repo.name} target="_blank>">{event.repo.name}</a></p></li>
                         }else{
-                            return <li key={event.id}><Moment fromNow date={event.created_at} /> - {type} </li>
+                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={'https://github.com/' + event.repo.name} target="_blank>">{event.repo.name}</a></p></li>
                         }
                     }
                 )}
