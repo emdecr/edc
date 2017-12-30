@@ -13,7 +13,7 @@ padding: 0 24px;
 const Buffer = styled.div`
 padding: 50px 0;
 @media (min-width: 700px) {
-    padding: 100px 0 50px;
+    padding: 32px 0 50px;
     float: right;
 }
 `;

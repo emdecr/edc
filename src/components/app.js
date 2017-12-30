@@ -23,7 +23,7 @@ import NotFound   from '../views/not-found/index.js';
 //   { plugins: ['sass-extract-js'] }
 // ).vars;
 
-const timeout = { enter: 300, exit: 200 }
+const timeout = { enter: 500, exit: 500 }
 
 class App extends React.Component {
 

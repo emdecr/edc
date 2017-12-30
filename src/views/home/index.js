@@ -2,6 +2,7 @@ import React        from 'react';
 import { connect } from 'react-redux';
 // import DataStore    from './../../stores/DataStore.js';
 import styled from 'styled-components';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const DefaultContainer = styled.div`
 max-width: 960px;
@@ -19,6 +20,12 @@ padding: 50px 0;
 }
 `;
 
+const ContentContainer = styled.div`
+    p {
+        word-break: break-all;
+    }
+`;
+
 const LineBreak = styled.p`
 word-break: break-all;
 `;
@@ -29,15 +36,20 @@ class Home extends React.Component {
     	// let allData = DataStore.getAll();
         // console.log('New site coming soon...'); 
         // console.log(allData);
-        return (
-            <DefaultContainer>
-                <Buffer>
-                    <LineBreak>011101010110111001100100011001010111001000100000011000110110111101101110011100110111010001110010011101010110001101110100011010010110111101101110001011100010000001100010011100100110001000101110</LineBreak>
-                    <p>under construction. brb.</p>
-                    <p><a href="https://twitter.com/emdecr" target="_blank">twitter</a > | <a href="https://github.com/emdecr" target="_blank">github</a></p>
-                </Buffer>
-            </DefaultContainer>
-        );
+        if (this.props.data != undefined){
+            let HomeContent = this.props.data.content.rendered;
+            return (
+                <DefaultContainer>
+                    <Buffer>
+                        <ContentContainer>{ReactHtmlParser(HomeContent)}</ContentContainer>
+                    </Buffer>
+                </DefaultContainer>
+            );
+        } else {
+            return (
+                <div></div>
+            )
+        }
     }
 }
 

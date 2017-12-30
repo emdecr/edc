@@ -2,6 +2,7 @@ import React    from 'react';
 import axios from 'axios';
 import Moment from 'react-moment';
 import styled from 'styled-components';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const List = styled.ul`
 list-style-type: none;
@@ -13,31 +14,25 @@ const ItemLabel = styled.small`
 opacity: 0.5;
 `;
 
+const ContentContainer = styled.div`
+font-family: 'Roboto', sans-serif;
+font-size: 1.2rem;
+line-height: 1.7;
+p {
+    font-family: 'Roboto', sans-serif;
+}
+`;
+
 class Github extends React.Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         githubEvents: []
-    //     };
-    // }
-
-    // componentWillMount() {
-    //     axios.get('https://api.github.com/users/emdecr/events')
-    //     .then((result)=> {
-    //       let latest = result.data.slice(0, 5)
-    //     //   console.log(result.data)
-    //       this.setState({
-    //         githubEvents: latest
-    //       });               
-    //     })
-    // }
 
     render() {
             
         return (
             <div>
-                <h2><a href="https://github.com/emdecr" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> Github Event Feed</h2>
+                <h3><a href="https://github.com/emdecr" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> Github Event Feed</h3>
+                <ContentContainer>
+                    {ReactHtmlParser(this.props.data.meta_box.edc_about_github_copy)}
+                </ContentContainer>
                 <List>
                 {this.props.github.map((event) =>
                     {

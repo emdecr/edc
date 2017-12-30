@@ -2,6 +2,7 @@ import React    from 'react';
 // import axios from 'axios';
 import Moment from 'react-moment';
 import styled from 'styled-components';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const List = styled.ul`
 list-style-type: none;
@@ -16,13 +17,13 @@ padding: 0;
 
 const ListItem = styled.li`
 @media (min-width: 700px) {
-    width: 22%;
+    width: 20.5%;
 
     &:nth-child(5),
     &:nth-child(6),
     &:nth-child(7),
     &:nth-child(8) {
-        margin-top: 2%;
+        margin-top: 32px;
     }
 
 }
@@ -55,39 +56,39 @@ margin: 40px 0 0;
 }
 `;
 
+const CenterAlign = styled.div`
+text-align: center;
+`;
+
 const RightAlign = styled.div`
 text-align: right;
 `;
 
+const ContentContainer = styled.div`
+font-family: 'Roboto', sans-serif;
+font-size: 1.3rem;
+line-height: 1.7;
+p {
+    font-family: 'Roboto', sans-serif;
+}
+`;
+
+const SmallContainer = styled.div`
+max-width: 720px;
+`;
+
 class PinShelf extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    // componentDidMount() {
-    //     axios.get('https://api.pinterest.com/v1/boards/emdecr/edccom-shelf/pins/?access_token=AYiwWgzbi8ufU79rb9qi-8do2GOmFQQ1Oo_pWrFElLAXSeAv0gAAAAA&fields=id,url,link,note,image,created_at,metadata,attribution')
-    //     .then((result)=> {
-    //     //   console.log(result.data.data)
-    //       if (result.data.data.length > 8) {
-    //         let items = result.data.data.slice(0, 8)
-    //         this.setState({
-    //             shelf: items
-    //           }); 
-    //       } else {
-    //         let items = result.data.data
-    //         this.setState({
-    //             shelf: items
-    //           }); 
-    //       }              
-    //     })
-    // }
-
     render() {
-            
+        // console.log(this.props.data);
         return (
             <div>
-                <h2>The Shelf</h2>
+                <SmallContainer>
+                    <h3>The Shelf</h3>
+                    <ContentContainer>
+                        {ReactHtmlParser(this.props.data.meta_box.edc_about_shelf_copy)}
+                    </ContentContainer>
+                </SmallContainer>
                 <List>
                 {this.props.shelf.map((item) =>
                     {
@@ -100,7 +101,7 @@ class PinShelf extends React.Component {
                     }
                 )}
                 </List>
-                <RightAlign><DefaultButton href="https://www.pinterest.ca/emdecr/the-shelf/" target="_blank">View more</DefaultButton></RightAlign>
+                <CenterAlign><DefaultButton href="https://www.pinterest.ca/emdecr/the-shelf/" target="_blank">View more</DefaultButton></CenterAlign>
             </div>
         );
     }

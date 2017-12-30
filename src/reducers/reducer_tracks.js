@@ -4,7 +4,7 @@ import {
 } from '../constants/ActionTypes';
 
 const TracksReducer = function(state = {}, action) {
-    console.log('action received', action);
+    // console.log('action received', action);
     switch (action.type) {
         case FETCH_TRACKS_FULFILLED:
             return action.payload;

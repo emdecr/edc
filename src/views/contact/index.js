@@ -2,6 +2,7 @@ import React        from 'react';
 import { connect } from 'react-redux';
 // import DataStore    from './../../stores/DataStore.js';
 import styled from 'styled-components';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const DefaultContainer = styled.div`
 max-width: 960px;
@@ -12,6 +13,18 @@ padding: 0 24px;
 }
 `;
 
+const ContentContainer = styled.div`
+font-family: 'Roboto', sans-serif;
+font-size: 1.3rem;
+line-height: 1.7;
+h2 {
+    font-family: 'Roboto Mono', sans-serif;
+}
+p {
+    font-family: 'Roboto', sans-serif;
+}
+`;
+
 const Buffer = styled.div`
 padding: 50px 0;
 @media (min-width: 700px) {
@@ -19,16 +32,32 @@ padding: 50px 0;
 }
 `;
 
+const HiddenH1 = styled.h1`
+position: absolute;
+top: -100vh;
+`;
+
 class Contact extends React.Component {
+    
 
     render() {
-        return (
-            <DefaultContainer>
-                <Buffer>
-                    <h1>Contact</h1>
-                </Buffer>
-            </DefaultContainer>
-        );
+
+        if (this.props.data != undefined){
+            let ContactContent = this.props.data.content.rendered;
+            return (
+                <DefaultContainer>
+                    <Buffer>
+                        <HiddenH1>Contact</HiddenH1>
+                        <ContentContainer>{ReactHtmlParser(ContactContent)}</ContentContainer>
+                    </Buffer>
+                </DefaultContainer>
+            );
+        } else {
+            return (
+                <div></div>
+            )
+        }
+
     }
 }
 
