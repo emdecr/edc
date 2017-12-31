@@ -46,7 +46,13 @@ body {
 }
 p { 
     font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
 }
+
+li {
+    font-weight: 300;
+}
+
 .main-container { 
     padding: 32px;
 }

@@ -55,11 +55,12 @@ class App extends React.Component {
         <div>
           <Nav/>
           <TransitionGroup className="page-main">
-            <CSSTransition timeout={timeout} classNames="fade" appear>
+            <CSSTransition key={this.props.location.pathname} timeout={timeout} classNames="fade" appear>
               <div>
                 <Switch>
                   <Route exact path="/" component={Home}/>
                   <Route path="/about" component={About}/>
+                  <Route path="/projects/:id/:slug" component={Loader}/>
                   <Route path="/projects" component={Projects}/>
                   <Route path="/contact" component={Contact}/>
                   <Route component={NotFound}/>
