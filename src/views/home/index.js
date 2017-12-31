@@ -22,7 +22,20 @@ padding: 0;
 
 const ContentContainer = styled.div`
     p {
-        word-break: break-all;
+        @media (min-width: 700px) {
+            word-break: break-all;
+        }
+    }
+    h1 {
+        @media (max-width: 400px) {
+            font-size: 27px;
+        }
+    }
+    h2 {
+        @media (max-width: 400px) {
+            font-size: 18px !important;
+            font-family: 'Roboto', sans-serif;
+        }
     }
 `;
 

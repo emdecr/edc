@@ -96,40 +96,40 @@ a:visited {
       -o-transform: rotate(360deg);
       transform: rotate(360deg);
     }
-  }
-  @-moz-keyframes rotate-forever {
+}
+@-moz-keyframes rotate-forever {
     0% {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  @keyframes rotate-forever {
+}
+@keyframes rotate-forever {
     0% {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  .loading-spinner {
+}
+.loading-spinner {
     -webkit-animation-duration: 0.75s;
     -moz-animation-duration: 0.75s;
     animation-duration: 0.75s;
@@ -148,17 +148,17 @@ a:visited {
     border-right-color: transparent;
     border-radius: 50%;
     display: inline-block;
-  }
+}
 
   
-  .loading-spinner {
+.loading-spinner {
     position: absolute;
     top: 50%;
     right: 0;
     bottom: 0;
-    left: 50%;
+    left: 43%;
     margin: -15px 0 -15px;
-  }
+}
   
 
 @media (min-width: 700px) {
@@ -179,6 +179,14 @@ a:visited {
     h3 {
         font-size: 24px;
         line-height: 1.5;
+    }
+    .loading-spinner {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        margin: -15px 0 -15px;
     }
 }
   
