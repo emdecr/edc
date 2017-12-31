@@ -17,6 +17,9 @@ padding: 0;
 
 const ListItem = styled.li`
 margin-bottom: 40px;
+@media (max-width: 400px) {
+    text-align: center;
+}
 @media (min-width: 700px) {
     margin-bottom: 0;
     width: 20.5%;
@@ -36,6 +39,9 @@ display: block;
 width: auto;
 height: 200px;
 margin: 20px 0;
+@media (max-width: 400px) {
+    margin: 0 auto;
+}
 `;
 
 const TimeStamp = styled.span`
@@ -64,6 +70,9 @@ text-align: center;
 
 const RightAlign = styled.div`
 text-align: right;
+@media (max-width: 400px) {
+    text-align: center;
+}
 `;
 
 const ContentContainer = styled.div`

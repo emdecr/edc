@@ -89,6 +89,11 @@ color: blue;
 padding: 8px 32px;
 margin: 8px 0 0;
 font-family: 'Roboto Mono', sans-serif;
+@media (max-width: 400px) {
+    font-size: 18px;
+    padding: 8px 24px;
+    margin: 8px 0 24px;
+}
 &:hover {
     background: blue;
     color: white;

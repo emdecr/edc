@@ -119,7 +119,7 @@ export default class Nav extends Component {
     componentDidMount() {
         axios.get('https://data.emilydelacruz.com/wp-json/wp-api-menus/v2/menus/2')
         .then((result)=> {
-          console.log(result.data.items)
+        //   console.log(result.data.items)
           this.setState({
             menuItems: result.data.items
           });               

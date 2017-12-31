@@ -16,6 +16,7 @@ import About      from '../views/about/index.js';
 import Projects   from '../views/projects/index.js';
 import Contact    from '../views/contact/index.js';
 import NotFound   from '../views/not-found/index.js';
+import Loader     from './loading.js';
 
 // Extract our Sass variables into a JS object
 // const theme = renderSync(
@@ -48,26 +49,32 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Nav/>
-        <TransitionGroup className="page-main">
-          <CSSTransition timeout={timeout} classNames="fade" appear>
-            <div>
-              <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/about" component={About}/>
-                <Route path="/projects" component={Projects}/>
-                <Route path="/contact" component={Contact}/>
-                <Route component={NotFound}/>
-                <Redirect from="*" to="/" />
-              </Switch>
-              <Footer/>
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
-      </div>
-    );
+
+    if(this.props.pages.hasOwnProperty('home')) {
+      return (
+        <div>
+          <Nav/>
+          <TransitionGroup className="page-main">
+            <CSSTransition timeout={timeout} classNames="fade" appear>
+              <div>
+                <Switch>
+                  <Route exact path="/" component={Home}/>
+                  <Route path="/about" component={About}/>
+                  <Route path="/projects" component={Projects}/>
+                  <Route path="/contact" component={Contact}/>
+                  <Route component={NotFound}/>
+                  <Redirect from="*" to="/" />
+                </Switch>
+                <Footer/>
+              </div>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
+      )
+    } else {
+      return <Loader/>
+    } 
+    
   }
 }
 
