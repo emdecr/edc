@@ -10,7 +10,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ReactGA                            from 'react-ga';
 ReactGA.initialize('UA-56305018-1'); //Unique Google Analytics tracking number
 
-import App        from './components/app.js';
+import App          from './components/app.js';
+import ScrollToTop  from './components/ScrollToTop.js';
 
 // Extract our Sass variables into a JS object
 // const theme = renderSync(
@@ -30,7 +31,9 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <div>
       <Router onUpdate={fireTracking}>
-        <App/>
+        <ScrollToTop>
+          <App/>
+        </ScrollToTop>
       </Router>
     </div>
   </Provider>,

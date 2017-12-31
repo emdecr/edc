@@ -14,14 +14,14 @@ const DefaultContainer = styled.div`
 max-width: 960px;
 margin: 0 auto;
 padding: 0 24px;
-@media (min-width: 700px) {
+@media (min-width: 1080px) {
     padding: 0;
 }
 `;
 
 const Buffer = styled.div`
-padding: 50px 0;
-@media (min-width: 700px) {
+padding: 24px 0;
+@media (min-width: 1080px) {
     padding: 100px 0 50px;
 }
 `;
@@ -41,20 +41,20 @@ max-width: 720px;
 
 const Padding40 = styled.div`
 padding: 40px 0;
-@media (min-width: 700px) {
+@media (min-width: 1080px) {
     padding: 40px 0;
 }
 `;
 
 const Padding24 = styled.div`
 padding: 24px 0;
-@media (min-width: 700px) {
+@media (min-width: 1080px) {
     padding: 24px 0;
 }
 `;
 
 const Flex_2_1 = styled.div`
-@media (min-width: 700px) {
+@media (min-width: 1080px) {
     display:flex;
     justify-content: space-between;
     >div {
@@ -64,20 +64,20 @@ const Flex_2_1 = styled.div`
 `;
 
 const Flex__2_3__1_3__1 = styled.div`
-@media (min-width: 700px) {
+@media (min-width: 1080px) {
     display:flex;
     justify-content: space-between;
     >div:first-child {
-        width: 55%;
+        width: 60%;
     }
     >div:last-child {
-        width: 40%;
+        width: 32%;
     }
 }
 `;
 
 const TechStackCont = styled.div`
-h2 {
+h2, h3, h4 {
     font-family: 'Roboto Mono', sans-serif;
 }
 `;

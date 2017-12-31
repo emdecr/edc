@@ -1,5 +1,6 @@
 import React    from 'react';
 import styled   from 'styled-components';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const DefaultContainer = styled.div`
 max-width: 960px;
@@ -11,9 +12,9 @@ padding: 0 24px;
 `;
 
 const Buffer = styled.div`
-padding: 50px 0;
+padding: 50px 0 150px;
 @media (min-width: 700px) {
-    padding: 32px 0 50px;
+    padding: 32px 0 24px;
     float: right;
 }
 `;
@@ -22,6 +23,23 @@ const List = styled.ul`
 list-style-type: none;
 margin: 0;
 padding: 0;
+`;
+
+const AlignRight = styled.div`
+@media (min-width: 700px) {
+    text-align: right;
+    >div {
+        text-align: left;
+        display: inline-block;
+    }
+}
+`;
+
+const FooterText = styled.small`
+opacity: 0.3;
+display: block;
+margin-top: 24px;
+font-size: 12px;
 `;
 
 const ListItem = styled.li`
@@ -35,12 +53,17 @@ class Footer extends React.Component {
         return (
             <DefaultContainer>
                 <Buffer>
-                    <h3>Connect Via</h3>
-                    <List>
-                        <ListItem><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:hello@emilydelacruz.com" target="_blank">hello@emilydelacruz.com</a></ListItem>
-                        <ListItem><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://twitter.com/emdecr" target="_blank">twitter</a></ListItem>
-                        <ListItem><i class="fa fa-github" aria-hidden="true"></i> <a href="https://github.com/emdecr" target="_blank">github</a></ListItem>
-                    </List>
+                    <AlignRight>
+                        <div>
+                            <h3>Connect Via</h3>
+                            <List>
+                                <ListItem><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:hello@emilydelacruz.com" target="_blank">hello@emilydelacruz.com</a></ListItem>
+                                <ListItem><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://twitter.com/emdecr" target="_blank">twitter</a></ListItem>
+                                <ListItem><i class="fa fa-github" aria-hidden="true"></i> <a href="https://github.com/emdecr" target="_blank">github</a></ListItem>
+                            </List>
+                        </div>
+                    </AlignRight>
+                    <FooterText> {ReactHtmlParser('This site is powered by <a href="https://reactjs.org/" target="_blank">React</a> &amp; a <a href="https://developer.wordpress.org/rest-api/" target="_blank">WordPress REST API</a>, and hosted on <a href="https://www.linode.com/" target="_blank">Linode</a>.')} </FooterText>
                 </Buffer>
             </DefaultContainer>
         );

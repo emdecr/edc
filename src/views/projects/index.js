@@ -22,7 +22,7 @@ p {
 `;
 
 const Buffer = styled.div`
-padding: 50px 0;
+padding: 24px 0;
 @media (min-width: 700px) {
     padding: 100px 0 50px;
 }

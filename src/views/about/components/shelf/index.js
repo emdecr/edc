@@ -16,7 +16,9 @@ padding: 0;
 `;
 
 const ListItem = styled.li`
+margin-bottom: 40px;
 @media (min-width: 700px) {
+    margin-bottom: 0;
     width: 20.5%;
 
     &:nth-child(5),
