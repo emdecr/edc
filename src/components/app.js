@@ -9,14 +9,15 @@ import { fetchPages } from '../actions';
 // import { ThemeProvider } from 'styled-components';
 // import { renderSync } from 'sass-extract';
 
-import Nav        from './nav.js';
-import Footer     from './footer.js';
-import Home       from '../views/home/index.js';
-import About      from '../views/about/index.js';
-import Projects   from '../views/projects/index.js';
-import Contact    from '../views/contact/index.js';
-import NotFound   from '../views/not-found/index.js';
-import Loader     from './loading.js';
+import Nav            from './nav.js';
+import Footer         from './footer.js';
+import Home           from '../views/home/index.js';
+import About          from '../views/about/index.js';
+import Projects       from '../views/projects/index.js';
+import SingleProject  from '../views/projects/single/index.js';
+import Contact        from '../views/contact/index.js';
+import NotFound       from '../views/not-found/index.js';
+import Loader         from './loading.js';
 
 // Extract our Sass variables into a JS object
 // const theme = renderSync(
@@ -60,7 +61,7 @@ class App extends React.Component {
                 <Switch>
                   <Route exact path="/" component={Home}/>
                   <Route path="/about" component={About}/>
-                  <Route path="/projects/:id/:slug" component={Loader}/>
+                  <Route path="/projects/:slug" component={SingleProject}/>
                   <Route path="/projects" component={Projects}/>
                   <Route path="/contact" component={Contact}/>
                   <Route component={NotFound}/>

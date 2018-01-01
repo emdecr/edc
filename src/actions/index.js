@@ -11,6 +11,25 @@ export function fetchPages() {
     };
 }
 
+export function fetchProjects() {
+    const url = 'https://data.emilydelacruz.com/wp-json/wp/v2/project?_embed';
+    const request = axios.get(url)
+    return {
+        type: types.FETCH_PROJECTS,
+        payload: request
+    };
+}
+
+export function fetchSingleProject(id) {
+    const theid = id;
+    const url = 'https://data.emilydelacruz.com/wp-json/wp/v2/project'+theid;
+    const request = axios.get(url)
+    return {
+        type: types.FETCH_SINGLE_PROJECT,
+        payload: request
+    };
+}
+
 export function fetchShelf() {
     const url = 'https://api.pinterest.com/v1/boards/emdecr/edccom-shelf/pins/?access_token=AYiwWgzbi8ufU79rb9qi-8do2GOmFQQ1Oo_pWrFElLAXSeAv0gAAAAA&fields=id,url,link,note,image,created_at,metadata,attribution';
     const request = axios.get(url)

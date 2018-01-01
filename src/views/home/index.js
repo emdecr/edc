@@ -48,9 +48,6 @@ word-break: break-all;
 class Home extends React.Component {
 
     render() {
-    	// let allData = DataStore.getAll();
-        // console.log('New site coming soon...'); 
-        // console.log(allData);
         if (this.props.data != undefined){
             let HomeContent = this.props.data.content.rendered;
             return (
