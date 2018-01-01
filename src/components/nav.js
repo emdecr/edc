@@ -8,6 +8,7 @@ const DefaultNav = styled.nav`
 padding: 0 32px;
 @media (max-width: 400px) {
     position: fixed;
+    z-index: 9000;
     bottom: 0;
     width: 100%;
     padding: 0;
