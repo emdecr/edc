@@ -34,6 +34,18 @@ p {
 
 const Buffer = styled.div`
 padding: 50px 0;
+>div {
+    position: relative;
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+@media (max-width: 400px) {
+    >div:first-child {
+        margin-bottom: 40px;
+    }
+}
 @media (min-width: 1000px) {
     padding: 100px 0 50px;
     display: flex;
