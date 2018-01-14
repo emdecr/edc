@@ -37,7 +37,8 @@ margin-bottom: 40px;
 const Image = styled.img`
 display: block;
 width: auto;
-height: 200px;
+max-width: 100%;
+max-height: 200px;
 margin: 20px 0;
 @media (max-width: 400px) {
     margin: 0 auto;
