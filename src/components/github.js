@@ -41,7 +41,9 @@ class Github extends React.Component {
                         if (event.type == 'PushEvent'){
                             let branchArray = event.payload.ref.split("/")
                             let branch = branchArray[2]
-                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p>B: {branch}, CM: <a href={'https://github.com/' + event.repo.name + '/commit/' + event.payload.commits[0].sha} target="_blank>">{event.payload.commits[0].message}</a></p></li>
+                            let repoName = event.repo.name
+                            let repoURL = event.repo.url
+                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p>R: <a href={repoURL} target="_blank>">{repoName}</a>, B: {branch}, CM: <a href={'https://github.com/' + event.repo.name + '/commit/' + event.payload.commits[0].sha} target="_blank>">{event.payload.commits[0].message}</a></p></li>
                         }else if (event.type == 'WatchEvent'){
                             return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={'https://github.com/' + event.repo.name} target="_blank>">{event.repo.name}</a></p></li>
                         }else{

@@ -73,7 +73,7 @@ export function fetchGithub() {
     const url = 'https://api.github.com/users/emdecr/events';
     const request = axios.get(url)
     .then((result)=> {
-        // console.log('action',result.data)
+        console.log('action',result.data)
         let latest = result.data.slice(0, 5)
         return latest           
     })
