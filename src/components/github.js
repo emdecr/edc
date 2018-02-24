@@ -38,16 +38,17 @@ class Github extends React.Component {
                     {
                         let newType = event.type.replace(/([A-Z])/g, ' $1').trim()
                         let type = newType.replace(" Event", "")
+                        let repoURL = 'https://github.com/' + event.repo.name;
                         if (event.type == 'PushEvent'){
-                            let branchArray = event.payload.ref.split("/")
-                            let branch = branchArray[2]
-                            let repoName = event.repo.name
-                            let repoURL = event.repo.url
+                            // console.log(event);
+                            let branchArray = event.payload.ref.split("/");
+                            let branch = branchArray[2];
+                            let repoName = event.repo.name;
                             return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p>R: <a href={repoURL} target="_blank>">{repoName}</a>, B: {branch}, CM: <a href={'https://github.com/' + event.repo.name + '/commit/' + event.payload.commits[0].sha} target="_blank>">{event.payload.commits[0].message}</a></p></li>
                         }else if (event.type == 'WatchEvent'){
-                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={'https://github.com/' + event.repo.name} target="_blank>">{event.repo.name}</a></p></li>
+                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={repoURL} target="_blank>">{event.repo.name}</a></p></li>
                         }else{
-                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={'https://github.com/' + event.repo.name} target="_blank>">{event.repo.name}</a></p></li>
+                            return <li key={event.id}><ItemLabel><Moment fromNow date={event.created_at} /> - {type}</ItemLabel><p><a href={repoURL} target="_blank>">{event.repo.name}</a></p></li>
                         }
                     }
                 )}

@@ -72,4 +72,3 @@ const mapStateToProps = function(state){
   
 
 export default connect(mapStateToProps, { fetchProjects })(Projects)
-// export default Projects;
