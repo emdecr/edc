@@ -46,6 +46,10 @@ const ListItem = styled.li`
 margin-bottom: 8px;
 `;
 
+var iconStyle = {
+    marginRight: '3px'
+};
+
 class Footer extends React.Component {
 
     render() {
@@ -57,9 +61,10 @@ class Footer extends React.Component {
                         <div>
                             <h3>Connect Via</h3>
                             <List>
-                                <ListItem><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:hello@emilydelacruz.com" target="_blank">hello@emilydelacruz.com</a></ListItem>
-                                <ListItem><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://twitter.com/emdecr" target="_blank">twitter</a></ListItem>
-                                <ListItem><i class="fa fa-github" aria-hidden="true"></i> <a href="https://github.com/emdecr" target="_blank">github</a></ListItem>
+                                <ListItem><i class="far fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@emilydelacruz.com" target="_blank">hello@emilydelacruz.com</a></ListItem>
+                                <ListItem><i class="fab fa-twitter" aria-hidden="true"></i> <a href="https://twitter.com/emdecr" target="_blank">twitter</a></ListItem>
+                                <ListItem><i class="fab fa-github" aria-hidden="true"></i> <a href="https://github.com/emdecr" target="_blank">github</a></ListItem>
+                                <ListItem><i class="fab fa-medium" aria-hidden="true" style={iconStyle}></i> <a href="https://medium.com/@emdecr" target="_blank">medium</a></ListItem>
                             </List>
                         </div>
                     </AlignRight>

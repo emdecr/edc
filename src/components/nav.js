@@ -57,11 +57,11 @@ text-decoration: none;
         border-bottom: 1px solid white;
     }
 }
-i {
+i, svg {
     display: none;
     @media (max-width: 400px) {
         display: block;
-        margin-bottom: 4px;
+        margin: 0px auto 4px;
     }
 }
 `;
@@ -98,11 +98,11 @@ const NavItem = styled(NavLink).attrs({
         }
     }
 
-    i {
+    i, svg {
         display: none;
         @media (max-width: 400px) {
             display: block;
-            margin-bottom: 4px;
+            margin: 0px auto 4px;
         }
     }
     

@@ -101,6 +101,22 @@ font-family: 'Roboto Mono', sans-serif;
 }
 `;
 
+const List = styled.ul`
+list-style-type: none;
+margin: 0;
+padding: 24px 0 0;
+li {
+    display: inline-block;
+    @media (max-width: 400px) {
+        display: block;
+    }
+}
+`;
+
+const ListItem = styled.li`
+margin-bottom: 8px;
+margin-right: 32px;
+`;
 
 class About extends React.Component {
 
@@ -144,6 +160,11 @@ class About extends React.Component {
                                     {ReactHtmlParser(AboutContent)}
                                     <div>
                                         <DefaultButton href="mailto:hello@emilydelacruz.com" target="_blank">hello@emilydelacruz.com</DefaultButton>
+                                        <List>
+                                            <ListItem><a href="https://twitter.com/emdecr" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i> twitter</a></ListItem>
+                                            <ListItem><a href="https://github.com/emdecr" target="_blank"><i class="fab fa-github" aria-hidden="true"></i> github</a></ListItem>
+                                            <ListItem><a href="https://medium.com/@emdecr" target="_blank"><i class="fab fa-medium" aria-hidden="true"></i> medium</a></ListItem>
+                                        </List>
                                     </div>
                                 </div>
                                 <TechStackCont>{ReactHtmlParser(TechStack)}</TechStackCont>
