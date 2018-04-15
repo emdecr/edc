@@ -29,7 +29,7 @@ class Github extends React.Component {
             
         return (
             <div>
-                <h3><a href="https://github.com/emdecr" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> Github Event Feed</h3>
+                <h3><a href="https://github.com/emdecr" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a> Github Event Feed</h3>
                 <ContentContainer>
                     {ReactHtmlParser(this.props.data.meta_box.edc_about_github_copy)}
                 </ContentContainer>
