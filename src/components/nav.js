@@ -32,7 +32,7 @@ padding: 0;
 
 const ListItem = styled.li`
 display: inline-block;
-margin: 0 10px;
+margin: 0 16px;
 @media (max-width: 400px) {
     text-align: center;
     padding: 12px 0;
