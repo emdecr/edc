@@ -4,22 +4,9 @@
 .ftpquota
 robots.txt
 node_modules/
-backup-admin/
-deploy/
-deploy/*
-dev/
-dev/*
 google5b392b6c91552e37.html
-old/
-old/*
 
 # Projects
-#commentary/
-#goodmornings/
-#gostudy/
-#lady/
-ladytest/
-wordpresstheme/
 archive/
 archive/*
 

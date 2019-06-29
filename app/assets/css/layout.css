@@ -1,0 +1,51 @@
+html {
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+  
+body {
+    overflow-x: hidden;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* WRAPPERS */
+.wrapper-lrg {
+    width: 85%;
+    max-width: 1520px;
+    margin: 0 auto;
+}
+.wrapper-med {
+    width: 75%;
+    max-width: 1368px;
+    margin: 0 auto;
+}
+
+.wrapper-sml {
+    width: 65%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/* FLEXBOX */
+.flex-all {
+    display: flex;
+}
+
+.flex--ai-c {
+    align-items: center;
+}
+
+.flex--jc-c {
+    justify-content: center;
+}

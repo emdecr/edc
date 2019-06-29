@@ -1,0 +1,53 @@
+/* Setup */
+html, body {
+  font: 106.3%/1.45 "proxima-nova", sans-serif; /* 16px = 100%, 18px = 112.50% as base font size */
+  -webkit-font-smoothing: antialiased;
+}
+
+.hs1 {
+    font-size: 48px;
+    line-height: normal;
+}
+
+.hs2 {
+    font-size: 34px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.hs3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.hs4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.bs1 {
+    font-size: 24px;
+}
+
+.bs2 {
+    font-size: 20px;
+}
+
+.bs3 {
+    font-size: 16px;
+}
+
+.color--primary {
+    color: #e3e3e3;
+}
+
+.color--white {
+    color: white;
+}
+
+/* FONT AWESOME */
+svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
