@@ -1,4 +1,4 @@
-# VFC
+# edc
 
 > My dandy Nuxt.js project
 
