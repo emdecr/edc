@@ -3,7 +3,7 @@
  * Video field which uses WordPress media popup to upload and select video.
  *
  * @package Meta Box
- * @since 4.10
+ * @since   4.10
  */
 
 /**
@@ -17,9 +17,13 @@ class RWMB_Video_Field extends RWMB_Media_Field {
 		parent::admin_enqueue_scripts();
 		wp_enqueue_style( 'rwmb-video', RWMB_CSS_URL . 'video.css', array( 'rwmb-media' ), RWMB_VER );
 		wp_enqueue_script( 'rwmb-video', RWMB_JS_URL . 'video.js', array( 'rwmb-media' ), RWMB_VER, true );
-		self::localize_script( 'rwmb-video', 'i18nRwmbVideo', array(
-			'extensions' => wp_get_video_extensions(),
-		) );
+		RWMB_Helpers_Field::localize_script_once(
+			'rwmb-video',
+			'i18nRwmbVideo',
+			array(
+				'extensions' => wp_get_video_extensions(),
+			)
+		);
 	}
 
 	/**
@@ -40,11 +44,12 @@ class RWMB_Video_Field extends RWMB_Media_Field {
 	 * Get uploaded file information.
 	 *
 	 * @param int   $file_id Attachment image ID (post ID). Required.
-	 * @param array $args Array of arguments (for size).
+	 * @param array $args    Array of arguments (for size).
+	 * @param array $field   Field settings.
 	 *
 	 * @return array|bool False if file not found. Array of image info on success.
 	 */
-	public static function file_info( $file_id, $args = array() ) {
+	public static function file_info( $file_id, $args = array(), $field = array() ) {
 		if ( ! get_attached_file( $file_id ) ) {
 			return false;
 		}
@@ -85,9 +90,9 @@ class RWMB_Video_Field extends RWMB_Media_Field {
 		$thumb_id = get_post_thumbnail_id( $attachment->ID );
 		if ( ! empty( $thumb_id ) ) {
 			list( $src, $width, $height ) = wp_get_attachment_image_src( $thumb_id, 'full' );
-			$data['image'] = compact( 'src', 'width', 'height' );
+			$data['image']                = compact( 'src', 'width', 'height' );
 			list( $src, $width, $height ) = wp_get_attachment_image_src( $thumb_id, 'thumbnail' );
-			$data['thumb'] = compact( 'src', 'width', 'height' );
+			$data['thumb']                = compact( 'src', 'width', 'height' );
 		} else {
 			$src           = wp_mime_type_icon( $attachment->ID );
 			$width         = 48;
@@ -100,20 +105,37 @@ class RWMB_Video_Field extends RWMB_Media_Field {
 	}
 
 	/**
-	 * Format a single value for the helper functions.
+	 * Format value for a clone.
 	 *
-	 * @param array $field Field parameters.
-	 * @param array $value The value.
+	 * @param array        $field   Field parameters.
+	 * @param string|array $value   The field meta value.
+	 * @param array        $args    Additional arguments. Rarely used. See specific fields for details.
+	 * @param int|null     $post_id Post ID. null for current post. Optional.
 	 *
 	 * @return string
 	 */
-	public static function format_single_value( $field, $value ) {
+	public static function format_clone_value( $field, $value, $args, $post_id ) {
 		$ids = implode( ',', wp_list_pluck( $value, 'ID' ) );
 
-		return wp_playlist_shortcode( array(
-			'ids'  => $ids,
-			'type' => 'video',
-		) );
+		// Display single video.
+		if ( 1 === count( $value ) ) {
+			$video = reset( $value );
+			return wp_video_shortcode(
+				array(
+					'src'    => $video['src'],
+					'width'  => $video['dimensions']['width'],
+					'height' => $video['dimensions']['height'],
+				)
+			);
+		}
+
+		// Display multiple videos in a playlist.
+		return wp_playlist_shortcode(
+			array(
+				'ids'  => $ids,
+				'type' => 'video',
+			)
+		);
 	}
 
 	/**
@@ -121,6 +143,6 @@ class RWMB_Video_Field extends RWMB_Media_Field {
 	 */
 	public static function print_templates() {
 		parent::print_templates();
-		require_once( RWMB_INC_DIR . 'templates/video.php' );
+		require_once RWMB_INC_DIR . 'templates/video.php';
 	}
 }

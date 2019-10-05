@@ -20,6 +20,7 @@ class RWMB_Wysiwyg_Field extends RWMB_Field {
 	 * Enqueue scripts and styles.
 	 */
 	public static function admin_enqueue_scripts() {
+		wp_enqueue_editor();
 		wp_enqueue_style( 'rwmb-wysiwyg', RWMB_CSS_URL . 'wysiwyg.css', array(), RWMB_VER );
 		wp_enqueue_script( 'rwmb-wysiwyg', RWMB_JS_URL . 'wysiwyg.js', array( 'jquery' ), RWMB_VER, true );
 	}
@@ -34,7 +35,7 @@ class RWMB_Wysiwyg_Field extends RWMB_Field {
 	 * @return string
 	 */
 	public static function value( $new, $old, $post_id, $field ) {
-		return  $field['raw'] ? $new : wpautop( $new );
+		return $field['raw'] ? $new : wpautop( $new );
 	}
 
 	/**
@@ -49,7 +50,7 @@ class RWMB_Wysiwyg_Field extends RWMB_Field {
 		ob_start();
 
 		$field['options']['textarea_name'] = $field['field_name'];
-		$attributes = self::get_attributes( $field );
+		$attributes                        = self::get_attributes( $field );
 
 		// Use new wp_editor() since WP 3.3.
 		wp_editor( $meta, $attributes['id'], $field['options'] );
@@ -75,15 +76,21 @@ class RWMB_Wysiwyg_Field extends RWMB_Field {
 	 */
 	public static function normalize( $field ) {
 		$field = parent::normalize( $field );
-		$field = wp_parse_args( $field, array(
-			'raw'     => false,
-			'options' => array(),
-		) );
+		$field = wp_parse_args(
+			$field,
+			array(
+				'raw'     => false,
+				'options' => array(),
+			)
+		);
 
-		$field['options'] = wp_parse_args( $field['options'], array(
-			'editor_class' => 'rwmb-wysiwyg',
-			'dfw'          => true, // Use default WordPress full screen UI.
-		) );
+		$field['options'] = wp_parse_args(
+			$field['options'],
+			array(
+				'editor_class' => 'rwmb-wysiwyg',
+				'dfw'          => true, // Use default WordPress full screen UI.
+			)
+		);
 
 		// Keep the filter to be compatible with previous versions.
 		$field['options'] = apply_filters( 'rwmb_wysiwyg_settings', $field['options'] );

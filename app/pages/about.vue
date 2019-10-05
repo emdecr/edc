@@ -8,6 +8,7 @@
                         <!-- <img src="" alt=""> -->
                         <div class="image"></div>
                         <ficaption>Caption</ficaption>
+                        <div class="shelf-bottom"></div>
                 </figure>
             </div>
         </section>
@@ -38,9 +39,12 @@
 
 .shelf-item {
     min-height: 200px;
-    border-bottom: 10px solid black;
+    // border-bottom: 10px solid black;
+}
 
-    
+.shelf-bottom {
+    height: 25px;
+    background: url('~assets/images/shelf.svg');
 }
 
 .image {

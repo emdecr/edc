@@ -1,6 +1,4 @@
-window.rwmb = window.rwmb || {};
-
-jQuery( function ( $ ) {
+( function ( $, wp, rwmb ) {
 	'use strict';
 
 	var views = rwmb.views = rwmb.views || {},
@@ -49,7 +47,9 @@ jQuery( function ( $ ) {
 				extensions = this.getExtensions().join( ',' ),
 				max_file_size;
 			this.plupload = $.extend( true, {
-				multipart_params: {},
+				multipart_params: {
+					post_id : $( '#post_ID' ).val()
+				},
 				multipart: true,
 				urlstream_upload: true,
 				drop_element: this.dropzone,
@@ -172,15 +172,26 @@ jQuery( function ( $ ) {
 		}
 	} );
 
-	/**
-	 * Initialize fields
-	 * @return void
-	 */
-	function init() {
-		new FileUploadField( {input: this, el: $( this ).siblings( 'div.rwmb-media-view' )} );
+	function initFileUpload() {
+		var $this = $( this ),
+			view = $this.data( 'view' );
+
+		if ( view ) {
+			return;
+		}
+
+		view = new FileUploadField( { input: this } );
+
+		$this.siblings( '.rwmb-media-view' ).remove();
+		$this.after( view.el );
+		$this.data( 'view', view );
 	}
 
-	$( ':input.rwmb-file_upload' ).each( init );
-	$( '.rwmb-input' )
-		.on( 'clone', ':input.rwmb-file_upload', init )
-} );
+	function init( e ) {
+		$( e.target ).find( '.rwmb-file_upload' ).each( initFileUpload );
+	}
+
+	rwmb.$document
+		.on( 'mb_ready', init )
+		.on( 'clone', '.rwmb-file_upload', initFileUpload )
+} )( jQuery, wp, rwmb );
