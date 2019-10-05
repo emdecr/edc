@@ -1,5 +1,6 @@
 <template>
   <div>
+    <a class="skip-main" href="#main-content">Skip to main content</a>
     <v-header />
     <transition name="fade">
     <nuxt />

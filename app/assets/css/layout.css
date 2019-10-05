@@ -42,10 +42,28 @@ body {
     display: flex;
 }
 
+.flex--col {
+    flex-direction: column;
+}
+
 .flex--ai-c {
     align-items: center;
 }
 
+.flex--ai-fe {
+    align-items: flex-end;
+}
+
 .flex--jc-c {
     justify-content: center;
+}
+
+.flex--jc-fe {
+    justify-content: flex-end;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
 }

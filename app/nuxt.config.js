@@ -51,6 +51,7 @@ export default {
   css: [
     '@/assets/css/typography.css',
     '@/assets/css/layout.css',
+    '@/assets/css/global.css',
   ],
 
   /*

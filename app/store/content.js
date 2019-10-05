@@ -26,7 +26,7 @@ export const mutations = {
 
 export const actions = {
     async getPages ({commit, dispatch}) {
-        await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/wp/v2/pages?per_page=50')
+        await this.$axios.$get(process.env.CMS_API_URL + 'wp-json/wp/v2/pages?per_page=50')
         .then(function (response) {
             commit('setPages', response)
         })
@@ -35,7 +35,7 @@ export const actions = {
         })
     },
     async getProjects ({commit, dispatch}) {
-        await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/wp/v2/project?per_page=50&_embed')
+        await this.$axios.$get(process.env.CMS_API_URL + 'wp-json/wp/v2/project?per_page=50&_embed')
         .then(function (response) {
             commit('setProjects', response)
         })
@@ -44,7 +44,7 @@ export const actions = {
         })
     },
     async getSingleProject ({commit, dispatch}, theid) {
-        await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/wp/v2/project/'+theid+'?per_page=50&_embed')
+        await this.$axios.$get(process.env.CMS_API_URL + 'wp-json/wp/v2/project/'+theid+'?per_page=50&_embed')
         .then(function (response) {
         })
         .catch(function (error) {

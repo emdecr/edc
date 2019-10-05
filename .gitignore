@@ -4,34 +4,10 @@
 .ftpquota
 robots.txt
 node_modules/
-google5b392b6c91552e37.html
-
-# Projects
-archive/
-archive/*
-
-#Add-On Domain
-makeslowhaste.com/
-makeslowhaste.com/*
-hisandhermag.com/
-hisandhermag.com/*
-settingup.space/
-settingup.space/*
 
 # Wordpress specific
-cms/
-cms/*
 wordpress/
 wordpress/*
-wp-content/
 wp-config.php
 uploads/
 uploads/*
-upgrade/
-upgrade/*
-backup-db/*
-advanced-cache.php
-wp-cache-config.php
-w3tc-config/*
-cache/*
-supercache/*
