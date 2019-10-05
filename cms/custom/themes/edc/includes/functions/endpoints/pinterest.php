@@ -32,6 +32,24 @@ class pinterest_custom_route extends WP_REST_Controller {
 	*/
 	public function get_pinterest_items( $request ) {
 
+		// Get the value of option fields 
+		// Set an empty string if the field doesn't exist
+		$settings = get_option( 'edc_ops' );
+		$pin_date = 'pin_date_time';
+		$pin_date_val = isset( $settings[$pin_date] ) ? $settings[$pin_date] : '';
+		$pin_data = 'pin_data';
+		$pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
+
+		if ($pin_data_val == '') {
+			$date = date('Y/m/d h:i:s a');
+			update_option( 'pin_date_time', $date, null );
+		}
+
+		$now = date('Y/m/d h:i:s a');
+		$then = $pin_data_val; 
+
+		$diff = date_diff( $now, $then); 
+
 		// This is where the auth creds go
 		// Included in the gitignore (must be created manually)
 		include('endpoint_vars.php');
@@ -48,14 +66,16 @@ class pinterest_custom_route extends WP_REST_Controller {
 		);
 		
 		// Make request to New/Mode API
-		$res = wp_remote_request( $url, $args );
+		// $res = wp_remote_request( $url, $args );
 		
 		// Error Handle
-		if ( is_wp_error($res) ) {
-			return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
-		} else {
-			return new WP_REST_Response( $res, 200 );
-		}
+		// if ( is_wp_error($res) ) {
+		// 	return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
+		// } else {
+		// 	return new WP_REST_Response( $res, 200 );
+		// }
+
+		return $diff;
 
 	}
 

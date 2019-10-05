@@ -66,7 +66,7 @@
             await store.dispatch('content/getMusic');
             await store.dispatch('content/getPages');
             await store.dispatch('content/getProjects');
-            await store.dispatch('content/getShelfItems');
+            // await store.dispatch('content/getShelfItems');
         }
     }
 </script>
