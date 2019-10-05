@@ -11,3 +11,6 @@ wordpress/*
 wp-config.php
 uploads/
 uploads/*
+
+# VARS
+endpoint_vars.php

@@ -7,7 +7,49 @@
                 <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
                         <!-- <img src="" alt=""> -->
                         <div class="image"></div>
-                        <ficaption>Caption</ficaption>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
+                        <div class="shelf-bottom"></div>
+                </figure>
+                <figure class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c">
+                        <!-- <img src="" alt=""> -->
+                        <div class="image"></div>
+                        <figcaption>Caption</figcaption>
                         <div class="shelf-bottom"></div>
                 </figure>
             </div>
@@ -40,11 +82,15 @@
 .shelf-item {
     min-height: 200px;
     // border-bottom: 10px solid black;
+    margin-bottom: 4rem;
 }
 
 .shelf-bottom {
     height: 25px;
-    background: url('~assets/images/shelf.svg');
+    width: 100%;
+    background: url('~assets/images/shelf.png');
+    background-size: cover;
+    background-repeat: repeat;
 }
 
 .image {
