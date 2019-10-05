@@ -51,8 +51,17 @@ export const actions = {
             console.log(error)
         })
     },
+    // async getShelfItems ({commit, dispatch}) {
+    //     await this.$axios.$get(process.env.PINTEREST_BASE+'?access_token='+process.env.PINTEREST_ACC_TOKEN+'&fields=id,url,link,note,image,created_at,metadata,attribution')
+    //     .then(function (response) {
+    //         commit('setShelf', response)
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error)
+    //     })
+    // },
     async getShelfItems ({commit, dispatch}) {
-        await this.$axios.$get(process.env.PINTEREST_BASE+'?access_token='+process.env.PINTEREST_ACC_TOKEN+'&fields=id,url,link,note,image,created_at,metadata,attribution')
+        await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/edc/v1/pins/')
         .then(function (response) {
             commit('setShelf', response)
         })

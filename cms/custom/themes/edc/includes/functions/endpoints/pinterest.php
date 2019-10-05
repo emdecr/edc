@@ -10,7 +10,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 		$pin = 'pins';
         register_rest_route( $namespace, '/' . $pin, array(
 			array(
-				'methods'         => WP_REST_Server::CREATABLE,
+				'methods'         => WP_REST_Server::READABLE,
 				'callback'        => array( $this, 'get_pinterest_items' ),
 				'permission_callback' => array( $this, 'get_pinterest_items_permissions_check' ),
 				'args' => array(
