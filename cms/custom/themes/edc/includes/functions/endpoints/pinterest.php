@@ -41,13 +41,16 @@ class pinterest_custom_route extends WP_REST_Controller {
 		// $pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
 
 		if ($pin_data_val == "") {
-			
-			$date = date('Y/m/d h:i:s a');
-			update_option( 'pin_date_time', $date, null );
-			return new WP_REST_Response( $date, 200 );
-		} else {
-			return new WP_REST_Response( $pin_date_val, 200 );
+			//Alter the options array appropriately
+			$date = date('Y/m/d h:i:sa');
+			$settings[$pin_date] = $date;
+
+			//Update entire array
+			update_option('edc_ops', $settings);
 		}
+
+		//Update entire array
+		return new WP_REST_Response( $settings, 200 );
 
 		// $now = date('Y/m/d h:i:s a');
 		// $then = $pin_data_val; 
