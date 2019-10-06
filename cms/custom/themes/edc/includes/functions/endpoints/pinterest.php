@@ -98,7 +98,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 			
 			$diff = date_diff( $now, $then );
 
-			if ( $diff->i > 5 ) {
+			if ( $diff->h > 5 ) {
 
 				$date = date('Y/m/d h:i:sa');
 				$settings[$pin_date] = $date;
