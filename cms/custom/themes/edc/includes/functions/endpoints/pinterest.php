@@ -98,7 +98,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 			
 			$diff = date_diff( $now, $then );
 
-			return new WP_REST_Response( $diff["i"], 200 );
+			return new WP_REST_Response( $diff, 200 );
 
 			
 		}
