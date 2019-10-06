@@ -32,6 +32,21 @@ class pinterest_custom_route extends WP_REST_Controller {
 	*/
 	public function get_pinterest_items( $request ) {
 
+		// This is where the auth creds go
+		// Included in the gitignore (must be created manually)
+		include('endpoint_vars.php');
+
+		// Set var for POST request data body
+		// $payload 	= $request->get_params();
+
+		// Use vars in endpoint_vars.php for Basic Auth - $PIN_KEY, $PIN_USER
+		$url = 'https://api.pinterest.com/v1/boards/'.$PIN_USER.'/'.$PIN_SHELF.'/pins/?access_token='.$PIN_KEY.'&fields=id,url,link,note,image,created_at,metadata';
+
+		// Create args array
+		$args = array(
+			'method'  => 'GET',
+		);
+
 		// Get the value of option fields 
 		// Set an empty string if the field doesn't exist
 		$settings = get_option( 'edc_ops' );
@@ -45,48 +60,80 @@ class pinterest_custom_route extends WP_REST_Controller {
 			$date = date('Y/m/d h:i:sa');
 			$settings[$pin_date] = $date;
 
+			update_option('edc_ops', $settings);
+
+			// Make request to Pinterest API
+			$res = wp_remote_request( $url, $args );
+
+			$data = $res['body']['data'];
+
+			$settings[$pin_data] = $data;
+
 			//Update entire array
 			update_option('edc_ops', $settings);
 
-			return new WP_REST_Response( $settings, 200 );
+			// Make request to Pinterest API
+			$res = wp_remote_request( $url, $args );
+
+			// Error Handle
+			if ( is_wp_error($res) ) {
+				return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
+			} else {
+
+				$data = $res['body']['data'];
+
+				$settings[$pin_data] = $data;
+
+				//Update entire array
+				update_option('edc_ops', $settings);
+
+				return new WP_REST_Response( $data, 200 );
+
+			}
+
 		} else {
 
 			$now = new DateTime();
 			$then = new DateTime($pin_date_val);
 			
 			$diff = date_diff( $now, $then );
+
+			if ($diff["i"] > 30 ) {
+
+				$date = date('Y/m/d h:i:sa');
+				$settings[$pin_date] = $date;
+
+				update_option('edc_ops', $settings);
+
+				// Make request to Pinterest API
+				// $res = wp_remote_request( $url, $args );
+
+				// Error Handle
+				// if ( is_wp_error($res) ) {
+				// 	return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
+				// } else {
+
+				// 	$data = $res['body']['data'];
+
+				// 	$settings[$pin_data] = $data;
+
+				// 	//Update entire array
+				// 	update_option('edc_ops', $settings);
+
+				// 	return new WP_REST_Response( $data, 200 );
+
+				// }
+
+				return new WP_REST_Response( 'yes', 200 );
+
+			} else {
+
+				return new WP_REST_Response( $pin_data_val, 200 );
+				
+			}
+
 			
-			return new WP_REST_Response( $diff, 200 );
 		}
-
-		
-
-		
-
-		// This is where the auth creds go
-		// Included in the gitignore (must be created manually)
-		include('endpoint_vars.php');
-
-		// Set var for POST request data body
-		// $payload 	= $request->get_params();
-
-        // Use vars in endpoint_vars.php for Basic Auth - $PIN_KEY, $PIN_USER
-		$url = 'https://api.pinterest.com/v1/boards/'.$PIN_USER.'/'.$PIN_SHELF.'/pins/?access_token='.$PIN_KEY.'&fields=id,url,link,note,image,created_at,metadata';
-
-		// Create args array
-		$args = array(
-			'method'  => 'GET',
-		);
-		
-		// Make request to New/Mode API
-		// $res = wp_remote_request( $url, $args );
-		
-		// Error Handle
-		// if ( is_wp_error($res) ) {
-		// 	return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
-		// } else {
-		// 	return new WP_REST_Response( $res, 200 );
-		// }
 
 	}
 
