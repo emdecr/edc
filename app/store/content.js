@@ -63,8 +63,8 @@ export const actions = {
     async getShelfItems ({commit}) {
         await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/edc/v1/pins/')
         .then(function (response) {
-            var dataObj = JSON.parse(response.body);
-            commit('setShelf', dataObj);
+            console.log(response);
+            commit('setShelf', response);
         })
         .catch(function (error) {
             console.log(error)

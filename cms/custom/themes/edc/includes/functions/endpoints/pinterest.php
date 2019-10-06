@@ -86,7 +86,13 @@ class pinterest_custom_route extends WP_REST_Controller {
 				//Update entire array
 				update_option('edc_ops', $settings);
 
-				return new WP_REST_Response( $data, 200 );
+				return new WP_REST_Response( 
+					array(
+						'status' => 200,
+						'response' => "Success!",
+						'body_response' => $data
+					) 
+				);
 			}
 		} else {
 			$now = new DateTime();
@@ -114,10 +120,22 @@ class pinterest_custom_route extends WP_REST_Controller {
 					//Update entire array
 					update_option('edc_ops', $settings);
 
-					return new WP_REST_Response( $data, 200 );
+					return new WP_REST_Response( 
+						array(
+							'status' => 200,
+							'response' => "Success!",
+							'body_response' => $data
+						) 
+					);
 				}
 			} else {
-				return new WP_REST_Response( $pin_data_val, 200 );
+				return new WP_REST_Response( 
+					array(
+						'status' => 200,
+						'response' => "Success!",
+						'body_response' => $pin_data_val
+				  	) 
+				);
 			}
 		}
 	}
