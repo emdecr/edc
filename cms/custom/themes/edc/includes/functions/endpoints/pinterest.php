@@ -40,7 +40,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 		$pin_data = 'pin_data';
 		$pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
 
-		if ($pin_data_val == "") {
+		if ($pin_date_val == "") {
 			//Alter the options array appropriately
 			$date = date('Y/m/d h:i:sa');
 			$settings[$pin_date] = $date;
