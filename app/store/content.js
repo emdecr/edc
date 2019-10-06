@@ -51,20 +51,12 @@ export const actions = {
             console.log(error)
         })
     },
-    // async getShelfItems ({commit, dispatch}) {
-    //     await this.$axios.$get(process.env.PINTEREST_BASE+'?access_token='+process.env.PINTEREST_ACC_TOKEN+'&fields=id,url,link,note,image,created_at,metadata,attribution')
-    //     .then(function (response) {
-    //         commit('setShelf', response)
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error)
-    //     })
-    // },
     async getShelfItems ({commit}) {
         await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/edc/v1/pins/')
         .then(function (response) {
             console.log(response);
-            commit('setShelf', response);
+            var dataObj = JSON.parse(response.body_response);
+            commit('setShelf', dataObj.data);
         })
         .catch(function (error) {
             console.log(error)
@@ -97,5 +89,9 @@ export const actions = {
 export const getters = {
     getPages(state){
         return state.pages;
+    },
+    getShelf(state){
+        var neat = state.shelf.slice(0, 24);
+        return neat;
     },
 }

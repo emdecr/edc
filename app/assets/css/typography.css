@@ -37,12 +37,22 @@ html, body {
     font-size: 16px;
 }
 
+/* LINKS */
+
+.tdec--none {
+    text-decoration: none;
+}
+
 .color--primary {
     color: #e3e3e3;
 }
 
 .color--white {
     color: white;
+}
+
+.text-align--c {
+    text-align: center;
 }
 
 /* FONT AWESOME */

@@ -132,6 +132,8 @@ class pinterest_custom_route extends WP_REST_Controller {
 				return new WP_REST_Response( 
 					array(
 						'status' => 200,
+						'hours' => $diff->h,
+						'mins' => $diff->i,
 						'response' => "Success!",
 						'body_response' => $pin_data_val
 				  	) 
