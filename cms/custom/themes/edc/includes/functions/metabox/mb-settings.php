@@ -82,12 +82,20 @@ function edc_options_meta_boxes( $meta_boxes ) {
             array(
                 'name' => 'Date/Time',
                 'id'   => 'pin_date_time',
-                'type' => 'text'
+                'type' => 'text',
+                'attributes' => array(
+                    'disabled'  => true,
+                    'readonly'  => true,
+                ),
             ),
             array(
                 'name' => 'Data',
                 'id'   => 'pin_data',
-                'type' => 'textarea'
+                'type' => 'textarea',
+                'attributes' => array(
+                    'disabled'  => true,
+                    'readonly'  => true,
+                ),
             ),
         ),
     );
