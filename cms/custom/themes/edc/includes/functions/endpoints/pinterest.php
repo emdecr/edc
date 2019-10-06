@@ -37,8 +37,8 @@ class pinterest_custom_route extends WP_REST_Controller {
 		$settings = get_option( 'edc_ops' );
 		$pin_date = 'pin_date_time';
 		$pin_date_val = isset( $settings[$pin_date] ) ? $settings[$pin_date] : '';
-		// $pin_data = 'pin_data';
-		// $pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
+		$pin_data = 'pin_data';
+		$pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
 
 		if ($pin_data_val == "") {
 			//Alter the options array appropriately
@@ -47,15 +47,22 @@ class pinterest_custom_route extends WP_REST_Controller {
 
 			//Update entire array
 			update_option('edc_ops', $settings);
+
+			return new WP_REST_Response( $settings, 200 );
+		} else {
+
+			$now = date('Y/m/d h:i:s a');
+			$then = $pin_date_val;
+			
+			$diff = date_diff( $now, $then );
+			
+			return new WP_REST_Response( $diff, 200 );
+
 		}
 
-		//Update entire array
-		return new WP_REST_Response( $settings, 200 );
+		
 
-		// $now = date('Y/m/d h:i:s a');
-		// $then = $pin_data_val; 
-
-		// $diff = date_diff( $now, $then); 
+		
 
 		// This is where the auth creds go
 		// Included in the gitignore (must be created manually)
