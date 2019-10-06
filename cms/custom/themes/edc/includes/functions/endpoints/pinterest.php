@@ -98,39 +98,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 			
 			$diff = date_diff( $now, $then );
 
-			if ($diff["i"] > 30 ) {
-
-				$date = date('Y/m/d h:i:sa');
-				$settings[$pin_date] = $date;
-
-				update_option('edc_ops', $settings);
-
-				// Make request to Pinterest API
-				// $res = wp_remote_request( $url, $args );
-
-				// Error Handle
-				// if ( is_wp_error($res) ) {
-				// 	return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
-				// } else {
-
-				// 	$data = $res['body']['data'];
-
-				// 	$settings[$pin_data] = $data;
-
-				// 	//Update entire array
-				// 	update_option('edc_ops', $settings);
-
-				// 	return new WP_REST_Response( $data, 200 );
-
-				// }
-
-				return new WP_REST_Response( 'yes', 200 );
-
-			} else {
-
-				return new WP_REST_Response( $pin_data_val, 200 );
-				
-			}
+			return new WP_REST_Response( $diff, 200 );
 
 			
 		}
