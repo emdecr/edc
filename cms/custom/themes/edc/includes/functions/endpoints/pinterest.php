@@ -51,13 +51,12 @@ class pinterest_custom_route extends WP_REST_Controller {
 			return new WP_REST_Response( $settings, 200 );
 		} else {
 
-			$now = date('Y/m/d h:i:s a');
-			$then = $pin_date_val;
+			$now = new DateTime();
+			$then = new DateTime($pin_date_val);
 			
 			$diff = date_diff( $now, $then );
 			
 			return new WP_REST_Response( $diff, 200 );
-
 		}
 
 		
