@@ -36,19 +36,19 @@ class pinterest_custom_route extends WP_REST_Controller {
 		// Set an empty string if the field doesn't exist
 		$settings = get_option( 'edc_ops' );
 		$pin_date = 'pin_date_time';
-		$pin_date_val = isset( $settings[$pin_date] ) ? $settings[$pin_date] : '';
-		$pin_data = 'pin_data';
-		$pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
+		// $pin_date_val = isset( $settings[$pin_date] ) ? $settings[$pin_date] : '';
+		// $pin_data = 'pin_data';
+		// $pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
 
-		if ($pin_data_val == '') {
-			$date = date('Y/m/d h:i:s a');
-			update_option( 'pin_date_time', $date, null );
-		}
+		// if ($pin_data_val == '') {
+		// 	$date = date('Y/m/d h:i:s a');
+		// 	update_option( 'pin_date_time', $date, null );
+		// }
 
-		$now = date('Y/m/d h:i:s a');
-		$then = $pin_data_val; 
+		// $now = date('Y/m/d h:i:s a');
+		// $then = $pin_data_val; 
 
-		$diff = date_diff( $now, $then); 
+		// $diff = date_diff( $now, $then); 
 
 		// This is where the auth creds go
 		// Included in the gitignore (must be created manually)
