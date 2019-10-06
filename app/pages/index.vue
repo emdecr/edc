@@ -1,12 +1,11 @@
 <template>
     <main class="flex-all flex--ai-c flex--jc-c">
-       <section >
+       <section>
             <p>
                 brb. currently moulting.
             </p>
             <a   href="mailto:hello@emilydelacruz.com">hello@emilydelacruz.com</a><br/>
             <a href="https://twitter.com/emdecr" target="_blank" class="flex-all flex--ai-c">@emdecr</a>
-            
        </section>
     </main>
 </template>

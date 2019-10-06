@@ -1,6 +1,7 @@
 /* Setup */
 html, body {
   font: 106.3%/1.45 "proxima-nova", sans-serif; /* 16px = 100%, 18px = 112.50% as base font size */
+  font-family: "input-mono",monospace;
   -webkit-font-smoothing: antialiased;
 }
 
