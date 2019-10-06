@@ -5,7 +5,7 @@ function edc_options_page( $settings_pages ) {
     $settings_pages[] = array(
         'id'          => 'edc_ops',
         'option_name' => 'edc_ops',
-        'menu_title'  => 'edc Settings',
+        'menu_title'  => 'edc settings',
         'icon_url'    => 'dashicons-admin-generic',
         'style'       => 'no-boxes',
         'columns'     => 1,

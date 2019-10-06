@@ -75,7 +75,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 		// 	return new WP_REST_Response( $res, 200 );
 		// }
 
-		return new WP_REST_Response( $diff, 200 );
+		return new WP_REST_Response( $pin_date, 200 );
 
 	}
 
