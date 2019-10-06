@@ -1,5 +1,5 @@
 <?php 
-// Creates new endpoint for logged-in user to create a vote in wp_votes
+// Creates new endpoint to get Pinterest shelf items
 class pinterest_custom_route extends WP_REST_Controller {
 	/**
 	 * Register the routes for the objects of the controller.
@@ -25,7 +25,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 	}
     
     /**
-	 * Sends email to MP
+	 * Gets Pinterest Shelf Info
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return WP_Error|WP_REST_Request
@@ -79,7 +79,6 @@ class pinterest_custom_route extends WP_REST_Controller {
 			if ( is_wp_error($res) ) {
 				return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
 			} else {
-
 				$data = $res['body'];
 
 				$settings[$pin_data] = $data;
@@ -88,18 +87,14 @@ class pinterest_custom_route extends WP_REST_Controller {
 				update_option('edc_ops', $settings);
 
 				return new WP_REST_Response( $data, 200 );
-
 			}
-
 		} else {
-
 			$now = new DateTime();
 			$then = new DateTime($pin_date_val);
 			
 			$diff = date_diff( $now, $then );
 
 			if ( $diff->h > 5 ) {
-
 				$date = date('Y/m/d h:i:sa');
 				$settings[$pin_date] = $date;
 
@@ -112,7 +107,6 @@ class pinterest_custom_route extends WP_REST_Controller {
 				if ( is_wp_error($res) ) {
 					return new WP_Error( 'pinterest_error', esc_html__( 'Pinterest API Error.', 'my-text-domain' ), array( 'status' => 401 ) );
 				} else {
-
 					$data = $res['body'];
 
 					$settings[$pin_data] = $data;
@@ -121,22 +115,15 @@ class pinterest_custom_route extends WP_REST_Controller {
 					update_option('edc_ops', $settings);
 
 					return new WP_REST_Response( $data, 200 );
-
 				}
-
 			} else {
-
 				return new WP_REST_Response( $pin_data_val, 200 );
-				
 			}
-
-			
 		}
-
 	}
 
 	/**
-	 * Check if a given request has access to vote endpoints
+	 * Check if a given request has access to data
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return WP_Error|bool
