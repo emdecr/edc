@@ -36,7 +36,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 		// Set an empty string if the field doesn't exist
 		$settings = get_option( 'edc_ops' );
 		$pin_date = 'pin_date_time';
-		// $pin_date_val = isset( $settings[$pin_date] ) ? $settings[$pin_date] : '';
+		$pin_date_val = isset( $settings[$pin_date] ) ? $settings[$pin_date] : '';
 		// $pin_data = 'pin_data';
 		// $pin_data_val = isset( $settings[$pin_data] ) ? $settings[$pin_data] : '';
 
@@ -75,7 +75,7 @@ class pinterest_custom_route extends WP_REST_Controller {
 		// 	return new WP_REST_Response( $res, 200 );
 		// }
 
-		return new WP_REST_Response( $pin_date, 200 );
+		return new WP_REST_Response( $pin_date_val, 200 );
 
 	}
 
