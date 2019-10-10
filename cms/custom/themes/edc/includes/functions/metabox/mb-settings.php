@@ -97,6 +97,11 @@ function edc_options_meta_boxes( $meta_boxes ) {
                     'readonly'  => true,
                 ),
             ),
+            array(
+                'name' => 'Refresh?',
+                'id'   => 'pin_refresh',
+                'type' => 'checkbox'
+            ),
         ),
     );
     return $meta_boxes;
