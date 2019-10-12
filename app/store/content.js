@@ -103,7 +103,14 @@ export const getters = {
         return state.pages;
     },
     getShelf(state){
-        var neat = state.shelf.slice(0, 24);
-        return neat;
+        var short = state.shelf.slice(0, 24);
+        return short;
+    },
+    getMusic(state){
+        return state.music;
+    },
+    getGithub(state){
+        var cut = state.github.slice(0, 5);
+        return cut;
     },
 }

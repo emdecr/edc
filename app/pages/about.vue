@@ -13,6 +13,26 @@
                 </a>
             </div>
         </section>
+        <section class="music">
+            <h2>Recently played...</h2>
+            <div class="">
+                <img :src="music.image" :alt="'Album art for '+music.name">
+                <div class="music__deats">
+                    <span>{{music.artist}} | {{music.name}}</span>
+                </div>
+            </div>
+        </section>
+        <section class="github">
+            <h2>Github activity</h2>
+            <ul>
+                <template target="_blank" v-for="(event, i) in github">
+                    <li v-if="event.type == 'PushEvent'" :key="'event-'+i">{{type(event)}} R: <a :href="repoURL(event)" target="_blank>">{{event.repo.name}}</a>, B: {{repoBranch(event)}}, CM: <a :href="'https://github.com/' + event.repo.name + '/commit/' + event.payload.commits[0].sha" target="_blank>">{{event.payload.commits[0].message}}</a></li>
+                    <li v-else-if="event.type == 'WatchEvent'" :key="'event-'+i"><a :href="repoURL(event)" target="_blank>">{{event.repo.name}}</a></li>
+                    <li v-else :key="'event-'+i"><a :href="repoURL(event)" target="_blank>">{{event.repo.name}}</a></li>
+                </template>
+                        
+            </ul>
+        </section>
     </main>
 </template>
 
@@ -27,9 +47,28 @@
             await store.dispatch('content/getProjects');
             await store.dispatch('content/getShelfItems');
         },
+        methods: {
+            type(event) {
+                let newType = event.type.replace(/([A-Z])/g, ' $1').trim();
+                return newType.replace(" Event", "")
+            },
+            repoURL(event) {
+                return 'https://github.com/' + event.repo.name;
+            },
+            repoBranch(event) {
+                let branchArray = event.payload.ref.split("/");
+                return branchArray[2];
+            }
+        },
         computed: {
             shelf(){
                 return this.$store.getters['content/getShelf']
+            },
+            music(){
+                return this.$store.getters['content/getMusic']
+            },
+            github(){
+                return this.$store.getters['content/getGithub']
             },
         },
     }
