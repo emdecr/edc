@@ -69,6 +69,9 @@ $ git clone https://github.com/WordPress/WordPress .
 # Create a working branch from the right release
 $ git checkout tags/5.2.3
 $ git checkout -b stable-5.2.3
+
+# NTS: You also need vars for the Pinterest API
+$ edc/cms/custom/themes/edc/includes/functions/endpoints/endpoint_vars.php
 ```
 
 #### Installed Plugins
@@ -84,15 +87,15 @@ $ git checkout -b stable-5.2.3
 
 ```bash
 # Go into the repository and the app dir
-$ cd inkling.space/app
+$ cd edc/app
 
 # Install dependencies
 $ npm install
 
 # create an .env file
 $ touch .env
-## There should be variables BASE_ROUTER and WP_API_URL
-## Ask THE SQUAD (♥︎) for the values
+## There should be variables for:
+## CMS_API_URL, BASE_ROUTER, LASTFM_KEY, LASTFM_USER, PINTEREST_BASE, PINTEREST_ACC_TOKEN, WEATHER_KEY, WEATHER_CITY
 
 # Run the app
 $ npm run dev

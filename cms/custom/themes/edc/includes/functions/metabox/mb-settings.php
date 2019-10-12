@@ -3,19 +3,20 @@
 add_filter( 'mb_settings_pages', 'edc_options_page' );
 function edc_options_page( $settings_pages ) {
     $settings_pages[] = array(
-        'id'          => 'edc_ops',
-        'option_name' => 'edc_ops',
-        'menu_title'  => 'edc settings',
-        'icon_url'    => 'dashicons-admin-generic',
-        'style'       => 'no-boxes',
-        'columns'     => 1,
-        'tabs'        => array(
-            'general' => 'General',
-            'footer'  => 'Footer',
-            'api'     => 'API',
-            'pinterest' => 'Pinterest'
+        'id'            => 'edc_ops',
+        'option_name'   => 'edc_ops',
+        'menu_title'    => 'edc settings',
+        'icon_url'      => 'dashicons-admin-generic',
+        'style'         => 'no-boxes',
+        'columns'       => 1,
+        'tabs'          => array(
+            'general'   => 'General',
+            'footer'    => 'Footer',
+            'api'       => 'API',
+            'pinterest' => 'Pinterest',
+            'weather'   => 'Weather'
         ),
-        'position'    => 68,
+        'position'      => 68,
     );
     return $settings_pages;
 }
@@ -100,6 +101,38 @@ function edc_options_meta_boxes( $meta_boxes ) {
             array(
                 'name' => 'Refresh?',
                 'id'   => 'pin_refresh',
+                'type' => 'checkbox'
+            ),
+        ),
+    );
+
+    $meta_boxes[] = array(
+        'id'             => 'weather',
+        'title'          => 'Weather Data',
+        'settings_pages' => 'edc_ops',
+        'tab'            => 'weather',
+        'fields'         => array(
+            array(
+                'name' => 'Date/Time',
+                'id'   => 'weather_date_time',
+                'type' => 'text',
+                'attributes' => array(
+                    'disabled'  => true,
+                    'readonly'  => true,
+                ),
+            ),
+            array(
+                'name' => 'Weather Data',
+                'id'   => 'weather_data',
+                'type' => 'textarea',
+                'attributes' => array(
+                    'disabled'  => true,
+                    'readonly'  => true,
+                ),
+            ),
+            array(
+                'name' => 'Refresh?',
+                'id'   => 'weather_refresh',
                 'type' => 'checkbox'
             ),
         ),
