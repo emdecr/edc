@@ -1,9 +1,9 @@
 <template>
   <div>
-    <a class="skip-main" href="#main-content">Skip to main content</a>
+    <nuxt-link class="skip-main" :to="{ path: $route.path,hash:'main-content'}">Skip to main content</nuxt-link>
     <v-header />
     <transition name="fade">
-    <nuxt />
+    <nuxt id="main-content" />
     </transition>
     <v-footer />
   </div>
