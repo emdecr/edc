@@ -94,8 +94,6 @@ $ npm install
 
 # create an .env file
 $ touch .env
-## There should be variables for:
-## CMS_API_URL, BASE_ROUTER, LASTFM_KEY, LASTFM_USER, PINTEREST_BASE, PINTEREST_ACC_TOKEN, WEATHER_KEY, WEATHER_CITY
 
 # Run the app
 $ npm run dev
