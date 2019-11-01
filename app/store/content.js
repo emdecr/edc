@@ -1,9 +1,11 @@
 export const state = () => ({
     github: null,
     music: null,
-    pages: null,
+    pages: [],
     projects: null,
-    shelf: null
+    shelf: null,
+    wpShelf: null,
+    fullShelf: null
 })
 
 export const mutations = {
@@ -14,19 +16,26 @@ export const mutations = {
         state.music = payload;
     },
     setPages(state, payload) {
-        state.pages = payload;
+        // state.pages = payload;
+        state.pages = [...payload];
     },
     setProjects(state, payload) {
         state.projects = payload;
     },
     setShelf(state, payload) {
         state.shelf = payload;
+    },
+    setWPShelf(state, payload) {
+        state.wpShelf = payload;
+    },
+    setFullShelf(state, payload) {
+        state.fullShelf = payload;
     }
 }
 
 export const actions = {
     async getPages ({state, commit, dispatch}) {
-        if (state.pages == null) {
+        if (state.pages.length == 0) {
             await this.$axios.$get(process.env.CMS_API_URL + 'wp-json/wp/v2/pages?per_page=50')
             .then(function (response) {
                 commit('setPages', response)
@@ -70,6 +79,28 @@ export const actions = {
             })
         }
     },
+    async getWPShelfItems ({state, commit}) {
+        if (state.wpShelf == null) {
+            await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/wp/v2/shelf-item?per_page=12&_embed')
+            .then(function (response) {
+                commit('setWPShelf', response);
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+        }
+    },
+    async getAllShelfItems ({state, commit}) {
+        if (state.fullShelf == null) {
+            await this.$axios.$get(process.env.CMS_API_URL + '/wp-json/wp/v2/shelf-item?per_page=100&_embed')
+            .then(function (response) {
+                commit('setFullShelf', response);
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+        }
+    },
     async getMusic ({state, commit, dispatch}) {
         if (state.music == null) {
             await this.$axios.$get( 'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+process.env.LASTFM_USER+'&api_key='+process.env.LASTFM_KEY+'&format=json&limit=1')
@@ -99,12 +130,19 @@ export const actions = {
 }
 
 export const getters = {
-    getPages(state){
-        return state.pages;
-    },
+    // getPages(state){
+    //     return state.pages;
+    // },
+    getPages: state => slug => state.pages.filter(p=>p.slug == slug)[0],
     getShelf(state){
-        var short = state.shelf.slice(0, 24);
+        var short = state.shelf.slice(0, 12);
         return short;
+    },
+    getWPShelf(state){
+        return state.wpShelf;
+    },
+    getFullShelf(state){
+        return state.fullShelf;
     },
     getMusic(state){
         return state.music;

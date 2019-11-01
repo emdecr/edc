@@ -1,0 +1,46 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #d7d7d7;
+        background-color: #222;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* LINKS */
+    a {
+        color: #d7d7d7;
+        border-bottom: 3px solid yellow;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #d7d7d7;
+        border: none;
+        border-bottom: 3px solid yellow;
+    }
+    
+    a:hover,
+    a:focus {
+        font-weight: bold;
+    }
+
+    /* BUTTONS */
+    .btn {
+        background: transparent;
+        border: 1px solid #d7d7d7;
+        border-bottom: 1px solid #d7d7d7;
+        padding: 1rem 2rem;
+        color: #d7d7d7;
+        text-decoration: none;
+    }
+
+    .btn:visited {
+        border-bottom: 1px solid #d7d7d7;
+    }
+    
+    .btn:hover,
+    .btn:focus {
+        background: #d7d7d7;
+        border: 1px solid #d7d7d7;
+        color: #222;
+    }
+}

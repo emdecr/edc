@@ -23,3 +23,21 @@ a.skip-main:focus, a.skip-main:active {
     font-size:1.2em;
     z-index:999;
 }
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    background: white;
+    border: 1px solid blue;
+    padding: 1rem 2rem;
+    color: blue;
+    text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus {
+    background: blue;
+    border: 1px solid blue;
+    color: white;
+}
+

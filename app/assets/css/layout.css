@@ -62,6 +62,10 @@ body {
     justify-content: flex-end;
 }
 
+.flex--jc-sb {
+    justify-content: space-between;
+}
+
 /* GRID */
 
 .grid {

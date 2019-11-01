@@ -1,12 +1,14 @@
 <template>
-    <main class="flex-all flex--ai-c flex--jc-c">
-       <section>
-            <p>
-                brb. currently moulting.
-            </p>
-            <a   href="mailto:hello@emilydelacruz.com">hello@emilydelacruz.com</a><br/>
-            <a href="https://twitter.com/emdecr" target="_blank" class="flex-all flex--ai-c">@emdecr</a>
+    <main class="">
+       <section class="intro">
+            <span class="name">emily dela cruz</span><span class="pronouns">she/her</span>
+            <p>I'm a web developer, who also wants to build her research muscles.</p>
+            <div class="btns">
+                <nuxt-link class="btn" to="/about">My journey thus far...</nuxt-link>
+                <nuxt-link class="btn" to="/projects">Opportunities and challenges</nuxt-link>
+            </div>
        </section>
+
     </main>
 </template>
 
@@ -28,5 +30,39 @@
 
 main {
     min-height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+
+span.name {
+    font-family: ff-more-web-pro,serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 90px;
+    color: rgb(37, 37, 37);
+}
+
+.pronouns {
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    display: inline-block;
+    // font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+    span.name {
+        color: #d7d7d7;
+    }
+}
+
+p {
+    font-family: input-mono, monospace;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.btns {
+    margin-top: 1rem;
 }
 </style>
