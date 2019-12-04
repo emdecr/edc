@@ -1,102 +1,107 @@
 /* Setup */
-html, body {
+html,
+body {
   font: 106.3%/1.45 "proxima-nova", sans-serif; /* 16px = 100%, 18px = 112.50% as base font size */
-  font-family: "input-mono",monospace;
+  font-family: "input-mono", monospace;
   color: rgb(37, 37, 37);
   -webkit-font-smoothing: antialiased;
 }
 
 p {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 .content p:not(:last-child) {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
-
 }
 
 h2 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    /* font-family: ff-more-web-pro,serif; */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* font-family: ff-more-web-pro,serif; */
 }
 
 .hs1 {
-    font-size: 48px;
+  font-size: 48px;
 }
 
 .hs2 {
-    font-size: 34px;
+  font-size: 34px;
 }
 
 .hs3 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .hs4 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .bs1 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .bs2 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .bs3 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 /* LINKS */
 
 .tdec--none {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .color--primary {
-    color: #e3e3e3;
+  color: #e3e3e3;
 }
 
 .color--white {
-    color: white;
+  color: white;
 }
 
 .text-align--c {
-    text-align: center;
+  text-align: center;
 }
 
 .text-align--r {
-    text-align: right;
+  text-align: right;
 }
 
 a:visited {
-    color: blue;
+  color: blue;
 }
 
 a:hover,
 a:focus {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .border--none {
-    border: none;
+  border: none;
 }
 
 /* LISTS */
 .lst--none {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 /* FONT AWESOME */
 svg {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
 }

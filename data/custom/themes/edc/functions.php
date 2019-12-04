@@ -4,6 +4,7 @@ require_once('includes/functions/enqueue-style.php');
 require_once('includes/functions/enqueue-script.php');
 
 // Add metabox
+require_once('includes/functions/metabox/cpt-posts.php');
 require_once('includes/functions/metabox/cpt-shelf-item.php');
 require_once('includes/functions/metabox/mb-settings.php');
 

@@ -3,7 +3,7 @@
         <h2 v-if="$route.path == '/about'">The Shelf</h2>
         <p>Work that has both touched and taught me. Updated frequently.</p>
         <div class="shelf-container grid">
-            <a :href="item.meta_box._shelf_item_link" target="_blank" v-for="(item, i) in shelf" :key="'item-'+i" class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c tdec--none border--none" :id="[i == 12 ? 'prev' : '']" rel="external">
+            <a :href="item.meta_box._shelf_item_link" target="_blank" v-for="(item, i) in shelf" :key="'item-'+i" class="shelf-item flex-all flex--col flex--jc-fe flex--ai-c tdec--none border--none" :id="[i == 8 ? 'prev' : '']" rel="">
                 <div class="shelf-item__content text-align--c">
                     <span class="text-align--c" v-html="item.title.rendered"></span>
                     <img v-if="item.hasOwnProperty('_embedded')" :src="image(item)" :alt="item.title.rendered">
@@ -60,6 +60,10 @@
 
 .shelf-item {
     margin-bottom: 4rem;
+    span {
+        display: block;
+        width: 100%;
+    }
     &:hover,
     &:focus,
     &:active {
