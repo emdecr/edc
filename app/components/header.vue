@@ -12,6 +12,9 @@
         <li>
           <nuxt-link to="/projects">Projects</nuxt-link>
         </li>
+        <li>
+          <nuxt-link to="/writing">Writing</nuxt-link>
+        </li>
         <!-- <li><a href="https://theswell.space" target="_blank">The Swell Space</a></li> -->
         <li>
           <nuxt-link to="#contact">Contact</nuxt-link>
@@ -42,13 +45,13 @@ ul {
 
 .nuxt-link-exact-active {
   font-weight: bold;
-  border-bottom: 4px solid #f3f3f3;
+  border-bottom: 2px solid #f3f3f3;
 }
 
 @media (prefers-color-scheme: dark) {
   .nuxt-link-exact-active {
-    border-bottom: 4px solid yellow;
-    border-bottom: 4px solid #f3f3f3;
+    border-bottom: 2px solid yellow;
+    border-bottom: 2px solid #f3f3f3;
   }
 }
 

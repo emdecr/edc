@@ -90,7 +90,7 @@ main {
 }
 
 .content {
-  max-width: 800px;
+  max-width: 650px;
   padding: 2rem 0;
 }
 

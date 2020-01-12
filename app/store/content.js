@@ -2,6 +2,7 @@ export const state = () => ({
   github: null,
   music: null,
   pages: [],
+  posts: null,
   projects: null,
   shelf: null,
   wpShelf: null,
@@ -18,6 +19,10 @@ export const mutations = {
   setPages(state, payload) {
     // state.pages = payload;
     state.pages = [...payload];
+  },
+  setPosts(state, payload) {
+    // state.pages = payload;
+    state.posts = [...payload];
   },
   setProjects(state, payload) {
     state.projects = payload;
@@ -40,6 +45,18 @@ export const actions = {
         .$get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
         .then(function(response) {
           commit("setPages", response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+  },
+  async getPosts({ state, commit, dispatch }) {
+    if (state.posts == null) {
+      await this.$axios
+        .$get(process.env.CMS_API_URL + "wp-json/wp/v2/posts?per_page=50")
+        .then(function(response) {
+          commit("setPosts", response);
         })
         .catch(function(error) {
           console.log(error);
@@ -160,9 +177,9 @@ export const actions = {
 };
 
 export const getters = {
-  // getPages(state){
-  //     return state.pages;
-  // },
+  getPosts(state) {
+    return state.posts;
+  },
   getPages: state => slug => state.pages.filter(p => p.slug == slug)[0],
   getProjects(state) {
     return state.projects;

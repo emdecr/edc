@@ -8,19 +8,20 @@
   /* LINKS */
   a {
     color: #e0e0e0;
-    border-bottom: 3px solid #90caf9;
+    border-bottom: 2px solid #2196f3;
     text-decoration: none;
   }
 
   a:visited {
     color: #e0e0e0;
     border: none;
-    border-bottom: 3px solid #90caf9;
+    border-bottom: 2px solid #2196f3;
   }
 
   a:hover,
   a:focus {
-    font-weight: bold;
+    /* font-weight: bold; */
+    border-bottom: 2px solid #90caf9;
   }
 
   /* BUTTONS */
