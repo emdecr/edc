@@ -1,21 +1,21 @@
 @media (prefers-color-scheme: dark) {
   body {
-    color: #d7d7d7;
-    background-color: #1a1a1a;
+    color: #e0e0e0;
+    background-color: #121212;
     -moz-osx-font-smoothing: grayscale;
   }
 
   /* LINKS */
   a {
-    color: #d7d7d7;
-    border-bottom: 3px solid yellow;
+    color: #e0e0e0;
+    border-bottom: 3px solid #90caf9;
     text-decoration: none;
   }
 
   a:visited {
-    color: #d7d7d7;
+    color: #e0e0e0;
     border: none;
-    border-bottom: 3px solid yellow;
+    border-bottom: 3px solid #90caf9;
   }
 
   a:hover,
@@ -42,5 +42,9 @@
     background: #d7d7d7;
     border: 1px solid #d7d7d7;
     color: #222;
+  }
+
+  blockquote {
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
   }
 }

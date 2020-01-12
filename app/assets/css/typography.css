@@ -3,6 +3,7 @@ html,
 body {
   font: 106.3%/1.45 "proxima-nova", sans-serif; /* 16px = 100%, 18px = 112.50% as base font size */
   font-family: "input-mono", monospace;
+  font-family: "Roboto", sans-serif;
   color: rgb(37, 37, 37);
   -webkit-font-smoothing: antialiased;
 }
@@ -104,4 +105,21 @@ svg {
   width: 30px;
   height: 30px;
   margin-right: 5px;
+}
+
+/* QUOTES */
+blockquote {
+  border-left: 4px solid rgba(0, 0, 0, 0.5);
+  margin-left: 2rem;
+  padding: 2rem 0 2rem 2rem;
+}
+
+blockquote cite {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+p + blockquote {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }

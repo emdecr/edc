@@ -55,8 +55,29 @@ export default {
     ],
     script: [],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "favicon.ico" },
-      { rel: "stylesheet", href: "https://use.typekit.net/gsa5ewd.css" }
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/fav/favicon-16x16.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/fav/favicon-16x16.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/fav/favicon-32x32.png"
+      },
+      { rel: "stylesheet", href: "https://use.typekit.net/gsa5ewd.css" },
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
+      }
     ]
   },
   /*

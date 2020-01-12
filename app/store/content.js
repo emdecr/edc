@@ -164,6 +164,9 @@ export const getters = {
   //     return state.pages;
   // },
   getPages: state => slug => state.pages.filter(p => p.slug == slug)[0],
+  getProjects(state) {
+    return state.projects;
+  },
   getShelf(state) {
     var short = state.shelf.slice(0, 12);
     return short;

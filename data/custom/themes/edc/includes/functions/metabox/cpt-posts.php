@@ -22,6 +22,30 @@ function posts_meta_boxes( $meta_boxes) {
         ),
     );
 
+    $meta_boxes[] = array(
+        'title'      => __( 'Footnotes', 'textdomain' ),
+        'post_types' => array( 'post', 'project' ),
+        'context'    => 'normal',
+        'fields' => array(
+            array (
+                'id' => $prefix . 'footnotes',
+                'type' => 'group',
+                'clone' => 1,
+                'sort_clone' => true,
+                'default_state' => 'expanded',
+                'collapsible' => true,
+                'group_title' => 'Footnote {#}',
+                'save_state' => true,
+                'fields' =>       array (
+                    array (
+                        'id' => 'footnote',
+                        'type' => 'wysiwyg',
+                    ),
+                ),
+            ),
+        ),
+    );
+
     return $meta_boxes;
 }
 ?>

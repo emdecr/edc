@@ -1,28 +1,27 @@
 <template>
   <div>
     <nuxt-link class="skip-main" :to="{ path: $route.path,hash:'main-content'}">Skip to main content</nuxt-link>
-    <comp-header />
+    <comp-header/>
     <transition name="fade">
-    <nuxt id="main-content" />
+      <nuxt id="main-content"/>
     </transition>
-    <comp-footer />
+    <comp-footer/>
   </div>
 </template>
 
 <script>
-import Header from '~/components/header.vue'
-import Footer from '~/components/footer.vue'
+import Header from "~/components/header.vue";
+import Footer from "~/components/footer.vue";
 export default {
   components: {
-    'comp-header': Header,
-    'comp-footer': Footer
-  },
-}
+    "comp-header": Header,
+    "comp-footer": Footer
+  }
+};
 </script>
 
 
 <style>
-
 .fade-enter-active,
 .fade-leave-active {
   transition-property: opacity;
@@ -37,5 +36,4 @@ export default {
 #main-content {
   padding: 4rem 0;
 }
-
 </style>

@@ -3,11 +3,16 @@
     <section class="intro">
       <span class="name">emily dela cruz</span>
       <span class="pronouns">she/her</span>
-      <p>I'm a developer, who also wants to build her research muscles.</p>
-      <div class="btns">
+      <div class="content" v-html="page.content.rendered"></div>
+
+      <h2>Projects</h2>
+      <nuxt-link :to="'/projects/'+item.slug" v-for="(item, i) in projects" :key="'item-'+i" class>
+        <h2>{{item.title.rendered}}</h2>
+      </nuxt-link>
+      <!-- <div class="btns">
         <nuxt-link class="btn" to="/about">My journey thus far...</nuxt-link>
         <nuxt-link class="btn" to="/projects">Opportunities and challenges</nuxt-link>
-      </div>
+      </div>-->
     </section>
   </main>
 </template>
@@ -21,6 +26,14 @@ export default {
     await store.dispatch("content/getPages");
     await store.dispatch("content/getProjects");
     await store.dispatch("content/getShelfItems");
+  },
+  computed: {
+    page() {
+      return this.$store.getters["content/getPages"]("home");
+    },
+    projects() {
+      return this.$store.getters["content/getProjects"];
+    }
   }
 };
 </script>
@@ -34,7 +47,7 @@ main {
 }
 
 span.name {
-  font-family: ff-more-web-pro, serif;
+  //   font-family: ff-more-web-pro, serif;
   font-weight: 500;
   font-style: normal;
   font-size: 30px;
