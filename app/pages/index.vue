@@ -1,34 +1,32 @@
 <template>
   <main class>
     <section class="intro">
-      <span class="name">emily dela cruz</span>
-      <span class="pronouns">she/her</span>
+      <!-- <img src="~/assets/images/connect-extend.svg" alt> -->
+      <span class="name">Emily Dela Cruz</span>
+      <span class="pronouns">
+        <a href="https://www.mypronouns.org/she-her" target="_blank">she/her</a>
+      </span>
       <div class="content" v-html="page.content.rendered"></div>
-
-      <h2>Projects</h2>
-      <div class="project-container flex-all flex--jc-sb">
-        <template v-for="(item, i) in projects">
-          <nuxt-link :to="'/projects/'+item.slug" v-if="item.parent == 0" :key="'item-'+i" class>
-            <img
-              v-if="item.hasOwnProperty('_embedded')"
-              :src="image(item)"
-              :alt="item.title.rendered"
-            >
-            <h3 v-html="item.title.rendered"></h3>
-          </nuxt-link>
-        </template>
-      </div>
+      <nuxt-link to="/about">Learn more...</nuxt-link>
       <!-- <div class="btns">
         <nuxt-link class="btn" to="/about">My journey thus far...</nuxt-link>
         <nuxt-link class="btn" to="/projects">Opportunities and challenges</nuxt-link>
       </div>-->
     </section>
+    <section class="projects">
+      <h2>Projects</h2>
+      <comp-cards class="project-cards" :info="projects" path="projects" children="no"/>
+      <nuxt-link to="/projects">View all projects</nuxt-link>
+    </section>
   </main>
 </template>
 
 <script>
+import Cards from "~/components/card-list.vue";
 export default {
-  components: {},
+  components: {
+    "comp-cards": Cards
+  },
   async fetch({ store }) {
     await store.dispatch("content/getPages");
     await store.dispatch("content/getProjects");
@@ -71,6 +69,18 @@ main {
   padding: 100px 0;
 }
 
+.content {
+  max-width: 650px;
+  margin: 1rem 0;
+}
+
+.intro img {
+  width: 50px;
+  height: auto;
+  display: block;
+  padding-bottom: 100px;
+}
+
 span.name {
   //   font-family: ff-more-web-pro, serif;
   font-weight: bold;
@@ -103,15 +113,28 @@ p {
   margin-top: 1rem;
 }
 
-.project-container {
-  > * {
-    width: 30%;
-    border: none;
+.projects {
+  margin-top: 4rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 4rem;
+    margin-bottom: 2rem;
     img {
       width: 100%;
       height: 150px;
       object-fit: cover;
     }
+  }
+}
+
+.project-container {
+  > * {
+    border: none;
   }
 }
 </style>

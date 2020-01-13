@@ -54,7 +54,9 @@ export const actions = {
   async getPosts({ state, commit, dispatch }) {
     if (state.posts == null) {
       await this.$axios
-        .$get(process.env.CMS_API_URL + "wp-json/wp/v2/posts?per_page=50")
+        .$get(
+          process.env.CMS_API_URL + "wp-json/wp/v2/posts?per_page=50&_embed"
+        )
         .then(function(response) {
           commit("setPosts", response);
         })
@@ -67,7 +69,8 @@ export const actions = {
     if (state.projects == null) {
       await this.$axios
         .$get(
-          process.env.CMS_API_URL + "wp-json/wp/v2/project?per_page=50&_embed"
+          process.env.CMS_API_URL +
+            "wp-json/wp/v2/project?per_page=50&order=asc&_embed"
         )
         .then(function(response) {
           commit("setProjects", response);

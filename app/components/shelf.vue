@@ -25,7 +25,11 @@
       </a>
     </div>
     <div class="flex-all flex--jc-c flex--ai-c">
-      <nuxt-link to="/about/shelf#prev" class="btn" v-if="$route.path == '/about'">View more</nuxt-link>
+      <nuxt-link
+        to="/about/shelf#prev"
+        class="view-more"
+        v-if="$route.path == '/about'"
+      >View full shelf</nuxt-link>
     </div>
   </section>
 </template>
@@ -71,7 +75,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn {
+.btn,
+.view-more {
   margin-bottom: 4rem;
 }
 

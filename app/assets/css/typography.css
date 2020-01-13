@@ -8,6 +8,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.mono {
+  font-family: "input-mono", monospace;
+}
+
 p {
   line-height: 1.5;
 }
@@ -156,4 +160,12 @@ h4 + blockquote {
 .content h4 + ul {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+}
+
+/* CARD LIST */
+.project-container sup,
+.card-list-container sup {
+  color: #2196f3;
+  font-weight: bold;
+  font-size: 1rem;
 }

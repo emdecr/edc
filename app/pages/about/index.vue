@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>About</h1>
+    <!-- <h1>About</h1> -->
 
     <div class="content" v-html="page.content.rendered"></div>
 
@@ -12,7 +12,7 @@
         <div class="music-grid grid">
           <img :src="music.image" :alt="'Album art for '+music.name">
           <div class="music__deats">
-            <span>{{music.artist}} | {{music.name}}</span>
+            <span class="mono">{{music.artist}} | {{music.name}}</span>
           </div>
         </div>
       </section>
@@ -21,7 +21,7 @@
         <h2>Github activity</h2>
         <ul>
           <template target="_blank" v-for="(event, i) in github">
-            <li v-if="event.type == 'PushEvent'" :key="'event-'+i">
+            <li v-if="event.type == 'PushEvent'" :key="'event-'+i" class="mono">
               {{type(event)}} | R:
               <a :href="repoURL(event)" target="_blank>">{{event.repo.name}}</a>
               , B: {{repoBranch(event)}}, CM:
@@ -30,7 +30,7 @@
                 target="_blank>"
               >{{event.payload.commits[0].message}}</a>
             </li>
-            <li v-else :key="'event-'+i">
+            <li v-else :key="'event-'+i" class="mono">
               {{type(event)}} | R:
               <a :href="repoURL(event)" target="_blank>">{{event.repo.name}}</a>
             </li>
@@ -92,6 +92,7 @@ main {
 .content {
   max-width: 650px;
   padding: 2rem 0;
+  padding: 0;
 }
 
 .shelf {

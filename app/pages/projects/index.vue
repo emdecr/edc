@@ -3,25 +3,20 @@
     <h1>Projects</h1>
     <div class="content">
       <small>
-        <sup>*</sup> via
+        <sup class="mono">*</sup> via
         <a href="https://hypenotic.com" target="_blank">Hypenotic</a>. I had a hand in at least a large chunk of the code/thinking in these projects, but I'm happy to clarify which parts exactly.
       </small>
     </div>
-    <div class="project-container flex-all flex--jc-sb">
-      <nuxt-link :to="'/projects/'+item.slug" v-for="(item, i) in projects" :key="'item-'+i" class>
-        <img v-if="item.hasOwnProperty('_embedded')" :src="image(item)" :alt="item.title.rendered">
-        <div class="title" v-if="item.parent != 0">
-          <h3 v-html="item.title.rendered"></h3>
-          <sup>*</sup>
-        </div>
-        <h3 v-if="item.parent == 0" v-html="item.title.rendered"></h3>
-      </nuxt-link>
-    </div>
+    <comp-cards class="project-cards" :info="projects" path="projects" children="yes"/>
   </main>
 </template>
 
 <script>
+import Cards from "~/components/card-list.vue";
 export default {
+  components: {
+    "comp-cards": Cards
+  },
   async fetch({ store }) {
     await store.dispatch("content/getPages");
     await store.dispatch("content/getProjects");
@@ -72,25 +67,5 @@ sup {
   color: #2196f3;
   font-weight: bold;
   font-size: 1rem;
-}
-
-.title {
-  h3 {
-    display: inline-block;
-  }
-}
-
-.project-container {
-  flex-wrap: wrap;
-  > * {
-    width: 30%;
-    border: none;
-    margin-bottom: 2rem;
-    img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-  }
 }
 </style>
