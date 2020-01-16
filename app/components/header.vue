@@ -59,8 +59,8 @@ header {
 
 @media only screen and (max-width: 500px) {
   header {
-    // width: 100vw;
-    // overflow-x: scroll;
+    width: 100vw;
+    overflow-x: scroll;
     padding: 0;
     position: fixed;
     bottom: 0;
@@ -132,7 +132,7 @@ a:not(.logo-home) {
 @media only screen and (max-width: 500px) {
   ul {
     justify-content: space-between;
-    // width: 100vw;
+    width: 100vw;
   }
   a:not(.logo-home) {
     padding: 1.5rem 1rem;
