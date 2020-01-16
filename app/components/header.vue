@@ -59,11 +59,13 @@ header {
 
 @media only screen and (max-width: 500px) {
   header {
-    width: 100%;
+    width: 100vw;
+    overflow-x: scroll;
     padding: 0;
     position: fixed;
     bottom: 0;
     z-index: 5;
+    border-top: 1px solid #363636;
   }
 }
 
@@ -78,8 +80,13 @@ ul {
   list-style-type: none;
   justify-content: flex-end;
   padding: 0;
-  li:last-child {
-    margin-right: 1rem;
+}
+
+@media only screen and (min-width: 500px) {
+  ul {
+    li:last-child {
+      margin-right: 1rem;
+    }
   }
 }
 
@@ -125,10 +132,10 @@ a:not(.logo-home) {
 @media only screen and (max-width: 500px) {
   ul {
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
   }
   a:not(.logo-home) {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     font-size: 0.7rem;
     border: none;
   }

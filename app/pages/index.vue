@@ -2,6 +2,9 @@
   <main class>
     <section class="intro">
       <!-- <img src="~/assets/images/connect-extend.svg" alt> -->
+      <nuxt-link to="/" class="home-link-index">
+        <img src="~/assets/images/connect-extend.svg" alt>
+      </nuxt-link>
       <span class="name">Emily Dela Cruz</span>
       <span class="pronouns">
         <a href="https://www.mypronouns.org/she-her" target="_blank">she/her</a>
@@ -129,6 +132,20 @@ p {
       height: 150px;
       object-fit: cover;
     }
+  }
+}
+
+.home-link-index {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .home-link-index {
+    display: block;
+    margin-bottom: 2rem;
+    width: 40px;
+    height: auto;
+    border: none;
   }
 }
 

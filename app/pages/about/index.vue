@@ -1,6 +1,6 @@
 <template>
   <main>
-    <!-- <h1>About</h1> -->
+    <h1>About</h1>
 
     <div class="content" v-html="page.content.rendered"></div>
 
@@ -84,6 +84,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  margin-bottom: 2rem;
+}
+@media only screen and (min-width: 500px) {
+  h1 {
+    display: none;
+  }
+}
+
 main {
   max-width: 1000px;
   margin: 0 auto;

@@ -84,7 +84,18 @@ export default {
   max-width: 1000px;
   margin: 0 auto;
   padding-top: 2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media only screen and (min-width: 600px) {
+  .shelf-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .shelf-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .shelf-item {
