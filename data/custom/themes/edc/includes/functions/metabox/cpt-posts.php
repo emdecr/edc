@@ -30,12 +30,12 @@ function posts_meta_boxes( $meta_boxes) {
             array (
                 'id' => $prefix . 'footnotes',
                 'type' => 'group',
-                'clone' => 1,
+                'clone' => true,
                 'sort_clone' => true,
-                'default_state' => 'expanded',
+                'default_state' => 'collapsed',
                 'collapsible' => true,
                 'group_title' => 'Footnote {#}',
-                'save_state' => true,
+                'save_state' => false,
                 'fields' =>       array (
                     array (
                         'id' => 'footnote',
