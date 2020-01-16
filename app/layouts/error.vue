@@ -31,10 +31,4 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
-#main-content {
-  /* max-width: 800px; */
-  padding: 4rem 0;
-  margin: 0 auto;
-}
 </style>
