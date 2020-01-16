@@ -108,10 +108,6 @@ main {
   margin-top: 4rem;
 }
 
-.about-bottom {
-  grid-template-columns: 1fr 1fr;
-}
-
 .github {
   li {
     font-size: 0.8rem;
@@ -120,9 +116,26 @@ main {
 }
 
 .music-grid {
-  grid-template-columns: 2fr 8fr;
   span {
     font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .about-bottom {
+    > * {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .about-bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .music-grid {
+    grid-template-columns: 2fr 8fr;
   }
 }
 </style>
