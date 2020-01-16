@@ -5,7 +5,7 @@
         <nuxt-link :to="'/'+path+'/'+item.slug" :key="'item-'+i" v-if="item.parent == 0">
           <img
             v-if="item.hasOwnProperty('_embedded')"
-            :src="image(item)"
+            :src="lrgImage(item)"
             :alt="item.title.rendered"
           >
           <h3 class="mono" v-html="item.title.rendered"></h3>
@@ -22,7 +22,7 @@
           >
             <img
               v-if="item.hasOwnProperty('_embedded')"
-              :src="image(item)"
+              :src="lrgImage(item)"
               :alt="item.title.rendered"
             >
             <div class="title" v-if="item.parent != 0">
@@ -34,7 +34,7 @@
           <nuxt-link :to="'/projects/'+item.slug" :key="'item-'+i" v-else>
             <img
               v-if="item.hasOwnProperty('_embedded')"
-              :src="image(item)"
+              :src="lrgImage(item)"
               :alt="item.title.rendered"
             >
             <div class="title" v-if="item.parent != 0">
@@ -50,7 +50,7 @@
           <nuxt-link :to="'/'+path+'/'+item.slug" :key="'item-'+i">
             <img
               v-if="item.hasOwnProperty('_embedded')"
-              :src="image(item)"
+              :src="medImage(item)"
               :alt="item.title.rendered"
             >
             <h3 class="mono" v-html="item.title.rendered"></h3>
@@ -65,7 +65,7 @@
 export default {
   props: ["info", "path", "children"],
   methods: {
-    image(i) {
+    medImage(i) {
       if (i.hasOwnProperty("_embedded")) {
         if (
           i._embedded["wp:featuredmedia"][0]["media_details"][
@@ -74,6 +74,23 @@ export default {
         ) {
           return i._embedded["wp:featuredmedia"][0]["media_details"]["sizes"][
             "medium"
+          ]["source_url"];
+        } else {
+          return i._embedded["wp:featuredmedia"][0]["source_url"];
+        }
+      } else {
+        return i._embedded["wp:featuredmedia"][0]["source_url"];
+      }
+    },
+    lrgImage(i) {
+      if (i.hasOwnProperty("_embedded")) {
+        if (
+          i._embedded["wp:featuredmedia"][0]["media_details"][
+            "sizes"
+          ].hasOwnProperty("large")
+        ) {
+          return i._embedded["wp:featuredmedia"][0]["media_details"]["sizes"][
+            "large"
           ]["source_url"];
         } else {
           return i._embedded["wp:featuredmedia"][0]["source_url"];
@@ -110,6 +127,15 @@ sup {
   font-weight: bold;
   font-size: 1rem;
 }
+@media only screen and (max-width: 1024px) {
+  .card-list-container {
+    > * {
+      margin-bottom: 2rem;
+      display: block;
+    }
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   .card-list-container {
     display: grid;
@@ -123,6 +149,12 @@ sup {
       object-fit: cover;
     }
   }
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-list-container {

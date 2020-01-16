@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt-link class="skip-main" :to="{ path: $route.path,hash:'main-content'}">Skip to main content</nuxt-link>
+
     <comp-header/>
     <transition name="fade">
       <nuxt id="main-content"/>
@@ -31,9 +32,5 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-#main-content {
-  padding: 4rem 0;
 }
 </style>

@@ -147,11 +147,11 @@ h4 + blockquote {
 }
 
 .content ul li + li {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
 }
 
 .content p + ul {
-  margin-top: 1.5rem;
+  margin-top: 0rem;
   margin-bottom: 1.5rem;
 }
 
@@ -160,6 +160,12 @@ h4 + blockquote {
 .content h4 + ul {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+}
+
+.content p + hr {
+  opacity: 0.3;
+  width: 80%;
+  margin: 2rem auto 2rem;
 }
 
 /* CARD LIST */

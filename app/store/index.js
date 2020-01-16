@@ -10,21 +10,17 @@ export const mutations = {
 
 export const actions = {
   async getMode({ state, commit, dispatch }) {
-    if (state.pages.length == 0) {
-      await this.$axios
-        .$get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
-        .then(function(response) {
-          commit("setPages", response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    let check = localStorage.getItem("siteTheme");
+    if (check !== null) {
+      commit("setMode", true);
+    } else {
+      return;
     }
   }
 };
 
 export const getters = {
-  // getPages(state){
-  //     return state.pages;
-  // },
+  getMode(state) {
+    return state.mode;
+  }
 };
