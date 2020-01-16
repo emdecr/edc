@@ -146,6 +146,10 @@ h4 + blockquote {
   margin-bottom: 2rem;
 }
 
+blockquote + p {
+  margin-top: 2rem;
+}
+
 /* CONTENT */
 .content p + h2 {
   margin-top: 4rem;
@@ -179,6 +183,37 @@ h4 + blockquote {
   opacity: 0.3;
   width: 80%;
   margin: 2rem auto 2rem;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .content iframe {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.content figure {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .content figure {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.content figcaption {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
+  font-family: "input-mono", monospace;
 }
 
 /* CARD LIST */

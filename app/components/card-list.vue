@@ -50,7 +50,7 @@
           <nuxt-link :to="'/'+path+'/'+item.slug" :key="'item-'+i">
             <img
               v-if="item.hasOwnProperty('_embedded')"
-              :src="medImage(item)"
+              :src="lrgImage(item)"
               :alt="item.title.rendered"
             >
             <h3 class="mono" v-html="item.title.rendered"></h3>
