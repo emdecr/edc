@@ -162,7 +162,8 @@ h4 + blockquote {
   margin-bottom: 1.5rem;
 }
 
-.content p + hr {
+.content p + hr,
+.content ul + hr {
   opacity: 0.3;
   width: 80%;
   margin: 2rem auto 2rem;
