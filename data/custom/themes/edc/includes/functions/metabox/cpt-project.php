@@ -10,6 +10,11 @@ function project_meta_boxes( $meta_boxes) {
         'priority'   => '',
         'fields' => array(
             array(
+                'id'   => $prefix . 'subtitle',
+                'name' => __( 'Subtitle', 'textdomain' ),
+                'type' => 'textarea',
+            ),
+            array(
                 'id'   => $prefix . 'link',
                 'name' => __( 'External Link', 'textdomain' ),
                 'type' => 'text',
