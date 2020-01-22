@@ -5,14 +5,18 @@
     <div class="grid">
       <div class="content" v-html="page.content.rendered"></div>
       <div class="side">
-        <div class="resume"></div>
+        <div class="resume">
+          <h2>
+            <a :href="meta._page_resume" target="_blank">Resume</a>
+          </h2>
+        </div>
         <div class="skills">
           <h2>Key Skills</h2>
-          <div></div>
+          <div class="mono" v-html="meta._page_skills_text"></div>
         </div>
         <div class="learning">
           <h2>Currently Learning</h2>
-          <div></div>
+          <div class="mono" v-html="meta._page_learning_text"></div>
         </div>
       </div>
     </div>
@@ -91,6 +95,9 @@ export default {
     },
     shelf() {
       return this.$store.getters["content/getWPShelf"];
+    },
+    meta() {
+      return this.page.meta_box;
     }
   }
 };
@@ -111,14 +118,20 @@ main {
   margin: 0 auto;
 }
 
-.grid {
-}
-
 @media only screen and (min-width: 1024px) {
   .grid {
     grid-template-columns: 8fr 4fr;
     grid-column-gap: 4rem;
   }
+}
+
+.side {
+  padding-top: 2rem;
+}
+
+.skills,
+.resume {
+  margin-bottom: 2rem;
 }
 
 .content {

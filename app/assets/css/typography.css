@@ -12,6 +12,10 @@ body {
   font-family: "input-mono", monospace;
 }
 
+.mono p {
+  font-family: "input-mono", monospace;
+}
+
 p {
   line-height: 1.5;
 }
