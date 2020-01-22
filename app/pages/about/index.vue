@@ -2,7 +2,20 @@
   <main>
     <h1>About</h1>
 
-    <div class="content" v-html="page.content.rendered"></div>
+    <div class="grid">
+      <div class="content" v-html="page.content.rendered"></div>
+      <div class="side">
+        <div class="resume"></div>
+        <div class="skills">
+          <h2>Key Skills</h2>
+          <div></div>
+        </div>
+        <div class="learning">
+          <h2>Currently Learning</h2>
+          <div></div>
+        </div>
+      </div>
+    </div>
 
     <comp-shelf class="shelf" :shelf="shelf"/>
 
@@ -98,8 +111,18 @@ main {
   margin: 0 auto;
 }
 
+.grid {
+}
+
+@media only screen and (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 8fr 4fr;
+    grid-column-gap: 4rem;
+  }
+}
+
 .content {
-  max-width: 650px;
+  // max-width: 650px;
   padding: 2rem 0;
   padding: 0;
 }

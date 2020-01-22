@@ -188,8 +188,12 @@ export const getters = {
     return state.projects;
   },
   getShelf(state) {
-    var short = state.shelf.slice(0, 12);
-    return short;
+    if (state.shelf != null) {
+      var short = state.shelf.slice(0, 12);
+      return short;
+    } else {
+      return [];
+    }
   },
   getWPShelf(state) {
     return state.wpShelf;
@@ -201,7 +205,11 @@ export const getters = {
     return state.music;
   },
   getGithub(state) {
-    var cut = state.github.slice(0, 5);
-    return cut;
+    if (state.github != null) {
+      var cut = state.github.slice(0, 5);
+      return cut;
+    } else {
+      return [];
+    }
   }
 };

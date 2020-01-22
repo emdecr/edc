@@ -187,8 +187,12 @@ blockquote + p {
   margin: 2rem auto 2rem;
 }
 
+.content figure {
+  text-align: center;
+}
+
 .content img {
-  max-width: 100%;
+  max-width: 85%;
   height: auto;
   margin: 0 auto;
 }

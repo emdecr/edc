@@ -28,6 +28,11 @@ function pages_meta_boxes( $meta_boxes) {
                     ),
                 ),
             ),
+            array(
+                'id'   => $prefix . 'skills_text',
+                'name' => __( 'Skills Text', 'textdomain' ),
+                'type' => 'wysiwyg',
+            ),
             array (
                 'id' => $prefix . 'learning',
                 'type' => 'group',
@@ -44,6 +49,11 @@ function pages_meta_boxes( $meta_boxes) {
                         'type' => 'text',
                     ),
                 ),
+            ),
+            array(
+                'id'   => $prefix . 'learning_text',
+                'name' => __( 'Learning Text', 'textdomain' ),
+                'type' => 'wysiwyg',
             ),
         ),
     );

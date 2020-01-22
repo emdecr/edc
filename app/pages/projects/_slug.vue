@@ -1,6 +1,9 @@
 <template>
   <main>
-    <h1 v-html="single.title.rendered"></h1>
+    <div class="container">
+      <h1 v-html="single.title.rendered"></h1>
+      <p class="subtitle mono" v-if="meta._project_subtitle != ''" v-html="meta._project_subtitle"></p>
+    </div>
     <div class="content" v-html="single.content.rendered"></div>
   </main>
 </template>
@@ -19,6 +22,9 @@ export default {
       return this.$store.getters["content/getProjects"].filter(
         p => p.slug == this.$route.params.slug
       )[0];
+    },
+    meta() {
+      return this.single.meta_box;
     }
   }
 };
@@ -30,9 +36,13 @@ main {
   margin: 0 auto;
 }
 
-h1 {
+.container {
   max-width: 650px;
   margin: 0 auto;
+}
+
+.subtitle {
+  margin: 1rem 0;
 }
 
 .content {
