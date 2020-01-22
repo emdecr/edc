@@ -4,6 +4,27 @@ function pages_meta_boxes( $meta_boxes) {
     $prefix = '_page_';
 
     $meta_boxes[] = array(
+        'title'      => __( 'Resume', 'textdomain' ),
+        'post_types' => array( 'page' ),
+        'context'    => 'normal',
+        'include' => array(
+            'template'        => array( 'template-about.php' )
+        ),
+        'fields' => array(
+            array(
+                'id'   => $prefix . 'resume',
+                'name' => __( 'Link', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
+                'id'   => $prefix . 'resume_file',
+                'name' => __( 'Upload', 'textdomain' ),
+                'type' => 'file_input',
+            ),
+        ),
+    );
+
+    $meta_boxes[] = array(
         'title'      => __( 'Skills', 'textdomain' ),
         'post_types' => array( 'page' ),
         'context'    => 'normal',
