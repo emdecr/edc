@@ -1,4 +1,4 @@
-<a href="https://emilydelacruz.com" target="_blank" style="text-align:center;"><img src="https://emilydelacruz.com/files/connection.png" alt="atom graphic" width="150"></a>
+<a href="https://emilydelacruz.com" target="_blank" align="center"><img src="https://emilydelacruz.com/files/connection.png" alt="atom graphic" width="150"></a>
 <br/>
 
 <h1 align="center">emilydelacruz.com</h1>
