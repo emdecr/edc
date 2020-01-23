@@ -1,10 +1,7 @@
+<a href="https://emilydelacruz.com" target="_blank" style="text-align:center;"><img src="https://emilydelacruz.com/files/connection.png" alt="atom graphic" width="150"></a>
+<br/>
 
-<h1 align="center">
-    <br>
-    <a href="https://emilydelacruz.com"><img src="" alt="" width="200"></a>
-    <br>
-    emilydelacruz.com
-</h1>
+<h1 align="center">emilydelacruz.com</h1>
 
 <p align="center"><em>Personal site.</em></p>
 
@@ -38,7 +35,7 @@ This is a hybrid environment using WordPress to manage content, and Nuxt.js to s
 
 ## Installation
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. 
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
 
 ## Local Setup
 
@@ -76,12 +73,12 @@ $ edc/cms/custom/themes/edc/includes/functions/endpoints/endpoint_vars.php
 
 #### Installed Plugins
 
-* [Meta Box](https://en-ca.wordpress.org/plugins/meta-box/)
-* [Meta Box - CPT](https://metabox.io/plugins/custom-post-type/)
-* [Meta Box Group](https://metabox.io/plugins/meta-box-group/)
-* [Meta Box REST API](https://metabox.io/plugins/mb-rest-api/)
-* [TinyMCE Advanced](https://en-ca.wordpress.org/plugins/tinymce-advanced/)
-    * Because sometimes the paragraph tags get stripped in WYSIWYGs
+- [Meta Box](https://en-ca.wordpress.org/plugins/meta-box/)
+- [Meta Box - CPT](https://metabox.io/plugins/custom-post-type/)
+- [Meta Box Group](https://metabox.io/plugins/meta-box-group/)
+- [Meta Box REST API](https://metabox.io/plugins/mb-rest-api/)
+- [TinyMCE Advanced](https://en-ca.wordpress.org/plugins/tinymce-advanced/)
+  - Because sometimes the paragraph tags get stripped in WYSIWYGs
 
 ### Nuxt
 
@@ -101,19 +98,19 @@ $ npm run dev
 
 #### Extra NPM Packages
 
-* [cross-env](https://www.npmjs.com/package/cross-env)
-* [dotenv](https://www.npmjs.com/package/dotenv)
-* [Google Analytics module for Nuxt.js](https://nuxtjs.org/faq/google-analytics/)
+- [cross-env](https://www.npmjs.com/package/cross-env)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [Google Analytics module for Nuxt.js](https://nuxtjs.org/faq/google-analytics/)
 
 #### Installed Plugins
 
-* [Animate on Scroll](https://github.com/michalsnik/aos/tree/v2)
+- [Animate on Scroll](https://github.com/michalsnik/aos/tree/v2)
 
 #### Default head entries and modules in nuxt.config.js
 
-*Note*: Change the keys or project IDs
+_Note_: Change the keys or project IDs
 
-* n/a
+- n/a
 
 #### Pre-processors
 
