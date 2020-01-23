@@ -70,6 +70,11 @@ export default {
     await store.dispatch("content/getPages");
     await store.dispatch("content/getWPShelfItems");
   },
+  head() {
+    return {
+      title: "Emily Dela Cruz | About"
+    };
+  },
   methods: {
     repoBranch(event) {
       let branchArray = event.payload.ref.split("/");

@@ -15,6 +15,11 @@ export default {
     await store.dispatch("content/getPages");
     await store.dispatch("content/getPosts");
   },
+  head() {
+    return {
+      title: "Emily Dela Cruz | Writing"
+    };
+  },
   methods: {
     image(i) {
       if (i.hasOwnProperty("_embedded")) {

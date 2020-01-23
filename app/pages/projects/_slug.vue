@@ -9,11 +9,18 @@
 </template>
 
 <script>
+import { helper } from "~/plugins/helper.js";
 export default {
   async fetch({ store }) {
     await store.dispatch("content/getProjects");
   },
-  methods: {},
+  head() {
+    return {
+      title:
+        "Emily Dela Cruz | Project | " +
+        helper.removeTags(this.single.title.rendered)
+    };
+  },
   computed: {
     projects() {
       return this.$store.getters["content/getProjects"];

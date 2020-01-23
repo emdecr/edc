@@ -8,7 +8,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: "emily dela cruz | designer + developer",
+    title: "Emily Dela Cruz | Web Developer",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -16,41 +16,53 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "Based in Toronto. Interested in helping out a good cause through compelling stories and code."
+          "A web developer helping values-driven organizations, who's also into user experience research."
       },
-      { hid: "twitter:card", name: "twitter:card", content: "summary" },
+      {
+        hid: "twitter:card",
+        name: "twitter:card",
+        content: "summary_large_image"
+      },
       { hid: "twitter:site", name: "twitter:site", content: "@emdecr" },
       {
         hid: "twitter:title",
         name: "twitter:title",
-        content: "emily dela cruz | designer + developer"
+        content: "Emily Dela Cruz | Web Developer"
       },
       {
         hid: "twitter:description",
         name: "twitter:description",
         content:
-          "Based in Toronto. Interested in helping out a good cause through compelling stories and code."
+          "A web developer helping values-driven organizations, who's also into user experience research."
       },
       { hid: "twitter:creator", name: "twitter:creator", content: "@emdecr" },
-      { hid: "twitter:image", name: "twitter:image", content: "" },
+      {
+        hid: "twitter:image",
+        name: "twitter:image",
+        content: "https://emilydelacruz.com/files/emily_dela_cruz_social.png"
+      },
       {
         hid: "og:title",
         name: "og:title",
-        content: "emily dela cruz | designer + developer"
+        content: "Emily Dela Cruz | Web Developer"
       },
       { hid: "og:type", name: "og:type", content: "Website" },
       { hid: "og:url", name: "og:url", content: "https://emilydelacruz.com/" },
-      { hid: "og:image", name: "og:image", content: "" },
+      {
+        hid: "og:image",
+        name: "og:image",
+        content: "https://emilydelacruz.com/files/emily_dela_cruz_social.png"
+      },
       {
         hid: "og:description",
         name: "og:description",
         content:
-          "Based in Toronto. Interested in helping out a good cause through compelling stories and code."
+          "A web developer helping values-driven organizations, who's also into user experience research."
       },
       {
         hid: "og:site_name",
         name: "og:site_name",
-        content: "emily dela cruz | designer + developer"
+        content: "Emily Dela Cruz | Web Developer"
       }
     ],
     script: [],

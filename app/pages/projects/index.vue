@@ -21,6 +21,11 @@ export default {
     await store.dispatch("content/getPages");
     await store.dispatch("content/getProjects");
   },
+  head() {
+    return {
+      title: "Emily Dela Cruz | Projects"
+    };
+  },
   methods: {
     image(i) {
       if (i.hasOwnProperty("_embedded")) {
