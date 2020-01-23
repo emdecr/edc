@@ -1,7 +1,8 @@
-<a href="https://emilydelacruz.com" target="_blank" align="center"><img src="https://emilydelacruz.com/files/connection.png" alt="atom graphic" width="150"></a>
-<br/>
-
-<h1 align="center">emilydelacruz.com</h1>
+<h1 align="center">
+    <a href="https://emilydelacruz.com" target="_blank"><img src="https://emilydelacruz.com/files/connection.png" alt="atom graphic" width="150"></a>
+    <br>
+    emilydelacruz.com
+</h1>
 
 <p align="center"><em>Personal site.</em></p>
 
