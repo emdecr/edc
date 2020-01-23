@@ -7,15 +7,21 @@
       <div class="side">
         <div class="resume">
           <h2>
-            <a :href="meta._page_resume" target="_blank">Resume</a>
+            <a :href="meta._page_resume" target="_blank">
+              Resume
+              <!-- <i class="material-icons">description</i> -->
+              <i class="material-icons">open_in_new</i>
+            </a>
           </h2>
         </div>
         <div class="skills">
-          <h2>Key Skills</h2>
+          <h2 v-if="meta._page_skills_title !=''" v-html="meta._page_skills_title"></h2>
+          <h2 v-else>Key Skills</h2>
           <div class="mono" v-html="meta._page_skills_text"></div>
         </div>
         <div class="learning">
-          <h2>Currently Learning</h2>
+          <h2 v-if="meta._page_learning_title !=''" v-html="meta._page_learning_title"></h2>
+          <h2 v-else>Currently Learning</h2>
           <div class="mono" v-html="meta._page_learning_text"></div>
         </div>
       </div>
