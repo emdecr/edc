@@ -50,6 +50,11 @@ function pages_meta_boxes( $meta_boxes) {
                 ),
             ),
             array(
+                'id'   => $prefix . 'skills_title',
+                'name' => __( 'Skills Title', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
                 'id'   => $prefix . 'skills_text',
                 'name' => __( 'Skills Text', 'textdomain' ),
                 'type' => 'wysiwyg',
@@ -70,6 +75,11 @@ function pages_meta_boxes( $meta_boxes) {
                         'type' => 'text',
                     ),
                 ),
+            ),
+            array(
+                'id'   => $prefix . 'learning_title',
+                'name' => __( 'Learning Title', 'textdomain' ),
+                'type' => 'text',
             ),
             array(
                 'id'   => $prefix . 'learning_text',
