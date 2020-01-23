@@ -48,7 +48,8 @@ export default {
 <style lang="scss" scoped>
 header {
   padding: 4rem 0;
-  // position: relative;
+  position: relative;
+  z-index: 5;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -64,7 +65,6 @@ header {
     padding: 0;
     position: fixed;
     bottom: 0;
-    z-index: 5;
     border-top: 1px solid #363636;
   }
 }

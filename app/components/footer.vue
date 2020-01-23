@@ -18,6 +18,17 @@
             <a href="https://www.linkedin.com/in/emilydelacruz/" target="_blank">linkedin</a>
           </li>
         </ul>
+        <p class="made mono">
+          This site is built with
+          <a href="https://nuxtjs.org/" target="_blank">NuxtJS</a>, using a
+          <a
+            href="https://en-ca.wordpress.org/"
+            target="_blank"
+          >WordPress-powered headless CMS</a>, and is hosted on
+          <a href="https://www.linode.com/" target="_blank">Linode</a>.
+          <a href="https://github.com/emdecr/edc" target="_blank">Github</a> hosts the source code.
+        </p>
+        <p class="made mono">&copy; 2015–2020 Copyright Emily Dela Cruz. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -57,5 +68,13 @@ ul {
   li:not(:last-child) {
     margin-bottom: 0.5rem;
   }
+}
+
+.made {
+  max-width: 550px;
+  text-align: right;
+  margin-top: 2rem;
+  opacity: 0.5;
+  font-size: 0.7rem;
 }
 </style>
