@@ -1,8 +1,8 @@
 <template>
   <main>
-    <nuxt-link to="/about" class="back">
+    <nuxt-link to="/projects" class="back">
       <span>
-        <i class="material-icons">trending_flat</i>Back to Projects page
+        <i class="material-icons">trending_flat</i>Back to Projects Index
       </span>
     </nuxt-link>
     <div class="container">
@@ -10,9 +10,9 @@
       <p class="subtitle mono" v-if="meta._project_subtitle != ''" v-html="meta._project_subtitle"></p>
     </div>
     <div class="content" v-html="single.content.rendered"></div>
-    <nuxt-link to="/about" class="back">
+    <nuxt-link to="/projects" class="back">
       <span>
-        <i class="material-icons">trending_flat</i>Back to Projects page
+        <i class="material-icons">trending_flat</i>Back to Projects Index
       </span>
     </nuxt-link>
   </main>
