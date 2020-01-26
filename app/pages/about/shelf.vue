@@ -1,5 +1,10 @@
 <template>
   <main>
+    <nuxt-link to="/about" class="back">
+      <span>
+        <i class="material-icons">trending_flat</i>Back to About page
+      </span>
+    </nuxt-link>
     <h1>The (Full) Shelf</h1>
     <comp-shelf :shelf="fullShelf"/>
   </main>
@@ -26,6 +31,21 @@ export default {
 main {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 4rem;
+}
+
+.back span {
+  display: flex;
+  align-items: center;
+}
+
+i {
+  transform: rotate(180deg);
+  margin-right: 0.5rem;
 }
 
 .shelf-container {

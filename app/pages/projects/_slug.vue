@@ -1,10 +1,20 @@
 <template>
   <main>
+    <nuxt-link to="/about" class="back">
+      <span>
+        <i class="material-icons">trending_flat</i>Back to Projects page
+      </span>
+    </nuxt-link>
     <div class="container">
       <h1 v-html="single.title.rendered"></h1>
       <p class="subtitle mono" v-if="meta._project_subtitle != ''" v-html="meta._project_subtitle"></p>
     </div>
     <div class="content" v-html="single.content.rendered"></div>
+    <nuxt-link to="/about" class="back">
+      <span>
+        <i class="material-icons">trending_flat</i>Back to Projects page
+      </span>
+    </nuxt-link>
   </main>
 </template>
 
@@ -41,6 +51,21 @@ export default {
 main {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 4rem;
+}
+
+.back span {
+  display: flex;
+  align-items: center;
+}
+
+i {
+  transform: rotate(180deg);
+  margin-right: 0.5rem;
 }
 
 .container {

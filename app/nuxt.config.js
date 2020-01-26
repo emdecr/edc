@@ -46,12 +46,37 @@ export default {
         name: "og:title",
         content: "Emily Dela Cruz | Web Developer"
       },
-      { hid: "og:type", name: "og:type", content: "Website" },
+      {
+        hid: "author",
+        name: "author",
+        content: "Emily Dela Cruz"
+      },
+      {
+        hid: "last-modified",
+        name: "last-modified",
+        content: "Sun, 26 Jan 2020 14:45 EST"
+      },
+      {
+        hid: "DC.date",
+        name: "DC.date",
+        content: "2020-01"
+      },
+      { hid: "og:type", name: "og:type", content: "website" },
       { hid: "og:url", name: "og:url", content: "https://emilydelacruz.com/" },
       {
         hid: "og:image",
         name: "og:image",
         content: "https://emilydelacruz.com/files/emily_dela_cruz_social.png"
+      },
+      {
+        hid: "og:image:width",
+        name: "og:image:width",
+        content: "1200"
+      },
+      {
+        hid: "og:image:height",
+        name: "og:image:height",
+        content: "630"
       },
       {
         hid: "og:description",

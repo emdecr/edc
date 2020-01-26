@@ -5,10 +5,8 @@
       <nuxt-link to="/" class="home-link-index">
         <img src="~/assets/images/connect-extend.svg" alt>
       </nuxt-link>
-      <span class="name">Emily Dela Cruz</span>
-      <span class="pronouns">
-        <a href="https://www.mypronouns.org/she-her" target="_blank">she/her</a>
-      </span>
+      <h1 class="name">Emily Dela Cruz</h1>
+      <a class="pronouns" href="https://www.mypronouns.org/she-her" target="_blank">she/her</a>
       <div class="content" v-html="page.content.rendered"></div>
       <nuxt-link to="/about">Learn more...</nuxt-link>
       <!-- <div class="btns">
@@ -84,12 +82,13 @@ main {
   padding-bottom: 100px;
 }
 
-span.name {
+.name {
   //   font-family: ff-more-web-pro, serif;
+  display: inline-block;
   font-weight: bold;
   font-style: normal;
   font-size: 30px;
-  color: rgb(37, 37, 37);
+  //   color: rgb(37, 37, 37);
 }
 
 .pronouns {

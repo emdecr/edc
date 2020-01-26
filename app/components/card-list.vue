@@ -45,6 +45,19 @@
           </nuxt-link>
         </template>
       </template>
+      <template v-else-if="path == 'writing'">
+        <template v-for="(item, i) in info">
+          <nuxt-link :to="'/'+path+'/'+item.slug" :key="'item-'+i">
+            <img
+              v-if="item.hasOwnProperty('_embedded')"
+              :src="lrgImage(item)"
+              :alt="item.title.rendered"
+            >
+            <h3 class="mono" v-html="item.title.rendered"></h3>
+            <span class="date mono">{{$moment(item.date).format('LL') }}</span>
+          </nuxt-link>
+        </template>
+      </template>
       <template v-else>
         <template v-for="(item, i) in info">
           <nuxt-link :to="'/'+path+'/'+item.slug" :key="'item-'+i">
@@ -122,6 +135,12 @@ export default {
 h3 {
   font-size: 1rem;
 }
+
+.date {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
 sup {
   color: #2196f3;
   font-weight: bold;
