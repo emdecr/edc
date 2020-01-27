@@ -3,7 +3,7 @@
     <h1>Projects</h1>
     <div class="content">
       <small>
-        <sup class="mono">*</sup> via
+        <sup class="mono">*</sup> Denotes a project via
         <a href="https://hypenotic.com" target="_blank">Hypenotic</a>. I had a hand in at least a large chunk of the code/thinking in these projects, but I'm happy to clarify which parts exactly.
       </small>
     </div>
