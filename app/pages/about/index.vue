@@ -128,7 +128,7 @@ h1 {
   }
 }
 
-h2 {
+.side h2 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
@@ -191,7 +191,8 @@ main {
   }
 
   .music-grid {
-    grid-template-columns: 2fr 8fr;
+    column-gap: 1rem;
+    grid-template-columns: 1fr 6fr;
   }
 }
 </style>
