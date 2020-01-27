@@ -236,8 +236,8 @@ blockquote + p {
 }
 
 /* CARD LIST */
-.project-container sup,
-.card-list-container sup {
+.project-container sup:not(.reg),
+.card-list-container sup:not(.reg) {
   color: #2196f3;
   font-weight: bold;
   font-size: 1rem;
