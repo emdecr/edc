@@ -242,3 +242,9 @@ blockquote + p {
   font-weight: bold;
   font-size: 1rem;
 }
+
+/* ABOUT */
+.side p {
+  font-size: 0.8rem;
+  /* line-height: 1.5; */
+}

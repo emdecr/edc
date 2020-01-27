@@ -120,8 +120,17 @@ h1 {
 }
 @media only screen and (min-width: 500px) {
   h1 {
-    display: none;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin-bottom: 0;
   }
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 main {
