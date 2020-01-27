@@ -146,7 +146,7 @@ main {
 }
 
 .side {
-  padding-top: 2rem;
+  padding-top: 2.8rem;
 }
 
 .skills,
