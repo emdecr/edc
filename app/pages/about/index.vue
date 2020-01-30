@@ -196,7 +196,7 @@ main {
 }
 
 .course-skill {
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 
 .bar-container {
