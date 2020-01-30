@@ -22,6 +22,22 @@
         <div class="learning">
           <h2 v-if="meta._page_learning_title !=''" v-html="meta._page_learning_title"></h2>
           <h2 v-else>Currently Learning</h2>
+          <template v-if="meta._page_learning.length > 0">
+            <ul class="course-list">
+              <li v-for="(course, i) in meta._page_learning" :key="'course'+i" class="mono">
+                <span v-html="course.label" class="bold"></span>
+                <div class="course-info">
+                  <span>Course:</span>
+                  <!-- <br> -->
+                  <a :href="course.course_link" v-html="course.course_name" class="course-name"></a>
+                  <div class="bar-container">
+                    <span class="_bar" :style="{ width: calcPercentage(course.course_percent)}"></span>
+                    <span class="_percent">{{calcPercentage(course.course_percent)}}</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </template>
           <div class="mono" v-html="meta._page_learning_text"></div>
         </div>
       </div>
@@ -92,6 +108,11 @@ export default {
     type(event) {
       let newType = event.type.replace(/([A-Z])/g, " $1").trim();
       return newType.replace(" Event", "");
+    },
+    calcPercentage(count) {
+      var percent = (count / 100) * 100;
+      var rounded = percent.toFixed(1);
+      return rounded + "%";
     }
   },
   computed: {
@@ -152,6 +173,47 @@ main {
 .skills,
 .resume {
   margin-bottom: 2rem;
+}
+
+.course-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  li {
+    font-size: 0.8rem;
+  }
+}
+
+.course-info {
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.course-name {
+  margin-top: 0.5rem;
+}
+
+.bar-container {
+  position: relative;
+  text-align: right;
+  padding: 0.1rem 0.6rem;
+  margin: 0.8rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid rgba(228, 228, 228, 0.5);
+}
+._bar {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  background: #e3e3e3;
+  height: 100%;
+  z-index: 0;
+}
+._percent {
+  font-size: 0.6rem;
 }
 
 .content {

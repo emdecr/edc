@@ -16,6 +16,10 @@ body {
   font-family: "input-mono", monospace;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 p {
   line-height: 1.5;
 }
