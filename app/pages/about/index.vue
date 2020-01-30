@@ -25,7 +25,7 @@
           <template v-if="meta._page_learning.length > 0">
             <ul class="course-list">
               <li v-for="(course, i) in meta._page_learning" :key="'course'+i" class="mono">
-                <span v-html="course.label" class="bold"></span>
+                <span v-html="course.label" class="bold course-skill"></span>
                 <div class="course-info">
                   <span>Course:</span>
                   <!-- <br> -->
@@ -181,7 +181,8 @@ main {
   padding: 0;
   margin-bottom: 1rem;
   li {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -192,6 +193,10 @@ main {
 
 .course-name {
   margin-top: 0.5rem;
+}
+
+.course-skill {
+  font-size: 1rem;
 }
 
 .bar-container {
