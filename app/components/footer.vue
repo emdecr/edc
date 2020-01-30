@@ -4,7 +4,7 @@
       <div>
         <p class="text-align--r">
           What's your story?
-          <br>What do you need a hand with?
+          <br>What do you need a help with?
           <br>
           <strong>Let's chat.</strong>
         </p>

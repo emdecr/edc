@@ -7,7 +7,8 @@ require_once('includes/functions/enqueue-script.php');
 require_once('includes/functions/metabox/cpt-posts.php');
 require_once('includes/functions/metabox/cpt-pages.php');
 require_once('includes/functions/metabox/cpt-shelf-item.php');
-require_once('includes/functions/metabox/cpt-project.php');require_once('includes/functions/metabox/mb-settings.php');
+require_once('includes/functions/metabox/cpt-project.php');
+require_once('includes/functions/metabox/cpt-read.php');require_once('includes/functions/metabox/mb-settings.php');
 
 // Add custom endpoints
 require_once('includes/functions/endpoints/pinterest.php');

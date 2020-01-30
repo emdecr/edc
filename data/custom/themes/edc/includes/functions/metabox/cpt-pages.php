@@ -74,6 +74,21 @@ function pages_meta_boxes( $meta_boxes) {
                         'id' => 'label',
                         'type' => 'text',
                     ),
+                    array (
+                        'name' => __( 'Course Name' ),
+                        'id' => 'course_name',
+                        'type' => 'text',
+                    ),
+                    array (
+                        'name' => __( 'Course Link' ),
+                        'id' => 'course_link',
+                        'type' => 'text',
+                    ),
+                    array (
+                        'name' => __( 'Course %' ),
+                        'id' => 'course_percent',
+                        'type' => 'text',
+                    ),
                 ),
             ),
             array(

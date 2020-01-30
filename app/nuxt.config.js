@@ -194,5 +194,11 @@ export default {
      */
 
     extend(config, ctx) {}
+  },
+  /*
+   ** Server configuration
+   */
+  server: {
+    port: 5500 // default: 3000
   }
 };
