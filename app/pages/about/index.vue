@@ -29,7 +29,12 @@
                 <div class="course-info">
                   <span>Course:</span>
                   <!-- <br> -->
-                  <a :href="course.course_link" v-html="course.course_name" class="course-name"></a>
+                  <a
+                    :href="course.course_link"
+                    v-html="course.course_name"
+                    class="course-name"
+                    target="_blank"
+                  ></a>
                   <div class="bar-container">
                     <span class="_bar" :style="{ width: calcPercentage(course.course_percent)}"></span>
                     <span class="_percent">{{calcPercentage(course.course_percent)}}</span>
