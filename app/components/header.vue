@@ -50,6 +50,7 @@ header {
   padding: 4rem 0;
   position: relative;
   z-index: 5;
+  background: white;
 }
 
 @media only screen and (max-width: 1024px) {
