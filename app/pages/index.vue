@@ -82,6 +82,12 @@ main {
   padding-bottom: 100px;
 }
 
+@media only screen and (max-width: 500px) {
+  .intro img {
+    padding-bottom: 50px;
+  }
+}
+
 .name {
   //   font-family: ff-more-web-pro, serif;
   display: inline-block;

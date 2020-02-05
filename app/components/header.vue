@@ -50,7 +50,6 @@ header {
   padding: 4rem 0;
   position: relative;
   z-index: 5;
-  background: white;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -67,6 +66,14 @@ header {
     position: fixed;
     bottom: 0;
     border-top: 1px solid #363636;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  @media only screen and (max-width: 500px) {
+    header {
+      background: white;
+    }
   }
 }
 
