@@ -7,7 +7,13 @@
         <a href="https://hypenotic.com" target="_blank">Hypenotic</a>. I had a hand in at least a large chunk of the code/thinking in these projects, but I'm happy to clarify which parts exactly.
       </small>
     </div>
-    <comp-cards class="project-cards" :info="projects" path="projects" children="yes"/>
+    <comp-cards
+      v-if="projects != null"
+      class="project-cards"
+      :info="projects"
+      path="projects"
+      children="yes"
+    />
   </main>
 </template>
 

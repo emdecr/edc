@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  props: ["error"]
+  props: ["error"],
+  loading: {
+    failedColor: "#e3e3e3"
+  }
   // layout: "" // you can set a custom layout for the error page
 };
 </script>

@@ -1,7 +1,13 @@
 <template>
   <main>
     <h1>Writing</h1>
-    <comp-cards class="writing-cards" :info="posts" path="writing" children="na"/>
+    <comp-cards
+      v-if="posts != null"
+      class="writing-cards"
+      :info="posts"
+      path="writing"
+      children="na"
+    />
   </main>
 </template>
 

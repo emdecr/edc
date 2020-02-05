@@ -48,22 +48,25 @@
       </div>
     </div>
 
-    <comp-shelf class="shelf" :shelf="shelf"/>
+    <comp-shelf v-if="shelf != null" class="shelf" :shelf="shelf"/>
 
     <div class="about-bottom grid">
       <section class="music">
         <h2>Recently played...</h2>
-        <div class="music-grid grid">
+        <div class="music-grid grid" v-if="music != null">
           <img :src="music.image" :alt="'Album art for '+music.name">
           <div class="music__deats">
             <span class="mono">{{music.artist}} | {{music.name}}</span>
           </div>
         </div>
+        <div v-else>
+          <p class="mono">Error loading track.</p>
+        </div>
       </section>
 
       <section class="github">
         <h2>Github activity</h2>
-        <ul>
+        <ul v-if="github != null">
           <template target="_blank" v-for="(event, i) in github">
             <li v-if="event.type == 'PushEvent'" :key="'event-'+i" class="mono">
               {{type(event)}} | R:
@@ -80,6 +83,7 @@
             </li>
           </template>
         </ul>
+        <p v-else class="mono">Error loading Github data.</p>
       </section>
     </div>
   </main>
@@ -92,10 +96,10 @@ export default {
     "comp-shelf": Shelf
   },
   async fetch({ store }) {
-    await store.dispatch("content/getGithub");
-    await store.dispatch("content/getMusic");
     await store.dispatch("content/getPages");
-    await store.dispatch("content/getWPShelfItems");
+    store.dispatch("content/getGithub");
+    store.dispatch("content/getMusic");
+    store.dispatch("content/getWPShelfItems");
   },
   head() {
     return {

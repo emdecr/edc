@@ -61,7 +61,8 @@ export const actions = {
           commit("setPosts", response);
         })
         .catch(function(error) {
-          console.log(error);
+          commit("setPosts", null);
+          // console.log(error);
         });
     }
   },
@@ -105,7 +106,8 @@ export const actions = {
           commit("setShelf", dataObj.data);
         })
         .catch(function(error) {
-          console.log(error);
+          commit("setShelf", null);
+          // console.log(error);
         });
     }
   },
@@ -120,7 +122,8 @@ export const actions = {
           commit("setWPShelf", response);
         })
         .catch(function(error) {
-          console.log(error);
+          // console.log(error);
+          commit("setWPShelf", null);
         });
     }
   },
@@ -135,7 +138,8 @@ export const actions = {
           commit("setFullShelf", response);
         })
         .catch(function(error) {
-          console.log(error);
+          // console.log(error);
+          commit("setFullShelf", null);
         });
     }
   },
@@ -161,7 +165,8 @@ export const actions = {
           commit("setMusic", trackInfo);
         })
         .catch(function(error) {
-          console.log(error);
+          commit("setMusic", null);
+          // console.log("Music error:" + error);
         });
     }
   },
@@ -173,7 +178,8 @@ export const actions = {
           commit("setGithub", response);
         })
         .catch(function(error) {
-          console.log(error);
+          commit("setGithub", null);
+          // console.log("Github error:" + error);
         });
     }
   }

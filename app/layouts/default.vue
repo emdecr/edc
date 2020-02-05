@@ -14,6 +14,9 @@
 import Header from "~/components/header.vue";
 import Footer from "~/components/footer.vue";
 export default {
+  loading: {
+    failedColor: "#e3e3e3"
+  },
   components: {
     "comp-header": Header,
     "comp-footer": Footer
