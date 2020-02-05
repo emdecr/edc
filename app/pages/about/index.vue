@@ -97,9 +97,9 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch("content/getPages");
-    store.dispatch("content/getGithub");
-    store.dispatch("content/getMusic");
-    store.dispatch("content/getWPShelfItems");
+    await store.dispatch("content/getGithub");
+    await store.dispatch("content/getMusic");
+    await store.dispatch("content/getWPShelfItems");
   },
   head() {
     return {
