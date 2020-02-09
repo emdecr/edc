@@ -25,7 +25,7 @@ function pages_meta_boxes( $meta_boxes) {
     );
 
     $meta_boxes[] = array(
-        'title'      => __( 'Skills', 'textdomain' ),
+        'title'      => __( 'Skills + Learning', 'textdomain' ),
         'post_types' => array( 'page' ),
         'context'    => 'normal',
         'include' => array(

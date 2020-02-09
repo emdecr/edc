@@ -58,7 +58,7 @@ header {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   header {
     width: 100vw;
     overflow-x: scroll;
@@ -70,9 +70,17 @@ header {
 }
 
 @media (prefers-color-scheme: light) {
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     header {
       background: white;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  @media only screen and (max-width: 600px) {
+    header {
+      background: #121212;
     }
   }
 }
@@ -90,7 +98,7 @@ ul {
   padding: 0;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
   ul {
     li:last-child {
       margin-right: 1rem;
@@ -108,7 +116,7 @@ ul {
   padding: 0;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .logo-home {
     display: none;
   }
@@ -137,7 +145,7 @@ a:not(.logo-home) {
   padding: 0rem 1.5rem 0.5rem;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   ul {
     justify-content: space-between;
     width: 100vw;
