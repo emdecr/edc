@@ -1,12 +1,7 @@
 <template>
   <main>
     <h1>Projects</h1>
-    <div class="content">
-      <small>
-        <sup class="mono">*</sup> Denotes a project via
-        <a href="https://hypenotic.com" target="_blank">Hypenotic</a>. I had a hand in at least a large chunk of the code/thinking in these projects, but I'm happy to clarify which parts exactly.
-      </small>
-    </div>
+    <div class="content" v-html="page.content.rendered"></div>
     <comp-cards
       v-if="projects != null"
       class="project-cards"
@@ -56,6 +51,9 @@ export default {
     }
   },
   computed: {
+    page() {
+      return this.$store.getters["content/getPages"]("projects");
+    },
     projects() {
       return this.$store.getters["content/getProjects"];
     }
@@ -72,11 +70,6 @@ main {
 .content {
   max-width: 650px;
   padding: 2rem 0;
-}
-
-sup {
-  color: #2196f3;
-  font-weight: bold;
-  font-size: 1rem;
+  font-size: smaller;
 }
 </style>
