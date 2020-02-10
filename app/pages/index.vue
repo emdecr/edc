@@ -1,7 +1,6 @@
 <template>
   <main class>
     <section class="intro">
-      <!-- <img src="~/assets/images/connect-extend.svg" alt> -->
       <nuxt-link to="/" class="home-link-index">
         <img src="~/assets/images/connect-extend.svg" alt>
       </nuxt-link>
@@ -9,10 +8,6 @@
       <a class="pronouns" href="https://www.mypronouns.org/she-her" target="_blank">she/her</a>
       <div class="content" v-html="page.content.rendered"></div>
       <nuxt-link to="/about">Learn more...</nuxt-link>
-      <!-- <div class="btns">
-        <nuxt-link class="btn" to="/about">My journey thus far...</nuxt-link>
-        <nuxt-link class="btn" to="/projects">Opportunities and challenges</nuxt-link>
-      </div>-->
     </section>
     <section class="projects">
       <h2>Projects</h2>
