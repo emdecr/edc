@@ -8,7 +8,6 @@ add_filter( 'rwmb_meta_boxes', function( $meta_boxes ) {
 		'keywords' 		  => ['annotation'],
 		'icon'            => 'admin-comments',
 		'category'        => 'layout',
-		'context'         => 'side',
 		'render_template' => get_template_directory() . '/includes/functions/metabox/blocks/annotation-template.php',
 		// 'enqueue_style'   => get_template_directory_uri() . '/includes/functions/metabox/blocks/annotation.css',
 		'supports' => [
