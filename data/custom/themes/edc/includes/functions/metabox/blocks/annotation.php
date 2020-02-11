@@ -64,8 +64,9 @@ add_filter( 'rwmb_meta_boxes', function( $meta_boxes ) {
             ],
             [
                 'name'       => 'Themes',
-                'id'         => 'annotation_text',
-                'type'       => 'taxonomy_advanced',
+                'id'         => 'annotation_themes',
+				'type'       => 'taxonomy_advanced',
+				'multiple'   => true,
 
                 // Taxonomy slug.
                 'taxonomy'   => 'theme',
