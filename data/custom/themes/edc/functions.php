@@ -18,4 +18,5 @@ require_once('includes/functions/endpoints/pinterest.php');
 
 // Enable Thumbnails
 add_theme_support('post-thumbnails'); 
+
 ?>
