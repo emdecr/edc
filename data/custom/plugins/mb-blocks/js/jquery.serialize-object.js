@@ -64,7 +64,7 @@
 
         // foo[n]
         else if (patterns.fixed.test(k)) {
-          value = build([], k, value);
+          value = build({}, 'mbb_' + k, value); // Hack: add 'mbb_' prefix to preserve the order of properties.
         }
 
         // foo; foo[bar]

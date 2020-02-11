@@ -5,6 +5,7 @@ add_filter( 'rwmb_meta_boxes', function( $meta_boxes ) {
 		'id'              => 'annotation',
 		'description'     => 'A paragraph block with an attached annotation',
 		'type'            => 'block',
+		'keywords' 		  => ['annotation'],
 		'icon'            => 'admin-comments',
 		'category'        => 'layout',
 		'context'         => 'side',

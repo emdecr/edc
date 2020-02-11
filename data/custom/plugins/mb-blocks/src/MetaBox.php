@@ -56,18 +56,18 @@ class MetaBox extends \RW_Meta_Box {
 	}
 
 	public function fetch() {
-		$block = filter_input( INPUT_GET, 'block', FILTER_SANITIZE_STRING );
+		$block = filter_input( INPUT_POST, 'block', FILTER_SANITIZE_STRING );
 		if ( $block !== "meta-box/$this->id" ) {
 			return;
 		}
 
-		$nonce = filter_input( INPUT_GET, 'nonce', FILTER_SANITIZE_STRING );
+		$nonce = filter_input( INPUT_POST, 'nonce', FILTER_SANITIZE_STRING );
 		if ( ! wp_verify_nonce( $nonce, 'fetch' ) ) {
 			return;
 		}
 
-		$mode       = filter_input( INPUT_GET, 'mode', FILTER_SANITIZE_STRING );
-		$attributes = isset( $_GET['attributes'] ) ? $_GET['attributes'] : [];
+		$mode       = filter_input( INPUT_POST, 'mode', FILTER_SANITIZE_STRING );
+		$attributes = isset( $_POST['attributes'] ) ? $_POST['attributes'] : [];
 		$attributes = wp_unslash( $attributes );
 		$this->set_block_data( $attributes );
 
@@ -93,7 +93,7 @@ class MetaBox extends \RW_Meta_Box {
 		// Alignment is handled by theme editor styles, it should not be outputted in block HTML when preview.
 		unset( $attributes['align'] );
 
-		$post_id = filter_input( INPUT_GET, 'post_id', FILTER_SANITIZE_NUMBER_INT );
+		$post_id = filter_input( INPUT_POST, 'post_id', FILTER_SANITIZE_NUMBER_INT );
 		$this->render_block( $attributes, true, $post_id );
 	}
 

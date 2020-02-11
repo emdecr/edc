@@ -2,7 +2,7 @@
 namespace MBBlocks;
 
 class Loader {
-	public function load() {
+	public function __construct() {
 		add_filter( 'rwmb_meta_box_class_name', array( $this, 'meta_box_class_name' ), 10, 2 );
 		add_filter( 'rwmb_meta_type', [ $this, 'change_meta_type' ], 10, 3 );
 		add_action( 'init', [ $this, 'register_assets' ] );

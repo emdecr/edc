@@ -9,6 +9,6 @@ class Storage {
 	}
 
 	public function get( $object_id, $name, $args = [] ) {
-		return isset( $this->data[$name] ) ? $this->data[$name] : null;
+		return isset( $this->data[$name] ) ? $this->data[$name] : false;
 	}
 }
