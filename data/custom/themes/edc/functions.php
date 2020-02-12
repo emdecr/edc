@@ -18,7 +18,4 @@ require_once('includes/functions/endpoints/pinterest.php');
 
 // Enable Thumbnails
 add_theme_support('post-thumbnails'); 
-
-// Load in custom editor styles and fxns
-require_once('includes/functions/editor.php');
 ?>
