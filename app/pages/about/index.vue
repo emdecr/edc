@@ -36,8 +36,8 @@
                     target="_blank"
                   ></a>
                   <div class="bar-container">
-                    <span class="_bar" :style="{ width: calcPercentage(course.course_percent)}"></span>
-                    <span class="_percent">{{calcPercentage(course.course_percent)}}</span>
+                    <span class="_bar" :style="{ width: course.course_percent + '%'}"></span>
+                    <span class="_percent">{{course.course_percent + '%'}}</span>
                   </div>
                 </div>
               </li>
@@ -117,11 +117,6 @@ export default {
     type(event) {
       let newType = event.type.replace(/([A-Z])/g, " $1").trim();
       return newType.replace(" Event", "");
-    },
-    calcPercentage(count) {
-      var percent = (count / 100) * 100;
-      var rounded = percent.toFixed(1);
-      return rounded + "%";
     }
   },
   computed: {

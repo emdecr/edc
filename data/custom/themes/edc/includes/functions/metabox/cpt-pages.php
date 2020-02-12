@@ -87,7 +87,8 @@ function pages_meta_boxes( $meta_boxes) {
                     array (
                         'name' => __( 'Course %' ),
                         'id' => 'course_percent',
-                        'type' => 'text',
+                        'desc' => 'Just the number.',
+                        'type' => 'number',
                     ),
                 ),
             ),

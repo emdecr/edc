@@ -55,7 +55,6 @@ add_filter( 'rwmb_meta_boxes', function( $meta_boxes ) {
 			[
 				'type' => 'wysiwyg',
 				'id'   => 'annotation_text',
-				'name' => 'Text',
             ],
             [
 				'type' => 'textarea',
