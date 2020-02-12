@@ -17,7 +17,7 @@ function mb_annotation_callback( $attributes, $is_preview = false, $post_id = nu
 		$class .= " align{$attributes['align']}";
 	}
 	?>
-	<div id="<?= $id ?>" class="<?= $class ?>" style="background-color: <?= mb_get_block_field( 'background_color' ) ?>">
+	<div id="<?= $id ?>" class="<?= $class ?>">
 		<div class="annotation-text">
 		<?php mb_the_block_field( 'annotation_text' ) ?>
 		</div>

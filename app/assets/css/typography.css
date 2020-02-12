@@ -264,9 +264,46 @@ blockquote + p {
   /* line-height: 1.5; */
 }
 
-/* Projects */
+/* PROJECTS */
 .large-asterisk {
   color: #2196f3;
   font-weight: bold;
   font-size: 1rem;
+}
+
+/* READS - annotations */
+.content.reads .annotation {
+  margin-bottom: 1rem;
+}
+
+.content.reads .annotation {
+  position: relative;
+}
+
+.content.reads .annotation-text span {
+  background: #bbdefb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .content.reads .annotation-text span {
+    background: #1976d2;
+  }
+}
+
+.annotation-body {
+  font-family: "input-mono", monospace;
+  font-size: 0.8rem;
+  background: #3d3d3d;
+  background: #bbdefb;
+  padding: 1rem;
+  position: absolute;
+  width: 300px;
+  right: calc(-300px + -2rem);
+  top: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .annotation-body {
+    background: #1976d2;
+  }
 }

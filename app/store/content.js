@@ -4,6 +4,7 @@ export const state = () => ({
   pages: [],
   posts: null,
   projects: null,
+  reads: null,
   shelf: null,
   wpShelf: null,
   fullShelf: null
@@ -26,6 +27,9 @@ export const mutations = {
   },
   setProjects(state, payload) {
     state.projects = payload;
+  },
+  setReads(state, payload) {
+    state.reads = payload;
   },
   setShelf(state, payload) {
     state.shelf = payload;
@@ -182,6 +186,21 @@ export const actions = {
           // console.log("Github error:" + error);
         });
     }
+  },
+  async getReads({ state, commit, dispatch }) {
+    if (state.reads == null) {
+      await this.$axios
+        .$get(
+          process.env.CMS_API_URL +
+            "wp-json/wp/v2/read?per_page=50&order=asc&_embed"
+        )
+        .then(function(response) {
+          commit("setReads", response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   }
 };
 
@@ -209,6 +228,9 @@ export const getters = {
   },
   getMusic(state) {
     return state.music;
+  },
+  getReads(state) {
+    return state.reads;
   },
   getGithub(state) {
     if (state.github != null) {
