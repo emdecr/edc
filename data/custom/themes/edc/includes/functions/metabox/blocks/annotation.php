@@ -26,7 +26,20 @@ function mb_annotation_callback( $attributes, $is_preview = false, $post_id = nu
 			<?php mb_the_block_field( 'annotation_note' ) ?>
 			</div>
 			<div class="annotation-themes">
-				
+				<ul>
+				<?php 
+				$themes = mb_the_block_field( 'annotation_themes' );
+				echo $themes;
+				if (is_array($themes) || is_object($themes))
+				{
+					foreach ($themes as $t)
+					{ 
+						$term = get_term_by('id', $t, 'theme');
+						?>
+					<li>boop</li>
+					<?php }
+				}?>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -42,7 +55,7 @@ add_filter( 'rwmb_meta_boxes', function( $meta_boxes ) {
 		'icon'            => 'admin-comments',
 		'category'        => 'layout',
 		'render_template' => get_template_directory() . '/includes/functions/metabox/blocks/annotation-template.php',
-		'render_callback' => 'mb_annotation_callback',
+		// 'render_callback' => 'mb_annotation_callback',
 		// 'enqueue_style'   => get_template_directory_uri() . '/includes/functions/metabox/blocks/annotation.css',
 		'supports' => [
             'align'           => ['wide', 'full'],

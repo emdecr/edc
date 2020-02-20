@@ -5,15 +5,6 @@
     <div class="grid">
       <div class="content" v-html="page.content.rendered"></div>
       <div class="side">
-        <div class="resume">
-          <h2>
-            <a :href="meta._page_resume" target="_blank">
-              Resume
-              <!-- <i class="material-icons">description</i> -->
-              <i class="material-icons">open_in_new</i>
-            </a>
-          </h2>
-        </div>
         <div class="skills">
           <h2 v-if="meta._page_skills_title !=''" v-html="meta._page_skills_title"></h2>
           <h2 v-else>Key Skills</h2>
@@ -36,8 +27,8 @@
                     target="_blank"
                   ></a>
                   <div class="bar-container">
-                    <span class="_bar" :style="{ width: course.course_percent + '%'}"></span>
-                    <span class="_percent">{{course.course_percent + '%'}}</span>
+                    <span class="_bar" :style="{ width: course.course_percent + ' %'}"></span>
+                    <span class="_percent">{{course.course_percent + ' %'}}</span>
                   </div>
                 </div>
               </li>
@@ -171,7 +162,7 @@ main {
 }
 
 .side {
-  padding-top: 2.8rem;
+  padding-top: 2.6rem;
 }
 
 .skills,

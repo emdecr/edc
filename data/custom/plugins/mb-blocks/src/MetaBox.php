@@ -6,6 +6,7 @@ class MetaBox extends \RW_Meta_Box {
 
 	public static function normalize( $meta_box ) {
 		$meta_box = parent::normalize( $meta_box );
+
 		$meta_box = wp_parse_args( $meta_box, [
 			'description' => '',
 			'icon'        => 'schedule',
@@ -13,6 +14,17 @@ class MetaBox extends \RW_Meta_Box {
 			'keywords'    => [],
 			'supports'    => [],
 		] );
+
+		// Block preview.
+		if ( empty( $meta_box['preview'] ) ) {
+			return $meta_box;
+		}
+		$meta_box['example'] = [
+			'attributes' => [
+				'data' => $meta_box['preview'],
+			],
+		];
+		unset( $meta_box['preview'] );
 
 		return $meta_box;
 	}
@@ -99,7 +111,6 @@ class MetaBox extends \RW_Meta_Box {
 
 	private function set_block_data( $attributes ) {
 		$attributes['name'] = $this->id;
-
 		$data = isset( $attributes['data'] ) ? $attributes['data'] : [];
 		$this->storage->set_data( $data );
 		ActiveBlock::set_block_name( $this->id );

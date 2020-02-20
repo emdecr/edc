@@ -3,12 +3,13 @@
 require_once('includes/functions/enqueue-style.php');
 require_once('includes/functions/enqueue-script.php');
 
-// Load metabox custom fields
+// Load metabox customization
 require_once('includes/functions/metabox/cpt-posts.php');
 require_once('includes/functions/metabox/cpt-pages.php');
 require_once('includes/functions/metabox/cpt-shelf-item.php');
 require_once('includes/functions/metabox/cpt-project.php');
-require_once('includes/functions/metabox/cpt-read.php');require_once('includes/functions/metabox/mb-settings.php');
+require_once('includes/functions/metabox/cpt-read.php');
+require_once('includes/functions/metabox/mb-settings.php');
 
 // Load metabox custom blocks
 require_once('includes/functions/metabox/blocks/annotation.php');

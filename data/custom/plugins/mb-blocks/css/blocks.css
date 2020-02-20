@@ -51,6 +51,7 @@
 	font-size: 13px;
 	letter-spacing: 0;
 	text-transform: none;
+	margin: 0;
 }
 .editor-styles-wrapper .rwmb-group-remove {
 	color: #a00;
