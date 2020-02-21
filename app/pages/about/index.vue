@@ -19,7 +19,6 @@
                 <span v-html="course.label" class="bold course-skill"></span>
                 <div class="course-info">
                   <span>Course:</span>
-                  <!-- <br> -->
                   <a
                     :href="course.course_link"
                     v-html="course.course_name"
@@ -27,7 +26,7 @@
                     target="_blank"
                   ></a>
                   <div class="bar-container">
-                    <span class="_bar" :style="{ width: course.course_percent + ' %'}"></span>
+                    <span class="_bar" :style="{ width: course.course_percent + '%'}"></span>
                     <span class="_percent">{{course.course_percent + ' %'}}</span>
                   </div>
                 </div>
