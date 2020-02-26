@@ -13,7 +13,7 @@
         rel
       >
         <div class="shelf-item__content text-align--c">
-          <span class="text-align--c" v-html="item.title.rendered"></span>
+          <span class="text-align--c bold" v-html="item.title.rendered"></span>
           <img
             v-if="item.hasOwnProperty('_embedded')"
             :src="image(item)"
@@ -21,7 +21,11 @@
           >
         </div>
         <div class="shelf-item__bottom"></div>
-        <span class="text-align--c time-ago">Added {{$moment(item.date).fromNow() }}</span>
+        <span class="text-align--c time-ago">
+          Added {{$moment(item.date).fromNow() }} on
+          <br>
+          {{$moment(item.date).format('ll') }}
+        </span>
       </a>
     </div>
     <div class="flex-all flex--jc-c flex--ai-c">
@@ -146,7 +150,7 @@ export default {
 // .shelf-item__content span
 .shelf-item span {
   font-family: "input-mono", monospace;
-  font-weight: 100;
+  // font-weight: 100;
   font-style: normal;
   font-size: 0.7rem;
   margin-bottom: 0.5rem;
