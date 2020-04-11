@@ -9,6 +9,7 @@ require_once('includes/functions/metabox/cpt-pages.php');
 require_once('includes/functions/metabox/cpt-shelf-item.php');
 require_once('includes/functions/metabox/cpt-project.php');
 require_once('includes/functions/metabox/cpt-read.php');
+require_once('includes/functions/metabox/cpt-life.php');
 require_once('includes/functions/metabox/mb-settings.php');
 
 // Load metabox custom blocks
