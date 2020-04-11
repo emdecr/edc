@@ -16,6 +16,7 @@ require_once('includes/functions/metabox/mb-settings.php');
 require_once('includes/functions/metabox/blocks/annotation.php');
 
 // Load custom endpoints
+require_once('includes/functions/endpoints/life-overview.php');
 require_once('includes/functions/endpoints/pinterest.php');
 
 // Enable Thumbnails

@@ -7,8 +7,8 @@ class life_overview_custom_route extends WP_REST_Controller {
 	public function register_routes() {
 		$version = '1';
 		$namespace = 'edc/v' . $version;
-		$weather = 'life';
-        register_rest_route( $namespace, '/' . $weather, array(
+		$life = 'life';
+        register_rest_route( $namespace, '/' . $life, array(
 			array(
 				'methods'         => WP_REST_Server::READABLE,
 				'callback'        => array( $this, 'get_life_records' ),
