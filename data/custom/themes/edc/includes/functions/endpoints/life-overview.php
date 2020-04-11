@@ -33,18 +33,44 @@ class life_overview_custom_route extends WP_REST_Controller {
 		// $payload 	= $request->get_params();
 
 		$args = array(
-			'post_type' => array( 'life-record' )
+			'post_type' => array( 'life-record' ),
+			'post_status' => array( 'publish' ),
+			'posts_per_page' => -1,
 		);
 		
 		$the_query = new WP_Query( $args );
-        
-        $data = array();
 
+		$results = $the_query->posts;
+
+		function getWeek($dateString) {
+			$weekNum = (strtotime( $dateString ) - strtotime( '1991-08-24 00:00:00' )) / 604800;
+			return $weekNum;
+		}
+
+		$finalArr = array();
+
+		foreach ($results as $r) {
+			$newObj = new stdClass();
+			// Work with the date
+			$date = $r->post_date;
+			$dateObj = new DateTime($r->post_date); 
+			$formattedDate = date_format($dateObj, 'F j, Y');
+			$week = getWeek($date);
+			$roundedWeek = round($week, 0);
+			// Add key/value pairs to object
+			$newObj->week = $roundedWeek;
+			$newObj->date = $formattedDate;
+			$newObj->header = $r->post_title;
+			$newObj->content = $r->post_content;
+			// Push the object into the final response array
+			array_push($finalArr, $newObj);
+		}
+		
 		return new WP_REST_Response( 
             array(
                 'status' => 200,
                 'response' => "Success!",
-                'body_response' => $the_query
+                'body_response' => $finalArr
             ) 
         );
 	}
