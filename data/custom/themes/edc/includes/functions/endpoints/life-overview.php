@@ -60,8 +60,8 @@ class life_overview_custom_route extends WP_REST_Controller {
 			$dateObj = new DateTime($r->post_date); 
 			$formattedDate = date_format($dateObj, 'F j, Y');
 			$week = getWeek($date);
-			// Why is this off by ~5 weeks?
-			$roundedWeek = round($week, 0) - 5;
+			// Why is this off by ~3 weeks?
+			$roundedWeek = round($week, 0) - 3;
 			// Heading Check
 			$altHeading = get_post_meta($r->ID, '_life_record_heading', true);
 			$heading = $altHeading != '' ? $altHeading : $r->post_title;
