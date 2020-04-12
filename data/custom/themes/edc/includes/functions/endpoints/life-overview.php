@@ -57,10 +57,13 @@ class life_overview_custom_route extends WP_REST_Controller {
 			$formattedDate = date_format($dateObj, 'F j, Y');
 			$week = getWeek($date);
 			$roundedWeek = round($week, 0);
+			// Heading Check
+			$altHeading = get_post_meta($r->ID, '_life_record_heading', true);
+			$heading = $altHeading != '' ? $altHeading : $r->post_title;
 			// Add key/value pairs to object
 			$newObj->week = $roundedWeek;
 			$newObj->date = $formattedDate;
-			$newObj->header = $r->post_title;
+			$newObj->title = $heading;
 			$newObj->content = $r->post_content;
 			// Push the object into the final response array
 			array_push($finalArr, $newObj);

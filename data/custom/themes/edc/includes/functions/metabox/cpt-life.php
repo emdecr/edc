@@ -11,6 +11,11 @@ function life_meta_boxes( $meta_boxes) {
         'priority'   => '',
         'fields' => array(
             array(
+                'id'   => $prefix . 'heading',
+                'name' => __( 'Alt Heading', 'textdomain' ),
+                'type' => 'textarea',
+            ),
+            array(
                 'id'   => $prefix . 'link',
                 'name' => __( 'Link', 'textdomain' ),
                 'type' => 'text',
