@@ -44,6 +44,10 @@ class life_overview_custom_route extends WP_REST_Controller {
 
 		function getWeek($dateString) {
 			$weekNum = (strtotime( $dateString ) - strtotime( '1991-08-24 00:00:00' )) / 604800;
+			// $startDate = new DateTime("1991-08-24");
+			// $endDate = new DateTime($dateString);
+			// $interval = $startDate->diff($endDate);
+			// $weekNum =  (int)(($interval->days) / 7);
 			return $weekNum;
 		}
 
@@ -56,7 +60,8 @@ class life_overview_custom_route extends WP_REST_Controller {
 			$dateObj = new DateTime($r->post_date); 
 			$formattedDate = date_format($dateObj, 'F j, Y');
 			$week = getWeek($date);
-			$roundedWeek = round($week, 0);
+			// Why is this off by ~4 weeks?
+			$roundedWeek = round($week, 0) - 4;
 			// Heading Check
 			$altHeading = get_post_meta($r->ID, '_life_record_heading', true);
 			$heading = $altHeading != '' ? $altHeading : $r->post_title;
