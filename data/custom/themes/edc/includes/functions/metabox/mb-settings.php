@@ -47,8 +47,8 @@ function edc_options_meta_boxes( $meta_boxes ) {
 
         'fields' => array(
             array(
-                'name' => 'API Key',
-                'id'   => 'api_key',
+                'name' => 'Life API Key',
+                'id'   => 'life_api_key',
                 'type' => 'text',
             ),
         ),

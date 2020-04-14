@@ -10,7 +10,7 @@ class life_overview_custom_route extends WP_REST_Controller {
 		$life = 'life';
         register_rest_route( $namespace, '/' . $life, array(
 			array(
-				'methods'         => WP_REST_Server::READABLE,
+				'methods'         => WP_REST_Server::CREATABLE,
 				'callback'        => array( $this, 'get_life_records' ),
 				'permission_callback' => array( $this, 'get_life_records_permissions_check' )
 			),
@@ -90,6 +90,22 @@ class life_overview_custom_route extends WP_REST_Controller {
 	 * @return WP_Error|bool
 	*/
 	public function get_life_records_permissions_check( $request ) {
+		// Get the the value of 'life_key' sent with request body
+		$key = $request['life_key'];
+
+		// Get the value of 'life_api_key' stored in the DB in settings
+		// Set an empty string if the field doesn't exist
+		$settings = get_option( 'edc_ops' );
+		$field_id = 'life_api_key';
+		$val = isset( $settings[$field_id] ) ? $settings[$field_id] : '';
+		
+		// Check if the value in request body matches value in the DB
+		// If they do not match, respond with an error
+		if ( $key !== $val ) {
+			return new WP_Error( 'rest_forbidden', esc_html__( 'Data unavailable.', 'my-text-domain' ), array( 'status' => 401 ) );
+		}
+
+		// If they do match, return true and continue on to the callback function
 		return true;
 	}
 
