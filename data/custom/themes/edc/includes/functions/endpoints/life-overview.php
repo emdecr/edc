@@ -99,7 +99,7 @@ class life_overview_custom_route extends WP_REST_Controller {
 	*/
 	public function get_life_records_permissions_check( $request ) {
 		// Get the the value of 'life_key' sent with request body
-		$key = $request['life_key'];
+		$key = $request['api_key'];
 
 		// Get the value of 'life_api_key' stored in the DB in settings
 		// Set an empty string if the field doesn't exist
