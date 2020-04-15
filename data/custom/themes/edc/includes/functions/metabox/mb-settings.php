@@ -52,6 +52,13 @@ function edc_options_meta_boxes( $meta_boxes ) {
                 'type' => 'text',
             ),
         ),
+        'fields' => array(
+            array(
+                'name' => '?',
+                'id'   => 'knock_three_times',
+                'type' => 'text',
+            ),
+        ),
     );
 
     $meta_boxes[] = array(

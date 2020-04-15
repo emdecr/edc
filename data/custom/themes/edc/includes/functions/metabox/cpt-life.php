@@ -20,6 +20,11 @@ function life_meta_boxes( $meta_boxes) {
                 'name' => __( 'Link', 'textdomain' ),
                 'type' => 'text',
             ),
+            array(
+                'id'   => $prefix . 'extra_content',
+                'name' => __( 'Extra Content', 'textdomain' ),
+                'type' => 'wysiwyg',
+            ),
         ),
     );
 
