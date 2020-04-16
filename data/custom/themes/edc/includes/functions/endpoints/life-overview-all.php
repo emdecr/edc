@@ -7,7 +7,7 @@ class life_overview_all_custom_route extends WP_REST_Controller {
 	public function register_routes() {
 		$version = '1';
 		$namespace = 'edc/v' . $version;
-		$life = 'life/all';
+		$life = 'full-life';
         register_rest_route( $namespace, '/' . $life, array(
 			array(
 				'methods'         => WP_REST_Server::CREATABLE,
