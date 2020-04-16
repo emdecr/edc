@@ -50,7 +50,7 @@ class life_overview_all_custom_route extends WP_REST_Controller {
 			$formattedDate = date_format($dateObj, 'F j, Y');
 			$week = getWeek($date);
 			// Why is this off by ~3 weeks?
-			$roundedWeek = round($week, 0) - 3;
+			$roundedWeek = round($week, 0) == 0 ? 0 : round($week, 0) - 3;
 			// Heading Check
 			$altHeading = get_post_meta($r->ID, '_life_record_heading', true);
             $heading = $altHeading != '' ? $altHeading : $r->post_title;
