@@ -49,8 +49,8 @@ class life_overview_all_custom_route extends WP_REST_Controller {
 			$dateObj = new DateTime($r->post_date); 
 			$formattedDate = date_format($dateObj, 'F j, Y');
 			$week = getWeek($date);
-			// Why is this off by ~5 weeks?
-			$roundedWeek = round($week, 0) - 5;
+			// Why is this off by ~3 weeks?
+			$roundedWeek = round($week, 0) - 3;
 			// Heading Check
 			$altHeading = get_post_meta($r->ID, '_life_record_heading', true);
             $heading = $altHeading != '' ? $altHeading : $r->post_title;
@@ -87,14 +87,13 @@ class life_overview_all_custom_route extends WP_REST_Controller {
         // This is where the auth creds go
 		// Included in the gitignore (must be created manually)
 		include('endpoint_vars.php');
+		// $KNOCK_PATTERN
 
-		// Set var for POST request data body
-        // $payload 	= $request->get_params();
         
-		// Get the the value of 'life_key' sent with request body
-		$key = $request['knock_three_times'];
+		// Get the the value of key sent with request body
+		$key = $request['api_key'];
 
-		// Get the value of 'life_api_key' stored in the DB in settings
+		// Get the value of key stored in the DB in settings
 		// Set an empty string if the field doesn't exist
 		$settings = get_option( 'edc_ops' );
 		$field_id = 'knock_three_times';

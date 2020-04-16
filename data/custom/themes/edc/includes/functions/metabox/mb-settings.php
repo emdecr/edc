@@ -12,7 +12,7 @@ function edc_options_page( $settings_pages ) {
         'tabs'          => array(
             'general'   => 'General',
             'footer'    => 'Footer',
-            'api'       => 'API',
+            'api'       => 'APIs',
             'pinterest' => 'Pinterest',
             'weather'   => 'Weather'
         ),
