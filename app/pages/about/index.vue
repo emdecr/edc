@@ -26,7 +26,9 @@
                     target="_blank"
                   ></a>
                   <div class="bar-container">
-                    <span class="_bar" :style="{ width: course.course_percent + '%'}"></span>
+                    <div class="bar">
+                      <span class="bar-progress" :style="{ width: course.course_percent + '%'}"></span>
+                    </div>
                     <span class="_percent">{{course.course_percent + ' %'}}</span>
                   </div>
                 </div>
@@ -194,16 +196,24 @@ main {
 }
 
 .bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+
+.bar {
+  width: 80%;
   position: relative;
+  height: 15px;
   text-align: right;
   padding: 0.1rem 0.6rem;
-  margin: 0.8rem 0 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   border: 1px solid rgba(228, 228, 228, 0.5);
 }
-._bar {
+.bar-progress {
   position: absolute;
   left: 0;
   width: 50%;
