@@ -18,7 +18,10 @@
               <li v-for="(course, i) in meta._page_learning" :key="'course'+i" class="mono">
                 <span v-html="course.label" class="bold course-skill"></span>
                 <div class="course-info">
-                  <span>Course:</span>
+                  <span>
+                    <strong>Course:</strong>
+                  </span>
+                  <br>
                   <a
                     :href="course.course_link"
                     v-html="course.course_name"
@@ -36,6 +39,34 @@
             </ul>
           </template>
           <div class="mono" v-html="meta._page_learning_text"></div>
+          <template v-if="meta.hasOwnProperty('_page_learning_done')">
+            <template v-if="meta._page_learning_done.length > 0">
+              <h3>Recently Completed Courses</h3>
+              <ul class="course-list">
+                <li v-for="(course, i) in meta._page_learning_done" :key="'course'+i" class="mono">
+                  <span v-html="course.label" class="bold course-skill"></span>
+                  <div class="course-completion">
+                    <p>
+                      <strong>Course</strong>:
+                      <br>
+                      <a
+                        :href="course.course_link"
+                        v-html="course.course_name"
+                        class="course-name"
+                        target="_blank"
+                      ></a>
+                    </p>
+                    <p>
+                      <strong>Date</strong>:
+                      <br>
+                      {{course.course_date}}
+                    </p>
+                    <a :href="course.course_cert" class="course-name" target="_blank">Certificate</a>
+                  </div>
+                </li>
+              </ul>
+            </template>
+          </template>
         </div>
       </div>
     </div>
@@ -150,6 +181,12 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.side h3 {
+  font-size: 1.05rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
 main {
   max-width: 1000px;
   margin: 0 auto;
@@ -182,9 +219,20 @@ main {
   }
 }
 
-.course-info {
+.course-info,
+.course-completion {
   padding-left: 1rem;
   margin-top: 0.5rem;
+}
+
+.course-completion {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+
+  p {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
 }
 
 .course-name {
@@ -203,9 +251,9 @@ main {
 }
 
 .bar {
-  width: 80%;
+  width: 85%;
   position: relative;
-  height: 15px;
+  height: 12px;
   text-align: right;
   padding: 0.1rem 0.6rem;
   display: flex;

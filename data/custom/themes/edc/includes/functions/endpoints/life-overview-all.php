@@ -56,7 +56,7 @@ class life_overview_all_custom_route extends WP_REST_Controller {
             $heading = $altHeading != '' ? $altHeading : $r->post_title;
             // Extra Content Check
             $extraContent = get_post_meta($r->ID, '_life_record_extra_content', true);
-            $extraContentCheck = $extraContent != '' ? $extraContent : '';
+            $extraContentCheck = $extraContent != '' ? $extraContent : false;
 			// Add key/value pairs to object
 			$newObj->week = $roundedWeek;
 			$newObj->date = $formattedDate;
@@ -86,12 +86,11 @@ class life_overview_all_custom_route extends WP_REST_Controller {
 
         // This is where the auth creds go
 		// Included in the gitignore (must be created manually)
-		include('endpoint_vars.php');
-		// $KNOCK_PATTERN
-
+		include('endpoint_vars.php'); // $KNOCK_PATTERN
         
 		// Get the the value of key sent with request body
 		$key = $request['api_key'];
+		$serverKey = $request['ep_key'];
 
 		// Get the value of key stored in the DB in settings
 		// Set an empty string if the field doesn't exist
@@ -101,7 +100,7 @@ class life_overview_all_custom_route extends WP_REST_Controller {
 		
 		// Check if the value in request body matches value in the DB
 		// If they do not match, respond with an error
-		if ( $key !== $val ) {
+		if ( $key !== $val && $serverKey !== $KNOCK_PATTERN) {
 			return new WP_Error( 'rest_forbidden', esc_html__( 'Nothing to see here.', 'my-text-domain' ), array( 'status' => 401 ) );
 		}
 
