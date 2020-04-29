@@ -47,6 +47,10 @@ body {
   margin: 0 auto;
 }
 
+.container {
+  max-width: 600px;
+}
+
 /* FLEXBOX */
 .flex-all {
   display: flex;

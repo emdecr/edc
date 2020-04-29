@@ -1,7 +1,12 @@
 <template>
   <section class="the-shelf">
     <h2 v-if="$route.path == '/about'">The Shelf</h2>
-    <p>Work that stirred up a reaction in me. Happiness, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
+    <p
+      class="container"
+    >Select work that stirred up a reaction in me. Happiness, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
+    <!-- <p class="container">
+      <span class="material-icons">info</span> = denotes hover-over note
+    </p>-->
     <div class="shelf-container grid">
       <a
         :href="item.meta_box._shelf_item_link"
@@ -26,6 +31,15 @@
           <br>
           {{$moment(item.date).format('ll') }}
         </span>
+        <div v-if="item.content.rendered" class="reaction-indicator">
+          <span class="material-icons">info</span>
+        </div>
+        <div v-if="item.content.rendered" class="reaction-overlay mono">
+          <p class="heading">
+            <strong>Reaction:</strong>
+          </p>
+          <div v-html="item.content.rendered"></div>
+        </div>
       </a>
     </div>
     <div class="flex-all flex--jc-c flex--ai-c">
@@ -174,5 +188,46 @@ span.time-ago {
   margin: 1rem 0 0 0;
   opacity: 0.6;
   font-size: 0.6rem;
+}
+
+.shelf-item {
+  position: relative;
+  .heading {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.reaction-overlay {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background: #1976d2;
+  top: -2%;
+  z-index: 10;
+  width: 100%;
+  height: 104%;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  transition: opacity 0.2s ease;
+}
+
+.shelf-item:hover .reaction-overlay,
+.shelf-item:active .reaction-overlay,
+.shelf-item:focus .reaction-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reaction-indicator {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  text-align: right;
+  span {
+    font-family: "Material Icons";
+    color: #1976d2;
+    font-size: 20px;
+  }
 }
 </style>
