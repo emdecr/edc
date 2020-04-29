@@ -1,7 +1,7 @@
 <template>
   <section class="the-shelf">
     <h2 v-if="$route.path == '/about'">The Shelf</h2>
-    <p>Work that has both touched and taught me.</p>
+    <p>Work that stirred up a reaction in me. Happiness, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
     <div class="shelf-container grid">
       <a
         :href="item.meta_box._shelf_item_link"
