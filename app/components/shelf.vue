@@ -3,10 +3,7 @@
     <h2 v-if="$route.path == '/about'">The Shelf</h2>
     <p
       class="container"
-    >Select work that stirred up a reaction in me. Happiness, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
-    <!-- <p class="container">
-      <span class="material-icons">info</span> = denotes hover-over note
-    </p>-->
+    >Select work that really stirred up a reaction. Hope, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
     <div class="shelf-container grid">
       <a
         :href="item.meta_box._shelf_item_link"
@@ -32,12 +29,12 @@
           {{$moment(item.date).format('ll') }}
         </span>
         <div v-if="item.content.rendered" class="reaction-indicator">
-          <span class="material-icons">info</span>
+          <span class="material-icons">textsms</span>
         </div>
         <div v-if="item.content.rendered" class="reaction-overlay mono">
-          <p class="heading">
+          <!-- <p class="heading">
             <strong>Reaction:</strong>
-          </p>
+          </p>-->
           <div v-html="item.content.rendered"></div>
         </div>
       </a>
@@ -228,6 +225,13 @@ span.time-ago {
     font-family: "Material Icons";
     color: #1976d2;
     font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .reaction-overlay,
+  .reaction-indicator {
+    display: none;
   }
 }
 </style>
