@@ -47,7 +47,7 @@ class life_overview_all_custom_route extends WP_REST_Controller {
 			// Work with the date
 			$date = $r->post_date;
 			$dateObj = new DateTime($r->post_date); 
-			$formattedDate = date_format($dateObj, 'F j, Y');
+			$formattedDate = date_format($dateObj, 'M j, Y');
 			$week = getWeek($date);
 			// Why is this off by ~3 weeks?
 			$roundedWeek = round($week, 0) == 0 ? 0 : round($week, 0) - 3;
