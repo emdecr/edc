@@ -175,14 +175,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: ["@nuxtjs/axios", "@nuxtjs/dotenv", "@nuxtjs/moment"],
-  buildModules: [
-    [
-      "@nuxtjs/google-analytics",
-      {
-        id: "UA-56305018-1"
-      }
-    ]
-  ],
   /*
    ** Build configuration
    */
