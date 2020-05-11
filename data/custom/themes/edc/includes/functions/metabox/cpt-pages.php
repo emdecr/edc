@@ -75,11 +75,6 @@ function pages_meta_boxes( $meta_boxes) {
                 'name' => __( 'Learning Title', 'textdomain' ),
                 'type' => 'text',
             ),
-            array(
-                'id'   => $prefix . 'learning_text',
-                'name' => __( 'Learning Text', 'textdomain' ),
-                'type' => 'wysiwyg',
-            ),
             array (
                 'id' => $prefix . 'learning',
                 'type' => 'group',
@@ -111,6 +106,11 @@ function pages_meta_boxes( $meta_boxes) {
                         'type' => 'number',
                     ),
                 ),
+            ),
+            array(
+                'id'   => $prefix . 'learning_text',
+                'name' => __( 'Learning Text', 'textdomain' ),
+                'type' => 'wysiwyg',
             ),
             array (
                 'id' => $prefix . 'learning_done',
