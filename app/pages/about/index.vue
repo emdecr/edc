@@ -34,6 +34,9 @@
                     </div>
                     <span class="_percent">{{course.course_percent + ' %'}}</span>
                   </div>
+                  <span v-if="course.course_date">
+                    <strong>Updated: {{course.course_date}}</strong>
+                  </span>
                 </div>
               </li>
             </ul>

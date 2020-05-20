@@ -105,6 +105,11 @@ function pages_meta_boxes( $meta_boxes) {
                         'desc' => 'Just the number.',
                         'type' => 'number',
                     ),
+                    array (
+                        'name' => __( 'Progress Updated Date' ),
+                        'id' => 'course_date',
+                        'type' => 'text',
+                    )
                 ),
             ),
             array(
