@@ -34,8 +34,9 @@
                     </div>
                     <span class="_percent">{{course.course_percent + ' %'}}</span>
                   </div>
-                  <span v-if="course.course_date">
-                    <strong>Updated: {{course.course_date}}</strong>
+                  <span class="course-updated" v-if="course.course_date">
+                    <strong>Updated:</strong>
+                    {{course.course_date}}
                   </span>
                 </div>
               </li>
@@ -238,12 +239,17 @@ main {
   }
 }
 
-.course-name {
+.course-name,
+.course-updated {
   margin-top: 0.5rem;
 }
 
 .course-skill {
   font-size: 0.85rem;
+}
+
+.course-updated {
+  display: block;
 }
 
 .bar-container {
