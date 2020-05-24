@@ -3,7 +3,7 @@
     <h2 v-if="$route.path == '/about'">The Shelf</h2>
     <p
       class="container"
-    >Select work that really stirred up a reaction. Hope, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
+    >Select work that stirred up a reaction. Hope, sadness, anger, curiosity, gratitude, unabashed joy, etc.</p>
     <div class="shelf-container grid">
       <a
         :href="item.meta_box._shelf_item_link"

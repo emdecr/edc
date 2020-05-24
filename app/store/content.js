@@ -192,7 +192,7 @@ export const actions = {
       await this.$axios
         .$get(
           process.env.CMS_API_URL +
-            "wp-json/wp/v2/read?per_page=50&order=asc&_embed"
+            "wp-json/wp/v2/read?per_page=50&order=desc&_embed"
         )
         .then(function(response) {
           commit("setReads", response);

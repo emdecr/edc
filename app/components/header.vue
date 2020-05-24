@@ -21,6 +21,9 @@
           <li>
             <nuxt-link to="/writing">Writing</nuxt-link>
           </li>
+          <li>
+            <nuxt-link to="/reads">Reads</nuxt-link>
+          </li>
           <!-- <li><a href="https://theswell.space" target="_blank">The Swell Space</a></li> -->
           <li>
             <nuxt-link to="#contact">Contact</nuxt-link>

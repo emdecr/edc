@@ -58,6 +58,23 @@
           </nuxt-link>
         </template>
       </template>
+      <template v-else-if="path == 'reads'">
+        <template v-for="(item, i) in info">
+          <nuxt-link
+            :to="'/'+path+'/'+$moment(item.date).format('YYYY')+'/'+item.slug"
+            :key="'item-'+i"
+            class="reads-link"
+          >
+            <img
+              v-if="item.hasOwnProperty('_embedded')"
+              :src="lrgImage(item)"
+              :alt="item.title.rendered"
+            >
+            <h3 class="mono" v-html="item.title.rendered"></h3>
+            <span class="date mono">{{$moment(item.date).format('LL') }}</span>
+          </nuxt-link>
+        </template>
+      </template>
       <template v-else>
         <template v-for="(item, i) in info">
           <nuxt-link :to="'/'+path+'/'+item.slug" :key="'item-'+i">
@@ -174,6 +191,10 @@ img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.reads-link img {
+  object-fit: contain;
 }
 
 .card-list-container {
