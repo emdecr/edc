@@ -28,13 +28,8 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/writing">
-              <a className="no-border">Writing</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/reads">
-              <a className="no-border">Reads</a>
+            <Link href="/records">
+              <a className="no-border">Records</a>
             </Link>
           </li>
           <li>
@@ -53,9 +48,9 @@ export default function Header() {
           margin: 0;
           padding: 0;
           //   grid-column-start: 7;
-          grid-column: 7 / span 6;
+          grid-column: 8 / span 5;
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
           grid-gap: 10px;
         }
         li {

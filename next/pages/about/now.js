@@ -15,13 +15,13 @@ export default function AboutNow({ data }) {
 
       <main className="container container--grid" id="main-content">
         <div className="grid--span-all name">
-          <h1>About – Now</h1>
-          <nav className="mono">
+          <h1>About</h1>
+          <nav className="sub-nav mono">
             <Link href="/about">
               <a>General</a>
             </Link>
             <Link href="/about/now">
-              <a>Now</a>
+              <a className="active">Now</a>
             </Link>
 
             <a href="https://emilydelacruz.com/life-overview" target="_blank">

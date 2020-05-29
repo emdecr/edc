@@ -16,9 +16,9 @@ export default function About({ data }) {
       <main className="container container--grid" id="main-content">
         <div className="grid--span-all name">
           <h1>About</h1>
-          <nav className="mono">
+          <nav className="sub-nav mono">
             <Link href="/about">
-              <a>General</a>
+              <a className="active">General</a>
             </Link>
             <Link href="/about/now">
               <a>Now</a>

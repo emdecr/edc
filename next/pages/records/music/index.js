@@ -1,16 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
-import DefaultLayout from "../components/layouts/Default";
+import DefaultLayout from "../../components/layouts/Default";
 
-export default function Projects() {
+export default function Music() {
   return (
     <DefaultLayout>
       <Head>
-        <title>Reads – Emily Dela Cruz</title>
+        <title>Music – Emily Dela Cruz</title>
       </Head>
 
       <main className="container">
-        <h1>Reads</h1>
+        <h1>Music</h1>
       </main>
 
       <style jsx>{``}</style>
