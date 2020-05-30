@@ -70,7 +70,7 @@ function read_meta_boxes( $meta_boxes) {
             
                 // Date picker options. See here http://api.jqueryui.com/datepicker
                 'js_options' => array(
-                    'dateFormat'      => 'yyyy-mm-dd',
+                    'dateFormat'      => 'yy-mm-dd',
                     'showButtonPanel' => false,
                 ),
             
