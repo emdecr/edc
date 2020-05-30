@@ -73,6 +73,14 @@ class MB_Rest_API {
 				'update_callback' => array( $this, 'update_user_meta' ),
 			)
 		);
+		register_rest_field(
+			'comment',
+			'meta_box',
+			array(
+				'get_callback'    => array( $this, 'get_comment_meta' ),
+				'update_callback' => array( $this, 'update_comment_meta' ),
+			)
+		);
 	}
 
 	/**
@@ -84,11 +92,10 @@ class MB_Rest_API {
 	 */
 	public function get_post_meta( $object ) {
 		$meta_boxes = rwmb_get_registry( 'meta_box' )->get_by( array( 'object_type' => 'post' ) );
-		foreach ( $meta_boxes as $key => $meta_box ) {
-			if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
-				unset( $meta_boxes[ $key ] );
-			}
-		}
+		$meta_boxes = array_filter( $meta_boxes, function( $meta_box ) use ( $object ) {
+			return in_array( $object['type'], $meta_box->post_types, true );
+		} );
+
 		return $this->get_values( $meta_boxes, $object['id'] );
 	}
 
@@ -99,17 +106,14 @@ class MB_Rest_API {
 	 * @param object       $object Post object.
 	 */
 	public function update_post_meta( $data, $object ) {
-		if ( is_string( $data ) ) {
-			$data = json_decode( $data, true );
-			if ( JSON_ERROR_NONE !== json_last_error() ) {
-				return;
-			}
-		}
+		$data = is_string( $data ) ? json_decode( $data, true ) : $data;
 
 		foreach ( $data as $field_id => $value ) {
 			$field = rwmb_get_registry( 'field' )->get( $field_id, $object->post_type );
 			$this->update_value( $field, $value, $object->ID );
 		}
+
+		do_action( 'rwmb_after_save_post', $object->ID );
 	}
 
 	/**
@@ -120,21 +124,10 @@ class MB_Rest_API {
 	 * @return array
 	 */
 	public function get_term_meta( $object ) {
-		$output = array();
-		if ( ! class_exists( 'MB_Term_Meta_Box' ) ) {
-			return $output;
-		}
-
-		$meta_boxes = rwmb_get_registry( 'meta_box' )->get_by(
-			array(
-				'object_type' => 'term',
-			)
-		);
-		foreach ( $meta_boxes as $key => $meta_box ) {
-			if ( ! in_array( $object['taxonomy'], $meta_box->taxonomies, true ) ) {
-				unset( $meta_boxes[ $key ] );
-			}
-		}
+		$meta_boxes = rwmb_get_registry( 'meta_box' )->get_by( array( 'object_type' => 'term' ) );
+		$meta_boxes = array_filter( $meta_boxes, function( $meta_box ) use ( $object ) {
+			return in_array( $object['taxonomy'], $meta_box->taxonomies, true );
+		} );
 
 		return $this->get_values( $meta_boxes, $object['id'], array( 'object_type' => 'term' ) );
 	}
@@ -146,17 +139,14 @@ class MB_Rest_API {
 	 * @param object       $object Term object.
 	 */
 	public function update_term_meta( $data, $object ) {
-		if ( is_string( $data ) ) {
-			$data = json_decode( $data, true );
-			if ( JSON_ERROR_NONE !== json_last_error() ) {
-				return;
-			}
-		}
+		$data = is_string( $data ) ? json_decode( $data, true ) : $data;
 
 		foreach ( $data as $field_id => $value ) {
 			$field = rwmb_get_registry( 'field' )->get( $field_id, $object->taxonomy, 'term' );
 			$this->update_value( $field, $value, $object->term_id );
 		}
+
+		do_action( 'rwmb_after_save_post', $object->term_id );
 	}
 
 	/**
@@ -167,17 +157,7 @@ class MB_Rest_API {
 	 * @return array
 	 */
 	public function get_user_meta( $object ) {
-		$output = array();
-		if ( ! class_exists( 'MB_User_Meta_Box' ) ) {
-			return $output;
-		}
-
-		$meta_boxes = rwmb_get_registry( 'meta_box' )->get_by(
-			array(
-				'object_type' => 'user',
-			)
-		);
-
+		$meta_boxes = rwmb_get_registry( 'meta_box' )->get_by( array( 'object_type' => 'user' ) );
 		return $this->get_values( $meta_boxes, $object['id'], array( 'object_type' => 'user' ) );
 	}
 
@@ -188,17 +168,44 @@ class MB_Rest_API {
 	 * @param object       $object User object.
 	 */
 	public function update_user_meta( $data, $object ) {
-		if ( is_string( $data ) ) {
-			$data = json_decode( $data, true );
-			if ( JSON_ERROR_NONE !== json_last_error() ) {
-				return;
-			}
-		}
+		$data = is_string( $data ) ? json_decode( $data, true ) : $data;
 
 		foreach ( $data as $field_id => $value ) {
 			$field = rwmb_get_registry( 'field' )->get( $field_id, 'user', 'user' );
 			$this->update_value( $field, $value, $object->ID );
 		}
+
+		do_action( 'rwmb_after_save_post', $object->ID );
+	}
+
+	/**
+	 * Get comment meta for the rest API.
+	 *
+	 * @param array $object Comment object.
+	 *
+	 * @return array
+	 */
+	public function get_comment_meta( $object ) {
+		$meta_boxes = rwmb_get_registry( 'meta_box' )->get_by( array( 'object_type' => 'comment' ) );
+		return $this->get_values( $meta_boxes, $object['id'], array( 'object_type' => 'comment' ) );
+	}
+
+	/**
+	 * Update comment meta for the rest API.
+	 *
+	 * @param string|array $data   Comment meta values in either JSON or array format.
+	 * @param object       $object Comment object.
+	 */
+	public function update_comment_meta( $data, $object ) {
+		$data = is_string( $data ) ? json_decode( $data, true ) : $data;
+
+		foreach ( $data as $field_id => $value ) {
+			$field = rwmb_get_registry( 'field' )->get( $field_id, 'comment', 'comment' );
+
+			$this->update_value( $field, $value, $object->comment_ID );
+		}
+
+		do_action( 'rwmb_after_save_post', $object->comment_ID );
 	}
 
 	/**
@@ -210,16 +217,8 @@ class MB_Rest_API {
 	 */
 	protected function update_value( $field, $value, $object_id ) {
 		$old = RWMB_Field::call( $field, 'raw_meta', $object_id );
-		$new = $value;
 
-		// Allow field class change the value.
-		if ( $field['clone'] ) {
-			$new = RWMB_Clone::value( $new, $old, $object_id, $field );
-		} else {
-			$new = RWMB_Field::call( $field, 'value', $new, $old, $object_id );
-			$new = RWMB_Field::filter( 'sanitize', $new, $field );
-		}
-		$new = RWMB_Field::filter( 'value', $new, $field, $old );
+		$new = RWMB_Field::process_value( $value, $object_id, $field );
 		$new = RWMB_Field::filter( 'rest_value', $new, $field, $old, $object_id );
 
 		// Call defined method to save meta value, if there's no methods, call common one.
@@ -262,7 +261,11 @@ class MB_Rest_API {
 		foreach ( $meta_boxes as $meta_box ) {
 			$fields = array_merge( $fields, $meta_box->fields );
 		}
-		$fields = array_filter( $fields, array( $this, 'has_value' ) );
+
+		// Remove fields with no values.
+		$fields = array_filter( $fields, function( $field ) {
+			return ! empty( $field['id'] ) && ! in_array( $field['type'], $this->no_value_fields, true );
+		} );
 
 		$values = array();
 		foreach ( $fields as $field ) {
@@ -276,17 +279,7 @@ class MB_Rest_API {
 	}
 
 	/**
-	 * Check if a field has values.
-	 *
-	 * @param array $field Field settings.
-	 * @return bool
-	 */
-	public function has_value( $field ) {
-		return ! empty( $field['id'] ) && ! in_array( $field['type'], $this->no_value_fields, true );
-	}
-
-	/**
-	 * Normalize group value.
+	 * Normalize value.
 	 *
 	 * @param  array $field Field settings.
 	 * @param  mixed $value Field value.
