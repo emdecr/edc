@@ -1,0 +1,95 @@
+a {
+  border-bottom: 3px solid #0070f3;
+  text-decoration: none;
+}
+
+.sub-nav a {
+  border-bottom: 2px solid #afafaf;
+}
+
+.sub-nav a:hover {
+  border-bottom: 2px solid #0071f3bb;
+}
+
+.sub-nav a.active {
+  border-bottom: 2px solid #0071f3cc;
+  font-weight: 500;
+}
+
+a.no-border {
+  border-bottom: none;
+}
+
+a:hover {
+  border-bottom: 3px solid #0071f3bb;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Skip to content link */
+/* Using @reach/skip-nav */
+
+[data-reach-skip-nav-link] {
+  background: #0071f3;
+  left: calc(50% - 50px);
+  color: white;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+[data-reach-skip-nav-link]:focus {
+  transform: translateY(0%);
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* font-family: kepler-std, serif; */
+  font-weight: 700;
+  font-style: normal;
+}
+
+a {
+  color: rgb(37, 37, 37);
+}
+
+.mono {
+  font-family: "input-mono", monospace;
+}
+
+/* QUOTES */
+blockquote {
+  font-size: 1.3rem;
+  border-left: 4px solid rgba(0, 0, 0, 0.5);
+  margin-left: 2rem;
+  padding: 2rem 0 2rem 2rem;
+}
+
+blockquote cite {
+  font-size: 12px;
+  opacity: 0.8;
+  font-family: "input-mono", monospace;
+}
+
+p + blockquote,
+h1 + blockquote,
+h2 + blockquote,
+h3 + blockquote,
+h4 + blockquote {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+blockquote + p {
+  margin-top: 2rem;
+}

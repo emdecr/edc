@@ -1,0 +1,85 @@
+/* Layout */
+
+.container {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container--grid {
+  /* display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-gap: 10px; */
+}
+
+.grid--start-1 {
+  grid-column-start: 1;
+}
+.grid--span-3 {
+  grid-column: 1 / span 3;
+}
+.grid--span-4 {
+  grid-column: 1 / span 4;
+}
+.grid--span-6 {
+  grid-column: 1 / span 6;
+}
+.grid--span-7 {
+  grid-column: 1 / span 7;
+}
+.grid--span-all {
+  grid-column: 1 / span 12;
+}
+
+.grid--start-2 {
+  grid-column-start: 2;
+}
+
+.grid--start-3 {
+  grid-column-start: 3;
+}
+
+.grid--start-4 {
+  grid-column-start: 4;
+}
+
+.grid--start-5 {
+  grid-column-start: 5;
+}
+
+.grid--start-6 {
+  grid-column-start: 6;
+}
+
+/* Grid Overlay */
+.grid {
+  position: fixed;
+  width: calc(100vw - 100px);
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-gap: 10px;
+  margin: 0 50px;
+  z-index: -1;
+  display: none;
+}
+
+.grid > div {
+  background-color: rgba(0, 0, 0, 0.05);
+  /* border-right: 1px solid red;
+    border-left: 1px solid red; */
+  height: 100vh;
+}
+
+@media only screen and (min-width: 500px) {
+  .container {
+    padding: 0 50px;
+  }
+  .container--grid {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-gap: 10px;
+  }
+}

@@ -5,8 +5,19 @@ import { SkipNavLink } from "@reach/skip-nav";
 export default function Header() {
   const router = useRouter();
 
+  const getHomeClass = () => {
+    if (router.pathname === "/") {
+      return "active";
+    } else {
+      return null;
+    }
+  };
+
   const getClass = linkRoute => {
-    if (linkRoute === router.pathname) {
+    if (
+      linkRoute === router.pathname ||
+      router.pathname.indexOf(linkRoute) > -1
+    ) {
       return "active";
     } else {
       return null;
@@ -18,14 +29,14 @@ export default function Header() {
       <SkipNavLink>Skip to content</SkipNavLink>
       <nav className="main container--grid">
         <Link href="/">
-          <a className="no-border">
+          <a className="no-border logo">
             <img src="/connect-extend.svg" alt="logo" />
           </a>
         </Link>
         <ul className="mono">
           <li>
             <Link href="/">
-              <a className={`${getClass("/")} no-border`}>Home</a>
+              <a className={`${getHomeClass()} no-border`}>Home</a>
             </Link>
           </li>
           <li>
@@ -71,6 +82,11 @@ export default function Header() {
         img {
           width: 50px;
           height: auto;
+        }
+        .logo:hover,
+        .logo:active,
+        .logo:focus {
+          border-bottom: none;
         }
         a.active {
           border-bottom: 3px solid #0071f3cc;
