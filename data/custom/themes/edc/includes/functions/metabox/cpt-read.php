@@ -11,7 +11,7 @@ function read_meta_boxes( $meta_boxes) {
         'fields' => array(
             array(
                 'name'   => 'Author',
-                $prefix . 'authors',
+                'id'     => $prefix . 'authors',
                 'type'   => 'group',
                 'collapsible' => true,
                 'clone'  => true,
