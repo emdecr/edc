@@ -10,6 +10,58 @@ function read_meta_boxes( $meta_boxes) {
         'priority'   => '',
         'fields' => array(
             array(
+                'name'   => 'Author(s)', // Optional
+                'id'     => 'authors',
+                'type'   => 'group',
+                'collapsible' => true,
+                'group_title' => array( 'field' => 'last_name' ), 
+                'save_state' => false,
+                // List of sub-fields
+                'fields' => array(
+                    array(
+                        'name' => 'First Name',
+                        'id'   => 'first_name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'name' => 'Last Name',
+                        'id'   => 'last_name',
+                        'type' => 'text',
+                    )
+                ),
+            ),
+            array(
+                'name'   => 'Editor(s)', // Optional
+                'id'     => 'editors',
+                'type'   => 'group',
+                'collapsible' => true,
+                'group_title' => array( 'field' => 'last_name' ), 
+                'save_state' => false,
+                // List of sub-fields
+                'fields' => array(
+                    array(
+                        'name' => 'First Name',
+                        'id'   => 'first_name',
+                        'type' => 'text',
+                    ),
+                    array(
+                        'name' => 'Last Name',
+                        'id'   => 'last_name',
+                        'type' => 'text',
+                    )
+                ),
+            ),
+            array(
+                'id'   => $prefix . 'publisher',
+                'name' => __( 'Publisher', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
+                'id'   => $prefix . 'date',
+                'name' => __( 'Release Date', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
                 'id'   => $prefix . 'link',
                 'name' => __( 'External Link', 'textdomain' ),
                 'type' => 'text',
