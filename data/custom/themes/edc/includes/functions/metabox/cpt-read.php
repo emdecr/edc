@@ -11,7 +11,7 @@ function read_meta_boxes( $meta_boxes) {
         'fields' => array(
             array(
                 'name'   => 'Author',
-                'id'     => 'authors',
+                $prefix . 'authors',
                 'type'   => 'group',
                 'collapsible' => true,
                 'clone'  => true,
@@ -33,7 +33,7 @@ function read_meta_boxes( $meta_boxes) {
             ),
             array(
                 'name'   => 'Editor',
-                'id'     => 'editors',
+                'id'     => $prefix . 'editors',
                 'type'   => 'group',
                 'collapsible' => true,
                 'clone'  => true,
@@ -59,9 +59,26 @@ function read_meta_boxes( $meta_boxes) {
                 'type' => 'text',
             ),
             array(
-                'id'   => $prefix . 'date',
-                'name' => __( 'Release Date', 'textdomain' ),
+                'id'   => $prefix . 'year',
+                'name' => __( 'Release Year', 'textdomain' ),
                 'type' => 'text',
+            ),
+            array(
+                'name'       => 'Release Date',
+                'id'         => $prefix . 'date',
+                'type'       => 'date',
+            
+                // Date picker options. See here http://api.jqueryui.com/datepicker
+                'js_options' => array(
+                    'dateFormat'      => 'yyyy-mm-dd',
+                    'showButtonPanel' => false,
+                ),
+            
+                // Display inline?
+                'inline' => false,
+            
+                // Save value as timestamp?
+                'timestamp' => false,
             ),
             array(
                 'id'   => $prefix . 'link',
