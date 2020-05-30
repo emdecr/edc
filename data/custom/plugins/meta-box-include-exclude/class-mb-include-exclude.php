@@ -8,14 +8,6 @@
  */
 
 /**
- * Control the include, exclude condition for meta boxes
- *
- * @link       https://metabox.io/plugins/meta-box-include-exclude/
- * @package    Meta Box
- * @subpackage Meta Box Include Exclude
- */
-
-/**
  * Class MB_Include_Exclude
  */
 class MB_Include_Exclude {
@@ -70,7 +62,7 @@ class MB_Include_Exclude {
 		// For better loop of checking terms.
 		unset( $conditions['relation'] );
 
-		$check_by = array( 'ID', 'parent', 'slug', 'template', 'user_role', 'user_id', 'custom', 'is_child', 'edited_user_role', 'edited_user_id' );
+		$check_by = array( 'ID', 'parent', 'slug', 'template', 'user_role', 'user_id', 'custom', 'is_child', 'edited_user_role', 'edited_user_id', 'capability' );
 		foreach ( $check_by as $by ) {
 			$func = "check_{$by}";
 			if ( ! isset( $conditions[ $by ] ) || ! method_exists( __CLASS__, $func ) ) {
@@ -139,7 +131,7 @@ class MB_Include_Exclude {
 	 * @return bool
 	 */
 	protected static function check_ID( $ids ) {
-		return in_array( self::$post_id, self::csv_to_array( $ids ) );
+		return in_array( self::$post_id, RWMB_Helpers_Array::from_csv( $ids ) );
 	}
 
 	/**
@@ -152,7 +144,7 @@ class MB_Include_Exclude {
 	protected static function check_parent( $ids ) {
 		$post = get_post( self::$post_id );
 
-		return $post && in_array( $post->post_parent, self::csv_to_array( $ids ) );
+		return $post && in_array( $post->post_parent, RWMB_Helpers_Array::from_csv( $ids ) );
 	}
 
 	/**
@@ -165,7 +157,7 @@ class MB_Include_Exclude {
 	protected static function check_slug( $slugs ) {
 		$post = get_post( self::$post_id );
 
-		return $post && in_array( $post->post_name, self::csv_to_array( $slugs ) );
+		return $post && in_array( $post->post_name, RWMB_Helpers_Array::from_csv( $slugs ) );
 	}
 
 	/**
@@ -178,7 +170,7 @@ class MB_Include_Exclude {
 	protected static function check_template( $templates ) {
 		$template = get_post_meta( self::$post_id, '_wp_page_template', true );
 
-		return in_array( $template, self::csv_to_array( $templates ) );
+		return in_array( $template, RWMB_Helpers_Array::from_csv( $templates ) );
 	}
 
 	/**
@@ -190,7 +182,7 @@ class MB_Include_Exclude {
 	 * @return bool
 	 */
 	protected static function check_terms( $taxonomy, $terms ) {
-		$terms = self::csv_to_array( $terms );
+		$terms = RWMB_Helpers_Array::from_csv( $terms );
 
 		$post_terms = wp_get_post_terms( self::$post_id, $taxonomy );
 		if ( is_wp_error( $post_terms ) || ! is_array( $post_terms ) || empty( $post_terms ) ) {
@@ -215,7 +207,7 @@ class MB_Include_Exclude {
 	 * @return bool
 	 */
 	protected static function check_parent_terms( $taxonomy, $terms ) {
-		$terms = self::csv_to_array( $terms );
+		$terms = RWMB_Helpers_Array::from_csv( $terms );
 
 		$post_terms = wp_get_post_terms( self::$post_id, $taxonomy );
 		if ( is_wp_error( $post_terms ) || ! is_array( $post_terms ) || empty( $post_terms ) ) {
@@ -236,6 +228,25 @@ class MB_Include_Exclude {
 	}
 
 	/**
+	* Check if current user has one of specified capabilities.
+	*
+	* @param array|string $capabilities List of user capabilities. Array or CSV.
+	* @return bool
+	*/
+	protected static function check_capability( $capabilities ) {
+		$user = wp_get_current_user();
+		$capabilities = array_map( 'strtolower', RWMB_Helpers_Array::from_csv( $capabilities ) );
+
+		foreach ( $capabilities as $capability ) {
+			if ( $user->has_cap( $capability ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Check by current user role.
 	 *
 	 * @param array|string $roles List of user roles. Array or CSV.
@@ -244,7 +255,7 @@ class MB_Include_Exclude {
 	 */
 	protected static function check_user_role( $roles ) {
 		$user = wp_get_current_user();
-		$roles = array_map( 'strtolower', self::csv_to_array( $roles ) );
+		$roles = array_map( 'strtolower', RWMB_Helpers_Array::from_csv( $roles ) );
 		$roles = array_intersect( $user->roles, $roles );
 		return ! empty( $roles );
 	}
@@ -258,7 +269,7 @@ class MB_Include_Exclude {
 	 */
 	protected static function check_user_id( $user_ids ) {
 		$user_id = get_current_user_id();
-		return in_array( $user_id, self::csv_to_array( $user_ids ) );
+		return in_array( $user_id, RWMB_Helpers_Array::from_csv( $user_ids ) );
 	}
 
 	/**
@@ -277,7 +288,7 @@ class MB_Include_Exclude {
 			$user_id = intval( $_REQUEST['user_id'] );
 			$user    = get_userdata( $user_id );
 
-			$roles = array_map( 'strtolower', self::csv_to_array( $roles ) );
+			$roles = array_map( 'strtolower', RWMB_Helpers_Array::from_csv( $roles ) );
 			$roles = array_intersect( $user->roles, $roles );
 
 			return ! empty( $roles );
@@ -300,7 +311,7 @@ class MB_Include_Exclude {
 			// If edit other's profile, check edited user.
 			$user_id = intval( $_REQUEST['user_id'] );
 
-			return in_array( $user_id, self::csv_to_array( $user_ids ) );
+			return in_array( $user_id, RWMB_Helpers_Array::from_csv( $user_ids ) );
 		} elseif ( isset( $GLOBALS['pagenow'] ) && 'profile.php' === $GLOBALS['pagenow'] ) {
 			// If edit profile, check current user.
 			return self::check_user_id( $user_ids );
@@ -346,17 +357,6 @@ class MB_Include_Exclude {
 		}
 		$post_id = isset( $_GET['post'] ) ? $_GET['post'] : ( isset( $_POST['post_ID'] ) ? $_POST['post_ID'] : false );
 		return is_numeric( $post_id ) ? absint( $post_id ) : false;
-	}
-
-	/**
-	 * Convert a comma separated string to array.
-	 *
-	 * @param string $string Comma separated string.
-	 *
-	 * @return array
-	 */
-	protected static function csv_to_array( $string ) {
-		return is_array( $string ) ? $string : array_filter( array_map( 'trim', explode( ',', $string . ',' ) ) );
 	}
 
 	/**
