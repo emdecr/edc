@@ -145,6 +145,10 @@ class MetaBox extends \RW_Meta_Box {
 		if ( $this->enqueue_assets && is_callable( $this->enqueue_assets ) ) {
 			call_user_func( $this->enqueue_assets );
 		}
+
+		if ( false !== strpos( $this->icon, 'fa-' ) ) {
+			wp_enqueue_style( 'fontawesome-free', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css', [], '5.13.0' );
+		}
 	}
 
 	public function get_storage() {

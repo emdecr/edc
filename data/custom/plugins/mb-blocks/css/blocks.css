@@ -58,14 +58,15 @@
 }
 
 /* Sidebar */
-.edit-post-sidebar .components-panel__body .rwmb-meta-box {
-	margin-top: 16px;
+.edit-post-sidebar .components-panel .rwmb-meta-box {
+	padding: 16px;
+	border-top: 1px solid #ddd;
 }
-.edit-post-sidebar .components-panel__body .rwmb-label,
-.edit-post-sidebar .components-panel__body .rwmb-input {
+.edit-post-sidebar .components-panel .rwmb-label,
+.edit-post-sidebar .components-panel .rwmb-input {
 	width: 100%;
 }
-.edit-post-sidebar .components-panel__body .rwmb-label {
+.edit-post-sidebar .components-panel .rwmb-label {
 	margin-bottom: 3px;
 }
 
