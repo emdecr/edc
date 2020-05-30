@@ -2,39 +2,36 @@
 namespace MBSP;
 
 class MetaBox extends \RW_Meta_Box {
-	protected $object_type = 'setting';
-	private $page_args;
-	private $storage;
+	protected $pages = [];
 
-	public function __construct( $meta_box ) {
-		parent::__construct( $meta_box );
-		$this->meta_box['settings_pages'] = (array) $this->meta_box['settings_pages'];
+	public function __construct( $args ) {
+		$args['settings_pages'] = (array) $args['settings_pages'];
+		$this->setup( $args );
+		parent::__construct( $args );
+	}
+
+	protected function setup( $args ) {
+		$this->pages       = Factory::get( $args['settings_pages'], 'normal' );
+		$this->object_type = 'setting';
 	}
 
 	protected function object_hooks() {
-		add_action( 'mb_settings_page_init', array( $this, 'set_page_args' ) );
 		add_action( 'mb_settings_page_load', array( $this, 'load' ) );
 
-		// Register fields must run after init page args.
-		add_action( 'init', array( $this, 'register_fields' ), 30 );
-	}
-
-	public function set_page_args( $page_args ) {
-		if ( in_array( $page_args['id'], $this->settings_pages, true ) ) {
-			$this->page_args = $page_args;
-		}
+		if ( $this->tab ) {
+ 			add_action( "rwmb_before_{$this->id}", array( $this, 'show_tab' ) );
+ 		}
 	}
 
 	public function load( $page_args ) {
 		static $message_shown = false;
 
-		if ( ! in_array( $page_args['id'], $this->meta_box['settings_pages'] ) ) {
+		if ( ! in_array( $page_args['id'], $this->settings_pages ) ) {
 			return;
 		}
 
-		// Reset page args and object ID for the current settings page.
-		$this->page_args = $page_args;
-		$this->set_object_id( $page_args['option_name'] );
+		$object_id = $page_args['option_name'];
+		$this->set_object_id( $object_id );
 
 		// Add meta boxes.
 		add_meta_box(
@@ -47,48 +44,50 @@ class MetaBox extends \RW_Meta_Box {
 		);
 
 		// Save options.
-		if ( empty( $_POST['submit'] ) ) {
+		if ( empty( $_POST['submit'] ) || $page_args['is_imported'] ) {
 			return;
 		}
 
-		$this->save_post( $page_args['option_name'] );
+		$this->save_post( $object_id );
 
 		// Compatible with old hook.
-		$data = get_option( $page_args['option_name'], array() );
-		$data = apply_filters( 'mb_settings_pages_data', $data, $page_args['option_name'] );
-		update_option( $page_args['option_name'], $data );
+		$data = get_option( $object_id, array() );
+		$data = apply_filters( 'mb_settings_pages_data', $data, $object_id );
+		update_option( $object_id, $data );
 
 		// Prevent duplicate messages.
 		if ( ! $message_shown ) {
-			add_settings_error( $page_args['id'], 'saved', $page_args['message'], 'updated' );
+			add_settings_error( '', 'saved', $page_args['message'], 'updated' );
 			$message_shown = true;
 		}
 	}
 
-	public function get_storage() {
-		if ( null === $this->storage ) {
-			$this->storage = new Storage;
-		}
-		return $this->storage;
-	}
-
 	public function is_edit_screen( $screen = null ) {
-		return in_array( $this->page_args['id'], $this->settings_pages, true );
+		if ( ! ( $screen instanceof \WP_Screen ) ) {
+			$screen = get_current_screen();
+		}
+
+		return in_array( $screen->id, wp_list_pluck( $this->pages, 'page_hook' ), true );
 	}
 
-	protected function get_current_object_id() {
-		return $this->page_args['option_name'];
+	public function show_tab() {
+		echo '<script type="text/html" class="rwmb-settings-tab" data-tab="', esc_attr( $this->tab ), '"></script>';
+	}
+
+	public function get_storage() {
+		return (new Storage);
 	}
 
 	public function register_fields() {
-		if ( ! $this->page_args ) {
-			return;
-		}
+		$registry = rwmb_get_registry( 'field' );
+		foreach ( $this->pages as $page ) {
+			foreach ( $this->meta_box['fields'] as &$field ) {
+				$registry->add( $field, $page->option_name, $this->object_type );
 
-		$field_registry = rwmb_get_registry( 'field' );
-
-		foreach ( $this->fields as $field ) {
-			$field_registry->add( $field, $this->page_args['option_name'], 'setting' );
+				if ( isset( $field['type'] ) && 'backup' === $field['type'] ) {
+					$field['option_name'] = $page->option_name;
+				}
+			}
 		}
 	}
 }

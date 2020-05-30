@@ -2,7 +2,7 @@
 namespace MBSP;
 
 class Loader {
-	public function init() {
+	public function __construct() {
 		$this->register_settings_pages();
 
 		add_filter( 'rwmb_meta_box_class_name', array( $this, 'meta_box_class_name' ), 10, 2 );
@@ -10,27 +10,36 @@ class Loader {
 		add_filter( 'rwmb_meta_type', array( $this, 'filter_meta_type' ), 10, 3 );
 	}
 
-	public function register_settings_pages() {
+	private function register_settings_pages() {
 		$settings_pages = apply_filters( 'mb_settings_pages', array() );
 
 		if ( empty( $settings_pages ) || ! is_array( $settings_pages ) ) {
 			return;
 		}
 
-		foreach ( $settings_pages as $settings_page ) {
-			new SettingsPage( $settings_page );
-		}
+		array_walk( $settings_pages, [Factory::class, 'make'] );
 	}
 
 	/**
 	 * Filter meta box class name.
 	 *
 	 * @param  string $class_name Meta box class name.
-	 * @param  array  $meta_box   Meta box data.
+	 * @param  array  $args       Meta box settings.
 	 * @return string
 	 */
-	public function meta_box_class_name( $class_name, $meta_box ) {
-		return isset( $meta_box['settings_pages'] ) ? __NAMESPACE__ . '\MetaBox' : $class_name;
+	public function meta_box_class_name( $class_name, $args ) {
+		if ( isset( $args['panel'] ) ) {
+			return __NAMESPACE__ . '\Customizer\NormalSection';
+		}
+
+		if ( empty( $args['settings_pages'] ) ) {
+			return $class_name;
+		}
+		if ( Factory::get( $args['settings_pages'], 'network' ) ) {
+			return __NAMESPACE__ . '\Network\MetaBox';
+		}
+
+		return __NAMESPACE__ . '\MetaBox';
 	}
 
 	/**
@@ -44,6 +53,6 @@ class Loader {
 	 * @return string
 	 */
 	public function filter_meta_type( $type, $object_type, $object_id ) {
-		return 'setting' === $object_type ? $object_id : $type;
+		return in_array( $object_type, ['setting', 'network_setting'] ) ? $object_id : $type;
 	}
 }

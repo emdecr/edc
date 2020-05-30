@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'RWMB_Backup_Field' => $baseDir . '/src/BackupField.php',
 );

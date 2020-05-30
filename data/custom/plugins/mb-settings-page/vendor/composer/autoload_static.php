@@ -20,11 +20,16 @@ class ComposerStaticInit6d8949d71f8642fa71b1f18c16efe1b8
         ),
     );
 
+    public static $classMap = array (
+        'RWMB_Backup_Field' => __DIR__ . '/../..' . '/src/BackupField.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit6d8949d71f8642fa71b1f18c16efe1b8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit6d8949d71f8642fa71b1f18c16efe1b8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6d8949d71f8642fa71b1f18c16efe1b8::$classMap;
 
         }, null, ClassLoader::class);
     }
