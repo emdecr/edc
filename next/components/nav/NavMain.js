@@ -45,7 +45,7 @@ export default function Header() {
           </li>
           <li>
             <Link href="/contact">
-              <a className={`${getClass("/records")} no-border`}>Contact</a>
+              <a className={`${getClass("/contact")} no-border`}>Contact</a>
             </Link>
           </li>
         </ul>
