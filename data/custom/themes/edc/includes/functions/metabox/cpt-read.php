@@ -14,6 +14,7 @@ function read_meta_boxes( $meta_boxes) {
                 'id'     => 'authors',
                 'type'   => 'group',
                 'collapsible' => true,
+                'clone'  => true,
                 'group_title' => array( 'field' => 'last_name' ), 
                 'save_state' => false,
                 // List of sub-fields
