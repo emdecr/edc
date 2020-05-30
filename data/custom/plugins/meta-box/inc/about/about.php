@@ -114,20 +114,20 @@ class RWMB_About {
 					<div id="post-body-content">
 						<div class="about-wrap">
 							<?php
-							include dirname( __FILE__ ) . '/sections/welcome.php';
-							include dirname( __FILE__ ) . '/sections/tabs.php';
-							include dirname( __FILE__ ) . '/sections/getting-started.php';
-							include dirname( __FILE__ ) . '/sections/extensions.php';
-							include dirname( __FILE__ ) . '/sections/support.php';
+							include __DIR__ . '/sections/welcome.php';
+							include __DIR__ . '/sections/tabs.php';
+							include __DIR__ . '/sections/getting-started.php';
+							include __DIR__ . '/sections/extensions.php';
+							include __DIR__ . '/sections/support.php';
 							do_action( 'rwmb_about_tabs_content' );
 							?>
 						</div>
 					</div>
 					<div id="postbox-container-1" class="postbox-container">
 						<?php
-						include dirname( __FILE__ ) . '/sections/newsletter.php';
+						include __DIR__ . '/sections/newsletter.php';
 						if ( ! $this->update_checker->has_extensions() ) {
-							include dirname( __FILE__ ) . '/sections/upgrade.php';
+							include __DIR__ . '/sections/upgrade.php';
 						}
 						?>
 					</div>
@@ -161,10 +161,15 @@ class RWMB_About {
 	 *                             or just the current site. Multisite only. Default is false.
 	 */
 	public function redirect( $plugin, $network_wide = false ) {
-		if ( 'cli' !== php_sapi_name() && ! $network_wide && 'meta-box/meta-box.php' === $plugin && ! $this->is_bundled() ) {
-			wp_safe_redirect( $this->get_menu_link() );
-			die;
+		$is_cli           = 'cli' === php_sapi_name();
+		$is_plugin        = 'meta-box/meta-box.php' === $plugin;
+		$is_bulk_activate = 'activate-selected' === rwmb_request()->post( 'action' ) && count( rwmb_request()->post( 'checked' ) ) > 1;
+
+		if ( ! $is_plugin || $network_wide || $is_cli || $is_bulk_activate || $this->is_bundled() ) {
+			return;
 		}
+		wp_safe_redirect( $this->get_menu_link() );
+		die;
 	}
 
 	/**
@@ -197,6 +202,8 @@ class RWMB_About {
 
 	/**
 	 * Check if Meta Box is bundled by TGM Activation Class.
+	 *
+	 * @return bool
 	 */
 	protected function is_bundled() {
 		// @codingStandardsIgnoreLine

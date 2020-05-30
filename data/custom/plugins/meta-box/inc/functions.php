@@ -33,6 +33,29 @@ if ( ! function_exists( 'rwmb_meta' ) ) {
 	}
 }
 
+if ( ! function_exists( 'rwmb_set_meta' ) ) {
+	/**
+	 * Set meta value.
+	 *
+	 * @param int    $object_id Object ID. Required.
+	 * @param string $key       Meta key. Required.
+	 * @param string $value     Meta value. Required.
+	 * @param array  $args      Array of arguments. Optional.
+	 */
+	function rwmb_set_meta( $object_id, $key, $value, $args = array() ) {
+		$args = wp_parse_args( $args );
+		$field = rwmb_get_field_settings( $key, $args, $object_id );
+
+		if ( false === $field ) {
+			return;
+		}
+
+		$old = RWMB_Field::call( $field, 'raw_meta', $object_id );
+		$new = RWMB_Field::process_value( $value, $object_id, $field );
+		RWMB_Field::call( $field, 'save', $new, $old, $object_id );
+	}
+}
+
 if ( ! function_exists( 'rwmb_get_field_settings' ) ) {
 	/**
 	 * Get field settings.
@@ -240,7 +263,7 @@ if ( ! function_exists( 'rwmb_check_meta_box_supports' ) ) {
 				$prop = 'user';
 				break;
 			case 'setting':
-				$type = 'setting';
+				$type = $type_or_id;
 				$prop = 'settings_pages';
 				break;
 		}
@@ -297,8 +320,12 @@ if ( ! function_exists( 'rwmb_meta_shortcode' ) ) {
 			return $value->$attribute;
 		}
 
+		if ( isset( $value[ $attribute ] ) ) {
+			return $value[ $attribute ];
+		}
+
 		$value = wp_list_pluck( $value, $attribute );
-		$value = implode( ',', $value );
+		$value = implode( ',', array_filter( $value ) );
 
 		return $value;
 	}
@@ -341,5 +368,20 @@ if ( ! function_exists( 'rwmb_get_storage' ) ) {
 		$storage = rwmb_get_registry( 'storage' )->get( $class );
 
 		return apply_filters( 'rwmb_get_storage', $storage, $object_type, $meta_box );
+	}
+}
+
+if ( ! function_exists( 'rwmb_request' ) ) {
+	/**
+	 * Get request object.
+	 *
+	 * @return RWMB_Request
+	 */
+	function rwmb_request() {
+		static $request;
+		if ( ! $request ) {
+			$request = new RWMB_Request();
+		}
+		return $request;
 	}
 }
