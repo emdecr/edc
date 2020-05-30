@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 import DefaultLayout from "../../components/layouts/Default";
+import NavAbout from "../../components/nav/NavAbout";
 
 export default function About({ data }) {
   function renderIntro() {
@@ -16,18 +17,7 @@ export default function About({ data }) {
       <main className="container container--grid" id="main-content">
         <div className="grid--span-all name">
           <h1>About</h1>
-          <nav className="sub-nav mono">
-            <Link href="/about">
-              <a className="active">General</a>
-            </Link>
-            <Link href="/about/now">
-              <a>Now</a>
-            </Link>
-
-            <a href="https://emilydelacruz.com/life-overview" target="_blank">
-              Life Overview
-            </a>
-          </nav>
+          <NavAbout active="/about" />
         </div>
         <div
           className="content grid--span-7"
@@ -43,19 +33,12 @@ export default function About({ data }) {
           display: flex;
           align-items: center;
         }
-        .name > nav {
-          margin-left: 20px;
-        }
-        .name > nav,
         .learn-more {
           font-size: 0.7rem;
         }
         h1 {
           margin: 0;
           line-height: 1;
-        }
-        nav a:not(:last-of-type) {
-          margin-right: 20px;
         }
       `}</style>
     </DefaultLayout>

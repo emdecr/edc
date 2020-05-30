@@ -1,7 +1,18 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { SkipNavLink } from "@reach/skip-nav";
 
 export default function Header() {
+  const router = useRouter();
+
+  const getClass = linkRoute => {
+    if (linkRoute === router.pathname) {
+      return "active";
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div className="container">
       <SkipNavLink>Skip to content</SkipNavLink>
@@ -14,22 +25,22 @@ export default function Header() {
         <ul className="mono">
           <li>
             <Link href="/">
-              <a className="no-border">Home</a>
+              <a className={`${getClass("/")} no-border`}>Home</a>
             </Link>
           </li>
           <li>
             <Link href="/about">
-              <a className="no-border">About</a>
+              <a className={`${getClass("/about")} no-border`}>About</a>
             </Link>
           </li>
           <li>
             <Link href="/projects">
-              <a className="no-border">Projects</a>
+              <a className={`${getClass("/projects")} no-border`}>Projects</a>
             </Link>
           </li>
           <li>
             <Link href="/records">
-              <a className="no-border">Records</a>
+              <a className={`${getClass("/records")} no-border`}>Records</a>
             </Link>
           </li>
           <li>
@@ -60,6 +71,10 @@ export default function Header() {
         img {
           width: 50px;
           height: auto;
+        }
+        a.active {
+          border-bottom: 3px solid #0071f3cc;
+          font-weight: 500;
         }
       `}</style>
     </div>

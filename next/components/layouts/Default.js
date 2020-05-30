@@ -1,4 +1,4 @@
-import Header from "../Header";
+import NavMain from "../nav/NavMain";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -8,7 +8,7 @@ function DefaultLayout({ children }) {
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/quu5xdo.css" />
       </Head>
-      <Header />
+      <NavMain />
       {children}
       <div className="grid">
         <div></div>

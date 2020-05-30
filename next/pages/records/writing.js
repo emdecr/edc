@@ -4,14 +4,14 @@ import axios from "axios";
 import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
-export default function Records({ data }) {
+export default function Writing({ data }) {
   function renderIntro() {
     return { __html: data.content.rendered };
   }
   return (
     <DefaultLayout>
       <Head>
-        <title>Records– Emily Dela Cruz</title>
+        <title>Writing – Records – Emily Dela Cruz</title>
       </Head>
 
       <main className="container container--grid" id="main-content">
@@ -19,10 +19,10 @@ export default function Records({ data }) {
           <h1>Records</h1>
           <NavRecords />
         </div>
-        <div
+        {/* <div
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro()}
-        ></div>
+        ></div> */}
       </main>
 
       <style jsx>{`
@@ -45,17 +45,16 @@ export default function Records({ data }) {
   );
 }
 
-// This gets called on every request
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await axios.get(
-    "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=20"
-  );
-  // console.log();
-  const pages = res.data;
-  const data = pages.filter(p => p.slug == "records")[0];
+  // const res = await axios.get(
+  //   "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=20"
+  // );
+  // const pages = res.data;
+  // const data = pages.filter(p => p.slug == "records")[0];
   // const data = await res.json();
   // Return properties
   // Pass data to the page via props
+  const data = [];
   return { props: { data } };
 }
