@@ -9,8 +9,8 @@ function read_meta_boxes( $meta_boxes) {
         'context'    => 'normal',
         'priority'   => '',
         'fields' => array(
+            'title'  => 'Author(s)',
             array(
-                'name'   => 'Author(s)', // Optional
                 'id'     => 'authors',
                 'type'   => 'group',
                 'collapsible' => true,
@@ -30,11 +30,12 @@ function read_meta_boxes( $meta_boxes) {
                     )
                 ),
             ),
+            'title'  => 'Editor(s)',
             array(
-                'name'   => 'Editor(s)', // Optional
                 'id'     => 'editors',
                 'type'   => 'group',
                 'collapsible' => true,
+                'clone'  => true,
                 'group_title' => array( 'field' => 'last_name' ), 
                 'save_state' => false,
                 // List of sub-fields
