@@ -173,41 +173,28 @@
 	display: none !important;
 }
 
-.profile-php .rwmb-group-wrapper .rwmb-label,
-.profile-php .rwmb-group-wrapper .rwmb-input,
-.user-edit-php .rwmb-group-wrapper .rwmb-label,
-.user-edit-php .rwmb-group-wrapper .rwmb-input,
-.term-php .rwmb-group-wrapper .rwmb-label,
-.term-php .rwmb-group-wrapper .rwmb-input,
-.edit-tags-php .rwmb-group-wrapper .rwmb-label,
-.edit-tags-php .rwmb-group-wrapper .rwmb-input,
-.rwmb-settings-no-boxes .rwmb-group-wrapper .rwmb-label,
-.rwmb-settings-no-boxes .rwmb-group-wrapper .rwmb-input {
+.profile-php .rwmb-group-collapsible.rwmb-group-non-cloneable,
+.profile-php .rwmb-group-collapsible > .rwmb-input > .rwmb-group-clone,
+.user-edit-php .rwmb-group-collapsible.rwmb-group-non-cloneable,
+.user-edit-php .rwmb-group-collapsible > .rwmb-input > .rwmb-group-clone,
+.term-php .rwmb-group-collapsible.rwmb-group-non-cloneable,
+.term-php .rwmb-group-collapsible > .rwmb-input > .rwmb-group-clone,
+.edit-tags-php .rwmb-group-collapsible.rwmb-group-non-cloneable,
+.edit-tags-php .rwmb-group-collapsible > .rwmb-input > .rwmb-group-clone,
+.rwmb-settings-no-boxes .rwmb-group-collapsible.rwmb-group-non-cloneable,
+.rwmb-settings-no-boxes .rwmb-group-collapsible > .rwmb-input > .rwmb-group-clone {
+	border-color: #ddd;
+}
+
+.profile-php .rwmb-group-wrapper .rwmb-field .rwmb-label,
+.profile-php .rwmb-group-wrapper .rwmb-field .rwmb-input,
+.user-edit-php .rwmb-group-wrapper .rwmb-field .rwmb-label,
+.user-edit-php .rwmb-group-wrapper .rwmb-field .rwmb-input,
+.term-php .rwmb-group-wrapper .rwmb-field .rwmb-label,
+.term-php .rwmb-group-wrapper .rwmb-field .rwmb-input,
+.edit-tags-php .rwmb-group-wrapper .rwmb-field .rwmb-label,
+.edit-tags-php .rwmb-group-wrapper .rwmb-field .rwmb-input {
 	padding: 0;
-}
-
-.profile-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input,
-.user-edit-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input,
-.term-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input,
-.edit-tags-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input,
-.rwmb-settings-no-boxes .rwmb-group-wrapper .rwmb-label ~ .rwmb-input {
-	padding-top: 2px;
-}
-
-.profile-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input.ui-sortable,
-.user-edit-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input.ui-sortable,
-.term-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input.ui-sortable,
-.edit-tags-php .rwmb-group-wrapper .rwmb-label ~ .rwmb-input.ui-sortable,
-.rwmb-settings-no-boxes .rwmb-group-wrapper .rwmb-label ~ .rwmb-input.ui-sortable {
-	padding: 0;
-}
-
-.profile-php .rwmb-group-wrapper .ui-sortable .rwmb-label,
-.user-edit-php .rwmb-group-wrapper .ui-sortable .rwmb-label,
-.term-php .rwmb-group-wrapper .ui-sortable .rwmb-label,
-.edit-tags-php .rwmb-group-wrapper .ui-sortable .rwmb-label,
-.rwmb-settings-no-boxes .rwmb-group-wrapper .ui-sortable .rwmb-label {
-	width: 100%;
 }
 
 .rwmb-settings-no-boxes .rwmb-group-wrapper .rwmb-field {
