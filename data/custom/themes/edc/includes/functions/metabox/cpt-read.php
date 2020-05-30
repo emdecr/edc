@@ -9,8 +9,8 @@ function read_meta_boxes( $meta_boxes) {
         'context'    => 'normal',
         'priority'   => '',
         'fields' => array(
-            'title'  => 'Author(s)',
             array(
+                'name'   => 'Author',
                 'id'     => 'authors',
                 'type'   => 'group',
                 'collapsible' => true,
@@ -30,8 +30,8 @@ function read_meta_boxes( $meta_boxes) {
                     )
                 ),
             ),
-            'title'  => 'Editor(s)',
             array(
+                'name'   => 'Editor',
                 'id'     => 'editors',
                 'type'   => 'group',
                 'collapsible' => true,
