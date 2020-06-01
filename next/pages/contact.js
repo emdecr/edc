@@ -5,7 +5,11 @@ import DefaultLayout from "../components/layouts/Default";
 
 export default function Contact({ data }) {
   function renderIntro() {
-    return { __html: data.content.rendered };
+    if (data.page !== null) {
+      return { __html: data.page.content.rendered };
+    } else {
+      return { __html: "<p>Error loading page content.</p>" };
+    }
   }
   return (
     <DefaultLayout>
@@ -45,15 +49,20 @@ export default function Contact({ data }) {
 
 // This gets called on every request
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await axios.get(
-    "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=50"
-  );
-  // console.log();
-  const pages = res.data;
-  const data = pages.filter(p => p.slug == "contact")[0];
-  // const data = await res.json();
-  // Return properties
-  // Pass data to the page via props
+  // Fetch page
+  let contact;
+  await axios
+    .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
+    .then(function(response) {
+      const pages = response.data;
+      contact = pages.filter(p => p.slug == "contact")[0];
+    })
+    .catch(function(error) {
+      console.log("Contact page error: " + error);
+      contact = null;
+    });
+  const data = {
+    page: contact
+  };
   return { props: { data } };
 }

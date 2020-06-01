@@ -6,7 +6,11 @@ import NavAbout from "../../components/nav/NavAbout";
 
 export default function About({ data }) {
   function renderIntro() {
-    return { __html: data.content.rendered };
+    if (data.page !== null) {
+      return { __html: data.page.content.rendered };
+    } else {
+      return { __html: "<p>Error loading page content.</p>" };
+    }
   }
   return (
     <DefaultLayout>
@@ -47,15 +51,74 @@ export default function About({ data }) {
 
 // This gets called on every request
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await axios.get(
-    "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=50"
-  );
-  // console.log();
-  const pages = res.data;
-  const data = pages.filter(p => p.slug == "about")[0];
-  // const data = await res.json();
-  // Return properties
-  // Pass data to the page via props
+  // Fetch page
+  let about;
+  await axios
+    .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
+    .then(function(response) {
+      const pages = response.data;
+      about = pages.filter(p => p.slug == "about")[0];
+    })
+    .catch(function(error) {
+      console.log("About page error: " + error);
+      about = null;
+    });
+  // Fetch shelf
+  let shelfItems;
+  await axios
+    .get(
+      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=8&_embed"
+    )
+    .then(function(response) {
+      shelfItems = response.data;
+    })
+    .catch(function(error) {
+      console.log("Shelf error: " + error);
+      shelfItems = null;
+    });
+  // Fetch music
+  let track;
+  await axios
+    .get(
+      "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=" +
+        process.env.LASTFM_USER +
+        "&api_key=" +
+        process.env.LASTFM_KEY +
+        "&format=json&limit=1"
+    )
+    .then(function(response) {
+      const trackName = response.data.recenttracks.track[0].name;
+      const trackArtist = response.data.recenttracks.track[0].artist["#text"];
+      const trackImage = response.data.recenttracks.track[0].image[1]["#text"];
+      let trackInfo = {
+        artist: trackArtist,
+        name: trackName,
+        image: trackImage
+      };
+      track = trackInfo;
+    })
+    .catch(function(error) {
+      console.log("Music error: " + error);
+      track = null;
+    });
+  // Fetch github
+  let github;
+  await axios
+    .get("https://api.github.com/users/emdecr/events")
+    .then(function(response) {
+      github = response.data;
+    })
+    .catch(function(error) {
+      github = null;
+      console.log("Github error: " + error);
+    });
+
+  const data = {
+    page: about,
+    shelf: shelfItems,
+    track: track,
+    github: github
+  };
+
   return { props: { data } };
 }
