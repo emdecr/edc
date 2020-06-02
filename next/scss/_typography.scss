@@ -16,7 +16,12 @@ a {
   font-weight: 500;
 }
 
-a.no-border {
+a.no-border,
+.border--none {
+  border-bottom: none;
+}
+
+.border--none:hover {
   border-bottom: none;
 }
 

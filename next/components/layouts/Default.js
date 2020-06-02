@@ -7,6 +7,10 @@ function DefaultLayout({ children }) {
     <div>
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/quu5xdo.css" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Material+Icons"
+        />
       </Head>
       <NavMain />
       {children}

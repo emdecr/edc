@@ -32,7 +32,7 @@
                     <div class="bar">
                       <span class="bar-progress" :style="{ width: course.course_percent + '%'}"></span>
                     </div>
-                    <span class="_percent">{{course.course_percent + ' %'}}</span>
+                    <span class="_percent">{{course.course_percent + '.0 %'}}</span>
                   </div>
                   <span class="course-updated" v-if="course.course_date">
                     <strong>Updated:</strong>

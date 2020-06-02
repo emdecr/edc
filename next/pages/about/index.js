@@ -3,6 +3,7 @@ import Link from "next/link";
 import axios from "axios";
 import DefaultLayout from "../../components/layouts/Default";
 import NavAbout from "../../components/nav/NavAbout";
+import Shelf from "../../components/Shelf";
 
 export default function About({ data }) {
   function renderIntro() {
@@ -27,6 +28,10 @@ export default function About({ data }) {
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro()}
         ></div>
+        <section className="grid--span-all">
+          <h2>The Link Shelf</h2>
+          <Shelf items={data.shelf} />
+        </section>
       </main>
 
       <style jsx>{`

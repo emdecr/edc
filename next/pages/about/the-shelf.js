@@ -2,9 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 import DefaultLayout from "../../components/layouts/Default";
-import NavRecords from "../../components/nav/NavRecords";
+import NavAbout from "../../components/nav/NavAbout";
+import Shelf from "../../components/Shelf";
 
-export default function Records({ data }) {
+export default function AboutTheShelf({ data }) {
   function renderIntro() {
     if (data.page !== null) {
       return { __html: data.page.content.rendered };
@@ -15,18 +16,20 @@ export default function Records({ data }) {
   return (
     <DefaultLayout>
       <Head>
-        <title>Records – Emily Dela Cruz</title>
+        <title>The Shelf – About – Emily Dela Cruz</title>
       </Head>
-
       <main className="container container--grid" id="main-content">
         <div className="grid--span-all name">
-          <h1>Records</h1>
-          <NavRecords />
+          <h1>About</h1>
+          <NavAbout active="/about/now" />
         </div>
         <div
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro()}
         ></div>
+        <section className="grid--span-all">
+          <Shelf items={data.shelf} />
+        </section>
       </main>
 
       <style jsx>{`
@@ -52,47 +55,34 @@ export default function Records({ data }) {
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch page
-  let recordsPage;
+  let shelfPage;
   await axios
     .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
     .then(function(response) {
       const pages = response.data;
-      recordsPage = pages.filter(p => p.slug == "records")[0];
+      shelfPage = pages.filter(p => p.slug == "the-shelf")[0];
     })
     .catch(function(error) {
-      console.log("Records page error: " + error);
-      recordsPage = null;
+      console.log("About page error: " + error);
+      shelfPage = null;
     });
-  // Fetch posts
-  let posts;
-  await axios
-    .get(process.env.CMS_API_URL + "wp-json/wp/v2/posts?per_page=50&_embed")
-    .then(function(response) {
-      posts = response.data;
-    })
-    .catch(function(error) {
-      console.log("Posts error: " + error);
-      posts = null;
-    });
-  // Fetch reads
-  let reads;
+  // Fetch shelf
+  let shelfItems;
   await axios
     .get(
-      process.env.CMS_API_URL +
-        "wp-json/wp/v2/read?per_page=50&order=desc&_embed"
+      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=100&_embed"
     )
     .then(function(response) {
-      reads = response.data;
+      shelfItems = response.data;
     })
     .catch(function(error) {
-      console.log("Reads error: " + error);
-      reads = null;
+      console.log("Shelf error: " + error);
+      shelfItems = null;
     });
 
   const data = {
-    page: recordsPage,
-    reads,
-    posts
+    page: shelfPage,
+    shelf: shelfItems
   };
 
   return { props: { data } };

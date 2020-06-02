@@ -20,7 +20,9 @@ function NavAbout({ active }) {
       <Link href="/about/now">
         <a className={getClass("/about/now")}>Now</a>
       </Link>
-
+      <Link href="/about/the-shelf">
+        <a className={getClass("/about/the-shelf")}>The Link Shelf</a>
+      </Link>
       <a href="https://emilydelacruz.com/life-overview" target="_blank">
         Life Overview
       </a>
