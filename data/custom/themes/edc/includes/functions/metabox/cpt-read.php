@@ -1,4 +1,4 @@
-3<?php
+<?php
 add_filter( 'rwmb_meta_boxes', 'read_meta_boxes' );
 function read_meta_boxes( $meta_boxes) {
     $prefix = '_read_';

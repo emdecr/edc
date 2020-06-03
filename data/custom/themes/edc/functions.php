@@ -2,6 +2,7 @@
 //Load custom functions
 require_once('includes/functions/enqueue-style.php');
 require_once('includes/functions/enqueue-script.php');
+require_once('includes/functions/column-edits.php');
 
 // Load metabox customization
 require_once('includes/functions/metabox/cpt-posts.php');
