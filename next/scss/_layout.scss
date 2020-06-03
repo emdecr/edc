@@ -84,6 +84,10 @@
   grid-column-start: 8;
 }
 
+.grid--start-9 {
+  grid-column-start: 9;
+}
+
 /* FLEXBOX */
 .flex-all {
   display: flex;
@@ -113,7 +117,7 @@
   justify-content: space-between;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 900px) {
   .container {
     padding: 0 50px;
   }

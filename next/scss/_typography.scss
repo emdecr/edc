@@ -3,6 +3,11 @@ a {
   text-decoration: none;
 }
 
+a::selection {
+  background: #0070f3;
+  color: white;
+}
+
 .sub-nav a {
   border-bottom: 2px solid #afafaf;
 }

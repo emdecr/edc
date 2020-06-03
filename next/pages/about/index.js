@@ -28,14 +28,9 @@ export default function About({ data }) {
           className="content grid--start-1 grid--span-7"
           dangerouslySetInnerHTML={renderIntro()}
         ></div>
-        <section className="grid--start-1 grid--span-6">
+        <section className="grid--start-1 grid--span-all">
           <h2>The Link Shelf</h2>
           <Shelf items={data.shelf} />
-        </section>
-        <section className="grid--start-8 grid--span-5">
-          <h2>Github</h2>
-
-          <h2>Recently played...</h2>
         </section>
       </main>
 
@@ -77,7 +72,7 @@ export async function getServerSideProps() {
   let shelfItems;
   await axios
     .get(
-      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=8&_embed"
+      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=12&_embed"
     )
     .then(function(response) {
       shelfItems = response.data;
@@ -86,48 +81,10 @@ export async function getServerSideProps() {
       console.log("Shelf error: " + error);
       shelfItems = null;
     });
-  // Fetch music
-  let track;
-  await axios
-    .get(
-      "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=" +
-        process.env.LASTFM_USER +
-        "&api_key=" +
-        process.env.LASTFM_KEY +
-        "&format=json&limit=1"
-    )
-    .then(function(response) {
-      const trackName = response.data.recenttracks.track[0].name;
-      const trackArtist = response.data.recenttracks.track[0].artist["#text"];
-      const trackImage = response.data.recenttracks.track[0].image[1]["#text"];
-      let trackInfo = {
-        artist: trackArtist,
-        name: trackName,
-        image: trackImage
-      };
-      track = trackInfo;
-    })
-    .catch(function(error) {
-      console.log("Music error: " + error);
-      track = null;
-    });
-  // Fetch github
-  let github;
-  await axios
-    .get("https://api.github.com/users/emdecr/events")
-    .then(function(response) {
-      github = response.data;
-    })
-    .catch(function(error) {
-      github = null;
-      console.log("Github error: " + error);
-    });
 
   const data = {
     page: about,
-    shelf: shelfItems,
-    track: track,
-    github: github
+    shelf: shelfItems
   };
 
   return { props: { data } };

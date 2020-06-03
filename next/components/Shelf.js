@@ -28,6 +28,10 @@ export default function Shelf(props) {
           <div>
             <span className="mono">{i._embedded["wp:term"][0][0].name}</span>
             <style jsx>{`
+              div {
+                line-height: 1;
+                margin-bottom: 0.2rem;
+              }
               span {
                 font-size: 0.7rem;
                 color: darkgrey;
@@ -49,7 +53,7 @@ export default function Shelf(props) {
 
   const items = props.items;
   const renderItems = items.map((item, index) => (
-    <li key={"item-" + index}>
+    <li key={"item-" + index} className="grid--span-3">
       {renderFormat(item)}
       <a
         href={item.meta_box._shelf_item_link}
@@ -67,11 +71,11 @@ export default function Shelf(props) {
         li {
           font-size: 1.2rem;
           line-height: 1.2;
-          padding: 1rem 0;
+          padding: 2rem 1rem;
         }
-        li:first-child {
-          padding-top: 0;
-        }
+        // li:first-child {
+        //   padding-top: 0;
+        // }
         li:not(:last-child) {
           border-bottom: 1px solid #e3e3e3;
         }
@@ -83,7 +87,7 @@ export default function Shelf(props) {
     </li>
   ));
   return (
-    <ul className="">
+    <ul className="container--grid">
       {renderItems}
       <style jsx>{`
         ul {
