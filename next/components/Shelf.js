@@ -1,8 +1,9 @@
 import React from "react";
 import moment from "moment";
+import Link from "next/link";
 
 export default function Shelf(props) {
-  const image = i => {
+  const getImageUrl = i => {
     if (i.hasOwnProperty("_embedded")) {
       if (
         i._embedded["wp:featuredmedia"][0]["media_details"][
@@ -19,69 +20,79 @@ export default function Shelf(props) {
       return i._embedded["wp:featuredmedia"][0]["source_url"];
     }
   };
-  const renderOverlayIndicator = item => {
-    if (!item.content.rendered) {
+
+  const renderFormat = i => {
+    if (i.hasOwnProperty("_embedded")) {
+      if (i._embedded.hasOwnProperty("wp:term")) {
+        return (
+          <div>
+            <span className="mono">{i._embedded["wp:term"][0][0].name}</span>
+            <style jsx>{`
+              span {
+                font-size: 0.7rem;
+                color: darkgrey;
+              }
+            `}</style>
+          </div>
+        );
+      } else {
+        return null;
+      }
+    } else {
       return null;
     }
-    return (
-      <div className="reaction-indicator">
-        <span className="material-icons">textsms</span>
-      </div>
-    );
   };
-  const renderOverlayContent = content => {
-    return { __html: content };
-  };
-  const renderOverlay = item => {
-    if (!item.content.rendered) {
-      return null;
-    }
-    return (
-      <div className="reaction-overlay mono">
-        <div
-          dangerouslySetInnerHTML={renderOverlayContent(item.content.rendered)}
-        ></div>
-      </div>
-    );
-  };
+
+  function renderTitle(item) {
+    return { __html: item.title.rendered };
+  }
 
   const items = props.items;
   const renderItems = items.map((item, index) => (
-    <li
-      className="grid--span-3 shelf-item flex-all flex--col flex--jc-fe flex--ai-c tdec--none"
-      key={"item-" + index}
-    >
+    <li key={"item-" + index}>
+      {renderFormat(item)}
       <a
         href={item.meta_box._shelf_item_link}
         target="_blank"
         className="border--none"
-      >
-        <div className="shelf-item__content text-align--c">
-          <span
-            className="text-align--c bold"
-            v-html="item.title.rendered"
-          ></span>
-          <img src={image(item)} alt={item.title.rendered} />
-        </div>
-        <div className="shelf-item__bottom"></div>
-        <span className="text-align--c time-ago">
-          Added {moment(item.date).fromNow()} on
-          <br />
-          {moment(item.date).format("ll")}
+        dangerouslySetInnerHTML={renderTitle(item)}
+      ></a>
+      <div className="mono">
+        <span>
+          {moment(item.date).fromNow()} – {moment(item.date).format("ll")}
         </span>
-        {renderOverlayIndicator(item)}
-        {renderOverlay(item)}
-      </a>
+      </div>
+
+      <style jsx>{`
+        li {
+          font-size: 1.2rem;
+          line-height: 1.2;
+          padding: 1rem 0;
+        }
+        li:first-child {
+          padding-top: 0;
+        }
+        li:not(:last-child) {
+          border-bottom: 1px solid #e3e3e3;
+        }
+        span {
+          font-size: 0.6rem;
+          color: darkgrey;
+        }
+      `}</style>
     </li>
   ));
   return (
-    <ul className="container--grid">
+    <ul className="">
       {renderItems}
       <style jsx>{`
         ul {
           list-style-type: none;
           margin: 0;
           padding: 0;
+        }
+        li {
+          font-size: 1.3rem;
         }
       `}</style>
     </ul>

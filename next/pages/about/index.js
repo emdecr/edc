@@ -25,12 +25,17 @@ export default function About({ data }) {
           <NavAbout active="/about" />
         </div>
         <div
-          className="content grid--span-7"
+          className="content grid--start-1 grid--span-7"
           dangerouslySetInnerHTML={renderIntro()}
         ></div>
-        <section className="grid--span-all">
+        <section className="grid--start-1 grid--span-6">
           <h2>The Link Shelf</h2>
           <Shelf items={data.shelf} />
+        </section>
+        <section className="grid--start-8 grid--span-5">
+          <h2>Github</h2>
+
+          <h2>Recently played...</h2>
         </section>
       </main>
 

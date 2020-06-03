@@ -1,5 +1,26 @@
-/* Layout */
+/* Grid Overlay */
+.grid {
+  position: fixed;
+  width: calc(100vw - 100px);
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-gap: 10px;
+  margin: 0 50px;
+  z-index: -1;
+  display: none;
+}
 
+.grid > div {
+  background-color: rgba(0, 0, 0, 0.05);
+  /* border-right: 1px solid red;
+    border-left: 1px solid red; */
+  height: 100vh;
+}
+
+/* Layout */
 .container {
   max-width: 1680px;
   margin: 0 auto;
@@ -17,6 +38,9 @@
 }
 .grid--span-4 {
   grid-column: auto / span 4;
+}
+.grid--span-5 {
+  grid-column: auto / span 5;
 }
 .grid--span-6 {
   grid-column: auto / span 6;
@@ -52,26 +76,12 @@
   grid-column-start: 6;
 }
 
-/* Grid Overlay */
-.grid {
-  position: fixed;
-  width: calc(100vw - 100px);
-  height: 100vh;
-  top: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  grid-gap: 10px;
-  margin: 0 50px;
-  z-index: -1;
-  // display: none;
+.grid--start-7 {
+  grid-column-start: 7;
 }
 
-.grid > div {
-  background-color: rgba(0, 0, 0, 0.05);
-  /* border-right: 1px solid red;
-    border-left: 1px solid red; */
-  height: 100vh;
+.grid--start-8 {
+  grid-column-start: 8;
 }
 
 /* FLEXBOX */

@@ -27,7 +27,7 @@ export default function AboutTheShelf({ data }) {
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro()}
         ></div>
-        <section className="grid--span-all">
+        <section className="grid--span-7">
           <Shelf items={data.shelf} />
         </section>
       </main>
