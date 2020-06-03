@@ -1,29 +1,25 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
+
+import { renderHTML } from "../helpers";
+
 import DefaultLayout from "../components/layouts/Default";
 
 export default function Projects({ data }) {
-  function renderIntro() {
-    if (data.page !== null) {
-      return { __html: data.page.content.rendered };
-    } else {
-      return { __html: "<p>Error loading page content.</p>" };
-    }
-  }
   return (
     <DefaultLayout>
       <Head>
-        <title>Projects – Emily Dela Cruz</title>
+        <title>Projects ← Emily Dela Cruz</title>
       </Head>
 
-      <main className="container container--grid" id="main-content">
-        <div className="grid--span-all name">
+      <main className="container container--grid mt--lg" id="main-content">
+        <div className="grid--span-all title">
           <h1>Projects</h1>
         </div>
         <div
           className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro()}
+          dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
         ></div>
       </main>
 

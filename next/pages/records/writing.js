@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
+
+import { renderIntro } from "../../helpers";
+
 import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
 export default function Writing({ data }) {
-  function renderIntro() {
-    return { __html: data.content.rendered };
-  }
   return (
     <DefaultLayout>
       <Head>
-        <title>Writing – Records – Emily Dela Cruz</title>
+        <title>Writing ← Records ← Emily Dela Cruz</title>
       </Head>
 
       <main className="container container--grid" id="main-content">
@@ -21,7 +21,7 @@ export default function Writing({ data }) {
         </div>
         {/* <div
           className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro()}
+          dangerouslySetInnerHTML={renderIntro(data)}
         ></div> */}
       </main>
 
@@ -46,15 +46,20 @@ export default function Writing({ data }) {
 }
 
 export async function getServerSideProps() {
-  // Fetch data from external API
-  // const res = await axios.get(
-  //   "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=20"
-  // );
-  // const pages = res.data;
-  // const data = pages.filter(p => p.slug == "records")[0];
-  // const data = await res.json();
-  // Return properties
-  // Pass data to the page via props
-  const data = [];
-  return { props: { data } };
+  // Fetch page
+  // let page;
+  // await axios
+  //   .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
+  //   .then(function(response) {
+  //     const pages = response.data;
+  //     page = pages.filter(p => p.slug == "writing")[0];
+  //   })
+  //   .catch(function(error) {
+  //     console.log("Records page error: " + error);
+  //     page = null;
+  //   });
+  // const data = {
+  //   page
+  // };
+  // return { props: { data } };
 }

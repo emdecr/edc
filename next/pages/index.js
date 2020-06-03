@@ -1,28 +1,25 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
-import DefaultLayout from "../components/layouts/Default";
 import { SkipNavContent } from "@reach/skip-nav";
 
+import { renderHTML } from "../helpers";
+
+import DefaultLayout from "../components/layouts/Default";
+
 export default function Home({ data }) {
-  function renderIntro() {
-    return { __html: data.content.rendered };
-  }
   return (
     <DefaultLayout>
       <Head>
         <title>Emily Dela Cruz</title>
       </Head>
-      {/* <Link href="#main-content">
-        <a class="skip-to-content-link">Skip to content</a>
-      </Link> */}
       <SkipNavContent>
-        <main className="container container--grid" id="main-content">
-          <div className="grid--span-all name">
+        <main className="container container--grid mt--lg" id="main-content">
+          <div className="grid--span-all title flex-all flex--ai-c">
             <h1>emily dela cruz</h1>
             <div>
               <a
-                className="pronouns mono"
+                className="pronouns mono fs--sm"
                 href="https://www.mypronouns.org/she-her"
                 target="_blank"
               >
@@ -32,9 +29,9 @@ export default function Home({ data }) {
           </div>
           <div
             className="content grid--span-6"
-            dangerouslySetInnerHTML={renderIntro()}
+            dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
           ></div>
-          <div className="learn-more grid--span-all mono">
+          <div className="learn-more fs--sm grid--span-all mono">
             <Link href="/about">
               <a>Learn more...</a>
             </Link>
@@ -43,19 +40,8 @@ export default function Home({ data }) {
       </SkipNavContent>
 
       <style jsx>{`
-        .container {
-          margin-top: 4rem;
-        }
-        .name {
-          display: flex;
-          align-items: center;
-        }
-        .name > div {
+        .title > div {
           margin-left: 20px;
-        }
-        .name > div,
-        .learn-more {
-          font-size: 0.7rem;
         }
         h1 {
           margin: 0;
@@ -72,11 +58,11 @@ export async function getServerSideProps() {
   const res = await axios.get(
     "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=50"
   );
-  // console.log();
   const pages = res.data;
-  const data = pages.filter(p => p.slug == "home")[0];
-  // const data = await res.json();
-  // Return properties
-  // Pass data to the page via props
+  const home = pages.filter(p => p.slug == "home")[0];
+  const data = {
+    page: home
+  };
+
   return { props: { data } };
 }

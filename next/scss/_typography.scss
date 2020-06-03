@@ -1,3 +1,47 @@
+.mono {
+  font-family: "input-mono", monospace;
+}
+
+// Font Size
+
+.fs--xs {
+  font-size: 0.6rem;
+}
+
+.fs--sm {
+  font-size: 0.7rem;
+}
+
+// Text Align
+
+.text-align--c {
+  text-align: center;
+}
+
+.text-align--r {
+  text-align: right;
+}
+
+// Headings
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* font-family: kepler-std, serif; */
+  font-weight: 700;
+  font-style: normal;
+  margin: 0;
+}
+
+// Links
+
+a {
+  color: rgb(37, 37, 37);
+}
+
 a {
   border-bottom: 3px solid #0070f3;
   text-decoration: none;
@@ -34,53 +78,9 @@ a:hover {
   border-bottom: 3px solid #0071f3bb;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
 p {
   // word-break: break-all;
 }
-
-/* Skip to content link */
-/* Using @reach/skip-nav */
-
-[data-reach-skip-nav-link] {
-  background: #0071f3;
-  left: calc(50% - 50px);
-  color: white;
-  padding: 8px;
-  position: absolute;
-  transform: translateY(-100%);
-  transition: transform 0.3s;
-}
-
-[data-reach-skip-nav-link]:focus {
-  transform: translateY(0%);
-}
-
-/* Typography */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  /* font-family: kepler-std, serif; */
-  font-weight: 700;
-  font-style: normal;
-}
-
-a {
-  color: rgb(37, 37, 37);
-}
-
-.mono {
-  font-family: "input-mono", monospace;
-}
-
 /* QUOTES */
 blockquote {
   font-size: 1.3rem;
@@ -106,4 +106,26 @@ h4 + blockquote {
 
 blockquote + p {
   margin-top: 2rem;
+}
+// Lists
+.reset-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* Skip to content link */
+/* Using @reach/skip-nav */
+
+[data-reach-skip-nav-link] {
+  background: #0071f3;
+  left: calc(50% - 50px);
+  color: white;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+[data-reach-skip-nav-link]:focus {
+  transform: translateY(0%);
 }

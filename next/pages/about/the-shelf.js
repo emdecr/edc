@@ -1,22 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
+
+import { renderIntro } from "../../helpers";
+
 import DefaultLayout from "../../components/layouts/Default";
 import NavAbout from "../../components/nav/NavAbout";
 import Shelf from "../../components/Shelf";
 
 export default function AboutTheShelf({ data }) {
-  function renderIntro() {
-    if (data.page !== null) {
-      return { __html: data.page.content.rendered };
-    } else {
-      return { __html: "<p>Error loading page content.</p>" };
-    }
-  }
   return (
     <DefaultLayout>
       <Head>
-        <title>The Shelf – About – Emily Dela Cruz</title>
+        <title>The Shelf ← About ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid" id="main-content">
         <div className="grid--span-all name">
@@ -25,7 +21,7 @@ export default function AboutTheShelf({ data }) {
         </div>
         <div
           className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro()}
+          dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
         <section className="grid--span-all">
           <Shelf items={data.shelf} />

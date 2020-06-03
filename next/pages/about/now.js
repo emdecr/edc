@@ -3,31 +3,93 @@ import Link from "next/link";
 import moment from "moment";
 import axios from "axios";
 
+import { renderIntro } from "../../helpers";
+
 import DefaultLayout from "../../components/layouts/Default";
 import NavAbout from "../../components/nav/NavAbout";
 
 export default function AboutNow({ data }) {
-  function renderIntro() {
-    if (data.page !== null) {
-      return { __html: data.page.content.rendered };
-    } else {
-      return { __html: "<p>Error loading page content.</p>" };
-    }
-  }
   function renderTrack(track) {
     if (track) {
       return (
-        <div className="music-grid">
+        <div className="music-grid mt--sm">
           <img src={track.image} alt={"Album art for " + track.name} />
           <div className="music__deats">
             <span className="mono">
               {track.artist} | {track.name}
             </span>
           </div>
+          <style jsx>{`
+            .music-grid {
+              display: flex;
+            }
+            .music__deats {
+              margin-left: 10px;
+              font-size: 0.8rem;
+            }
+          `}</style>
         </div>
       );
     } else {
       return <p>Error loading track.</p>;
+    }
+  }
+  function repoBranch(event) {
+    let branchArray = event.payload.ref.split("/");
+    return branchArray[2];
+  }
+  function repoURL(event) {
+    return "https://github.com/" + event.repo.name;
+  }
+  function getType(event) {
+    let newType = event.type.replace(/([A-Z])/g, " $1").trim();
+    return newType.replace(" Event", "");
+  }
+  function renderGithubMessage(event) {
+    if (event.type === "PushEvent") {
+      return (
+        <p>
+          <strong>{getType(event)}</strong> | <strong>R</strong>:
+          <a href={repoURL(event)} target="_blank>">
+            {event.repo.name}
+          </a>
+          , <strong>B</strong>: {repoBranch(event)}, <strong>CM</strong>:
+          <a
+            href={
+              "https://github.com/" +
+              event.repo.name +
+              "/commit/" +
+              event.payload.commits[0].sha
+            }
+            target="_blank>"
+          >
+            {event.payload.commits[0].message}
+          </a>
+          <style jsx>{`
+            p {
+              font-size: 0.7rem;
+              line-height: 1.6;
+            }
+            a {
+              border-bottom: 2px solid #0071f3;
+            }
+          `}</style>
+        </p>
+      );
+    } else {
+      return (
+        <p>
+          <strong>{type(event)}</strong> | <strong>R</strong>:
+          <a href={repoURL(event)} target="_blank>">
+            {event.repo.name}
+          </a>
+          <style jsx>{`
+            p {
+              font-size: 0.6rem;
+            }
+          `}</style>
+        </p>
+      );
     }
   }
   function renderGithub(githubActivity) {
@@ -39,13 +101,13 @@ export default function AboutNow({ data }) {
               {moment(item.created_at).fromNow()} –{" "}
               {moment(item.created_at).format("ll")}
             </span>
+            {renderGithubMessage(item)}
           </div>
-
           <style jsx>{`
             li {
               font-size: 1.2rem;
               line-height: 1.2;
-              padding: 2rem 1rem;
+              padding: 1rem 0;
             }
             li:first-child {
               padding-top: 0;
@@ -60,15 +122,16 @@ export default function AboutNow({ data }) {
           `}</style>
         </li>
       ));
-      return <ul>{listItems}</ul>;
+      return <ul className="reset-list">{listItems}</ul>;
     } else {
       return <p>Error loading GitHub activity.</p>;
     }
   }
+
   return (
     <DefaultLayout>
       <Head>
-        <title>About – Now – Emily Dela Cruz</title>
+        <title>Now ← About ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid" id="main-content">
         <div className="grid--span-all name">
@@ -77,13 +140,17 @@ export default function AboutNow({ data }) {
         </div>
         <div
           className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro()}
+          dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
         <div className="content grid--span-4 grid--start-9">
-          <h2>Recently played...</h2>
-          {renderTrack(data.track)}
-          <h2>GitHub Activity</h2>
-          {renderGithub(data.github)}
+          <div className="mb--md">
+            <h2>Recently played...</h2>
+            {renderTrack(data.track)}
+          </div>
+          <div>
+            <h2>GitHub Activity</h2>
+            {renderGithub(data.github)}
+          </div>
         </div>
         <div className="content grid--span-all">
           {" "}

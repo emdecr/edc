@@ -53,12 +53,12 @@ export default function Shelf(props) {
 
   const items = props.items;
   const renderItems = items.map((item, index) => (
-    <li key={"item-" + index} className="grid--span-3">
+    <li key={"item-" + index} className="grid--span-4">
       {renderFormat(item)}
       <a
         href={item.meta_box._shelf_item_link}
         target="_blank"
-        className="border--none"
+        className=""
         dangerouslySetInnerHTML={renderTitle(item)}
       ></a>
       <div className="mono">
@@ -72,29 +72,29 @@ export default function Shelf(props) {
           font-size: 1.2rem;
           line-height: 1.2;
           padding: 2rem 1rem;
+          border-bottom: 1px solid #e3e3e3;
         }
         // li:first-child {
         //   padding-top: 0;
         // }
         li:not(:last-child) {
-          border-bottom: 1px solid #e3e3e3;
+          // border-bottom: 1px solid #e3e3e3;
         }
         span {
           font-size: 0.6rem;
           color: darkgrey;
         }
+        a {
+          // color: #0071f3;
+          // font-weight: bold;
+        }
       `}</style>
     </li>
   ));
   return (
-    <ul className="container--grid">
+    <ul className="container--grid reset-list">
       {renderItems}
       <style jsx>{`
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-        }
         li {
           font-size: 1.3rem;
         }

@@ -1,43 +1,29 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
+
+import { renderIntro } from "../helpers";
+
 import DefaultLayout from "../components/layouts/Default";
 
 export default function Contact({ data }) {
-  function renderIntro() {
-    if (data.page !== null) {
-      return { __html: data.page.content.rendered };
-    } else {
-      return { __html: "<p>Error loading page content.</p>" };
-    }
-  }
   return (
     <DefaultLayout>
       <Head>
         <title>Contact – Emily Dela Cruz</title>
       </Head>
 
-      <main className="container container--grid" id="main-content">
-        <div className="grid--span-all name">
+      <main className="container container--grid mt--lg" id="main-content">
+        <div className="grid--span-all title flex-all flex--ai-c">
           <h1>Contact</h1>
         </div>
         <div
           className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro()}
+          dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
       </main>
 
       <style jsx>{`
-        .container {
-          margin-top: 4rem;
-        }
-        .name {
-          display: flex;
-          align-items: center;
-        }
-        .learn-more {
-          font-size: 0.7rem;
-        }
         h1 {
           margin: 0;
           line-height: 1;

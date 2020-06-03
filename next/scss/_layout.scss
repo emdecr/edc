@@ -1,14 +1,14 @@
 /* Grid Overlay */
 .grid {
   position: fixed;
-  width: calc(100vw - 100px);
+  width: calc(100vw - 8rem);
   height: 100vh;
   top: 0;
   left: 0;
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
   grid-gap: 10px;
-  margin: 0 50px;
+  margin: 0 4rem;
   z-index: -1;
   display: none;
 }
@@ -33,6 +33,12 @@
   // grid-gap: 10px;
 }
 
+.grid--span-1 {
+  grid-column: auto / span 1;
+}
+.grid--span-2 {
+  grid-column: auto / span 2;
+}
 .grid--span-3 {
   grid-column: auto / span 3;
 }
@@ -117,9 +123,34 @@
   justify-content: space-between;
 }
 
+// Margin/Padding
+.mb--sm {
+  margin-bottom: 1rem;
+}
+
+.mb--md {
+  margin-bottom: 2rem;
+}
+
+.mb--lg {
+  margin-bottom: 4rem;
+}
+
+.mt--sm {
+  margin-top: 1rem;
+}
+
+.mt--md {
+  margin-top: 2rem;
+}
+
+.mt--lg {
+  margin-top: 4rem;
+}
+
 @media only screen and (min-width: 900px) {
   .container {
-    padding: 0 50px;
+    padding: 0 4rem;
   }
   .container--grid {
     display: grid;

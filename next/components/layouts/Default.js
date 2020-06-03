@@ -1,6 +1,8 @@
-import NavMain from "../nav/NavMain";
 import Head from "next/head";
 import Link from "next/link";
+
+import NavMain from "../nav/NavMain";
+import Footer from "../Footer";
 
 function DefaultLayout({ children }) {
   return (
@@ -14,6 +16,7 @@ function DefaultLayout({ children }) {
       </Head>
       <NavMain />
       {children}
+      <Footer />
       <div className="grid">
         <div></div>
         <div></div>
