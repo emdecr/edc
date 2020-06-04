@@ -9,6 +9,16 @@ import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
 export default function SingleRecord({ data }) {
+  function renderContent() {
+    if (data.page != null) {
+      // if ( data.page.data.type == "read" ) {
+
+      // }
+      return <p>Post found.</p>;
+    } else {
+      return <p>No post found.</p>;
+    }
+  }
   return (
     <DefaultLayout>
       <Head>
@@ -19,10 +29,7 @@ export default function SingleRecord({ data }) {
           <h1>Records</h1>
           <NavRecords />
         </div>
-        {/* <div
-          className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro(data.page)}
-        ></div> */}
+        {renderContent()}
       </main>
 
       <style jsx>{`
@@ -41,11 +48,10 @@ export default function SingleRecord({ data }) {
 
 // This gets called on every request
 export async function getServerSideProps({ params }) {
-  console.log(params);
   // Fetch page
   let page;
   await axios
-    .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
+    .get(process.env.CMS_API_URL + "wp-json/edc/v1/slug/" + params.slug)
     .then(function(response) {
       page = response.data;
     })
