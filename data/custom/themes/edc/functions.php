@@ -20,6 +20,7 @@ require_once('includes/functions/metabox/blocks/annotation.php');
 require_once('includes/functions/endpoints/life-overview.php');
 require_once('includes/functions/endpoints/life-overview-all.php');
 require_once('includes/functions/endpoints/pinterest.php');
+require_once('includes/functions/endpoints/find-by-slug.php');
 
 // Enable Thumbnails
 add_theme_support('post-thumbnails'); 
