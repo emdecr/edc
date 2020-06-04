@@ -73,7 +73,7 @@ export default function Header() {
           grid-column: 8 / span 5;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-          grid-gap: 10px;
+          grid-gap: 20px;
         }
         li {
           font-size: 0.7rem;

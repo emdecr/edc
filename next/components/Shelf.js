@@ -29,7 +29,7 @@ export default function Shelf(props) {
 
   const items = props.items;
   const renderItems = items.map((item, index) => (
-    <li key={"item-" + index} className="grid--span-4">
+    <li key={"item-" + index} className="grid--span-3">
       {renderFormat(item)}
       <a
         href={item.meta_box._shelf_item_link}

@@ -6,15 +6,17 @@ import axios from "axios";
 import { renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
-import NavRecords from "../../components/nav/NavRecords";
+// import NavRecords from "../../components/nav/NavRecords";
+import ReadContent from "../../components/ReadContent";
 
 export default function SingleRecord({ data }) {
   function renderContent() {
     if (data.page != null) {
-      // if ( data.page.data.type == "read" ) {
-
-      // }
-      return <p>Post found.</p>;
+      if (data.page.data.type == "read") {
+        return <ReadContent read={data.page.data} />;
+      } else {
+        return <p>Normal post</p>;
+      }
     } else {
       return <p>No post found.</p>;
     }
@@ -26,20 +28,22 @@ export default function SingleRecord({ data }) {
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-ac">
-          <h1>Records</h1>
-          <NavRecords />
+          ←{" "}
+          <Link href={"/records/"}>
+            <a>Back to all records</a>
+          </Link>{" "}
+          |{" "}
+          <Link href={"/records/reads"}>
+            <a>Back to all reads</a>
+          </Link>
         </div>
-        {renderContent()}
+        <div className="grid--span-7 ">{renderContent()}</div>
       </main>
 
       <style jsx>{`
-        h1 {
-          margin: 0;
-          line-height: 1;
-        }
-        span {
-          font-size: 0.6rem;
-          color: darkgrey;
+        a {
+          display: inline-block;
+          margin: 0 10px;
         }
       `}</style>
     </DefaultLayout>

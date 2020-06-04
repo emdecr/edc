@@ -2,6 +2,17 @@
   font-family: "input-mono", monospace;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fw--normal {
+  font-weight: normal;
+}
+
+.italic {
+  font-style: italic;
+}
 // Font Size
 
 .fs--xs {

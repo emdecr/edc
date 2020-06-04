@@ -30,13 +30,13 @@ function NavRecords({ active }) {
         nav {
           margin-left: 20px;
           font-size: 0.7rem;
-          line-height: 1;
+          // line-height: 1;
         }
         nav a:not(:last-of-type) {
           margin-right: 20px;
         }
         .active {
-          font-size: 1.5rem;
+          // font-size: 1.5rem;
         }
       `}</style>
     </nav>
