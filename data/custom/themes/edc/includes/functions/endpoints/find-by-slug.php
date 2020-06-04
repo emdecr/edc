@@ -43,6 +43,7 @@ class find_by_slug_custom_route extends WP_REST_Controller {
             $postData = $results[0];
             $newObj->ID = $postData->ID;
             $newObj->date = $postData->post_date;
+            $newObj->type = $postData->post_type;
             $newObj->title = $postData->post_title;
             $newObj->content = $postData->post_content;
             $post_thumbnail_url = get_the_post_thumbnail_url( $postData->ID, 'medium');
