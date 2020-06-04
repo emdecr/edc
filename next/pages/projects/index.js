@@ -2,9 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 
-import { renderHTML } from "../helpers";
+import { renderHTML } from "../../helpers";
 
-import DefaultLayout from "../components/layouts/Default";
+import DefaultLayout from "../../components/layouts/Default";
+import ProjectList from "../../components/ProjectList";
 
 export default function Projects({ data }) {
   return (
@@ -21,6 +22,9 @@ export default function Projects({ data }) {
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
         ></div>
+        <section className="grid--span-all">
+          <ProjectList items={data.projectList} />
+        </section>
       </main>
 
       <style jsx>{``}</style>

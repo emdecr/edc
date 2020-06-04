@@ -42,7 +42,7 @@ export default function Reads({ data }) {
       </div>
       <style jsx>{`
         li {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           line-height: 1.2;
           padding: 2rem 0;
           border-bottom: 1px solid #e3e3e3;
@@ -113,7 +113,7 @@ export default function Reads({ data }) {
           // font-size: 0.9rem;
         }
         h3 {
-          font-size: 30px;
+          font-size: 28px;
         }
         img {
           width: 150px;

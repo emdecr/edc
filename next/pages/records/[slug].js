@@ -15,7 +15,12 @@ export default function SingleRecord({ data }) {
       if (data.page.data.type == "read") {
         return <ReadContent read={data.page.data} />;
       } else {
-        return <p>Normal post</p>;
+        return (
+          <div
+            className="content"
+            dangerouslySetInnerHTML={renderHTML(data.page.data.content)}
+          ></div>
+        );
       }
     } else {
       return <p>No post found.</p>;
@@ -44,6 +49,8 @@ export default function SingleRecord({ data }) {
         a {
           display: inline-block;
           margin: 0 10px;
+        }
+        .single-content img {
         }
       `}</style>
     </DefaultLayout>

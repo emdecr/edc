@@ -14,8 +14,8 @@ export default function AboutTheShelf({ data }) {
       <Head>
         <title>The Shelf ← About ← Emily Dela Cruz</title>
       </Head>
-      <main className="container container--grid" id="main-content">
-        <div className="grid--span-all name">
+      <main className="container container--grid mt--lg" id="main-content">
+        <div className="grid--span-all title flex-all flex--ai-fe">
           <h1>About</h1>
           <NavAbout active="/about/now" />
         </div>
@@ -29,16 +29,6 @@ export default function AboutTheShelf({ data }) {
       </main>
 
       <style jsx>{`
-        .container {
-          margin-top: 4rem;
-        }
-        .name {
-          display: flex;
-          align-items: center;
-        }
-        .learn-more {
-          font-size: 0.7rem;
-        }
         h1 {
           margin: 0;
           line-height: 1;

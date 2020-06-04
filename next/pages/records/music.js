@@ -14,28 +14,18 @@ export default function Music({ data }) {
         <title>Music ← Records ← Emily Dela Cruz</title>
       </Head>
 
-      <main className="container container--grid" id="main-content">
-        <div className="grid--span-all name">
+      <main className="container container--grid mt--lg" id="main-content">
+        <div className="grid--span-all title flex-all flex--ai-fe">
           <h1>Records</h1>
           <NavRecords />
         </div>
-        {/* <div
+        <div
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro(data)}
-        ></div> */}
+        ></div>
       </main>
 
       <style jsx>{`
-        .container {
-          margin-top: 4rem;
-        }
-        .name {
-          display: flex;
-          align-items: center;
-        }
-        .learn-more {
-          font-size: 0.7rem;
-        }
         h1 {
           margin: 0;
           line-height: 1;
@@ -48,19 +38,19 @@ export default function Music({ data }) {
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch page
-  // let musicPage;
-  // await axios
-  //   .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
-  //   .then(function(response) {
-  //     const pages = response.data;
-  //     musicPage = pages.filter(p => p.slug == "music")[0];
-  //   })
-  //   .catch(function(error) {
-  //     console.log("Records page error: " + error);
-  //     musicPage = null;
-  //   });
-  // const data = {
-  //   page: musicPage,
-  // };
-  // return { props: { data } };
+  let musicPage;
+  await axios
+    .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
+    .then(function(response) {
+      const pages = response.data;
+      musicPage = pages.filter(p => p.slug == "music")[0];
+    })
+    .catch(function(error) {
+      console.log("Records page error: " + error);
+      musicPage = null;
+    });
+  const data = {
+    page: musicPage
+  };
+  return { props: { data } };
 }

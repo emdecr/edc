@@ -17,15 +17,15 @@ function NavRecords({ active }) {
       <Link href="/records">
         <a className={getClass("/records")}>All</a>
       </Link>
-      <Link href="/records/writing">
+      {/* <Link href="/records/writing">
         <a className={getClass("/records/writing")}>Writing</a>
-      </Link>
+      </Link> */}
       <Link href="/records/reads">
         <a className={getClass("/records/reads")}>Reads</a>
       </Link>
-      <Link href="/records/music">
+      {/* <Link href="/records/music">
         <a className={getClass("/records/music")}>Music</a>
-      </Link>
+      </Link> */}
       <style jsx>{`
         nav {
           margin-left: 20px;

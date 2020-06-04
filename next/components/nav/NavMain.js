@@ -55,6 +55,11 @@ export default function Header() {
             </Link>
           </li>
           <li>
+            <Link href="/records/reads">
+              <a className={`${getClass("/records/reads")} no-border`}>Reads</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/contact">
               <a className={`${getClass("/contact")} no-border`}>Contact</a>
             </Link>
@@ -70,9 +75,9 @@ export default function Header() {
           margin: 0;
           padding: 0;
           //   grid-column-start: 7;
-          grid-column: 8 / span 5;
+          grid-column: 7 / span 6;
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
           grid-gap: 20px;
         }
         li {

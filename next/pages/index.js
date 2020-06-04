@@ -6,6 +6,7 @@ import { SkipNavContent } from "@reach/skip-nav";
 import { renderHTML } from "../helpers";
 
 import DefaultLayout from "../components/layouts/Default";
+import ProjectList from "../components/ProjectList";
 
 export default function Home({ data }) {
   return (
@@ -36,6 +37,15 @@ export default function Home({ data }) {
               <a>Learn more...</a>
             </Link>
           </div>
+          <section className="grid--span-all mt--md">
+            <h2>Projects</h2>
+            <ProjectList items={data.projectList} />
+          </section>
+          <div className="learn-more fs--sm grid--span-all mono">
+            <Link href="/projects">
+              <a>View all projects...</a>
+            </Link>
+          </div>
         </main>
       </SkipNavContent>
 
@@ -54,14 +64,36 @@ export default function Home({ data }) {
 
 // This gets called on every request
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await axios.get(
-    "https://emilydelacruz.com/data/wp-json/wp/v2/pages?per_page=50"
-  );
-  const pages = res.data;
-  const home = pages.filter(p => p.slug == "home")[0];
+  // Fetch page
+  let page;
+  await axios
+    .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
+    .then(function(response) {
+      const pages = response.data;
+      page = pages.filter(p => p.slug == "home")[0];
+    })
+    .catch(function(error) {
+      console.log("Projects page error: " + error);
+      page = null;
+    });
+  // Fetch projects
+  let projectList;
+  await axios
+    .get(
+      process.env.CMS_API_URL +
+        "wp-json/wp/v2/project?per_page=3&order=asc&_embed"
+    )
+    .then(function(response) {
+      projectList = response.data;
+    })
+    .catch(function(error) {
+      console.log("Projects error: " + error);
+      projectList = null;
+    });
+
   const data = {
-    page: home
+    page,
+    projectList
   };
 
   return { props: { data } };

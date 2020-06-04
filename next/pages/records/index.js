@@ -9,13 +9,12 @@ import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
 export default function Records({ data }) {
-  const renderReads = data.reads.map((item, index) => (
+  const renderWriting = data.posts.map((item, index) => (
     <li key={"item-" + index}>
       <span className="mono fs--xs grid--span-4">
         {moment(item.date).format("ll")}
       </span>
-      <img className="grid--span-2" src={getImageUrl(item)} />
-      <div className="grid--span-2">
+      <div className="grid--span-3">
         <h3 className="fw--normal italic">
           <Link href={"/records/" + item.slug}>
             <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
@@ -24,12 +23,44 @@ export default function Records({ data }) {
       </div>
       <style jsx>{`
         li {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           line-height: 1.2;
           padding: 2rem 0;
         }
         li:not(:last-child) {
-          border-bottom: 1px solid #e3e3e3;
+          border-bottom: 1px solid #f3f3f3;
+        }
+        @media only screen and (min-width: 900px) {
+          li {
+            display: grid;
+            grid-template-columns: repeat(4, [col-start] 1fr);
+            grid-gap: 20px;
+          }
+        }
+      `}</style>
+    </li>
+  ));
+  const renderReads = data.reads.map((item, index) => (
+    <li key={"item-" + index}>
+      <span className="mono fs--xs grid--span-4">
+        {moment(item.date).format("ll")}
+      </span>
+      <img className="grid--span-1" src={getImageUrl(item)} />
+      <div className="grid--span-3">
+        <h3 className="fw--normal italic">
+          <Link href={"/records/" + item.slug}>
+            <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+          </Link>
+        </h3>
+      </div>
+      <style jsx>{`
+        li {
+          font-size: 1.1rem;
+          line-height: 1.2;
+          padding: 2rem 0;
+        }
+        li:not(:last-child) {
+          border-bottom: 1px solid #f3f3f3;
         }
         img {
           display: block;
@@ -43,7 +74,7 @@ export default function Records({ data }) {
             grid-gap: 20px;
           }
           img {
-            width: 90%;
+            width: 100%;
           }
         }
       `}</style>
@@ -61,14 +92,15 @@ export default function Records({ data }) {
           <NavRecords />
         </div>
         <div
-          className="content grid--span-7"
+          className="content content-intro grid--span-7"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
         <div className="grid--span-4 grid--start-1">
           <h2>Writing</h2>
-          <Link href="/records/writing">
+          <ul className="reset-list">{renderWriting}</ul>
+          {/* <Link href="/records/writing">
             <a className="btn mt--md">View all</a>
-          </Link>
+          </Link> */}
         </div>
         <div className="grid--span-4">
           <h2>Reads</h2>
@@ -79,9 +111,10 @@ export default function Records({ data }) {
         </div>
         <div className="grid--span-4">
           <h2>Music</h2>
-          <Link href="/records/music">
+          <p>Coming soon.</p>
+          {/* <Link href="/records/music">
             <a className="btn mt--md">View all</a>
-          </Link>
+          </Link> */}
         </div>
       </main>
 
@@ -89,6 +122,9 @@ export default function Records({ data }) {
         h1 {
           margin: 0;
           line-height: 1;
+        }
+        .btn {
+          padding: 0.5rem 2rem;
         }
       `}</style>
     </DefaultLayout>
