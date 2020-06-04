@@ -30,6 +30,7 @@ export default function Shelf(props) {
   const items = props.items;
   const renderItems = items.map((item, index) => (
     <li key={"item-" + index} className="grid--span-3">
+      <img src={getImageUrl(item)} />
       {renderFormat(item)}
       <a
         href={item.meta_box._shelf_item_link}
@@ -49,6 +50,8 @@ export default function Shelf(props) {
           line-height: 1.2;
           padding: 2rem 1rem;
           border-bottom: 1px solid #e3e3e3;
+          position: relative;
+          overflow: hidden;
         }
         // li:first-child {
         //   padding-top: 0;
@@ -63,6 +66,18 @@ export default function Shelf(props) {
         a {
           // color: #0071f3;
           // font-weight: bold;
+        }
+        img {
+          // display: none;
+          opacity: 0.03;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%);
         }
       `}</style>
     </li>

@@ -1,13 +1,54 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
+import moment from "moment";
 
-import { renderIntro } from "../../helpers";
+import { renderIntro, renderHTML, getImageUrl } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
 export default function Records({ data }) {
+  const renderReads = data.reads.map((item, index) => (
+    <li key={"item-" + index}>
+      <span className="mono fs--xs grid--span-4">
+        {moment(item.date).format("ll")}
+      </span>
+      <img className="grid--span-2" src={getImageUrl(item)} />
+      <div className="grid--span-2">
+        <h3 className="fw--normal italic">
+          <Link href={"/records/" + item.slug}>
+            <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+          </Link>
+        </h3>
+      </div>
+      <style jsx>{`
+        li {
+          font-size: 1.2rem;
+          line-height: 1.2;
+          padding: 2rem 0;
+        }
+        li:not(:last-child) {
+          border-bottom: 1px solid #e3e3e3;
+        }
+        img {
+          display: block;
+          width: 150px;
+          height: auto;
+        }
+        @media only screen and (min-width: 900px) {
+          li {
+            display: grid;
+            grid-template-columns: repeat(4, [col-start] 1fr);
+            grid-gap: 20px;
+          }
+          img {
+            width: 90%;
+          }
+        }
+      `}</style>
+    </li>
+  ));
   return (
     <DefaultLayout>
       <Head>
@@ -23,6 +64,25 @@ export default function Records({ data }) {
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
+        <div className="grid--span-4 grid--start-1">
+          <h2>Writing</h2>
+          <Link href="/records/writing">
+            <a className="btn mt--md">View all</a>
+          </Link>
+        </div>
+        <div className="grid--span-4">
+          <h2>Reads</h2>
+          <ul className="reset-list">{renderReads}</ul>
+          <Link href="/records/reads">
+            <a className="btn mt--md">View all</a>
+          </Link>
+        </div>
+        <div className="grid--span-4">
+          <h2>Music</h2>
+          <Link href="/records/music">
+            <a className="btn mt--md">View all</a>
+          </Link>
+        </div>
       </main>
 
       <style jsx>{`
@@ -65,7 +125,7 @@ export async function getServerSideProps() {
   await axios
     .get(
       process.env.CMS_API_URL +
-        "wp-json/wp/v2/read?per_page=50&order=desc&_embed"
+        "wp-json/wp/v2/read?per_page=5&order=desc&_embed"
     )
     .then(function(response) {
       reads = response.data;

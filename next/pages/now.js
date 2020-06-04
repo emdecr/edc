@@ -3,10 +3,10 @@ import Link from "next/link";
 import moment from "moment";
 import axios from "axios";
 
-import { renderIntro, renderFormat, renderHTML } from "../../helpers";
+import { renderIntro, renderFormat, renderHTML } from "../helpers";
 
-import DefaultLayout from "../../components/layouts/Default";
-import NavAbout from "../../components/nav/NavAbout";
+import DefaultLayout from "../components/layouts/Default";
+import NavAbout from "../components/nav/NavAbout";
 
 export default function AboutNow({ data }) {
   function renderTrack(track) {
@@ -15,8 +15,12 @@ export default function AboutNow({ data }) {
       const searchString = string.replace(/\s/g, "+");
       return (
         <div className="music-grid mt--sm flex-all flex--ai-c">
-          <img src={track.image} alt={"Album art for " + track.name} />
-          <div className="music__deats">
+          <img
+            className="grid--span-1"
+            src={track.image}
+            alt={"Album art for " + track.name}
+          />
+          <div className="music__deats grid--span-3">
             <a
               href={`https://www.youtube.com/results?search_query=${searchString}`}
               target="_blank"
@@ -25,9 +29,10 @@ export default function AboutNow({ data }) {
             </a>
           </div>
           <style jsx>{`
-            .music__deats {
-              margin-left: 20px;
-              // font-size: 0.8rem;
+            .music-grid {
+              display: grid;
+              grid-template-columns: repeat(4, [col-start] 1fr);
+              grid-gap: 20px;
             }
           `}</style>
         </div>
@@ -58,7 +63,8 @@ export default function AboutNow({ data }) {
       }
       return (
         <p>
-          <strong>{getType(event)}</strong> | <strong>R</strong>:{" "}
+          <strong className="mono">{getType(event)}</strong> |{" "}
+          <strong>R</strong>:{" "}
           <a href={repoURL(event)} target="_blank>">
             {event.repo.name}
           </a>
@@ -88,7 +94,8 @@ export default function AboutNow({ data }) {
     } else if (event.type === "CommitCommentEvent") {
       return (
         <p>
-          <strong>{getType(event)}</strong> | <strong>R</strong>:{" "}
+          <strong className="mono">{getType(event)}</strong> |{" "}
+          <strong>R</strong>:{" "}
           <a href={repoURL(event)} target="_blank>">
             {event.repo.name}
           </a>
@@ -110,7 +117,8 @@ export default function AboutNow({ data }) {
     } else {
       return (
         <p>
-          <strong>{getType(event)}</strong> | <strong>R</strong>:
+          <strong className="mono">{getType(event)}</strong> |{" "}
+          <strong>R</strong>:
           <a href={repoURL(event)} target="_blank>">
             {event.repo.name}
           </a>
@@ -131,8 +139,8 @@ export default function AboutNow({ data }) {
     if (githubActivity) {
       const listItems = githubActivity.slice(0, 5).map((item, index) => (
         <li key={"item-" + index} className="grid--span-3">
-          <div className="mono">
-            <span>
+          <div className="">
+            <span className="mono">
               {moment(item.created_at).fromNow()} –{" "}
               {moment(item.created_at).format("ll")}
             </span>
@@ -173,10 +181,14 @@ export default function AboutNow({ data }) {
           <h1>About</h1>
           <NavAbout active="/about/now" />
         </div>
-        <div
-          className="content grid--span-7"
-          dangerouslySetInnerHTML={renderIntro(data)}
-        ></div>
+        <div className="content grid--span-7">
+          <div dangerouslySetInnerHTML={renderIntro(data)}></div>
+          <div className="updated mt--md pt--sm">
+            <p className="mono fs--sm">
+              Last updated: {moment(data.page.modified).format("ll")}
+            </p>
+          </div>
+        </div>
         <div className="content grid--span-4 grid--start-9">
           <div className="mb--md">
             <h2>Recently Played</h2>
@@ -213,6 +225,9 @@ export default function AboutNow({ data }) {
         span {
           font-size: 0.6rem;
           color: darkgrey;
+        }
+        .updated {
+          border-top: 1px solid lightgrey;
         }
       `}</style>
     </DefaultLayout>

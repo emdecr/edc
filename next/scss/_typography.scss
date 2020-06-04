@@ -124,6 +124,26 @@ blockquote + p {
   margin: 0;
   padding: 0;
 }
+
+// Buttons
+
+.btn {
+  border-bottom: none;
+  border: 1px solid #0070f3;
+  display: inline-block;
+  padding: 0.8rem;
+  color: white;
+  background: #0070f3;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background: #0064d6;
+  border-bottom: none;
+  border: 1px solid #0070f3;
+}
+
 /* Skip to content link */
 /* Using @reach/skip-nav */
 

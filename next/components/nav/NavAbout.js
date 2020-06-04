@@ -17,15 +17,13 @@ function NavAbout({ active }) {
       <Link href="/about">
         <a className={getClass("/about")}>General</a>
       </Link>
-      <Link href="/about/now">
-        <a className={getClass("/about/now")}>Now</a>
+      <Link href="/now">
+        <a className={getClass("/now")}>Now</a>
       </Link>
-      <Link href="/about/the-shelf">
-        <a className={getClass("/about/the-shelf")}>The Link Shelf</a>
+      <Link href="/about/the-link-shelf">
+        <a className={getClass("/about/the-link-shelf")}>The Link Shelf</a>
       </Link>
-      <a href="https://emilydelacruz.com/life-overview" target="_blank">
-        Life Overview
-      </a>
+      <a href="https://emilydelacruz.com/life-overview">Life Overview</a>
       <style jsx>{`
         nav {
           margin-left: 20px;

@@ -28,19 +28,23 @@ export default function About({ data }) {
           <NavAbout active="/about" />
         </div>
         <div
-          className="content grid--start-1 grid--span-7"
+          className="content grid--start-1 grid--span-6"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        <div className="grid--start-9 grid--span-4">
-          <h2>Main tools on rotation...</h2>
-          <p
+        <div className="grid--start-8 grid--span-4">
+          <h2>{data.page.meta_box._page_skills_title}</h2>
+          <div
             className="mono fs--sm"
             dangerouslySetInnerHTML={renderSkills()}
-          ></p>
+          ></div>
         </div>
         <section className="grid--start-1 grid--span-all mt--md">
           <h2>The Link Shelf</h2>
+          <p>Some content I've enjoyed...</p>
           <Shelf items={data.shelf} />
+          <Link href="/about/the-link-shelf">
+            <a className="btn mt--md">View the full shelf</a>
+          </Link>
         </section>
       </main>
 
@@ -62,7 +66,7 @@ export async function getServerSideProps() {
     .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
     .then(function(response) {
       const pages = response.data;
-      about = pages.filter(p => p.slug == "about")[0];
+      about = pages.filter(p => p.slug == "new-about")[0];
     })
     .catch(function(error) {
       console.log("About page error: " + error);
