@@ -13,7 +13,7 @@ function NavAbout({ active }) {
   };
 
   return (
-    <nav className="sub-nav mono">
+    <nav className="sub-nav mono flex-all flex--ai-fe">
       <Link href="/about">
         <a className={getClass("/about")}>General</a>
       </Link>

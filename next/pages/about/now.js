@@ -3,7 +3,7 @@ import Link from "next/link";
 import moment from "moment";
 import axios from "axios";
 
-import { renderIntro } from "../../helpers";
+import { renderIntro, renderFormat, renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
 import NavAbout from "../../components/nav/NavAbout";
@@ -11,21 +11,23 @@ import NavAbout from "../../components/nav/NavAbout";
 export default function AboutNow({ data }) {
   function renderTrack(track) {
     if (track) {
+      const string = track.artist + " " + track.name;
+      const searchString = string.replace(/\s/g, "+");
       return (
-        <div className="music-grid mt--sm">
+        <div className="music-grid mt--sm flex-all flex--ai-c">
           <img src={track.image} alt={"Album art for " + track.name} />
           <div className="music__deats">
-            <span className="mono">
-              {track.artist} | {track.name}
-            </span>
+            <a
+              href={`https://www.youtube.com/results?search_query=${searchString}`}
+              target="_blank"
+            >
+              "{track.name}" by {track.artist}
+            </a>
           </div>
           <style jsx>{`
-            .music-grid {
-              display: flex;
-            }
             .music__deats {
-              margin-left: 10px;
-              font-size: 0.8rem;
+              margin-left: 20px;
+              // font-size: 0.8rem;
             }
           `}</style>
         </div>
@@ -41,19 +43,26 @@ export default function AboutNow({ data }) {
   function repoURL(event) {
     return "https://github.com/" + event.repo.name;
   }
+  function commentURL(event) {
+    return `https://github.com/${event.repo.name}/commit/${event.payload.comment.commit_id}#commitcomment-${event.payload.comment.id}`;
+  }
   function getType(event) {
     let newType = event.type.replace(/([A-Z])/g, " $1").trim();
     return newType.replace(" Event", "");
   }
   function renderGithubMessage(event) {
     if (event.type === "PushEvent") {
+      function commitMessage(message) {
+        let split = message.split("\n");
+        return split[0];
+      }
       return (
         <p>
-          <strong>{getType(event)}</strong> | <strong>R</strong>:
+          <strong>{getType(event)}</strong> | <strong>R</strong>:{" "}
           <a href={repoURL(event)} target="_blank>">
             {event.repo.name}
           </a>
-          , <strong>B</strong>: {repoBranch(event)}, <strong>CM</strong>:
+          , <strong>B</strong>: {repoBranch(event)}, <strong>CM</strong>:{" "}
           <a
             href={
               "https://github.com/" +
@@ -63,7 +72,29 @@ export default function AboutNow({ data }) {
             }
             target="_blank>"
           >
-            {event.payload.commits[0].message}
+            {commitMessage(event.payload.commits[0].message)}
+          </a>
+          <style jsx>{`
+            p {
+              font-size: 0.7rem;
+              line-height: 1.6;
+            }
+            a {
+              border-bottom: 2px solid #0071f3;
+            }
+          `}</style>
+        </p>
+      );
+    } else if (event.type === "CommitCommentEvent") {
+      return (
+        <p>
+          <strong>{getType(event)}</strong> | <strong>R</strong>:{" "}
+          <a href={repoURL(event)} target="_blank>">
+            {event.repo.name}
+          </a>
+          , <strong>CC</strong>:{" "}
+          <a href={commentURL(event)} target="_blank>">
+            {event.payload.comment.id}
           </a>
           <style jsx>{`
             p {
@@ -79,13 +110,17 @@ export default function AboutNow({ data }) {
     } else {
       return (
         <p>
-          <strong>{type(event)}</strong> | <strong>R</strong>:
+          <strong>{getType(event)}</strong> | <strong>R</strong>:
           <a href={repoURL(event)} target="_blank>">
             {event.repo.name}
           </a>
           <style jsx>{`
             p {
-              font-size: 0.6rem;
+              font-size: 0.7rem;
+              line-height: 1.6;
+            }
+            a {
+              border-bottom: 2px solid #0071f3;
             }
           `}</style>
         </p>
@@ -133,8 +168,8 @@ export default function AboutNow({ data }) {
       <Head>
         <title>Now ← About ← Emily Dela Cruz</title>
       </Head>
-      <main className="container container--grid" id="main-content">
-        <div className="grid--span-all name">
+      <main className="container container--grid mt--lg" id="main-content">
+        <div className="grid--span-all title flex-all flex--ai-ac">
           <h1>About</h1>
           <NavAbout active="/about/now" />
         </div>
@@ -144,35 +179,40 @@ export default function AboutNow({ data }) {
         ></div>
         <div className="content grid--span-4 grid--start-9">
           <div className="mb--md">
-            <h2>Recently played...</h2>
+            <h2>Recently Played</h2>
             {renderTrack(data.track)}
+          </div>
+          <div className="mb--md">
+            <h2 className="mb--sm">The Link Shelf Latest</h2>
+            {renderFormat(data.shelf)}
+            <a
+              href={data.shelf.meta_box._shelf_item_link}
+              target="_blank"
+              className=""
+              dangerouslySetInnerHTML={renderHTML(data.shelf.title.rendered)}
+            ></a>
+            <div className="mono">
+              <span>
+                {moment(data.shelf.date).fromNow()} –{" "}
+                {moment(data.shelf.date).format("ll")}
+              </span>
+            </div>
           </div>
           <div>
             <h2>GitHub Activity</h2>
             {renderGithub(data.github)}
           </div>
         </div>
-        <div className="content grid--span-all">
-          {" "}
-          <h2>Learning</h2>
-          <h2>Lastest from The Link Shelf</h2>
-        </div>
       </main>
 
       <style jsx>{`
-        .container {
-          margin-top: 4rem;
-        }
-        .name {
-          display: flex;
-          align-items: center;
-        }
-        .learn-more {
-          font-size: 0.7rem;
-        }
         h1 {
           margin: 0;
           line-height: 1;
+        }
+        span {
+          font-size: 0.6rem;
+          color: darkgrey;
         }
       `}</style>
     </DefaultLayout>
@@ -241,10 +281,10 @@ export async function getServerSideProps() {
   let shelfItems;
   await axios
     .get(
-      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=4&_embed"
+      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=1&_embed"
     )
     .then(function(response) {
-      shelfItems = response.data;
+      shelfItems = response.data[0];
     })
     .catch(function(error) {
       console.log("Shelf error: " + error);

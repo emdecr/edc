@@ -7,7 +7,7 @@
   left: 0;
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
-  grid-gap: 10px;
+  grid-gap: 20px;
   margin: 0 4rem;
   z-index: -1;
   display: none;
@@ -155,6 +155,6 @@
   .container--grid {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    grid-gap: 10px;
+    grid-gap: 20px;
   }
 }

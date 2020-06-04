@@ -13,7 +13,7 @@ function NavRecords({ active }) {
   };
 
   return (
-    <nav className="sub-nav mono">
+    <nav className="sub-nav mono flex-all flex--ai-fe">
       <Link href="/records">
         <a className={getClass("/records")}>All</a>
       </Link>
@@ -30,11 +30,13 @@ function NavRecords({ active }) {
         nav {
           margin-left: 20px;
           font-size: 0.7rem;
-        }
-        nav {
+          line-height: 1;
         }
         nav a:not(:last-of-type) {
           margin-right: 20px;
+        }
+        .active {
+          font-size: 1.5rem;
         }
       `}</style>
     </nav>

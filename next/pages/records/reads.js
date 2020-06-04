@@ -9,7 +9,16 @@ import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
 export default function Reads({ data }) {
-  function renderAuthors(read) {}
+  function renderAuthors(authors) {
+    console.log(authors);
+    if (authors.length > 1) {
+      return <span>{authors[0].first_name + " " + authors[0].last_name}</span>;
+    }
+    if (authors.length > 0) {
+      return <span>{authors[0].first_name + " " + authors[0].last_name}</span>;
+    }
+    return null;
+  }
   const renderReads = data.reads.map((item, index) => (
     <li key={"item-" + index}>
       <span className="mono fs--xs grid--span-1">
@@ -26,18 +35,12 @@ export default function Reads({ data }) {
           padding: 2rem 0;
           border-bottom: 1px solid #e3e3e3;
         }
-        // li:first-child {
-        //   padding-top: 0;
-        // }
         li:not(:last-child) {
-          // border-bottom: 1px solid #e3e3e3;
-        }
-        a {
-          // color: #0071f3;
-          // font-weight: bold;
+          border-bottom: 1px solid #e3e3e3;
         }
         img {
-          width: 80%;
+          display: block;
+          width: 150px;
           height: auto;
         }
         @media only screen and (min-width: 900px) {
@@ -45,6 +48,9 @@ export default function Reads({ data }) {
             display: grid;
             grid-template-columns: repeat(7, [col-start] 1fr);
             grid-gap: 10px;
+          }
+          img {
+            width: 80%;
           }
         }
       `}</style>
@@ -57,7 +63,7 @@ export default function Reads({ data }) {
       </Head>
 
       <main className="container container--grid mt--lg" id="main-content">
-        <div className="grid--span-all title flex-all flex--ai-c">
+        <div className="grid--span-all title flex-all flex--ai-fe">
           <h1>Records</h1>
           <NavRecords />
         </div>
@@ -70,6 +76,10 @@ export default function Reads({ data }) {
           <div>
             <img src={getImageUrl(data.currently)} />
           </div>
+          <div>
+            <h3>{data.currently.title.rendered}</h3>
+            {renderAuthors(data.currently.meta_box._read_authors)}
+          </div>
         </section>
         <section className="grid--span-7 mt--md">
           <h2>Past Reads</h2>
@@ -81,6 +91,7 @@ export default function Reads({ data }) {
         h1 {
           margin: 0;
           line-height: 1;
+          font-size: 0.9rem;
         }
       `}</style>
     </DefaultLayout>
