@@ -160,7 +160,7 @@ export async function getServerSideProps() {
     })
     .catch(function(error) {
       console.log("Records page error: " + error);
-      page = null;
+      reads = null;
       currently = null;
     });
   const data = {
