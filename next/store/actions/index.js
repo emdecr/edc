@@ -3,10 +3,12 @@ import content from "../apis/content";
 import * as types from "./types";
 
 export const getPages = () => async (dispatch, getState) => {
+  console.log("DOING ACTION");
   const response = await content.get("wp-json/wp/v2/pages?per_page=50");
 
   const data = response.data;
 
+  console.log("DONE ACTION");
   dispatch({ type: types.GET_PAGES, payload: data });
 };
 

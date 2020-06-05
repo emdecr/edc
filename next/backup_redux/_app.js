@@ -1,8 +1,10 @@
-import "../style.scss";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { wrapper } from "../store";
+import "../style.scss";
 
 // This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps, router }) {
+const MyApp = ({ Component, pageProps, router }) => {
   const spring = {
     type: "spring",
     damping: 20,
@@ -25,4 +27,6 @@ export default function MyApp({ Component, pageProps, router }) {
       </div>
     </AnimatePresence>
   );
-}
+};
+
+export default wrapper.withRedux(MyApp);

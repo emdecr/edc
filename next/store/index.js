@@ -13,23 +13,25 @@ const bindMiddleware = middleware => {
 
 const combinedReducer = reducers;
 
-const reducer = (state, action) => {
+const reducerWrapper = (state, action) => {
   if (action.type === HYDRATE) {
+    console.log("HYDRATE - store index.js", state);
     const nextState = {
       ...state, // use previous state
       ...action.payload // apply delta from hydration
     };
     // preserve prev state values on client side navigation
-    if (state.pages) nextState.pages = state.pages;
-    if (state.github) nextState.github = state.github;
+    // if (state.pages) nextState.pages = state.pages;
+    // Attention! This will overwrite client state! Use proper reconciliation.
     return nextState;
   } else {
+    console.log("NOT HYDRATE - store index.js", state);
     return combinedReducer(state, action);
   }
 };
 
 const initStore = () => {
-  return createStore(reducer, bindMiddleware([thunkMiddleware]));
+  return createStore(reducerWrapper, bindMiddleware([thunkMiddleware]));
 };
 
 export const wrapper = createWrapper(initStore);
