@@ -136,12 +136,24 @@ blockquote + p {
   background: #0070f3;
 }
 
+.btn--ghost {
+  background: transparent;
+  color: #0070f3;
+}
+
 .btn:hover,
 .btn:focus,
 .btn:active {
   background: #0064d6;
   border-bottom: none;
+  color: white;
   border: 1px solid #0070f3;
+}
+
+// Single
+.read-stats span:first-of-type {
+  font-size: 0.6rem;
+  color: darkgrey;
 }
 
 /* Skip to content link */

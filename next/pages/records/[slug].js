@@ -26,21 +26,56 @@ export default function SingleRecord({ data }) {
       return <p>No post found.</p>;
     }
   }
+  function renderBackLink() {
+    if (data.page != null) {
+      if (record.type == "read") {
+        return (
+          <React.Fragment>
+            |
+            <Link href={"/records/reads"}>
+              <a className="mono">Back to all Reads</a>
+            </Link>
+            <style jsx>{`
+              a {
+                display: inline-block;
+                margin: 0 10px;
+              }
+            `}</style>
+          </React.Fragment>
+        );
+      }
+      if (record.type == "post") {
+        return (
+          <React.Fragment>
+            |
+            <Link href={"/records/writing"}>
+              <a className="mono">Back to all Writing</a>
+            </Link>
+            <style jsx>{`
+              a {
+                display: inline-block;
+                margin: 0 10px;
+              }
+            `}</style>
+          </React.Fragment>
+        );
+      }
+    } else {
+      return null;
+    }
+  }
   return (
     <DefaultLayout>
       <Head>
         <title>{record.title} ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
-        <div className="grid--span-all title flex-all flex--ai-ac">
-          ←{" "}
+        <div className="grid--span-all mini-nav fs--sm">
+          ←
           <Link href={"/records/"}>
-            <a>Back to all records</a>
-          </Link>{" "}
-          |{" "}
-          <Link href={"/records/reads"}>
-            <a>Back to all reads</a>
+            <a className="mono fs--sm">Back to all Records</a>
           </Link>
+          {renderBackLink()}
         </div>
         {renderContent()}
       </main>
@@ -49,6 +84,9 @@ export default function SingleRecord({ data }) {
         a {
           display: inline-block;
           margin: 0 10px;
+        }
+        .mini-nav {
+          line-height: 1.2;
         }
       `}</style>
     </DefaultLayout>

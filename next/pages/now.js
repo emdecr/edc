@@ -209,6 +209,11 @@ export default function AboutNow({ data }) {
                 {moment(data.shelf.date).format("ll")}
               </span>
             </div>
+            <Link href="/about/the-link-shelf">
+              <a className="btn btn--ghost fs--xs mt--sm mono">
+                View The Link Shelf
+              </a>
+            </Link>
           </div>
           <div>
             <h2>GitHub Activity</h2>
