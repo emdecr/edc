@@ -31,6 +31,11 @@ function read_meta_boxes( $meta_boxes) {
                 'type' => 'number',
             ),
             array(
+                'id'   => $prefix . 'isbn',
+                'name' => __( 'ISBN', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
                 'name'   => 'Author',
                 'id'     => $prefix . 'authors',
                 'type'   => 'group',

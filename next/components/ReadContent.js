@@ -3,16 +3,16 @@ import moment from "moment";
 
 export default function ReadContent({ read }) {
   function renderTitle() {
-    if (read.read_title != "") {
+    if (read.read_title && read.read_title != "") {
       return read.read_title;
     } else {
       return read.title;
     }
   }
   function renderAuthors() {
-    if (read.authors != "") {
-      const authors = read.authors.map(a => (
-        <span>{`${a.first_name} ${a.last_name}`}</span>
+    if (read.authors && read.authors != "") {
+      const authors = read.authors.map((a, index) => (
+        <span key={`author-${index}`}>{`${a.first_name} ${a.last_name}`}</span>
       ));
       return (
         <p className="fs--sm read-stats mono">
@@ -26,7 +26,7 @@ export default function ReadContent({ read }) {
     }
   }
   function renderEditors() {
-    if (read.editors != "") {
+    if (read.editors && read.editors != "") {
       const authors = read.editors.map(e => (
         <span>{`${e.first_name} ${e.last_name}`}</span>
       ));
@@ -42,10 +42,10 @@ export default function ReadContent({ read }) {
     }
   }
   function renderPublisher() {
-    if (read.publisher != "") {
+    if (read.publisher && read.publisher != "") {
       return (
         <p className="fs--sm read-stats mono">
-          <span>Publisher:</span>
+          <span>Edition Publisher:</span>
           <br />
           {read.publisher}
         </p>
@@ -55,10 +55,10 @@ export default function ReadContent({ read }) {
     }
   }
   function renderDate() {
-    if (read.published_date != "") {
+    if (read.published_date && read.published_date != "") {
       return (
         <p className="fs--sm read-stats mono">
-          <span>Release:</span>
+          <span>Edition Release:</span>
           <br />
           {moment(read.published_date).format("ll")}
         </p>
@@ -66,9 +66,39 @@ export default function ReadContent({ read }) {
     } else if (read.published_year != "") {
       return (
         <p className="fs--sm read-stats mono">
-          <span>Release:</span>
+          <span>Edition Release:</span>
           <br />
           {read.published_year}
+        </p>
+      );
+    } else {
+      return null;
+    }
+  }
+  function renderRating() {
+    if (read.rating && read.rating != "") {
+      return (
+        <p className="fs--sm read-stats mono">
+          <span>Recommendation Rating:</span>
+          <br />
+          {read.rating}/10
+        </p>
+      );
+    } else {
+      return null;
+    }
+  }
+  function renderISBNSearch() {
+    if (read.isbn && read.isbn != "") {
+      return (
+        <p className="fs--sm read-stats mono">
+          <span>Search for purchase:</span>
+          <br />
+          <a
+            href={`https://duckduckgo.com/?q=isbn+${read.isbn}&t=hk&ia=shopping`}
+          >
+            ISBN: {read.isbn}
+          </a>
         </p>
       );
     } else {
@@ -84,6 +114,8 @@ export default function ReadContent({ read }) {
         {renderEditors()}
         {renderPublisher()}
         {renderDate()}
+        {renderRating()}
+        {renderISBNSearch()}
       </div>
 
       <div

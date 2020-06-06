@@ -57,6 +57,8 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                 $newObj->read_subtitle = $subtitle;
                 $searchTitle = get_post_meta( $postData->ID, '_read_title_search', true);
                 $newObj->search_title = $searchTitle;
+                $isbn = get_post_meta( $postData->ID, '_read_isbn', true);
+                $newObj->isbn = $isbn;
                 $rating = get_post_meta( $postData->ID, '_read_rating', true);
                 $newObj->rating = $rating;
                 $authors = get_post_meta( $postData->ID, '_read_authors', true);
