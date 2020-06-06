@@ -10,7 +10,7 @@ import NavRecords from "../../components/nav/NavRecords";
 
 export default function Reads({ data }) {
   function renderAuthors(authors) {
-    console.log(authors);
+    // console.log(authors);
     if (authors.length > 1) {
       return (
         <span className="">
