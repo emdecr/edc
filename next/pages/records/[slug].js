@@ -6,19 +6,19 @@ import axios from "axios";
 import { renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
-// import NavRecords from "../../components/nav/NavRecords";
 import ReadContent from "../../components/ReadContent";
 
 export default function SingleRecord({ data }) {
+  const record = data.page != null ? data.page.data : null;
   function renderContent() {
     if (data.page != null) {
-      if (data.page.data.type == "read") {
-        return <ReadContent read={data.page.data} />;
+      if (record.type == "read") {
+        return <ReadContent read={record} />;
       } else {
         return (
           <div
-            className="content"
-            dangerouslySetInnerHTML={renderHTML(data.page.data.content)}
+            className="content grid--span-7"
+            dangerouslySetInnerHTML={renderHTML(record.content)}
           ></div>
         );
       }
@@ -29,7 +29,7 @@ export default function SingleRecord({ data }) {
   return (
     <DefaultLayout>
       <Head>
-        <title> ← Emily Dela Cruz</title>
+        <title>{record.title} ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-ac">
@@ -42,15 +42,13 @@ export default function SingleRecord({ data }) {
             <a>Back to all reads</a>
           </Link>
         </div>
-        <div className="grid--span-7 ">{renderContent()}</div>
+        {renderContent()}
       </main>
 
       <style jsx>{`
         a {
           display: inline-block;
           margin: 0 10px;
-        }
-        .single-content img {
         }
       `}</style>
     </DefaultLayout>

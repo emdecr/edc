@@ -4,11 +4,26 @@ function read_meta_boxes( $meta_boxes) {
     $prefix = '_read_';
 
     $meta_boxes[] = array(
-        'title'      => __( 'Details', 'textdomain' ),
+        'title'      => __( 'Read Details', 'textdomain' ),
         'post_types' => array( 'read'),
         'context'    => 'normal',
         'priority'   => '',
         'fields' => array(
+            array(
+                'id'   => $prefix . 'title',
+                'name' => __( 'Title', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
+                'id'   => $prefix . 'subtitle',
+                'name' => __( 'Subtitle', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
+                'id'   => $prefix . 'title_search',
+                'name' => __( 'Title (for Search)', 'textdomain' ),
+                'type' => 'text',
+            ),
             array(
                 'name'   => 'Author',
                 'id'     => $prefix . 'authors',
