@@ -25,6 +25,12 @@ function read_meta_boxes( $meta_boxes) {
                 'type' => 'text',
             ),
             array(
+                'id'   => $prefix . 'rating',
+                'name' => __( 'Rating', 'textdomain' ),
+                'label_description' => '(out of 10)',
+                'type' => 'number',
+            ),
+            array(
                 'name'   => 'Author',
                 'id'     => $prefix . 'authors',
                 'type'   => 'group',
