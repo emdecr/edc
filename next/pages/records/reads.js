@@ -10,22 +10,40 @@ import NavRecords from "../../components/nav/NavRecords";
 
 export default function Reads({ data }) {
   function renderAuthors(authors) {
-    // console.log(authors);
     if (authors.length > 1) {
-      return (
-        <span className="">
-          {authors[0].first_name + " " + authors[0].last_name}
-        </span>
-      );
+      const authorList = authors.map((a, index) => (
+        <span
+          key={`author-${index}`}
+          className="display--b mono fs--md"
+        >{`${a.first_name} ${a.last_name}`}</span>
+      ));
+      return <div className="mt--sm">{authorList}</div>;
     }
     if (authors.length > 0) {
       return (
-        <span className="">
+        <span className="display--b mono fs--md mt--sm">
           {authors[0].first_name + " " + authors[0].last_name}
         </span>
       );
     }
     return null;
+  }
+  function renderTitle(item) {
+    if (item.meta_box._read_title && item.meta_box._read_title != "") {
+      return (
+        <Link href={"/records/" + item.slug}>
+          <a
+            dangerouslySetInnerHTML={renderHTML(item.meta_box._read_title)}
+          ></a>
+        </Link>
+      );
+    } else {
+      return (
+        <Link href={"/records/" + item.slug}>
+          <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+        </Link>
+      );
+    }
   }
   const renderReads = data.reads.map((item, index) => (
     <li key={"item-" + index}>
@@ -34,11 +52,8 @@ export default function Reads({ data }) {
       </span>
       <img className="grid--span-2" src={getImageUrl(item)} />
       <div className="grid--span-4">
-        <h3 className="fw--normal italic">
-          <Link href={"/records/" + item.slug}>
-            <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
-          </Link>
-        </h3>
+        <h3 className="fw--normal italic">{renderTitle(item)}</h3>
+        {renderAuthors(item.meta_box._read_authors)}
       </div>
       <style jsx>{`
         li {
@@ -87,6 +102,7 @@ export default function Reads({ data }) {
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
         <section className="grid--span-7 grid--start-6">
+          {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
           <h2>Currently Reading</h2>
           <div className="currently mt--sm">
             <div className="grid--span-2">

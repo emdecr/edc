@@ -16,10 +16,13 @@ export default function SingleRecord({ data }) {
         return <ReadContent read={record} />;
       } else {
         return (
-          <div
-            className="content grid--span-7"
-            dangerouslySetInnerHTML={renderHTML(record.content)}
-          ></div>
+          <div className="grid--span-7">
+            <h1>{record.title}</h1>
+            <div
+              className="content"
+              dangerouslySetInnerHTML={renderHTML(record.content)}
+            ></div>
+          </div>
         );
       }
     } else {

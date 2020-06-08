@@ -24,6 +24,14 @@ export default function Header() {
     }
   };
 
+  const getArrow = () => {
+    if (router.pathname === "/records/reads") {
+      return <span> →</span>;
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div className="container">
       <SkipNavLink>Skip to content</SkipNavLink>
@@ -53,6 +61,7 @@ export default function Header() {
             <Link href="/records">
               <a className={`${getClass("/records")} no-border`}>Records</a>
             </Link>
+            {getArrow()}
           </li>
           <li>
             <Link href="/records/reads">

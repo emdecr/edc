@@ -40,6 +40,36 @@ export default function Records({ data }) {
       `}</style>
     </li>
   ));
+  function renderTitle(item) {
+    if (item.meta_box._read_title && item.meta_box._read_title != "") {
+      return (
+        <Link href={"/records/" + item.slug}>
+          <a
+            dangerouslySetInnerHTML={renderHTML(item.meta_box._read_title)}
+          ></a>
+        </Link>
+      );
+    } else {
+      return (
+        <Link href={"/records/" + item.slug}>
+          <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+        </Link>
+      );
+    }
+  }
+  function renderAuthors(item) {
+    if (item.meta_box._read_authors && item.meta_box._read_authors.length > 0) {
+      const authors = item.meta_box._read_authors.map((a, index) => (
+        <span
+          key={`author-${index}`}
+          className="display--b"
+        >{`${a.first_name} ${a.last_name}`}</span>
+      ));
+      return <p className="fs--sm mono">{authors}</p>;
+    } else {
+      return null;
+    }
+  }
   const renderReads = data.reads.map((item, index) => (
     <li key={"item-" + index}>
       <span className="mono fs--xs grid--span-4">
@@ -47,11 +77,8 @@ export default function Records({ data }) {
       </span>
       <img className="grid--span-1" src={getImageUrl(item)} />
       <div className="grid--span-3">
-        <h3 className="fw--normal italic">
-          <Link href={"/records/" + item.slug}>
-            <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
-          </Link>
-        </h3>
+        <h3 className="fw--normal italic">{renderTitle(item)}</h3>
+        {renderAuthors(item)}
       </div>
       <style jsx>{`
         li {
@@ -111,7 +138,7 @@ export default function Records({ data }) {
         </div>
         <div className="grid--span-4">
           <h2>Music</h2>
-          <p>Coming soon.</p>
+          <p>Coming soon...hopefully.</p>
           {/* <Link href="/records/music">
             <a className="btn mt--md">View all</a>
           </Link> */}
@@ -161,10 +188,14 @@ export async function getServerSideProps() {
   await axios
     .get(
       process.env.CMS_API_URL +
-        "wp-json/wp/v2/read?per_page=5&order=desc&_embed"
+        "wp-json/wp/v2/read?per_page=50&order=desc&_embed"
     )
     .then(function(response) {
-      reads = response.data;
+      const allReads = response.data;
+      const remove = allReads.filter(
+        (item, index, arr) => !item.flag.includes(24)
+      );
+      reads = remove.slice(0, 5);
     })
     .catch(function(error) {
       console.log("Reads error: " + error);

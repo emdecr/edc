@@ -6,22 +6,22 @@ import axios from "axios";
 import { renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
-// import NavRecords from "../../components/nav/NavRecords";
-import ReadContent from "../../components/ReadContent";
 
 export default function SingleProject({ data }) {
   function renderContent() {
     if (data.page != null) {
-      if (data.page.data.type == "read") {
-        return <ReadContent read={data.page.data} />;
-      } else {
-        return (
+      return (
+        <React.Fragment>
+          <h1
+            className="mt--md"
+            dangerouslySetInnerHTML={renderHTML(data.page.data.title)}
+          ></h1>
           <div
             className="content"
             dangerouslySetInnerHTML={renderHTML(data.page.data.content)}
           ></div>
-        );
-      }
+        </React.Fragment>
+      );
     } else {
       return <p>No post found.</p>;
     }
@@ -32,14 +32,10 @@ export default function SingleProject({ data }) {
         <title> ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
-        <div className="grid--span-all title flex-all flex--ai-ac">
+        <div className="grid--span-all title flex-all flex--ai-ac mono fs--sm">
           ←{" "}
           <Link href={"/records/"}>
-            <a>Back to all records</a>
-          </Link>{" "}
-          |{" "}
-          <Link href={"/records/reads"}>
-            <a>Back to all reads</a>
+            <a>Back to all Projects</a>
           </Link>
         </div>
         <div className="grid--span-7 ">{renderContent()}</div>

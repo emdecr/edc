@@ -1,3 +1,7 @@
+*::selection {
+  background: #dadada;
+}
+
 .mono {
   font-family: "input-mono", monospace;
 }
@@ -21,6 +25,10 @@
 
 .fs--sm {
   font-size: 0.7rem;
+}
+
+.fs--md {
+  font-size: 0.8rem;
 }
 
 // Text Align
@@ -151,7 +159,7 @@ blockquote + p {
 }
 
 // Single
-.read-stats span:first-of-type {
+.read-stats > span:first-child {
   font-size: 0.6rem;
   color: darkgrey;
 }

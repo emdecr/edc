@@ -22,6 +22,14 @@
 }
 
 /* Layout */
+.display--ib {
+  display: inline-block;
+}
+
+.display--b {
+  display: block;
+}
+
 .container {
   max-width: 1680px;
   margin: 0 auto;
@@ -175,6 +183,9 @@
 
 // Single content
 /* CONTENT */
+.single-content > *:first-child {
+  margin-top: 0;
+}
 
 .content-intro {
   a {

@@ -137,7 +137,7 @@ export default function AboutNow({ data }) {
   }
   function renderGithub(githubActivity) {
     if (githubActivity) {
-      const listItems = githubActivity.slice(0, 5).map((item, index) => (
+      const listItems = githubActivity.slice(0, 3).map((item, index) => (
         <li key={"item-" + index} className="grid--span-3">
           <div className="">
             <span className="mono">
