@@ -88,6 +88,9 @@ export default function Reads({ data }) {
           line-height: 1.2;
           padding: 2rem 0;
         }
+        li:not(:last-child) {
+          border-bottom: 1px solid var(--list-border);
+        }
         img {
           display: block;
           width: 150px;
@@ -104,16 +107,6 @@ export default function Reads({ data }) {
           }
           img {
             width: 90%;
-          }
-        }
-        @media (prefers-color-scheme: light) {
-          li:not(:last-child) {
-            border-bottom: 1px solid #f3f3f3;
-          }
-        }
-        @media (prefers-color-scheme: dark) {
-          li:not(:last-child) {
-            border-bottom: 1px solid #353535;
           }
         }
       `}</style>

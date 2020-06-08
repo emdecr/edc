@@ -50,6 +50,7 @@ export default function Shelf(props) {
           line-height: 1.2;
           padding: 2rem 1rem;
           position: relative;
+          border-bottom: 1px solid var(--list-border);
           overflow: hidden;
         }
         span {
@@ -71,16 +72,6 @@ export default function Shelf(props) {
           height: 100%;
           object-fit: cover;
           filter: grayscale(100%);
-        }
-        @media (prefers-color-scheme: light) {
-          li {
-            border-bottom: 1px solid #f3f3f3;
-          }
-        }
-        @media (prefers-color-scheme: dark) {
-          li {
-            border-bottom: 1px solid #353535;
-          }
         }
       `}</style>
     </li>

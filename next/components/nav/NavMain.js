@@ -97,7 +97,6 @@ export default function Header() {
           list-style-type: none;
           margin: 0;
           padding: 0;
-          //   grid-column-start: 7;
           grid-column: 7 / span 6;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -105,7 +104,6 @@ export default function Header() {
         }
         li {
           font-size: 0.7rem;
-          //   text-align: center;
         }
         img {
           width: 50px;
@@ -117,7 +115,7 @@ export default function Header() {
           border-bottom: none;
         }
         a.active {
-          border-bottom: 3px solid #0071f3cc;
+          border-bottom: 3px solid var(--link-active);
           font-weight: 500;
         }
         @media only screen and (max-width: 600px) {
@@ -136,6 +134,12 @@ export default function Header() {
         @media (prefers-color-scheme: light) {
           nav.main-nav {
             background: white;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          a.active {
+            border-bottom: 3px solid var(--link-active);
+            font-weight: 500;
           }
         }
       `}</style>

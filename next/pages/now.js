@@ -86,7 +86,7 @@ export default function AboutNow({ data }) {
               line-height: 1.6;
             }
             a {
-              border-bottom: 2px solid #0071f3;
+              border-bottom: 2px solid var(--link-main);
             }
           `}</style>
         </p>
@@ -109,7 +109,7 @@ export default function AboutNow({ data }) {
               line-height: 1.6;
             }
             a {
-              border-bottom: 2px solid #0071f3;
+              border-bottom: 2px solid var(--link-main);
             }
           `}</style>
         </p>
@@ -128,7 +128,7 @@ export default function AboutNow({ data }) {
               line-height: 1.6;
             }
             a {
-              border-bottom: 2px solid #0071f3;
+              border-bottom: 2px solid var(--link-main);
             }
           `}</style>
         </p>
@@ -155,12 +155,12 @@ export default function AboutNow({ data }) {
             li:first-child {
               padding-top: 0;
             }
-            li:not(:last-child) {
-              border-bottom: 1px solid #e3e3e3;
-            }
             span {
               font-size: 0.6rem;
               color: darkgrey;
+            }
+            li:not(:last-child) {
+              border-bottom: 1px solid var(--list-border);
             }
           `}</style>
         </li>

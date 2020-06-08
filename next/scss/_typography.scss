@@ -62,25 +62,25 @@ a {
 }
 
 a {
-  border-bottom: 3px solid #0070f3;
+  border-bottom: 3px solid var(--link-main);
   text-decoration: none;
 }
 
 a::selection {
-  background: #0070f3;
+  background: var(--link-main);
   color: white;
 }
 
 .sub-nav a {
-  border-bottom: 2px solid #afafaf;
+  border-bottom: 2px solid var(--link-sub);
 }
 
 .sub-nav a:hover {
-  border-bottom: 2px solid #0071f3bb;
+  border-bottom: 2px solid var(--link-hover);
 }
 
 .sub-nav a.active {
-  border-bottom: 2px solid #0071f3cc;
+  border-bottom: 2px solid var(--link-active);
   font-weight: 500;
 }
 
@@ -94,7 +94,7 @@ a.no-border,
 }
 
 a:hover {
-  border-bottom: 3px solid #0071f3bb;
+  border-bottom: 3px solid var(--link-hover);
 }
 
 p {
@@ -137,25 +137,25 @@ blockquote + p {
 
 .btn {
   border-bottom: none;
-  border: 1px solid #0070f3;
+  border: 1px solid var(--link-main);
   display: inline-block;
   padding: 0.8rem;
   color: white;
-  background: #0070f3;
+  background: var(--link-main);
 }
 
 .btn--ghost {
   background: transparent;
-  color: #0070f3;
+  color: var(--link-main);
 }
 
 .btn:hover,
 .btn:focus,
 .btn:active {
-  background: #0064d6;
+  background: var(--link-hover);
   border-bottom: none;
   color: white;
-  border: 1px solid #0070f3;
+  border: 1px solid var(--link-main);
 }
 
 // Single
@@ -174,7 +174,7 @@ blockquote + p {
 }
 
 [data-reach-skip-nav-link] {
-  background: #0071f3;
+  background: var(--link-main);
   left: calc(50% - 50px);
   color: white;
   padding: 8px;
