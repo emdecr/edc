@@ -167,6 +167,12 @@ blockquote + p {
 /* Skip to content link */
 /* Using @reach/skip-nav */
 
+@media only screen and (max-width: 600px) {
+  [data-reach-skip-nav-link] {
+    display: none;
+  }
+}
+
 [data-reach-skip-nav-link] {
   background: #0071f3;
   left: calc(50% - 50px);

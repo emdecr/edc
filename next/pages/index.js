@@ -50,12 +50,14 @@ export default function Home({ data }) {
       </SkipNavContent>
 
       <style jsx>{`
-        .title > div {
-          margin-left: 20px;
-        }
         h1 {
           margin: 0;
           line-height: 1;
+        }
+        @media only screen and (min-width: 700px) {
+          .title > div {
+            margin-left: 20px;
+          }
         }
       `}</style>
     </DefaultLayout>

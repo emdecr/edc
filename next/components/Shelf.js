@@ -49,15 +49,8 @@ export default function Shelf(props) {
           font-size: 1.2rem;
           line-height: 1.2;
           padding: 2rem 1rem;
-          border-bottom: 1px solid #e3e3e3;
           position: relative;
           overflow: hidden;
-        }
-        // li:first-child {
-        //   padding-top: 0;
-        // }
-        li:not(:last-child) {
-          // border-bottom: 1px solid #e3e3e3;
         }
         span {
           font-size: 0.6rem;
@@ -78,6 +71,16 @@ export default function Shelf(props) {
           height: 100%;
           object-fit: cover;
           filter: grayscale(100%);
+        }
+        @media (prefers-color-scheme: light) {
+          li {
+            border-bottom: 1px solid #f3f3f3;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          li {
+            border-bottom: 1px solid #353535;
+          }
         }
       `}</style>
     </li>

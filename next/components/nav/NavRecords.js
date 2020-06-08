@@ -28,15 +28,16 @@ function NavRecords({ active }) {
       </Link> */}
       <style jsx>{`
         nav {
-          margin-left: 20px;
           font-size: 0.7rem;
-          // line-height: 1;
+          margin: 0.5rem 0 1.5rem;
         }
         nav a:not(:last-of-type) {
           margin-right: 20px;
         }
-        .active {
-          // font-size: 1.5rem;
+        @media only screen and (min-width: 700px) {
+          nav {
+            margin: 0 0 0 20px;
+          }
         }
       `}</style>
     </nav>

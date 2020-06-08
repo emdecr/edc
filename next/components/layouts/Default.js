@@ -14,6 +14,11 @@ function DefaultLayout({ children }) {
           href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Material+Icons"
         />
       </Head>
+      <Link href="/">
+        <a className="mobile-logo no-border">
+          <img src="/connect-extend.svg" alt="logo" />
+        </a>
+      </Link>
       <NavMain />
       {children}
       <Footer />
@@ -32,6 +37,18 @@ function DefaultLayout({ children }) {
         <div></div>
         <div></div>
       </div>
+      <style jsx>{`
+        img {
+          width: 60px;
+          height: auto;
+          margin: 1rem 20px 0;
+        }
+        @media only screen and (min-width: 700px) {
+          .mobile-logo {
+            display: none;
+          }
+        }
+      `}</style>
     </div>
   );
 }

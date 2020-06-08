@@ -163,6 +163,9 @@ export default function ReadContent({ read }) {
           width: 100%;
           height: auto;
         }
+        h1 {
+          line-height: 1.3;
+        }
       `}</style>
     </React.Fragment>
   );

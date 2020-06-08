@@ -27,14 +27,21 @@ export default function Records({ data }) {
           line-height: 1.2;
           padding: 2rem 0;
         }
-        li:not(:last-child) {
-          border-bottom: 1px solid #f3f3f3;
-        }
         @media only screen and (min-width: 900px) {
           li {
             display: grid;
             grid-template-columns: repeat(4, [col-start] 1fr);
             grid-gap: 20px;
+          }
+        }
+        @media (prefers-color-scheme: light) {
+          li:not(:last-child) {
+            border-bottom: 1px solid #f3f3f3;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          li:not(:last-child) {
+            border-bottom: 1px solid #353535;
           }
         }
       `}</style>
@@ -86,9 +93,6 @@ export default function Records({ data }) {
           line-height: 1.2;
           padding: 2rem 0;
         }
-        li:not(:last-child) {
-          border-bottom: 1px solid #f3f3f3;
-        }
         img {
           display: block;
           width: 150px;
@@ -102,6 +106,16 @@ export default function Records({ data }) {
           }
           img {
             width: 100%;
+          }
+        }
+        @media (prefers-color-scheme: light) {
+          li:not(:last-child) {
+            border-bottom: 1px solid #f3f3f3;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          li:not(:last-child) {
+            border-bottom: 1px solid #353535;
           }
         }
       `}</style>

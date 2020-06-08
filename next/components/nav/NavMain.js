@@ -26,18 +26,30 @@ export default function Header() {
 
   const getArrow = () => {
     if (router.pathname === "/records/reads") {
-      return <span> →</span>;
+      return (
+        <span className="nav-arrow">
+          {" "}
+          →
+          <style jsx>{`
+            @media only screen and (max-width: 600px) {
+              .nav-arrow {
+                display: none;
+              }
+            }
+          `}</style>
+        </span>
+      );
     } else {
       return null;
     }
   };
 
   return (
-    <div className="container">
+    <div>
       <SkipNavLink>Skip to content</SkipNavLink>
-      <nav className="main container--grid">
+      <nav className="main-nav container--grid">
         <Link href="/">
-          <a className="no-border logo">
+          <a className="no-border logo logo-home">
             <img src="/connect-extend.svg" alt="logo" />
           </a>
         </Link>
@@ -76,8 +88,10 @@ export default function Header() {
         </ul>
       </nav>
       <style jsx>{`
-        nav.main {
-          padding: 1rem 0;
+        nav.main-nav {
+          max-width: 1680px;
+          margin: 0 auto;
+          padding: 1rem 4rem;
         }
         ul {
           list-style-type: none;
@@ -105,6 +119,24 @@ export default function Header() {
         a.active {
           border-bottom: 3px solid #0071f3cc;
           font-weight: 500;
+        }
+        @media only screen and (max-width: 600px) {
+          nav.main-nav {
+            width: 100vw;
+            overflow-x: scroll;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            border-top: 1px solid #363636;
+          }
+          .logo-home {
+            display: none;
+          }
+        }
+        @media (prefers-color-scheme: light) {
+          nav.main-nav {
+            background: white;
+          }
         }
       `}</style>
     </div>

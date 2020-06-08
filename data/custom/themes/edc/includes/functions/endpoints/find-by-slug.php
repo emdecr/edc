@@ -49,8 +49,11 @@ class find_by_slug_custom_route extends WP_REST_Controller {
             $post_thumbnail_url = get_the_post_thumbnail_url( $postData->ID, 'medium');
             $newObj->image_url = $post_thumbnail_url;
             if ($postData->post_type == "read") {
-                // $meta = get_post_meta( $postData->ID);
-                // $newObj->meta = $meta;
+                if( has_term( 24, 'flag', $postData->ID ) ) {
+                    $newObj->currrently_reading = true;
+                } else {
+                    $newObj->currrently_reading = false;
+                }
                 $title = get_post_meta( $postData->ID, '_read_title', true);
                 $newObj->read_title = $title;
                 $subtitle = get_post_meta( $postData->ID, '_read_subtitle', true);

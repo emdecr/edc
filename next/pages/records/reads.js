@@ -28,6 +28,30 @@ export default function Reads({ data }) {
     }
     return null;
   }
+  function renderSubtitle(item) {
+    if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
+      return (
+        <React.Fragment>
+          {": "}
+          <span className="mono">
+            {item.meta_box._read_subtitle}
+            <style jsx>{`
+              span {
+                margin-top: 0.5rem;
+                display: block;
+                font-size: 0.7rem;
+                font-weight: normal;
+                line-height: 1.5;
+                color: grey;
+              }
+            `}</style>
+          </span>
+        </React.Fragment>
+      );
+    } else {
+      return null;
+    }
+  }
   function renderTitle(item) {
     if (item.meta_box._read_title && item.meta_box._read_title != "") {
       return (
@@ -52,7 +76,10 @@ export default function Reads({ data }) {
       </span>
       <img className="grid--span-2" src={getImageUrl(item)} />
       <div className="grid--span-4">
-        <h3 className="fw--normal italic">{renderTitle(item)}</h3>
+        <h3 className="fw--normal italic">
+          {renderTitle(item)}
+          {renderSubtitle(item)}
+        </h3>
         {renderAuthors(item.meta_box._read_authors)}
       </div>
       <style jsx>{`
@@ -60,10 +87,6 @@ export default function Reads({ data }) {
           font-size: 1.1rem;
           line-height: 1.2;
           padding: 2rem 0;
-          border-bottom: 1px solid #e3e3e3;
-        }
-        li:not(:last-child) {
-          border-bottom: 1px solid #e3e3e3;
         }
         img {
           display: block;
@@ -81,6 +104,16 @@ export default function Reads({ data }) {
           }
           img {
             width: 90%;
+          }
+        }
+        @media (prefers-color-scheme: light) {
+          li:not(:last-child) {
+            border-bottom: 1px solid #f3f3f3;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          li:not(:last-child) {
+            border-bottom: 1px solid #353535;
           }
         }
       `}</style>
@@ -110,7 +143,8 @@ export default function Reads({ data }) {
             </div>
             <div className="grid--span-4">
               <h3 className="fw--normal italic">
-                {data.currently.title.rendered}
+                {renderTitle(data.currently)}
+                {renderSubtitle(data.currently)}
               </h3>
               {renderAuthors(data.currently.meta_box._read_authors)}
             </div>
