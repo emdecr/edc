@@ -29,6 +29,7 @@ function read_meta_boxes( $meta_boxes) {
                 'name' => __( 'Rating', 'textdomain' ),
                 'label_description' => '(out of 10)',
                 'type' => 'number',
+                'step' => 'any'
             ),
             array(
                 'id'   => $prefix . 'isbn',
