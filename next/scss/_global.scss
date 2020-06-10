@@ -1,6 +1,7 @@
 :root {
   --main-bg-color: #ffffff;
   --main-font-color: rgb(37, 37, 37);
+  --meta-font-color: grey;
   --link-main: #2196f3;
   --link-sub: #afafaf;
   --link-hover: #0071f3bb;
@@ -12,9 +13,10 @@
   :root {
     --main-bg-color: #121212;
     --main-font-color: #e0e0e0;
+    --meta-font-color: #5c5c5c;
     --link-sub: #616161;
     --link-active: #2196f3;
-    --list-border: #353535;
+    --list-border: #242424;
   }
 }
 
@@ -26,7 +28,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
   font-size: 18px;
   color: var(--main-font-color);
 }

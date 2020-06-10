@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 
-import { renderIntro } from "../../helpers";
+import { renderIntro, renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
 import NavAbout from "../../components/nav/NavAbout";
@@ -23,7 +23,7 @@ export default function About({ data }) {
       </Head>
 
       <main className="container container--grid mt--lg" id="main-content">
-        <div className="grid--span-all title flex-all flex--ai-c">
+        <div className="grid--span-all title flex-all flex--ai-c mb--sm">
           <h1>About</h1>
           <NavAbout active="/about" />
         </div>
@@ -38,13 +38,22 @@ export default function About({ data }) {
             dangerouslySetInnerHTML={renderSkills()}
           ></div>
         </div>
-        <section className="grid--start-1 grid--span-all mt--md">
-          <h2>The Link Shelf</h2>
-          <p>Some content I've enjoyed...</p>
+        <section className="grid--start-1 grid--span-all container--grid mt--md">
+          <h2 className="grid--span-all">The Link Shelf</h2>
+          <div
+            className="grid--span-6"
+            dangerouslySetInnerHTML={renderHTML(
+              data.shelfIntro.content.rendered
+            )}
+          ></div>
           <Shelf items={data.shelf} />
-          <Link href="/about/the-link-shelf">
-            <a className="btn mt--md">View the full shelf</a>
-          </Link>
+          <div className="grid--span-all">
+            <Link href="/about/the-link-shelf">
+              <a className="btn mt--md fs--sm mono grid--span-all">
+                View the full shelf
+              </a>
+            </Link>
+          </div>
         </section>
       </main>
 
@@ -62,15 +71,18 @@ export default function About({ data }) {
 export async function getServerSideProps() {
   // Fetch page
   let about;
+  let shelfIntro;
   await axios
     .get(process.env.CMS_API_URL + "wp-json/wp/v2/pages?per_page=50")
     .then(function(response) {
       const pages = response.data;
       about = pages.filter(p => p.slug == "new-about")[0];
+      shelfIntro = pages.filter(p => p.slug == "the-shelf")[0];
     })
     .catch(function(error) {
       console.log("About page error: " + error);
       about = null;
+      shelfIntro = null;
     });
   // Fetch shelf
   let shelfItems;
@@ -88,7 +100,8 @@ export async function getServerSideProps() {
 
   const data = {
     page: about,
-    shelf: shelfItems
+    shelf: shelfItems,
+    shelfIntro
   };
 
   return { props: { data } };

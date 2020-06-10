@@ -3,7 +3,7 @@ import Link from "next/link";
 import moment from "moment";
 import axios from "axios";
 
-import { renderIntro, renderFormat, renderHTML } from "../helpers";
+import { renderIntro, renderFormat, renderHTML, getImageUrl } from "../helpers";
 
 import DefaultLayout from "../components/layouts/Default";
 import NavAbout from "../components/nav/NavAbout";
@@ -170,6 +170,97 @@ export default function AboutNow({ data }) {
       return <p>Error loading GitHub activity.</p>;
     }
   }
+  function renderAuthors(authors) {
+    if (authors.length > 1) {
+      const authorList = authors.map((a, index) => (
+        <span
+          key={`author-${index}`}
+          className="display--b mono fs--md"
+        >{`${a.first_name} ${a.last_name}`}</span>
+      ));
+      return <div className="mt--sm">{authorList}</div>;
+    }
+    if (authors.length > 0) {
+      return (
+        <span className="display--b mono fs--md mt--sm">
+          {authors[0].first_name + " " + authors[0].last_name}
+        </span>
+      );
+    }
+    return null;
+  }
+  function renderSubtitle(item) {
+    if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
+      return (
+        <React.Fragment>
+          {": "}
+          <span className="mono">
+            {item.meta_box._read_subtitle}
+            <style jsx>{`
+              span {
+                margin-top: 0.5rem;
+                display: block;
+                font-size: 0.7rem;
+                font-weight: normal;
+                line-height: 1.5;
+                color: grey;
+              }
+            `}</style>
+          </span>
+        </React.Fragment>
+      );
+    } else {
+      return null;
+    }
+  }
+  function renderTitle(item) {
+    if (item.meta_box._read_title && item.meta_box._read_title != "") {
+      return (
+        <Link href={"/records/" + item.slug}>
+          <a
+            dangerouslySetInnerHTML={renderHTML(item.meta_box._read_title)}
+          ></a>
+        </Link>
+      );
+    } else {
+      return (
+        <Link href={"/records/" + item.slug}>
+          <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+        </Link>
+      );
+    }
+  }
+
+  function renderRead(read) {
+    if (read) {
+      return (
+        <div className="mb--md read-container">
+          <h2 className="grid--span-4">Reading</h2>
+          <img className="grid--span-2" src={getImageUrl(read)} />
+          <div className="grid--span-2">
+            <h3 className="fw--normal italic">
+              {renderTitle(read)}
+              {renderSubtitle(read)}
+            </h3>
+            {renderAuthors(read.meta_box._read_authors)}
+          </div>
+          <style jsx>{`
+            .read-container {
+              display: grid;
+              grid-template-columns: repeat(4, [col-start] 1fr);
+              grid-gap: 20px;
+            }
+            img {
+              width: 100%;
+              height: auto;
+            }
+          `}</style>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
 
   return (
     <DefaultLayout>
@@ -184,12 +275,12 @@ export default function AboutNow({ data }) {
         <div className="content grid--span-7">
           <div dangerouslySetInnerHTML={renderIntro(data)}></div>
           <div className="updated mt--md pt--sm">
-            <p className="mono fs--sm">
+            <p className="mono fs--sm fc--meta">
               Last updated: {moment(data.page.modified).format("ll")}
             </p>
           </div>
         </div>
-        <div className="content grid--span-4 grid--start-9">
+        <div className="grid--span-4 grid--start-9">
           <div className="mb--md">
             <h2>Recently Played</h2>
             {renderTrack(data.track)}
@@ -215,6 +306,7 @@ export default function AboutNow({ data }) {
               </a>
             </Link>
           </div>
+          {renderRead(data.read)}
           <div>
             <h2>GitHub Activity</h2>
             {renderGithub(data.github)}
@@ -232,7 +324,7 @@ export default function AboutNow({ data }) {
           color: darkgrey;
         }
         .updated {
-          border-top: 1px solid lightgrey;
+          border-top: 1px solid var(--list-border);
         }
       `}</style>
     </DefaultLayout>
@@ -311,12 +403,31 @@ export async function getServerSideProps() {
       shelfItems = null;
     });
 
+  // Fetch Current Read
+  let currently;
+  await axios
+    .get(process.env.CMS_API_URL + "/wp-json/wp/v2/read?per_page=10&_embed")
+    .then(function(response) {
+      const posts = response.data;
+      const reads = posts.filter((item, index, arr) => item.flag.includes(24));
+      if (reads.length > 0) {
+        currently = reads[0];
+      } else {
+        currently = null;
+      }
+    })
+    .catch(function(error) {
+      console.log("Records page error: " + error);
+      currently = null;
+    });
+
   const data = {
     page: now,
     learning: learning,
     track: track,
     github: github,
-    shelf: shelfItems
+    shelf: shelfItems,
+    read: currently
   };
 
   return { props: { data } };

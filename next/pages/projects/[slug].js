@@ -13,7 +13,7 @@ export default function SingleProject({ data }) {
       return (
         <React.Fragment>
           <h1
-            className="mt--md"
+            className="mt--md mb--sm"
             dangerouslySetInnerHTML={renderHTML(data.page.data.title)}
           ></h1>
           <div

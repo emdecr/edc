@@ -17,7 +17,7 @@ export default function SingleRecord({ data }) {
       } else {
         return (
           <div className="grid--span-7">
-            <h1>{record.title}</h1>
+            <h1 className="mb--sm">{record.title}</h1>
             <div
               className="content"
               dangerouslySetInnerHTML={renderHTML(record.content)}

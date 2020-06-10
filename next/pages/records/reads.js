@@ -28,6 +28,25 @@ export default function Reads({ data }) {
     }
     return null;
   }
+  function renderEditors(editors) {
+    if (editors.length > 1) {
+      const editorList = editors.map((e, index) => (
+        <span
+          key={`author-${index}`}
+          className="display--b mono fs--md"
+        >{`${e.first_name} ${e.last_name}`}</span>
+      ));
+      return <div className="mt--sm">{editorList}</div>;
+    }
+    if (editors.length > 0) {
+      return (
+        <span className="display--b mono fs--md mt--sm">
+          {editors[0].first_name + " " + editors[0].last_name}
+        </span>
+      );
+    }
+    return null;
+  }
   function renderSubtitle(item) {
     if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
       return (
@@ -80,6 +99,7 @@ export default function Reads({ data }) {
           {renderTitle(item)}
           {renderSubtitle(item)}
         </h3>
+        {renderEditors(item.meta_box._read_editors)}
         {renderAuthors(item.meta_box._read_authors)}
       </div>
       <style jsx>{`
@@ -150,10 +170,10 @@ export default function Reads({ data }) {
       </main>
 
       <style jsx>{`
-        h1 {
+        h1,
+        h2 {
           margin: 0;
           line-height: 1;
-          // font-size: 0.9rem;
         }
         h3 {
           font-size: 28px;

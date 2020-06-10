@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { SkipNavContent } from "@reach/skip-nav";
 
 import NavMain from "../nav/NavMain";
 import Footer from "../Footer";
@@ -20,7 +21,7 @@ function DefaultLayout({ children }) {
         </a>
       </Link>
       <NavMain />
-      {children}
+      <SkipNavContent>{children}</SkipNavContent>
       <Footer />
       <div className="grid">
         <div></div>

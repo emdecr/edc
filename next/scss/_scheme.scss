@@ -2,10 +2,15 @@
   *::selection {
     background: #8b8b8b;
   }
+
   body {
     color: var(--main-font-color);
     background-color: var(--main-bg-color);
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .grid > div {
+    background-color: rgba(255, 255, 255, 0.05);
   }
 
   /* LINKS */

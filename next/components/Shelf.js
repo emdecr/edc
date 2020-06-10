@@ -77,7 +77,7 @@ export default function Shelf(props) {
     </li>
   ));
   return (
-    <ul className="container--grid reset-list">
+    <ul className="container--grid reset-list grid--span-all">
       {renderItems}
       <style jsx>{`
         li {

@@ -118,7 +118,7 @@ export default function ReadContent({ read }) {
         read.read_title && read.read_title != "" ? read.read_title : read.title;
       return (
         <p className="fs--sm read-stats mono">
-          <span>Search for purchase:</span>
+          <span>Purchase Search via DuckDuckGo:</span>
           <br />
           <a
             target="_blank"

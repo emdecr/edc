@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
-import { SkipNavContent } from "@reach/skip-nav";
 
 import { renderHTML } from "../helpers";
 
@@ -14,40 +13,38 @@ export default function Home({ data }) {
       <Head>
         <title>Emily Dela Cruz</title>
       </Head>
-      <SkipNavContent>
-        <main className="container container--grid mt--lg" id="main-content">
-          <div className="grid--span-all title flex-all flex--ai-c">
-            <h1>emily dela cruz</h1>
-            <div>
-              <a
-                className="pronouns mono fs--sm"
-                href="https://www.mypronouns.org/she-her"
-                target="_blank"
-              >
-                she/her
-              </a>
-            </div>
+      <main className="container container--grid mt--lg" id="main-content">
+        <div className="grid--span-all title flex-all flex--ai-c">
+          <h1>emily dela cruz</h1>
+          <div>
+            <a
+              className="pronouns mono fs--sm"
+              href="https://www.mypronouns.org/she-her"
+              target="_blank"
+            >
+              she/her
+            </a>
           </div>
-          <div
-            className="content grid--span-6"
-            dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
-          ></div>
-          <div className="learn-more fs--sm grid--span-all mono">
-            <Link href="/about">
-              <a>Learn more...</a>
-            </Link>
-          </div>
-          <section className="grid--span-all mt--md">
-            <h2>Projects</h2>
-            <ProjectList items={data.projectList} />
-          </section>
-          <div className="learn-more fs--sm grid--span-all mono">
-            <Link href="/projects">
-              <a>View all projects...</a>
-            </Link>
-          </div>
-        </main>
-      </SkipNavContent>
+        </div>
+        <div
+          className="content grid--span-6"
+          dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
+        ></div>
+        <div className="learn-more fs--sm grid--span-all mono">
+          <Link href="/about">
+            <a>Learn more...</a>
+          </Link>
+        </div>
+        <section className="grid--span-all mt--md">
+          <h2>Projects</h2>
+          <ProjectList items={data.projectList} />
+        </section>
+        <div className="learn-more fs--sm grid--span-all mono">
+          <Link href="/projects">
+            <a>View all projects...</a>
+          </Link>
+        </div>
+      </main>
 
       <style jsx>{`
         h1 {
