@@ -89,12 +89,12 @@ export default function Reads({ data }) {
     }
   }
   const renderReads = data.reads.map((item, index) => (
-    <li key={"item-" + index}>
-      <span className="mono grid--span-1">
+    <li key={"item-" + index} className="grid--span-6">
+      <span className="mono fs--xs grid--span-6">
         {moment(item.date).format("ll")}
       </span>
       <img className="grid--span-2" src={getImageUrl(item)} />
-      <div className="grid--span-4">
+      <div className="grid--span-3">
         <h3 className="fw--normal italic">
           {renderTitle(item)}
           {renderSubtitle(item)}
@@ -116,13 +116,16 @@ export default function Reads({ data }) {
           width: 150px;
           height: auto;
         }
-        span {
-          font-size: 0.55rem;
+        @media only screen and (max-width: 900px) {
+          h3,
+          img {
+            margin-top: 1rem;
+          }
         }
         @media only screen and (min-width: 900px) {
           li {
             display: grid;
-            grid-template-columns: repeat(7, [col-start] 1fr);
+            grid-template-columns: repeat(6, [col-start] 1fr);
             grid-gap: 20px;
           }
           img {
@@ -144,28 +147,26 @@ export default function Reads({ data }) {
           <NavRecords />
         </div>
         <div
-          className="content grid--span-4"
+          className="content grid--span-5"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        <section className="grid--span-7 grid--start-6">
+        <section className="currently grid--span-6 grid--start-7">
           {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
-          <h2>Currently Reading</h2>
-          <div className="currently mt--sm">
-            <div className="grid--span-2">
-              <img src={getImageUrl(data.currently)} />
-            </div>
-            <div className="grid--span-4">
-              <h3 className="fw--normal italic">
-                {renderTitle(data.currently)}
-                {renderSubtitle(data.currently)}
-              </h3>
-              {renderAuthors(data.currently.meta_box._read_authors)}
-            </div>
+          <h2 className="grid--span-6">Currently Reading</h2>
+          <div className="grid--span-2 mt--sm">
+            <img src={getImageUrl(data.currently)} />
+          </div>
+          <div className="grid--span-4 mt--sm">
+            <h3 className="fw--normal italic">
+              {renderTitle(data.currently)}
+              {renderSubtitle(data.currently)}
+            </h3>
+            {renderAuthors(data.currently.meta_box._read_authors)}
           </div>
         </section>
-        <section className="grid--span-7 mt--md">
+        <section className="grid--span-all mt--md">
           <h2>Past Reads</h2>
-          <ul className="reset-list">{renderReads}</ul>
+          <ul className="reset-list container--grid">{renderReads}</ul>
         </section>
       </main>
 
@@ -185,7 +186,7 @@ export default function Reads({ data }) {
         @media only screen and (min-width: 900px) {
           .currently {
             display: grid;
-            grid-template-columns: repeat(7, [col-start] 1fr);
+            grid-template-columns: repeat(6, [col-start] 1fr);
             grid-gap: 20px;
           }
           img {
