@@ -102,7 +102,7 @@ export default function ReadContent({ read }) {
     }
   }
   function renderFinishDate() {
-    if (read.currently_reading && read.currently_reading === false) {
+    if (!read.currently_reading) {
       return (
         <p className="fs--sm read-stats mono">
           <span>Finished Reading:</span>
@@ -154,11 +154,16 @@ export default function ReadContent({ read }) {
       ></div>
       <style jsx>{`
         img {
-          width: 100%;
+          width: 150px;
           height: auto;
         }
         h1 {
           line-height: 1.3;
+        }
+        @media only screen and (min-width: 900px) {
+          img {
+            width: 100%;
+          }
         }
       `}</style>
     </React.Fragment>
