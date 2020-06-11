@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function NavAbout({ active }) {
+function NavAbout() {
   const router = useRouter();
 
   const getClass = linkRoute => {
@@ -12,25 +12,33 @@ function NavAbout({ active }) {
     }
   };
 
+  function renderLink(path, label) {
+    if (router.pathname != path) {
+      return (
+        <Link href={path}>
+          <a className={getClass(path)}>
+            {label}
+            <style jsx>{`
+              a:not(:last-of-type) {
+                margin-right: 20px;
+              }
+            `}</style>
+          </a>
+        </Link>
+      );
+    }
+  }
+
   return (
     <nav className="sub-nav mono flex-all flex--ai-fe">
-      <Link href="/about">
-        <a className={getClass("/about")}>General</a>
-      </Link>
-      <Link href="/now">
-        <a className={getClass("/now")}>Now</a>
-      </Link>
-      <Link href="/about/the-link-shelf">
-        <a className={getClass("/about/the-link-shelf")}>The Link Shelf</a>
-      </Link>
-      <a href="https://emilydelacruz.com/life-overview">Life Overview</a>
+      {renderLink("/about", "About")}
+      {renderLink("/now", "Now")}
+      {renderLink("/about/the-link-shelf", "The Link Shelf")}
+      {renderLink("/life-overview", "Life Overview")}
       <style jsx>{`
         nav {
           font-size: 0.7rem;
           margin: 0.5rem 0 1.5rem;
-        }
-        nav a:not(:last-of-type) {
-          margin-right: 20px;
         }
         @media only screen and (min-width: 700px) {
           nav {

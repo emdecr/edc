@@ -269,8 +269,8 @@ export default function AboutNow({ data }) {
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-ac">
-          <h1>About</h1>
-          <NavAbout active="/about/now" />
+          <h1>Now</h1>
+          <NavAbout />
         </div>
         <div className="content grid--span-7">
           <div dangerouslySetInnerHTML={renderIntro(data)}></div>

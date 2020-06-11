@@ -140,7 +140,7 @@ export default function Reads({ data }) {
 
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-fe">
-          <h1>Records</h1>
+          <h1>Reads</h1>
           <NavRecords />
         </div>
         <div

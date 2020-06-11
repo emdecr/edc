@@ -2,7 +2,7 @@ import "../style.scss";
 import { motion, AnimatePresence } from "framer-motion";
 
 // This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps, router }) {
+export default function App({ Component, pageProps, router }) {
   const spring = {
     type: "spring",
     damping: 20,

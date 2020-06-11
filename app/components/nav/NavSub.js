@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function NavRecords({ active }) {
+function NavSub({ links }) {
   const router = useRouter();
 
   const getClass = linkRoute => {
@@ -29,29 +29,15 @@ function NavRecords({ active }) {
     }
   }
 
+  function renderLinkList(links) {}
+
   return (
     <nav className="sub-nav mono flex-all flex--ai-fe">
-      {renderLink("/records", "All Records")}
-      {renderLink("/records/reads", "Reads")}
-      {/* <Link href="/records">
-        <a className={getClass("/records")}>All</a>
-      </Link> */}
-      {/* <Link href="/records/writing">
-        <a className={getClass("/records/writing")}>Writing</a>
-      </Link> */}
-      {/* <Link href="/records/reads">
-        <a className={getClass("/records/reads")}>Reads</a>
-      </Link> */}
-      {/* <Link href="/records/music">
-        <a className={getClass("/records/music")}>Music</a>
-      </Link> */}
+      {renderLinkList(links)}
       <style jsx>{`
         nav {
           font-size: 0.7rem;
           margin: 0.5rem 0 1.5rem;
-        }
-        nav a:not(:last-of-type) {
-          margin-right: 20px;
         }
         @media only screen and (min-width: 700px) {
           nav {
@@ -63,4 +49,4 @@ function NavRecords({ active }) {
   );
 }
 
-export default NavRecords;
+export default NavSub;

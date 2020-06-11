@@ -48,7 +48,7 @@ export default function Writing({ data }) {
 
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-fe">
-          <h1>Records</h1>
+          <h1>Writing</h1>
           <NavRecords />
         </div>
         <div

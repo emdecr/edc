@@ -26,8 +26,6 @@ export default function ReadContent({ read }) {
           </span>
         </React.Fragment>
       );
-    } else {
-      return null;
     }
   }
   function renderAuthors() {
@@ -45,8 +43,6 @@ export default function ReadContent({ read }) {
           {authors}
         </p>
       );
-    } else {
-      return null;
     }
   }
   function renderEditors() {
@@ -61,8 +57,6 @@ export default function ReadContent({ read }) {
           {authors}
         </p>
       );
-    } else {
-      return null;
     }
   }
   function renderPublisher() {
@@ -74,8 +68,6 @@ export default function ReadContent({ read }) {
           {read.publisher}
         </p>
       );
-    } else {
-      return null;
     }
   }
   function renderDate() {
@@ -87,7 +79,8 @@ export default function ReadContent({ read }) {
           {moment(read.published_date).format("ll")}
         </p>
       );
-    } else if (read.published_year != "") {
+    }
+    if (read.published_year != "" && read.published_date == "") {
       return (
         <p className="fs--sm read-stats mono">
           <span>Edition Release:</span>
@@ -95,8 +88,6 @@ export default function ReadContent({ read }) {
           {read.published_year}
         </p>
       );
-    } else {
-      return null;
     }
   }
   function renderRating() {
@@ -108,8 +99,17 @@ export default function ReadContent({ read }) {
           {read.rating}/10
         </p>
       );
-    } else {
-      return null;
+    }
+  }
+  function renderFinishDate() {
+    if (read.currently_reading && read.currently_reading === false) {
+      return (
+        <p className="fs--sm read-stats mono">
+          <span>Finished Reading:</span>
+          <br />
+          {moment(read.date).format("ll")}
+        </p>
+      );
     }
   }
   function renderISBNSearch() {
@@ -128,8 +128,6 @@ export default function ReadContent({ read }) {
           </a>
         </p>
       );
-    } else {
-      return null;
     }
   }
   return (
@@ -143,11 +141,7 @@ export default function ReadContent({ read }) {
         <img src={read.image_url} />
         {renderAuthors()}
         {renderEditors()}
-        <p className="fs--sm read-stats mono">
-          <span>Finished Reading:</span>
-          <br />
-          {moment(read.date).format("ll")}
-        </p>
+        {renderFinishDate()}
         {renderPublisher()}
         {renderDate()}
         {renderRating()}

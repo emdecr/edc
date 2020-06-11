@@ -12,12 +12,12 @@ export default function AboutTheShelf({ data }) {
   return (
     <DefaultLayout>
       <Head>
-        <title>The Shelf ← About ← Emily Dela Cruz</title>
+        <title>The Link Shelf ← About ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-fe">
-          <h1>About</h1>
-          <NavAbout active="/about/now" />
+          <h1>The Link Shelf</h1>
+          <NavAbout />
         </div>
         <div
           className="content grid--span-7"
