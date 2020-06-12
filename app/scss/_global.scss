@@ -7,6 +7,7 @@
   --link-hover: #0071f3bb;
   --link-active: #0071f3cc;
   --list-border: #f3f3f3;
+  --nav-border: #e3e3e3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +18,7 @@
     --link-sub: #616161;
     --link-active: #2196f3;
     --list-border: #242424;
+    --nav-border: #363636;
   }
 }
 

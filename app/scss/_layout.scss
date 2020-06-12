@@ -103,6 +103,10 @@
   grid-column-start: 9;
 }
 
+.grid--tr-min {
+  grid-template-rows: min-content;
+}
+
 /* FLEXBOX */
 .flex {
   display: flex;

@@ -14,13 +14,11 @@ export default function Header() {
   };
 
   const getClass = linkRoute => {
-    if (
-      linkRoute === router.pathname ||
-      router.pathname.indexOf(linkRoute) > -1
-    ) {
+    if (linkRoute === router.pathname) {
       return "active";
-    } else {
-      return null;
+    }
+    if (router.pathname.indexOf(linkRoute) > -1) {
+      return "active-parent";
     }
   };
 
@@ -118,6 +116,7 @@ export default function Header() {
           border-bottom: 3px solid var(--link-active);
           font-weight: 500;
         }
+
         @media only screen and (max-width: 600px) {
           nav.main-nav {
             width: 100vw;
@@ -125,10 +124,17 @@ export default function Header() {
             padding: 1rem;
             position: fixed;
             bottom: 0;
-            border-top: 1px solid #363636;
+            border-top: 1px solid var(--nav-border);
+            z-index: 1;
           }
           .logo-home {
             display: none;
+          }
+        }
+        @media only screen and (min-width: 700px) {
+          a.active-parent {
+            border-bottom: 3px solid var(--link-active);
+            font-weight: 500;
           }
         }
         @media (prefers-color-scheme: light) {

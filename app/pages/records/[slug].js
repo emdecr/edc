@@ -34,7 +34,7 @@ function renderBackLink(record) {
         <React.Fragment>
           |
           <Link href={"/records/reads"}>
-            <a className="mono">Back to all Reads</a>
+            <a className="mono">Back to Reads</a>
           </Link>
           <style jsx>{`
             a {
@@ -50,7 +50,7 @@ function renderBackLink(record) {
         <React.Fragment>
           |
           <Link href={"/records/writing"}>
-            <a className="mono">Back to all Writing</a>
+            <a className="mono">Back to Writing</a>
           </Link>
           <style jsx>{`
             a {
@@ -75,7 +75,7 @@ export default function SingleRecord({ data }) {
         <div className="grid--span-all mini-nav fs--sm">
           ←
           <Link href={"/records/"}>
-            <a className="mono fs--sm">Back to all Records</a>
+            <a className="mono fs--sm">Back to Records</a>
           </Link>
           {renderBackLink(record)}
         </div>

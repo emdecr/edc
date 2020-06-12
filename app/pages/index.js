@@ -15,16 +15,14 @@ export default function Home({ data }) {
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-c">
-          <h1>emily dela cruz</h1>
-          <div>
-            <a
-              className="pronouns mono fs--sm"
-              href="https://www.mypronouns.org/she-her"
-              target="_blank"
-            >
-              she/her
-            </a>
-          </div>
+          <h1 className="display--ib">emily dela cruz</h1>
+          <a
+            className="pronouns mono fs--sm"
+            href="https://www.mypronouns.org/she-her"
+            target="_blank"
+          >
+            she/her
+          </a>
         </div>
         <div
           className="content grid--span-6"
@@ -39,7 +37,7 @@ export default function Home({ data }) {
           <h2>Projects</h2>
           <ProjectList items={data.projectList} />
         </section>
-        <div className="learn-more fs--sm grid--span-all mono">
+        <div className="learn-more fs--sm grid--span-all mono mt--sm">
           <Link href="/projects">
             <a>View all projects...</a>
           </Link>
@@ -51,9 +49,15 @@ export default function Home({ data }) {
           margin: 0;
           line-height: 1;
         }
-        @media only screen and (min-width: 700px) {
-          .title > div {
-            margin-left: 20px;
+        .title > a {
+          margin-left: 20px;
+        }
+        @media only screen and (max-width: 500px) {
+          h1 {
+            font-size: 34px;
+          }
+          .title {
+            margin-bottom: 1rem;
           }
         }
       `}</style>

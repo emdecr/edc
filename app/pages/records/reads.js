@@ -186,7 +186,7 @@ const renderCurrentlyReading = currently => {
 
 const renderReads = reads => {
   return reads.map((item, index) => (
-    <li key={"item-" + index} className="grid--span-6">
+    <li key={"item-" + index} className="grid--span-6 grid--tr-min">
       <span className="mono fs--xs grid--span-6">
         {moment(item.date).format("ll")}
       </span>

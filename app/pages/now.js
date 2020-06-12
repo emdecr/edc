@@ -262,7 +262,7 @@ export default function AboutNow({ data }) {
         <div className="content grid--span-7">
           <div dangerouslySetInnerHTML={renderIntro(data)}></div>
           <div className="updated mt--md pt--sm">
-            <p className="mono fs--sm fc--meta">
+            <p className="mono fs--sm fc--meta mb--lg">
               Last updated: {moment(data.page.modified).format("ll")}
             </p>
           </div>
