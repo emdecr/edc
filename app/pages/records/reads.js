@@ -8,8 +8,17 @@ import { renderIntro, renderHTML, getImageUrl } from "../../helpers";
 import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
-export default function Reads({ data }) {
-  function renderAuthors(authors) {
+function renderAuthors(authors, inline) {
+  if (inline) {
+    const authorList = authors.map((a, index) => {
+      if (index != authors.length - 1) {
+        return a.first_name + " " + a.last_name + ",";
+      } else {
+        return a.first_name + " " + a.last_name;
+      }
+    });
+    return <span>{authorList}</span>;
+  } else {
     if (authors.length > 1) {
       const authorList = authors.map((a, index) => (
         <span
@@ -28,7 +37,19 @@ export default function Reads({ data }) {
     }
     return null;
   }
-  function renderEditors(editors) {
+}
+
+function renderEditors(editors, inline) {
+  if (inline) {
+    const editorList = editors.map((a, index) => {
+      if (index != editors.length - 1) {
+        return a.first_name + " " + a.last_name + ",";
+      } else {
+        return a.first_name + " " + a.last_name;
+      }
+    });
+    return <span>{editorList}</span>;
+  } else {
     if (editors.length > 1) {
       const editorList = editors.map((e, index) => (
         <span
@@ -47,31 +68,35 @@ export default function Reads({ data }) {
     }
     return null;
   }
-  function renderSubtitle(item) {
-    if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
-      return (
-        <React.Fragment>
-          {": "}
-          <span className="mono">
-            {item.meta_box._read_subtitle}
-            <style jsx>{`
-              span {
-                margin-top: 0.5rem;
-                display: block;
-                font-size: 0.7rem;
-                font-weight: normal;
-                line-height: 1.5;
-                color: grey;
-              }
-            `}</style>
-          </span>
-        </React.Fragment>
-      );
-    } else {
-      return null;
-    }
+}
+
+function renderSubtitle(item) {
+  if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
+    return (
+      <React.Fragment>
+        {": "}
+        <span className="mono">
+          {item.meta_box._read_subtitle}
+          <style jsx>{`
+            span {
+              margin-top: 0.5rem;
+              display: block;
+              font-size: 0.7rem;
+              font-weight: normal;
+              line-height: 1.5;
+              color: grey;
+            }
+          `}</style>
+        </span>
+      </React.Fragment>
+    );
+  } else {
+    return null;
   }
-  function renderTitle(item) {
+}
+
+function renderTitle(item) {
+  if (!item.flag.includes(24)) {
     if (item.meta_box._read_title && item.meta_box._read_title != "") {
       return (
         <Link href={"/records/" + item.slug}>
@@ -87,8 +112,80 @@ export default function Reads({ data }) {
         </Link>
       );
     }
+  } else {
+    if (item.meta_box._read_title && item.meta_box._read_title != "") {
+      return item.meta_box._read_title;
+    } else {
+      return item.title.rendered;
+    }
   }
-  const renderReads = data.reads.map((item, index) => (
+}
+
+const renderCurrentlyReading = currently => {
+  if (currently.length > 1) {
+    const currentlyList = currently.map((e, index) => (
+      <li key={`currently-${index}`} className="display--b mono fs--md mb--sm">
+        {" "}
+        <h3 className="fw--normal italic">{renderTitle(currently[index])}</h3>
+        {renderAuthors(currently[index].meta_box._read_authors, true)}
+      </li>
+    ));
+    return (
+      <section className="currently grid--span-6 grid--start-7">
+        {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
+        <h2 className="grid--span-6">Currently Reading</h2>
+        <ul className="reset-list grid--span-4">{currentlyList}</ul>
+        <style jsx>{`
+          @media only screen and (min-width: 900px) {
+            .currently {
+              display: grid;
+              grid-template-columns: repeat(6, [col-start] 1fr);
+              grid-template-rows: min-content;
+              grid-gap: 20px;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        `}</style>
+      </section>
+    );
+  }
+  if (currently.length > 0) {
+    return (
+      <section className="currently grid--span-6 grid--start-7">
+        {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
+        <h2 className="grid--span-6">Currently Reading</h2>
+        <div className="grid--span-2 mt--sm">
+          <img src={getImageUrl(currently[0])} />
+        </div>
+        <div className="grid--span-4 mt--sm">
+          <h3 className="fw--normal italic">
+            {renderTitle(currently[0])}
+            {renderSubtitle(currently[0])}
+          </h3>
+          {renderAuthors(currently[0].meta_box._read_authors, false)}
+          {renderEditors(currently[0].meta_box._read_editors, false)}
+        </div>
+        <style jsx>{`
+          @media only screen and (min-width: 900px) {
+            .currently {
+              display: grid;
+              grid-template-columns: repeat(6, [col-start] 1fr);
+              grid-gap: 20px;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        `}</style>
+      </section>
+    );
+  }
+};
+
+const renderReads = reads => {
+  return reads.map((item, index) => (
     <li key={"item-" + index} className="grid--span-6">
       <span className="mono fs--xs grid--span-6">
         {moment(item.date).format("ll")}
@@ -99,8 +196,8 @@ export default function Reads({ data }) {
           {renderTitle(item)}
           {renderSubtitle(item)}
         </h3>
-        {renderEditors(item.meta_box._read_editors)}
-        {renderAuthors(item.meta_box._read_authors)}
+        {renderEditors(item.meta_box._read_editors, false)}
+        {renderAuthors(item.meta_box._read_authors, false)}
       </div>
       <style jsx>{`
         li {
@@ -135,6 +232,9 @@ export default function Reads({ data }) {
       `}</style>
     </li>
   ));
+};
+
+export default function Reads({ data }) {
   return (
     <DefaultLayout>
       <Head>
@@ -150,23 +250,12 @@ export default function Reads({ data }) {
           className="content grid--span-5"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        <section className="currently grid--span-6 grid--start-7">
-          {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
-          <h2 className="grid--span-6">Currently Reading</h2>
-          <div className="grid--span-2 mt--sm">
-            <img src={getImageUrl(data.currently)} />
-          </div>
-          <div className="grid--span-4 mt--sm">
-            <h3 className="fw--normal italic">
-              {renderTitle(data.currently)}
-              {renderSubtitle(data.currently)}
-            </h3>
-            {renderAuthors(data.currently.meta_box._read_authors)}
-          </div>
-        </section>
+        {renderCurrentlyReading(data.currently)}
         <section className="grid--span-all mt--md">
           <h2>Past Reads</h2>
-          <ul className="reset-list container--grid">{renderReads}</ul>
+          <ul className="reset-list container--grid">
+            {renderReads(data.reads)}
+          </ul>
         </section>
       </main>
 
@@ -220,7 +309,7 @@ export async function getServerSideProps() {
     .then(function(response) {
       const posts = response.data;
       reads = posts.filter((item, index, arr) => !item.flag.includes(24));
-      currently = posts.filter((item, index, arr) => item.flag.includes(24))[0];
+      currently = posts.filter((item, index, arr) => item.flag.includes(24));
     })
     .catch(function(error) {
       console.log("Records page error: " + error);

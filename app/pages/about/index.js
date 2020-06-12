@@ -9,19 +9,11 @@ import NavAbout from "../../components/nav/NavAbout";
 import Shelf from "../../components/Shelf";
 
 export default function About({ data }) {
-  function renderSkills() {
-    if (data.page !== null) {
-      return { __html: data.page.meta_box._page_skills_text };
-    } else {
-      return { __html: "<p>Error loading page content.</p>" };
-    }
-  }
   return (
     <DefaultLayout>
       <Head>
         <title>About ← Emily Dela Cruz</title>
       </Head>
-
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-c mb--sm">
           <h1>About</h1>
@@ -35,7 +27,9 @@ export default function About({ data }) {
           <h2>{data.page.meta_box._page_skills_title}</h2>
           <div
             className="mono fs--sm"
-            dangerouslySetInnerHTML={renderSkills()}
+            dangerouslySetInnerHTML={renderHTML(
+              data.page.meta_box._page_skills_text
+            )}
           ></div>
         </div>
         <section className="grid--start-1 grid--span-all container--grid mt--md">

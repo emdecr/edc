@@ -8,260 +8,247 @@ import { renderIntro, renderFormat, renderHTML, getImageUrl } from "../helpers";
 import DefaultLayout from "../components/layouts/Default";
 import NavAbout from "../components/nav/NavAbout";
 
-export default function AboutNow({ data }) {
-  function renderTrack(track) {
-    if (track) {
-      const string = track.artist + " " + track.name;
-      const searchString = string.replace(/\s/g, "+");
-      return (
-        <div className="music-grid mt--sm flex-all flex--ai-c">
-          <img
-            className="grid--span-1"
-            src={track.image}
-            alt={"Album art for " + track.name}
-          />
-          <div className="music__deats grid--span-3">
-            <a
-              href={`https://www.youtube.com/results?search_query=${searchString}`}
-              target="_blank"
-            >
-              "{track.name}" by {track.artist}
-            </a>
-          </div>
-          <style jsx>{`
-            .music-grid {
-              display: grid;
-              grid-template-columns: repeat(4, [col-start] 1fr);
-              grid-gap: 20px;
-            }
-          `}</style>
-        </div>
-      );
-    } else {
-      return <p>Error loading track.</p>;
-    }
-  }
-  function repoBranch(event) {
-    let branchArray = event.payload.ref.split("/");
-    return branchArray[2];
-  }
-  function repoURL(event) {
-    return "https://github.com/" + event.repo.name;
-  }
-  function commentURL(event) {
-    return `https://github.com/${event.repo.name}/commit/${event.payload.comment.commit_id}#commitcomment-${event.payload.comment.id}`;
-  }
-  function getType(event) {
-    let newType = event.type.replace(/([A-Z])/g, " $1").trim();
-    return newType.replace(" Event", "");
-  }
-  function renderGithubMessage(event) {
-    if (event.type === "PushEvent") {
-      function commitMessage(message) {
-        let split = message.split("\n");
-        return split[0];
-      }
-      return (
-        <p>
-          <strong className="mono">{getType(event)}</strong> |{" "}
-          <strong>R</strong>:{" "}
-          <a href={repoURL(event)} target="_blank>">
-            {event.repo.name}
-          </a>
-          , <strong>B</strong>: {repoBranch(event)}, <strong>CM</strong>:{" "}
+function renderTrack(track) {
+  if (track) {
+    const string = track.artist + " " + track.name;
+    const searchString = string.replace(/\s/g, "+");
+    return (
+      <div className="music-grid mt--sm flex-all flex--ai-c">
+        <img
+          className="grid--span-1"
+          src={track.image}
+          alt={"Album art for " + track.name}
+        />
+        <div className="music__deats grid--span-3">
           <a
-            href={
-              "https://github.com/" +
-              event.repo.name +
-              "/commit/" +
-              event.payload.commits[0].sha
-            }
-            target="_blank>"
+            href={`https://www.youtube.com/results?search_query=${searchString}`}
+            target="_blank"
           >
-            {commitMessage(event.payload.commits[0].message)}
+            "{track.name}" by {track.artist}
           </a>
-          <style jsx>{`
-            p {
-              font-size: 0.7rem;
-              line-height: 1.6;
-            }
-            a {
-              border-bottom: 2px solid var(--link-main);
-            }
-          `}</style>
-        </p>
-      );
-    } else if (event.type === "CommitCommentEvent") {
-      return (
-        <p>
-          <strong className="mono">{getType(event)}</strong> |{" "}
-          <strong>R</strong>:{" "}
-          <a href={repoURL(event)} target="_blank>">
-            {event.repo.name}
-          </a>
-          , <strong>CC</strong>:{" "}
-          <a href={commentURL(event)} target="_blank>">
-            {event.payload.comment.id}
-          </a>
-          <style jsx>{`
-            p {
-              font-size: 0.7rem;
-              line-height: 1.6;
-            }
-            a {
-              border-bottom: 2px solid var(--link-main);
-            }
-          `}</style>
-        </p>
-      );
-    } else {
-      return (
-        <p>
-          <strong className="mono">{getType(event)}</strong> |{" "}
-          <strong>R</strong>:
-          <a href={repoURL(event)} target="_blank>">
-            {event.repo.name}
-          </a>
-          <style jsx>{`
-            p {
-              font-size: 0.7rem;
-              line-height: 1.6;
-            }
-            a {
-              border-bottom: 2px solid var(--link-main);
-            }
-          `}</style>
-        </p>
-      );
-    }
+        </div>
+        <style jsx>{`
+          .music-grid {
+            display: grid;
+            grid-template-columns: repeat(4, [col-start] 1fr);
+            grid-gap: 20px;
+          }
+        `}</style>
+      </div>
+    );
+  } else {
+    return <p>Error loading track.</p>;
   }
-  function renderGithub(githubActivity) {
-    if (githubActivity) {
-      const listItems = githubActivity.slice(0, 3).map((item, index) => (
-        <li key={"item-" + index} className="grid--span-3">
-          <div className="">
-            <span className="mono">
-              {moment(item.created_at).fromNow()} –{" "}
-              {moment(item.created_at).format("ll")}
-            </span>
-            {renderGithubMessage(item)}
-          </div>
+}
+function repoBranch(event) {
+  let branchArray = event.payload.ref.split("/");
+  return branchArray[2];
+}
+function repoURL(event) {
+  return "https://github.com/" + event.repo.name;
+}
+function commentURL(event) {
+  return `https://github.com/${event.repo.name}/commit/${event.payload.comment.commit_id}#commitcomment-${event.payload.comment.id}`;
+}
+function getType(event) {
+  let newType = event.type.replace(/([A-Z])/g, " $1").trim();
+  return newType.replace(" Event", "");
+}
+function renderGithubMessage(event) {
+  if (event.type === "PushEvent") {
+    function commitMessage(message) {
+      let split = message.split("\n");
+      return split[0];
+    }
+    return (
+      <p>
+        <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:{" "}
+        <a href={repoURL(event)} target="_blank>">
+          {event.repo.name}
+        </a>
+        , <strong>B</strong>: {repoBranch(event)}, <strong>CM</strong>:{" "}
+        <a
+          href={
+            "https://github.com/" +
+            event.repo.name +
+            "/commit/" +
+            event.payload.commits[0].sha
+          }
+          target="_blank>"
+        >
+          {commitMessage(event.payload.commits[0].message)}
+        </a>
+        <style jsx>{`
+          p {
+            font-size: 0.7rem;
+            line-height: 1.6;
+          }
+          a {
+            border-bottom: 2px solid var(--link-main);
+          }
+        `}</style>
+      </p>
+    );
+  } else if (event.type === "CommitCommentEvent") {
+    return (
+      <p>
+        <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:{" "}
+        <a href={repoURL(event)} target="_blank>">
+          {event.repo.name}
+        </a>
+        , <strong>CC</strong>:{" "}
+        <a href={commentURL(event)} target="_blank>">
+          {event.payload.comment.id}
+        </a>
+        <style jsx>{`
+          p {
+            font-size: 0.7rem;
+            line-height: 1.6;
+          }
+          a {
+            border-bottom: 2px solid var(--link-main);
+          }
+        `}</style>
+      </p>
+    );
+  } else {
+    return (
+      <p>
+        <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:
+        <a href={repoURL(event)} target="_blank>">
+          {event.repo.name}
+        </a>
+        <style jsx>{`
+          p {
+            font-size: 0.7rem;
+            line-height: 1.6;
+          }
+          a {
+            border-bottom: 2px solid var(--link-main);
+          }
+        `}</style>
+      </p>
+    );
+  }
+}
+function renderGithub(githubActivity) {
+  if (githubActivity) {
+    const listItems = githubActivity.slice(0, 3).map((item, index) => (
+      <li key={"item-" + index} className="grid--span-3">
+        <div className="">
+          <span className="mono">
+            {moment(item.created_at).fromNow()} –{" "}
+            {moment(item.created_at).format("ll")}
+          </span>
+          {renderGithubMessage(item)}
+        </div>
+        <style jsx>{`
+          li {
+            font-size: 1.2rem;
+            line-height: 1.2;
+            padding: 1rem 0;
+          }
+          li:first-child {
+            padding-top: 0;
+          }
+          span {
+            font-size: 0.6rem;
+            color: darkgrey;
+          }
+          li:not(:last-child) {
+            border-bottom: 1px solid var(--list-border);
+          }
+        `}</style>
+      </li>
+    ));
+    return <ul className="reset-list">{listItems}</ul>;
+  } else {
+    return <p>Error loading GitHub activity.</p>;
+  }
+}
+function renderAuthors(authors) {
+  if (authors.length > 1) {
+    const authorList = authors.map((a, index) => (
+      <span
+        key={`author-${index}`}
+        className="display--b mono fs--md"
+      >{`${a.first_name} ${a.last_name}`}</span>
+    ));
+    return <div className="mt--sm">{authorList}</div>;
+  }
+  if (authors.length > 0) {
+    return (
+      <span className="display--b mono fs--md mt--sm">
+        {authors[0].first_name + " " + authors[0].last_name}
+      </span>
+    );
+  }
+  return null;
+}
+function renderSubtitle(item) {
+  if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
+    return (
+      <React.Fragment>
+        {": "}
+        <span className="mono">
+          {item.meta_box._read_subtitle}
           <style jsx>{`
-            li {
-              font-size: 1.2rem;
-              line-height: 1.2;
-              padding: 1rem 0;
-            }
-            li:first-child {
-              padding-top: 0;
-            }
             span {
-              font-size: 0.6rem;
-              color: darkgrey;
-            }
-            li:not(:last-child) {
-              border-bottom: 1px solid var(--list-border);
+              margin-top: 0.5rem;
+              display: block;
+              font-size: 0.7rem;
+              font-weight: normal;
+              line-height: 1.5;
+              color: grey;
             }
           `}</style>
-        </li>
-      ));
-      return <ul className="reset-list">{listItems}</ul>;
-    } else {
-      return <p>Error loading GitHub activity.</p>;
-    }
-  }
-  function renderAuthors(authors) {
-    if (authors.length > 1) {
-      const authorList = authors.map((a, index) => (
-        <span
-          key={`author-${index}`}
-          className="display--b mono fs--md"
-        >{`${a.first_name} ${a.last_name}`}</span>
-      ));
-      return <div className="mt--sm">{authorList}</div>;
-    }
-    if (authors.length > 0) {
-      return (
-        <span className="display--b mono fs--md mt--sm">
-          {authors[0].first_name + " " + authors[0].last_name}
         </span>
-      );
-    }
+      </React.Fragment>
+    );
+  } else {
     return null;
   }
-  function renderSubtitle(item) {
-    if (item.meta_box._read_subtitle && item.meta_box._read_subtitle != "") {
-      return (
-        <React.Fragment>
-          {": "}
-          <span className="mono">
-            {item.meta_box._read_subtitle}
-            <style jsx>{`
-              span {
-                margin-top: 0.5rem;
-                display: block;
-                font-size: 0.7rem;
-                font-weight: normal;
-                line-height: 1.5;
-                color: grey;
-              }
-            `}</style>
-          </span>
-        </React.Fragment>
-      );
-    } else {
-      return null;
-    }
+}
+function renderTitle(item) {
+  if (item.meta_box._read_title && item.meta_box._read_title != "") {
+    return item.meta_box._read_title;
+  } else {
+    return item.title.rendered;
   }
-  function renderTitle(item) {
-    if (item.meta_box._read_title && item.meta_box._read_title != "") {
-      return (
-        <Link href={"/records/" + item.slug}>
-          <a
-            dangerouslySetInnerHTML={renderHTML(item.meta_box._read_title)}
-          ></a>
-        </Link>
-      );
-    } else {
-      return (
-        <Link href={"/records/" + item.slug}>
-          <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
-        </Link>
-      );
-    }
-  }
+}
 
-  function renderRead(read) {
-    if (read) {
-      return (
-        <div className="mb--md read-container">
-          <h2 className="grid--span-4">Reading</h2>
-          <img className="grid--span-2" src={getImageUrl(read)} />
-          <div className="grid--span-2">
-            <h3 className="fw--normal italic">
-              {renderTitle(read)}
-              {renderSubtitle(read)}
-            </h3>
-            {renderAuthors(read.meta_box._read_authors)}
-          </div>
-          <style jsx>{`
-            .read-container {
-              display: grid;
-              grid-template-columns: repeat(4, [col-start] 1fr);
-              grid-gap: 20px;
-            }
-            img {
-              width: 100%;
-              height: auto;
-            }
-          `}</style>
+function renderRead(read) {
+  if (read) {
+    return (
+      <div className="mb--md read-container">
+        <h2 className="grid--span-4">Reading</h2>
+        <img className="grid--span-1" src={getImageUrl(read)} />
+        <div className="grid--span-3">
+          <h3 className="fw--normal italic">
+            {renderTitle(read)}
+            {renderSubtitle(read)}
+          </h3>
+          {renderAuthors(read.meta_box._read_authors)}
         </div>
-      );
-    } else {
-      return null;
-    }
+        <style jsx>{`
+          .read-container {
+            display: grid;
+            grid-template-columns: repeat(4, [col-start] 1fr);
+            grid-gap: 20px;
+          }
+          img {
+            width: 100%;
+            height: auto;
+          }
+        `}</style>
+      </div>
+    );
+  } else {
+    return null;
   }
+}
 
+export default function AboutNow({ data }) {
   return (
     <DefaultLayout>
       <Head>

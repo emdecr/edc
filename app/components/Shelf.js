@@ -1,34 +1,10 @@
 import React from "react";
 import moment from "moment";
-import Link from "next/link";
 
-import { renderFormat } from "../helpers";
+import { renderFormat, renderHTML, getImageUrl } from "../helpers";
 
-export default function Shelf(props) {
-  const getImageUrl = i => {
-    if (i.hasOwnProperty("_embedded")) {
-      if (
-        i._embedded["wp:featuredmedia"][0]["media_details"][
-          "sizes"
-        ].hasOwnProperty("medium")
-      ) {
-        return i._embedded["wp:featuredmedia"][0]["media_details"]["sizes"][
-          "medium"
-        ]["source_url"];
-      } else {
-        return i._embedded["wp:featuredmedia"][0]["source_url"];
-      }
-    } else {
-      return i._embedded["wp:featuredmedia"][0]["source_url"];
-    }
-  };
-
-  function renderTitle(item) {
-    return { __html: item.title.rendered };
-  }
-
-  const items = props.items;
-  const renderItems = items.map((item, index) => (
+const renderItems = items => {
+  return items.map((item, index) => (
     <li key={"item-" + index} className="grid--span-3">
       <img src={getImageUrl(item)} />
       {renderFormat(item)}
@@ -36,7 +12,7 @@ export default function Shelf(props) {
         href={item.meta_box._shelf_item_link}
         target="_blank"
         className=""
-        dangerouslySetInnerHTML={renderTitle(item)}
+        dangerouslySetInnerHTML={renderHTML(item.title.rendered)}
       ></a>
       <div className="mono">
         <span>
@@ -57,12 +33,7 @@ export default function Shelf(props) {
           font-size: 0.6rem;
           color: darkgrey;
         }
-        a {
-          // color: #0071f3;
-          // font-weight: bold;
-        }
         img {
-          // display: none;
           opacity: 0.03;
           position: absolute;
           top: 0;
@@ -76,9 +47,12 @@ export default function Shelf(props) {
       `}</style>
     </li>
   ));
+};
+
+export default function Shelf(props) {
   return (
     <ul className="container--grid reset-list grid--span-all">
-      {renderItems}
+      {renderItems(props.items)}
       <style jsx>{`
         li {
           font-size: 1.3rem;
