@@ -35,7 +35,7 @@ export default function Footer() {
           </ul>
           <p className="made mono text-align--r fs--xs mt--md">
             This site is built with{" "}
-            <a href="https://nuxtjs.org/" target="_blank">
+            <a href="https://nextjs.org/" target="_blank">
               Next.js
             </a>
             , using a{" "}

@@ -13,7 +13,7 @@ export default function Contact({ data }) {
   return (
     <DefaultLayout>
       <Head>
-        <title>Contact – Emily Dela Cruz</title>
+        <title>Contact ← Emily Dela Cruz</title>
       </Head>
 
       <main className="container container--grid mt--lg" id="main-content">
