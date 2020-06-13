@@ -101,7 +101,7 @@ export default function Header() {
           grid-gap: 20px;
         }
         li {
-          font-size: 0.7rem;
+          font-size: 0.6rem;
         }
         img {
           width: 50px;

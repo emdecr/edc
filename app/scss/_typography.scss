@@ -62,12 +62,15 @@ h6 {
 // Links
 
 a {
-  color: rgb(37, 37, 37);
+  color: var(--main-font-color);
+  border-bottom: 2px solid var(--link-main);
+  text-decoration: none;
 }
 
-a {
-  border-bottom: 3px solid var(--link-main);
-  text-decoration: none;
+a:visited {
+  color: var(--main-font-color);
+  border: none;
+  border-bottom: 2px solid var(--link-main);
 }
 
 a::selection {
@@ -141,25 +144,35 @@ blockquote + p {
 
 .btn {
   border-bottom: none;
-  border: 1px solid var(--link-main);
+  border: 1px solid var(--link-btn) !important;
   display: inline-block;
   padding: 0.8rem;
-  color: white;
-  background: var(--link-main);
+  color: var(--link-btn-font) !important;
+  background: var(--link-btn);
+}
+
+.btn--sm {
+  padding: 0.5rem 0.8rem;
 }
 
 .btn--ghost {
   background: transparent;
-  color: var(--link-main);
+  color: var(--link-btn) !important;
 }
 
 .btn:hover,
 .btn:focus,
 .btn:active {
-  background: var(--link-hover);
+  background: var(--link-main);
   border-bottom: none;
   color: white;
-  border: 1px solid var(--link-main);
+  border: 1px solid var(--link-main) !important;
+}
+
+.btn--ghost:hover,
+.btn--ghost:active,
+.btn--ghost:focus {
+  color: white !important;
 }
 
 // Single

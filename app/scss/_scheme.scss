@@ -14,17 +14,6 @@
   }
 
   /* LINKS */
-  a {
-    color: #e0e0e0;
-    border-bottom: 2px solid var(--link-main);
-    text-decoration: none;
-  }
-
-  a:visited {
-    color: #e0e0e0;
-    border: none;
-    border-bottom: 2px solid var(--link-main);
-  }
 
   .sub-nav a:visited:not(.active) {
     border-bottom: 2px solid var(--link-sub);
@@ -34,27 +23,6 @@
   a:focus {
     /* font-weight: bold; */
     border-bottom: 2px solid #90caf9;
-  }
-
-  /* BUTTONS */
-  .btn {
-    background: transparent;
-    border: 1px solid #d7d7d7;
-    border-bottom: 1px solid #d7d7d7;
-    padding: 1rem 2rem;
-    color: #d7d7d7;
-    text-decoration: none;
-  }
-
-  .btn:visited {
-    border-bottom: 1px solid #d7d7d7;
-  }
-
-  .btn:hover,
-  .btn:focus {
-    background: #d7d7d7;
-    border: 1px solid #d7d7d7;
-    color: #222;
   }
 
   blockquote {

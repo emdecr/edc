@@ -133,7 +133,7 @@ export default function Records({ data }) {
           <h2>Reads</h2>
           <ul className="reset-list">{renderReads}</ul>
           <Link href="/records/reads">
-            <a className="btn mt--md fs--sm mono">View all</a>
+            <a className="btn btn--ghost mt--md fs--sm mono">View all</a>
           </Link>
         </div>
         <div className="grid--span-4">

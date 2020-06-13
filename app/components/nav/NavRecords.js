@@ -47,7 +47,7 @@ function NavRecords({ active }) {
       </Link> */}
       <style jsx>{`
         nav {
-          font-size: 0.7rem;
+          font-size: 0.6rem;
           margin: 0.5rem 0 1.5rem;
         }
         nav a:not(:last-of-type) {

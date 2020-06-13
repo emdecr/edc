@@ -7,6 +7,8 @@
   --link-hover: #0071f3bb;
   --link-active: #0071f3cc;
   --list-border: #f3f3f3;
+  --link-btn: #2196f3;
+  --link-btn-font: #ffffff;
   --nav-border: #e3e3e3;
 }
 
@@ -18,6 +20,8 @@
     --link-sub: #616161;
     --link-active: #2196f3;
     --list-border: #242424;
+    --link-btn: #999999;
+    --link-btn-font: #121212;
     --nav-border: #363636;
   }
 }
@@ -31,7 +35,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.5;
-  font-size: 18px;
+  font-size: 20px;
   color: var(--main-font-color);
 }
 

@@ -178,7 +178,7 @@ function renderAuthors(authors) {
   }
   if (authors.length > 0) {
     return (
-      <span className="display--b mono fs--md mt--sm">
+      <span className="display--b mono fs--sm mt--sm">
         {authors[0].first_name + " " + authors[0].last_name}
       </span>
     );
@@ -194,9 +194,9 @@ function renderSubtitle(item) {
           {item.meta_box._read_subtitle}
           <style jsx>{`
             span {
-              margin-top: 0.5rem;
+              // margin-top: 0.5rem;
               display: block;
-              font-size: 0.7rem;
+              font-size: 0.6rem;
               font-weight: normal;
               line-height: 1.5;
               color: grey;
@@ -288,7 +288,7 @@ export default function AboutNow({ data }) {
               </span>
             </div>
             <Link href="/about/the-link-shelf">
-              <a className="btn btn--ghost fs--xs mt--sm mono">
+              <a className="btn btn--sm btn--ghost fs--xs mt--sm mono">
                 View The Link Shelf
               </a>
             </Link>

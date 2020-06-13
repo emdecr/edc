@@ -37,7 +37,7 @@ function NavAbout() {
       {renderLink("/life-overview", "Life Overview")}
       <style jsx>{`
         nav {
-          font-size: 0.7rem;
+          font-size: 0.6rem;
           margin: 0.5rem 0 1.5rem;
         }
         @media only screen and (min-width: 700px) {

@@ -43,7 +43,7 @@ export default function About({ data }) {
           <Shelf items={data.shelf} />
           <div className="grid--span-all">
             <Link href="/about/the-link-shelf">
-              <a className="btn mt--md fs--sm mono grid--span-all">
+              <a className="btn btn--ghost mt--md fs--sm mono grid--span-all">
                 View the full shelf
               </a>
             </Link>
