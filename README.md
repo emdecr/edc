@@ -32,7 +32,7 @@
 
 ## Intro
 
-This is a hybrid environment using WordPress to manage content, and Nuxt.js to serve a front-end application.
+This is a hybrid environment using WordPress to manage content, and Next.js to serve a front-end application.
 
 ## Installation
 
@@ -55,7 +55,7 @@ $ git clone https://github.com/emdecr/edc .
 
 ```bash
 # Go into the repository and the cms dir
-$ cd edc/cms
+$ cd edc/data
 
 # Make a wordpress dir
 $ mkdir wordpress
@@ -65,11 +65,11 @@ $ cd wordpress
 $ git clone https://github.com/WordPress/WordPress .
 
 # Create a working branch from the right release
-$ git checkout tags/5.2.3
-$ git checkout -b stable-5.2.3
+$ git checkout tags/5.4.2
+$ git checkout -b stable-5.4.2
 
-# NTS: You also need vars for the Pinterest API
-$ edc/cms/custom/themes/edc/includes/functions/endpoints/endpoint_vars.php
+# NTS: You also need vars in the cms
+$ edc/data/custom/themes/edc/includes/functions/endpoints/endpoint_vars.php
 ```
 
 #### Installed Plugins
@@ -78,10 +78,15 @@ $ edc/cms/custom/themes/edc/includes/functions/endpoints/endpoint_vars.php
 - [Meta Box - CPT](https://metabox.io/plugins/custom-post-type/)
 - [Meta Box Group](https://metabox.io/plugins/meta-box-group/)
 - [Meta Box REST API](https://metabox.io/plugins/mb-rest-api/)
+- [Meta Box Blocks](https://metabox.io/plugins/mb-blocks/)
+- [Meta Box Revisions](https://metabox.io/plugins/mb-revision/)
+- [Meta Box Settings Page](https://metabox.io/plugins/mb-settings-page/)
+- [Meta Box Include Exclude](https://metabox.io/plugins/meta-box-include-exclude/)
+- [Advanced Rich Text Tools for Gutenberg](https://wordpress.org/plugins/advanced-rich-text-tools/)
 - [TinyMCE Advanced](https://en-ca.wordpress.org/plugins/tinymce-advanced/)
   - Because sometimes the paragraph tags get stripped in WYSIWYGs
 
-### Nuxt
+### Next.js
 
 ```bash
 # Go into the repository and the app dir
@@ -97,29 +102,9 @@ $ touch .env
 $ npm run dev
 ```
 
-#### Extra NPM Packages
-
-- [cross-env](https://www.npmjs.com/package/cross-env)
-- [dotenv](https://www.npmjs.com/package/dotenv)
-- [Google Analytics module for Nuxt.js](https://nuxtjs.org/faq/google-analytics/)
-
-#### Installed Plugins
-
-- [Animate on Scroll](https://github.com/michalsnik/aos/tree/v2)
-
-#### Default head entries and modules in nuxt.config.js
-
-_Note_: Change the keys or project IDs
-
-- n/a
-
-#### Pre-processors
-
-Need to SASS? Check the [official Nuxt.js docs](https://nuxtjs.org/faq/pre-processors/). There's a base SASS setup in the assets dir, but just delete it if you don't need it.
-
 ## Server Setup
 
-Link to docs coming soon.
+Coming in a few.
 
 ## Credits
 
