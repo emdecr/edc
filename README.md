@@ -8,7 +8,7 @@
 
 <p align="center">
     <a href="https://github.com/emdecr/edc/releases">
-        <img src="https://img.shields.io/badge/release-v1.0-blue.svg" alt="release badge version 1.0">
+        <img src="https://img.shields.io/badge/Release-v5.0-blue.svg" alt="Release badge version 5.0">
     </a>
     <a href="https://github.com/vercel/next.js">
         <img src="https://img.shields.io/badge/Next.js-9.4.4-blue.svg" alt="Next.js badge version 9.4.4">
