@@ -10,11 +10,11 @@
     <a href="https://github.com/emdecr/edc/releases">
         <img src="https://img.shields.io/badge/release-v1.0-blue.svg" alt="release badge version 1.0">
     </a>
-    <a href="https://github.com/nuxt/nuxt.js">
-        <img src="https://img.shields.io/badge/nuxt.js-2.9.2-blue.svg" alt="nuxt.js badge version 2.9.2">
+    <a href="https://github.com/vercel/next.js">
+        <img src="https://img.shields.io/badge/Next.js-9.4.4-blue.svg" alt="Next.js badge version 9.4.4">
     </a>
     <a href="https://github.com/WordPress/WordPress">
-        <img src="https://img.shields.io/badge/WP-5.2.3-blue.svg" alt="WordPress badge version 5.2.3">
+        <img src="https://img.shields.io/badge/WP-5.4.2-blue.svg" alt="WordPress badge version 5.4.2">
     </a>
     <a href="https://emilydelacruz.com">
         <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%EF%B8%8E%20by-emdecr-red.svg" alt="emdecr badge">
