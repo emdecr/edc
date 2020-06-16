@@ -1,11 +1,20 @@
 import Head from "next/head";
 import Link from "next/link";
 import { SkipNavContent } from "@reach/skip-nav";
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 import NavMain from "../nav/NavMain";
 import Footer from "../Footer";
 
 function DefaultLayout({ children }) {
+  const router = useRouter();
+  const spring = {
+    type: "spring",
+    damping: 20,
+    stiffness: 100,
+    when: "afterChildren"
+  };
   return (
     <div>
       <Head>
@@ -21,7 +30,16 @@ function DefaultLayout({ children }) {
         </a>
       </Link>
       <NavMain />
-      <SkipNavContent>{children}</SkipNavContent>
+      <motion.div
+        transition={spring}
+        key={router.pathname}
+        initial={{ x: 0, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 0, opacity: 0 }}
+        id="page-transition-container"
+      >
+        <SkipNavContent>{children}</SkipNavContent>
+      </motion.div>
       <Footer />
       <div className="grid">
         <div></div>
