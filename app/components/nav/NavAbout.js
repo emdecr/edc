@@ -34,7 +34,8 @@ function NavAbout() {
       {renderLink("/about", "About")}
       {renderLink("/now", "Now")}
       {renderLink("/about/the-link-shelf", "The Link Shelf")}
-      {renderLink("/life-overview", "Life Overview")}
+      {/* {renderLink("/life-overview", "Life Overview")} */}
+      <a href="https://emilydelacruz.com/life-overview">Life Overview</a>
       <style jsx>{`
         nav {
           font-size: 0.6rem;
