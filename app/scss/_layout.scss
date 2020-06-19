@@ -232,9 +232,11 @@
 .content ul + hr,
 .content ol + hr,
 .content figure + hr {
-  opacity: 0.3;
+  opacity: 0.1;
   width: 80%;
   margin: 2rem auto 2rem;
+  border: none;
+  border-bottom: 1px solid var(--main-font-color);
 }
 
 .content figure {
