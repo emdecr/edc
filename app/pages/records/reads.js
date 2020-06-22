@@ -187,7 +187,7 @@ const renderCurrentlyReading = currently => {
 const renderReads = reads => {
   return reads.map((item, index) => (
     <li key={"item-" + index} className="grid--span-6 grid--tr-min">
-      <span className="mono fs--xs grid--span-6">
+      <span className="mono fs--xs grid--span-6 opacity--30">
         {moment(item.date).format("ll")}
       </span>
       <img className="grid--span-2" src={getImageUrl(item)} />

@@ -33,23 +33,11 @@ export function renderFormat(i) {
     if (i._embedded.hasOwnProperty("wp:term")) {
       return (
         <div>
-          <span className="mono">{i._embedded["wp:term"][0][0].name}</span>
-          <style jsx>{`
-            div {
-              line-height: 1;
-              margin-bottom: 0.2rem;
-            }
-            span {
-              font-size: 0.7rem;
-              color: darkgrey;
-            }
-          `}</style>
+          <span className="mono opacity--50 fs--sm">
+            {i._embedded["wp:term"][0][0].name}
+          </span>
         </div>
       );
-    } else {
-      return null;
     }
-  } else {
-    return null;
   }
 }

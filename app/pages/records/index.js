@@ -11,7 +11,7 @@ import NavRecords from "../../components/nav/NavRecords";
 export default function Records({ data }) {
   const renderWriting = data.posts.map((item, index) => (
     <li key={"item-" + index}>
-      <span className="mono fs--xs grid--span-4">
+      <span className="mono fs--xs grid--span-4 opacity--30">
         {moment(item.date).format("ll")}
       </span>
       <div className="grid--span-3">
@@ -65,14 +65,14 @@ export default function Records({ data }) {
           className="display--b"
         >{`${a.first_name} ${a.last_name}`}</span>
       ));
-      return <p className="fs--sm mono">{authors}</p>;
+      return <p className="fs--sm mono opacity--50">{authors}</p>;
     } else {
       return null;
     }
   }
   const renderReads = data.reads.map((item, index) => (
     <li key={"item-" + index}>
-      <span className="mono fs--xs grid--span-4">
+      <span className="mono fs--xs grid--span-4 opacity--30">
         {moment(item.date).format("ll")}
       </span>
       <img className="grid--span-1" src={getImageUrl(item)} />

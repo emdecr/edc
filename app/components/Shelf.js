@@ -14,7 +14,7 @@ const renderItems = items => {
         className=""
         dangerouslySetInnerHTML={renderHTML(item.title.rendered)}
       ></a>
-      <div className="mono">
+      <div className="mono opacity--50 fs--xs mt--sm">
         <span>
           {moment(item.date).fromNow()} – {moment(item.date).format("ll")}
         </span>
@@ -28,10 +28,6 @@ const renderItems = items => {
           position: relative;
           border-bottom: 1px solid var(--list-border);
           overflow: hidden;
-        }
-        span {
-          font-size: 0.6rem;
-          color: darkgrey;
         }
         img {
           opacity: 0.03;
