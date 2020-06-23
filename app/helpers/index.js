@@ -12,19 +12,23 @@ export function renderHTML(content) {
 
 export function getImageUrl(i) {
   if (i.hasOwnProperty("_embedded")) {
-    if (
-      i._embedded["wp:featuredmedia"][0]["media_details"][
-        "sizes"
-      ].hasOwnProperty("medium")
-    ) {
-      return i._embedded["wp:featuredmedia"][0]["media_details"]["sizes"][
-        "medium"
-      ]["source_url"];
+    if (i._embedded.hasOwnProperty("wp:featuredmedia")) {
+      if (
+        i._embedded["wp:featuredmedia"][0]["media_details"][
+          "sizes"
+        ].hasOwnProperty("medium")
+      ) {
+        return i._embedded["wp:featuredmedia"][0]["media_details"]["sizes"][
+          "medium"
+        ]["source_url"];
+      } else {
+        return i._embedded["wp:featuredmedia"][0]["source_url"];
+      }
     } else {
-      return i._embedded["wp:featuredmedia"][0]["source_url"];
+      return "/placeholder.png";
     }
   } else {
-    return i._embedded["wp:featuredmedia"][0]["source_url"];
+    return "/placeholder.png";
   }
 }
 
