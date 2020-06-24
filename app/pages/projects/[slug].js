@@ -7,38 +7,43 @@ import { renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
 
-export default function SingleProject({ data }) {
-  function renderContent() {
-    if (data.page != null) {
-      return (
-        <React.Fragment>
-          <h1
-            className="mt--md mb--sm"
-            dangerouslySetInnerHTML={renderHTML(data.page.data.title)}
-          ></h1>
-          <div
-            className="content"
-            dangerouslySetInnerHTML={renderHTML(data.page.data.content)}
-          ></div>
-        </React.Fragment>
-      );
-    } else {
-      return <p>No post found.</p>;
-    }
+function renderContent(data) {
+  if (data.page != null) {
+    return (
+      <React.Fragment>
+        <h1
+          className="mt--md mb--sm"
+          dangerouslySetInnerHTML={renderHTML(data.page.data.title)}
+        ></h1>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={renderHTML(data.page.data.content)}
+        ></div>
+      </React.Fragment>
+    );
+  } else {
+    return <p>No post found.</p>;
   }
+}
+
+export default function SingleProject({ data }) {
+  const project = data.page != null ? data.page.data : null;
+  const title = project != null ? project.title : "Project";
+  const strippedString = title.replace(/(<([^>]+)>)/gi, "");
+  const titleRendered = `${strippedString} ← Emily Dela Cruz`;
   return (
     <DefaultLayout>
       <Head>
-        <title> ← Emily Dela Cruz</title>
+        <title>{titleRendered}</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-ac mono fs--sm">
           ←{" "}
-          <Link href={"/records/"}>
+          <Link href={"/projects"}>
             <a>Back to all Projects</a>
           </Link>
         </div>
-        <div className="grid--span-7 ">{renderContent()}</div>
+        <div className="grid--span-7 ">{renderContent(data)}</div>
       </main>
 
       <style jsx>{`

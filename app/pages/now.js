@@ -288,7 +288,7 @@ export default function AboutNow({ data }) {
               </span>
             </div>
             <Link href="/about/the-link-shelf">
-              <a className="btn btn--sm btn--ghost fs--xs mt--sm mono">
+              <a className="btn btn--sm btn--ghost fs--xs opacity--80 mt--sm mono">
                 View The Link Shelf
               </a>
             </Link>
