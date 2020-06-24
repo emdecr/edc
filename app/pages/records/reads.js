@@ -132,7 +132,6 @@ const renderCurrentlyReading = currently => {
     ));
     return (
       <section className="currently grid--span-6 grid--start-7">
-        {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
         <h2 className="grid--span-6">Currently Reading</h2>
         <ul className="reset-list grid--span-4">{currentlyList}</ul>
         <style jsx>{`
@@ -154,7 +153,6 @@ const renderCurrentlyReading = currently => {
   if (currently.length > 0) {
     return (
       <section className="currently grid--span-6 grid--start-7">
-        {/* NTS: If there's more than one post tagged with CR, just show as a normal list without cover image */}
         <h2 className="grid--span-6">Currently Reading</h2>
         <div className="grid--span-2 mt--sm">
           <img src={getImageUrl(currently[0])} />
@@ -204,8 +202,6 @@ const renderReads = reads => {
           font-size: 1.1rem;
           line-height: 1.2;
           padding: 2rem 0;
-        }
-        li:not(:last-child) {
           border-bottom: 1px solid var(--list-border);
         }
         img {
