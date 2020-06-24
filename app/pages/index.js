@@ -15,7 +15,7 @@ export default function Home({ data }) {
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-c">
-          <h1 className="display--ib">emily dela cruz</h1>
+          <h1 className="display--ib">Emily Dela Cruz</h1>
           <a
             className="pronouns mono fs--sm"
             href="https://www.mypronouns.org/she-her"
@@ -50,6 +50,7 @@ export default function Home({ data }) {
         h1 {
           margin: 0;
           line-height: 1;
+          font-weight: normal;
         }
         .title > a {
           margin-left: 20px;
