@@ -30,7 +30,7 @@ export default function Home({ data }) {
         ></div>
         <div className="learn-more fs--sm grid--span-all mono">
           <Link href="/about">
-            <a>Learn more...</a>
+            <a className="btn btn--ghost opacity--80 fs--xs">Learn more...</a>
           </Link>
         </div>
         <section className="grid--span-all mt--md">
@@ -39,7 +39,9 @@ export default function Home({ data }) {
         </section>
         <div className="learn-more fs--sm grid--span-all mono mt--sm">
           <Link href="/projects">
-            <a>View all projects...</a>
+            <a className="btn btn--ghost opacity--80 fs--xs">
+              View all projects...
+            </a>
           </Link>
         </div>
       </main>

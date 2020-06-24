@@ -110,7 +110,7 @@ export default function Records({ data }) {
   return (
     <DefaultLayout>
       <Head>
-        <title>Records – Emily Dela Cruz</title>
+        <title>Records ← Emily Dela Cruz</title>
       </Head>
 
       <main className="container container--grid mt--lg" id="main-content">
@@ -133,7 +133,9 @@ export default function Records({ data }) {
           <h2>Reads</h2>
           <ul className="reset-list">{renderReads}</ul>
           <Link href="/records/reads">
-            <a className="btn btn--ghost mt--md fs--sm mono">View all</a>
+            <a className="btn btn--ghost mt--md fs--xs opacity--80 mono">
+              View all
+            </a>
           </Link>
         </div>
         <div className="grid--span-4">
