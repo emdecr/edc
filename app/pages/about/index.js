@@ -23,10 +23,10 @@ export default function About({ data }) {
           className="content grid--start-1 grid--span-6"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        <div className="grid--start-8 grid--span-4 opacity--80">
+        <div className="grid--start-8 grid--span-4">
           <h2>{data.page.meta_box._page_skills_title}</h2>
           <div
-            className="mono fs--sm"
+            className="mono fs--sm opacity--80"
             dangerouslySetInnerHTML={renderHTML(
               data.page.meta_box._page_skills_text
             )}
