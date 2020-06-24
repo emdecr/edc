@@ -3,10 +3,9 @@ import Link from "next/link";
 import moment from "moment";
 import axios from "axios";
 
-import { renderIntro, renderFormat, renderHTML } from "../helpers";
+import { renderIntro, renderFormat, renderHTML } from "../../helpers";
 
-import DefaultLayout from "../components/layouts/Default";
-import NavAbout from "../components/nav/NavAbout";
+import DefaultLayout from "../../components/layouts/Default";
 
 export default function Fit({ data }) {
   return (
