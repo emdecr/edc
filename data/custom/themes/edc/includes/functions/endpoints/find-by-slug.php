@@ -54,6 +54,62 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                 } else {
                     $newObj->currently_reading = false;
                 }
+                // Check for any related Notes
+                $noteArgs = array(
+                    'posts_per_page' => -1,
+                    'post_status' => array( 'publish' ),
+                    'post_type' => array( 'note' ),
+                    'meta_key'     => '_note_related',
+                    'meta_value' => $postData->ID
+                );                
+                $noteQuery = new WP_Query( $noteArgs );
+                $noteResults = $noteQuery->posts;
+                $noteCount = count($noteResults);
+                // If there are any Notes...
+                if ($noteCount > 0) {
+                    // Create an array to hold all the IDs of connected Reads
+                    $relatedIds = array();
+                    $notes = array();
+                    // Grab the data for each Note
+                    foreach( $noteResults as $note ) {
+                        $noteObj = new stdClass();
+                        $noteObj->date = $note->post_date;
+                        $noteObj->content = $note->post_content;
+                        $connected = get_post_meta( $note->ID, '_note_related', false );
+                        // Add the IDs to the existing list
+                        $relatedIds = array_merge($relatedIds, $connected);
+                        array_push($notes, $noteObj);
+                    }
+                    // Make sure there's only unique IDs
+                    $uniqueIds = array_unique($relatedIds);
+                    // Remove the ID of the current Read
+                    if (($key = array_search($postData->ID, $uniqueIds)) !== false) { unset($uniqueIds[$key]);}
+                    // Convert all the items to ints since WP stores data as String
+                    $convertInts = array_map('intval', $uniqueIds);
+                    // Create an array to hold all the related Reads data
+                    $related = array();
+                    foreach( $convertInts as $r ) {
+                        $relatedObj = new stdClass();
+                        $title = get_post_meta( $r, '_read_title', true);
+                        $relatedObj->read_title = $title;
+                        $subtitle = get_post_meta( $r, '_read_subtitle', true);
+                        $relatedObj->read_subtitle = $subtitle;
+                        $authors = get_post_meta( $r, '_read_authors', true);
+                        $relatedObj->authors = $authors;
+                        $editors = get_post_meta( $r, '_read_editors', true);
+                        $relatedObj->editors = $editors;
+                        $post_thumbnail_url = get_the_post_thumbnail_url( $r, 'medium');
+                        $relatedObj->image_url = $post_thumbnail_url;
+                        $slug = get_post_field( 'post_name', $r );
+                        $relatedObj->slug = $slug;
+                        array_push($related, $relatedObj);
+                    }
+                    $newObj->related = $related;
+                    $newObj->notes = $notes;
+                } else {
+                    $newObj->related = false;
+                    $newObj->notes = false;
+                }
                 $title = get_post_meta( $postData->ID, '_read_title', true);
                 $newObj->read_title = $title;
                 $subtitle = get_post_meta( $postData->ID, '_read_subtitle', true);
