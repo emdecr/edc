@@ -54,6 +54,8 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                 } else {
                     $newObj->currently_reading = false;
                 }
+                // Add this for future permissions checks
+                $newObj->req = $request->get_headers();
                 // Check for any related Notes
                 $noteArgs = array(
                     'posts_per_page' => -1,

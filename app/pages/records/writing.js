@@ -11,7 +11,7 @@ import NavRecords from "../../components/nav/NavRecords";
 export default function Writing({ data }) {
   const renderWriting = data.posts.map((item, index) => (
     <li key={"item-" + index}>
-      <span className="mono fs--xs grid--span-7">
+      <span className="mono fs--xs grid--span-7 opacity--30">
         {moment(item.date).format("ll")}
       </span>
       <div className="grid--span-7">
@@ -28,7 +28,7 @@ export default function Writing({ data }) {
           padding: 2rem 0;
         }
         li:not(:last-child) {
-          border-bottom: 1px solid #f3f3f3;
+          border-bottom: 1px solid var(--list-border);
         }
         @media only screen and (min-width: 900px) {
           li {
