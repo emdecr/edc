@@ -171,14 +171,14 @@ function renderAuthors(authors) {
     const authorList = authors.map((a, index) => (
       <span
         key={`author-${index}`}
-        className="display--b mono fs--md"
+        className="display--b mono fs--xs"
       >{`${a.first_name} ${a.last_name}`}</span>
     ));
     return <div className="mt--sm">{authorList}</div>;
   }
   if (authors.length > 0) {
     return (
-      <span className="display--b mono fs--sm mt--sm">
+      <span className="display--b mono fs--md mt--sm">
         {authors[0].first_name + " " + authors[0].last_name}
       </span>
     );
@@ -230,7 +230,17 @@ function renderRead(read) {
           </h3>
           {renderAuthors(read.meta_box._read_authors)}
         </div>
+        <div className="grid--span-4">
+          <Link href="/records/reads">
+            <a className="btn btn--sm btn--ghost fs--xs opacity--80 mt--sm mono">
+              View all Reads
+            </a>
+          </Link>
+        </div>
         <style jsx>{`
+          h3 {
+            line-height: 1;
+          }
           .read-container {
             display: grid;
             grid-template-columns: repeat(4, [col-start] 1fr);

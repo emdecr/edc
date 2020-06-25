@@ -12,21 +12,21 @@ function renderAuthors(authors, inline) {
   if (inline) {
     const authorList = authors.map((a, index) => {
       if (index != authors.length - 1) {
-        return a.first_name + " " + a.last_name + ",";
+        return a.first_name + " " + a.last_name + ", ";
       } else {
         return a.first_name + " " + a.last_name;
       }
     });
-    return <span>{authorList}</span>;
+    return <span className="display--b mono fs--xs">{authorList}</span>;
   } else {
     if (authors.length > 1) {
       const authorList = authors.map((a, index) => (
         <span
           key={`author-${index}`}
-          className="display--b mono fs--md"
+          className="display--b mono fs--sm"
         >{`${a.first_name} ${a.last_name}`}</span>
       ));
-      return <div className="mt--sm">{authorList}</div>;
+      return <div className="mt--sm fs--xs">{authorList}</div>;
     }
     if (authors.length > 0) {
       return (
@@ -48,13 +48,13 @@ function renderEditors(editors, inline) {
         return a.first_name + " " + a.last_name;
       }
     });
-    return <span>{editorList}</span>;
+    return <span className="display--b mono fs--xs">{editorList}</span>;
   } else {
     if (editors.length > 1) {
       const editorList = editors.map((e, index) => (
         <span
           key={`author-${index}`}
-          className="display--b mono fs--md"
+          className="display--b mono fs--xs"
         >{`${e.first_name} ${e.last_name}`}</span>
       ));
       return <div className="mt--sm">{editorList}</div>;
@@ -124,16 +124,21 @@ function renderTitle(item) {
 const renderCurrentlyReading = currently => {
   if (currently.length > 1) {
     const currentlyList = currently.map((e, index) => (
-      <li key={`currently-${index}`} className="display--b mono fs--md mb--sm">
+      <li
+        key={`currently-${index}`}
+        className="display--b mono fs--md mb--sm opacity--80"
+      >
         {" "}
-        <h3 className="fw--normal italic">{renderTitle(currently[index])}</h3>
+        <h3 className="fw--normal italic fs--lg">
+          {renderTitle(currently[index])}
+        </h3>
         {renderAuthors(currently[index].meta_box._read_authors, true)}
       </li>
     ));
     return (
       <section className="currently grid--span-6 grid--start-7">
         <h2 className="grid--span-6">Currently Reading</h2>
-        <ul className="reset-list grid--span-4">{currentlyList}</ul>
+        <ul className="reset-list grid--span-5">{currentlyList}</ul>
         <style jsx>{`
           @media only screen and (min-width: 900px) {
             .currently {
