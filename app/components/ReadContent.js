@@ -151,8 +151,6 @@ function renderNotes(notes) {
         <hr />
       </div>
     );
-  } else {
-    return <hr />;
   }
 }
 
