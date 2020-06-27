@@ -2,11 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 
-import { renderIntro } from "../../helpers";
+import { renderIntro } from "../../../helpers";
 
-import DefaultLayout from "../../components/layouts/Default";
-import NavAbout from "../../components/nav/NavAbout";
-import Shelf from "../../components/Shelf";
+import DefaultLayout from "../../../components/layouts/Default";
+import NavAbout from "../../../components/nav/NavAbout";
+import Shelf from "../../../components/Shelf";
 
 export default function AboutTheShelf({ data }) {
   return (
@@ -26,12 +26,21 @@ export default function AboutTheShelf({ data }) {
         <section className="grid--span-all">
           <Shelf items={data.shelf} />
         </section>
+        <div className="pagination flex flex--ai-c flex--jc-c grid--span-all">
+          <Link href="/about/the-link-shelf/page/2">
+            <a className="btn btn--ghost fs--sm mono">Next Page</a>
+          </Link>
+        </div>
       </main>
-
       <style jsx>{`
         h1 {
           margin: 0;
           line-height: 1;
+        }
+        .pagination a {
+          width: 30%;
+          text-align: center;
+          margin: 1rem 0.5rem;
         }
       `}</style>
     </DefaultLayout>
@@ -54,21 +63,31 @@ export async function getServerSideProps() {
     });
   // Fetch shelf
   let shelfItems;
+  let totalItems;
+  let totalPages;
   await axios
     .get(
-      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=100&_embed"
+      process.env.CMS_API_URL + "/wp-json/wp/v2/shelf-item?per_page=52&_embed"
     )
     .then(function(response) {
+      const totalItemsCount = response.headers["x-wp-total"];
+      totalItems = +totalItemsCount;
+      const totalPagesCount = response.headers["x-wp-totalpages"];
+      totalPages = +totalPagesCount;
       shelfItems = response.data;
     })
     .catch(function(error) {
       console.log("Shelf error: " + error);
       shelfItems = null;
+      totalItems = false;
+      totalPages = false;
     });
 
   const data = {
     page: shelfPage,
-    shelf: shelfItems
+    shelf: shelfItems,
+    totalItems,
+    totalPages
   };
 
   return { props: { data } };
