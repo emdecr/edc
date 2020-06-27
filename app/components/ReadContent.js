@@ -130,6 +130,50 @@ function renderISBNSearch(read) {
   }
 }
 
+const renderEachNote = items => {
+  return items.map((item, index) => (
+    <div className="single-note" key={`note-${index}`}>
+      <span className="fs--xs opacity--50 mono">
+        {moment(item.date).format("ll")}
+      </span>
+      <h3>{item.title}</h3>
+      <div dangerouslySetInnerHTML={renderHTML(item.content)}></div>
+    </div>
+  ));
+};
+function renderNotes(notes) {
+  if (notes) {
+    return (
+      <div className="grid--span-7 grid--start-4 notes">
+        <h2>Notes</h2>
+        {renderEachNote(notes)}
+        <hr />
+      </div>
+    );
+  } else {
+    return <hr />;
+  }
+}
+
+const renderRelatedReads = items => {
+  return items.map((item, index) => (
+    <li className="single-related" key={`related-${index}`}>
+      <h4>{item.read_title}</h4>
+    </li>
+  ));
+};
+function renderRelated(related) {
+  if (related) {
+    return (
+      <div className="grid--span-7 grid--start-4 related single-content">
+        <h2>Referenced Reads</h2>
+        <ul className="reset-list">{renderRelatedReads(related)}</ul>
+        <hr />
+      </div>
+    );
+  }
+}
+
 export default function ReadContent({ read }) {
   return (
     <React.Fragment>
@@ -149,10 +193,15 @@ export default function ReadContent({ read }) {
         {renderISBNSearch(read)}
       </div>
 
-      <div
-        className="grid--span-7 grid--start-4 single-content"
-        dangerouslySetInnerHTML={renderHTML(read.content)}
-      ></div>
+      {renderNotes(read.notes)}
+
+      {renderRelated(read.related)}
+
+      <div className="grid--span-7 grid--start-4 single-content">
+        <h2>Highlights</h2>
+        <div dangerouslySetInnerHTML={renderHTML(read.content)}></div>
+      </div>
+
       <style jsx>{`
         img {
           width: 150px;

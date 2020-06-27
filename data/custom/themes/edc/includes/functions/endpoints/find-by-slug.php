@@ -55,7 +55,7 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                     $newObj->currently_reading = false;
                 }
                 // Add this for future permissions checks
-                $newObj->req = $request->get_headers();
+                // $newObj->req = $request->get_headers();
                 // Check for any related Notes
                 $noteArgs = array(
                     'posts_per_page' => -1,
@@ -75,6 +75,7 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                     // Grab the data for each Note
                     foreach( $noteResults as $note ) {
                         $noteObj = new stdClass();
+                        $noteObj->title = $note->post_title;
                         $noteObj->date = $note->post_date;
                         $noteObj->content = $note->post_content;
                         $connected = get_post_meta( $note->ID, '_note_related', false );
