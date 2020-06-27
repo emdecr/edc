@@ -1,4 +1,5 @@
 import { renderHTML } from "../helpers";
+import Link from "next/link";
 import moment from "moment";
 
 function renderTitle(read) {
@@ -132,7 +133,7 @@ function renderISBNSearch(read) {
 
 const renderEachNote = items => {
   return items.map((item, index) => (
-    <div className="single-note" key={`note-${index}`}>
+    <div className="single-note mt--md" key={`note-${index}`}>
       <span className="fs--xs opacity--50 mono">
         {moment(item.date).format("ll")}
       </span>
@@ -157,8 +158,30 @@ function renderNotes(notes) {
 
 const renderRelatedReads = items => {
   return items.map((item, index) => (
-    <li className="single-related" key={`related-${index}`}>
-      <h4>{item.read_title}</h4>
+    <li className="single-related mb--sm" key={`related-${index}`}>
+      <img className="grid--span-1" src={item.image_url} />
+      <div className="grid--span-5">
+        <h4>
+          <Link href={`/records/${item.slug}`}>
+            <a>{item.read_title}</a>
+          </Link>
+        </h4>
+        {renderAuthors(item)}
+        {renderEditors(item)}
+      </div>
+      <style jsx>{`
+        @media only screen and (min-width: 900px) {
+          li {
+            display: grid;
+            grid-template-columns: repeat(7, [col-start] 1fr);
+            grid-gap: 20px;
+          }
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      `}</style>
     </li>
   ));
 };
@@ -167,7 +190,7 @@ function renderRelated(related) {
     return (
       <div className="grid--span-7 grid--start-4 related single-content">
         <h2>Referenced Reads</h2>
-        <ul className="reset-list">{renderRelatedReads(related)}</ul>
+        <ul className="reset-list mt--sm">{renderRelatedReads(related)}</ul>
         <hr />
       </div>
     );
