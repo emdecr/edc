@@ -18,9 +18,14 @@ function renderShelfPagination(currentPage, totalItems, totalPages) {
         </Link>
         <style jsx>{`
           a {
-            width: 30%;
+            width: 50%;
             text-align: center;
             margin: 1rem 0.5rem;
+          }
+          @media only screen and (min-width: 700px) {
+            a {
+              width: 30%;
+            }
           }
         `}</style>
       </div>
@@ -36,9 +41,14 @@ function renderShelfPagination(currentPage, totalItems, totalPages) {
         </Link>
         <style jsx>{`
           a {
-            width: 30%;
+            width: 50%;
             text-align: center;
             margin: 1rem 0.5rem;
+          }
+          @media only screen and (min-width: 700px) {
+            a {
+              width: 30%;
+            }
           }
         `}</style>
       </div>
@@ -54,9 +64,14 @@ function renderShelfPagination(currentPage, totalItems, totalPages) {
         </Link>
         <style jsx>{`
           a {
-            width: 30%;
+            width: 50%;
             text-align: center;
             margin: 1rem 0.5rem;
+          }
+          @media only screen and (min-width: 700px) {
+            a {
+              width: 30%;
+            }
           }
         `}</style>
       </div>
