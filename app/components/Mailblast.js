@@ -40,7 +40,7 @@ export default function Mailblast() {
         console.log(error);
         // 4. If there was an error, update the message in state.
         setMessage(
-          "Oops! Something went wrong on our end – please try again later, or email 'hello@emilydelacruz.com', so I can add you."
+          "Oops! Tech-related shenanigans on my end messed up – please try again later, or email 'hello@emilydelacruz.com', so I can add you."
         );
 
         return;
@@ -54,6 +54,11 @@ export default function Mailblast() {
   };
   return (
     <div className="grid--span-all">
+      <p>
+        I'm working on a newsletter. It'll cover psychology, books,
+        music...among other topics. Sign up below. I'll probably average 4 posts
+        a year.
+      </p>
       <form onSubmit={subscribe}>
         <label htmlFor="email-input">{"Email Address"}</label>
         <input
@@ -63,11 +68,11 @@ export default function Mailblast() {
           ref={inputEl}
           type="email"
         />
-        <div>
+        <p className="message">
           {message
             ? message
-            : `I'll only send emails when new content is posted. No spam.`}
-        </div>
+            : `I'll only send emails when each newsletter is posted. No emails being shared. No spam.`}
+        </p>
         <button className="btn btn--ghost mono fs--sm" type="submit">
           Join the list
         </button>
