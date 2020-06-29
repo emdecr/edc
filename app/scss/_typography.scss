@@ -147,6 +147,7 @@ blockquote + p {
 // Buttons
 
 .btn {
+  border-radius: 0;
   border-bottom: none;
   border: 1px solid var(--link-btn) !important;
   display: inline-block;

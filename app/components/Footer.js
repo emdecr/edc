@@ -1,3 +1,6 @@
+// import Newsletter from "../components/Newsletter";
+// import Mailblast from "../components/Mailblast";
+
 export default function Footer() {
   return (
     <footer className="container container--grid">
@@ -57,6 +60,8 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      {/* <Newsletter /> */}
+      {/* <Mailblast /> */}
       <style jsx>{`
         footer {
           padding-top: 8rem;
