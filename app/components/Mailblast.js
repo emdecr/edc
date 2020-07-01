@@ -136,7 +136,7 @@ export default function Mailblast() {
   return (
     <div className="mailblast mt--sm mono fs--sm grid--span-8 grid--start-3 text-align--c">
       <p>
-        I'm working on a newsletter. It'll cover psychology, books,
+        Hi 👋 – I'm working on a newsletter. It'll cover psychology, books,
         music...among other topics. Here's content I find interesting to
         discuss:{" "}
         <Link href="/about/the-link-shelf">
@@ -159,6 +159,7 @@ export default function Mailblast() {
         ></input>
         <label htmlFor="email-input">{"Email Address"}</label>
         <input
+          className="mono"
           id="email-input"
           name="email"
           placeholder="you@your-email.com"
@@ -172,7 +173,7 @@ export default function Mailblast() {
       </form>
       <style jsx>{`
         .mailblast {
-          padding: 2rem;
+          padding: 1rem;
           background: var(--secondary-bg-color);
         }
         .mailblast > *:first-child {
@@ -187,10 +188,26 @@ export default function Mailblast() {
         }
         input[type="email"] {
           padding: 0.5rem;
-          width: 50%;
         }
         input[type="checkbox"] {
           display: none;
+        }
+        @media only screen and (max-width: 500px) {
+          .mailblast {
+            margin-top: 2rem;
+          }
+          input[type="email"] {
+            display: block;
+            width: 100%;
+          }
+        }
+        @media only screen and (min-width: 700px) {
+          .mailblast {
+            padding: 2rem;
+          }
+          input[type="email"] {
+            width: 50%;
+          }
         }
       `}</style>
     </div>
