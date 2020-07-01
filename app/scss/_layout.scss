@@ -36,12 +36,6 @@
   padding: 0 20px;
 }
 
-.container--grid {
-  // display: grid;
-  // grid-template-columns: repeat(12, [col-start] 1fr);
-  // grid-gap: 10px;
-}
-
 .grid--span-1 {
   grid-column: auto / span 1;
 }
@@ -62,6 +56,9 @@
 }
 .grid--span-7 {
   grid-column: auto / span 7;
+}
+.grid--span-8 {
+  grid-column: auto / span 8;
 }
 .grid--span-all {
   grid-column: auto / span 12;

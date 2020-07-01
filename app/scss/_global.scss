@@ -1,5 +1,6 @@
 :root {
   --main-bg-color: #ffffff;
+  --secondary-bg-color: #f0f0f0;
   --main-font-color: rgb(37, 37, 37);
   --meta-font-color: grey;
   --link-main: #2196f3;
@@ -10,18 +11,21 @@
   --link-btn: #2196f3;
   --link-btn-font: #ffffff;
   --nav-border: #e3e3e3;
+  --error-bg: #ffe6e6;
+  --success-bg: #e0ffce;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --main-bg-color: #121212;
+    --secondary-bg-color: #222222;
     --main-font-color: #e0e0e0;
     --meta-font-color: #5c5c5c;
     --link-sub: #616161;
     --link-active: #2196f3;
     --list-border: #242424;
     --link-btn: #999999;
-    --link-btn-font: #121212;
+    --link-btn-font: #ffffff;
     --nav-border: #363636;
   }
 }

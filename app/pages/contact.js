@@ -1,15 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
 import axios from "axios";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 import { renderIntro } from "../helpers";
 
 import DefaultLayout from "../components/layouts/Default";
 
 export default function Contact({ data }) {
-  const url = process.env.MAILCHIMP_URL;
-  const SimpleForm = () => <MailchimpSubscribe url={url} />;
   return (
     <DefaultLayout>
       <Head>
@@ -24,7 +20,6 @@ export default function Contact({ data }) {
           className="content grid--span-7"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        {/* <div className="grid--span-all">{SimpleForm()}</div> */}
       </main>
 
       <style jsx>{`

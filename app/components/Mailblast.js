@@ -1,65 +1,162 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 const MB_LIST = process.env.NEXT_PUBLIC_MAILBLAST_LIST;
 const MB_TOKEN = process.env.NEXT_PUBLIC_MAILBLAST_TOKEN;
 const MB_USER = process.env.NEXT_PUBLIC_MAILBLAST_USER;
 
+function renderMessage(message) {
+  if (message.status === "success") {
+    return (
+      <p className="message success">
+        {message.content}
+        <style jsx>{`
+          .message.success {
+            padding: 1rem;
+            background: var(--success-bg);
+            color: var(--main-bg-color);
+          }
+        `}</style>
+      </p>
+    );
+  } else if (message.status === "error") {
+    return (
+      <p className="message error">
+        {message.content}
+        <style jsx>{`
+          .message.error {
+            padding: 1rem;
+            background: var(--error-bg);
+            color: var(--main-bg-color);
+          }
+        `}</style>
+      </p>
+    );
+  } else {
+    return (
+      <div>
+        <p
+          className="message"
+          dangerouslySetInnerHTML={{ __html: message.content }}
+        ></p>
+        <style jsx>{`
+          .message {
+            padding: 1rem;
+          }
+        `}</style>
+      </div>
+    );
+  }
+}
+
 export default function Mailblast() {
   // 1. Create a reference to the input so we can fetch/clear it's value.
   const inputEl = useRef(null);
+  const honeyEl = useRef(null);
   // 2. Hold a message in state to handle the response from our API.
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState({
+    status: "normal",
+    content:
+      "I'll only send emails when each newsletter is posted.<br/>No emails being shared. No spam."
+  });
 
   const subscribe = async e => {
     e.preventDefault();
-
-    // 3. Send a request to our API with the user's email address.
-    const res = await axios({
-      method: "post",
-      url: `https://api.mailblast.io/v1/lists/${MB_LIST}/subscribers`,
-      data: {
-        data: {
-          attributes: {
-            email: inputEl.current.value
+    console.log(honeyEl.current.checked);
+    if (!honeyEl.current.checked) {
+      if (
+        inputEl.current.value == "" ||
+        !inputEl.current.value.replace(/\s/g, "").length
+      ) {
+        setMessage({
+          status: "error",
+          content:
+            "Please enter an email address, or email 'hello@emilydelacruz.com', so I can add you."
+        });
+      } else {
+        // TKNOTE: First send this to an api with bcrypt-ed info
+        // 3. Send a request to our API with the user's email address.
+        const res = await axios({
+          method: "post",
+          url: `https://api.mailblast.io/v1/lists/${MB_LIST}/subscribers`,
+          data: {
+            data: {
+              attributes: {
+                email: inputEl.current.value
+              }
+            }
+          },
+          headers: {
+            "Content-Type": "application/json",
+            "X-USER-TOKEN": MB_TOKEN,
+            "X-USER-EMAIL": MB_USER
           }
-        }
-      },
-      headers: {
-        "Content-Type": "application/json",
-        "X-USER-TOKEN": MB_TOKEN,
-        "X-USER-EMAIL": MB_USER
+        })
+          .then(function(response) {
+            // handle success
+            console.log(response);
+            // 5. Clear the input value and show a success message.
+            inputEl.current.value = "";
+            setMessage({
+              status: "success",
+              content:
+                "Success! 🎉 You'll receive an email to confirm your subscription shortly. Thanks!"
+            });
+          })
+          .catch(function(error) {
+            // handle error
+            console.log(error);
+            // 4. If there was an error, update the message in state.
+            setMessage({
+              status: "error",
+              content:
+                "Oops! Tech-related shenanigans on my end messed up – please try again later, or email 'hello@emilydelacruz.com', so I can add you."
+            });
+          });
       }
-    })
-      .then(function(response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-        // 4. If there was an error, update the message in state.
-        setMessage(
-          "Oops! Tech-related shenanigans on my end messed up – please try again later, or email 'hello@emilydelacruz.com', so I can add you."
-        );
-
-        return;
+    } else if (
+      inputEl.current.value == "" ||
+      !inputEl.current.value.replace(/\s/g, "").length
+    ) {
+      setMessage({
+        status: "error",
+        content:
+          "Please enter an email address, or email 'hello@emilydelacruz.com', so I can add you."
       });
-
-    // 5. Clear the input value and show a success message.
-    inputEl.current.value = "";
-    setMessage(
-      "Success! 🎉 You'll receive an email to confirm your subscription shortly."
-    );
+    } else {
+      setMessage({
+        status: "error",
+        content:
+          "Oops! Tech-related shenanigans on my end messed up – please try again later, or email 'hello@emilydelacruz.com', so I can add you."
+      });
+    }
   };
+
   return (
-    <div className="grid--span-all">
+    <div className="mailblast mt--sm mono fs--sm grid--span-8 grid--start-3 text-align--c">
       <p>
         I'm working on a newsletter. It'll cover psychology, books,
-        music...among other topics. Sign up below. I'll probably average 4 posts
-        a year.
+        music...among other topics. Here's content I find interesting to
+        discuss:{" "}
+        <Link href="/about/the-link-shelf">
+          <a>The Link Shelf</a>
+        </Link>
+        ,{" "}
+        <Link href="/records">
+          <a>Records</a>
+        </Link>
+        . Sound up your alley? Sign up below. At most it'll be a monthly email.
       </p>
       <form onSubmit={subscribe}>
+        <input
+          ref={honeyEl}
+          type="checkbox"
+          name="contact"
+          value="1"
+          tabIndex="-1"
+          autoComplete="off"
+        ></input>
         <label htmlFor="email-input">{"Email Address"}</label>
         <input
           id="email-input"
@@ -68,15 +165,34 @@ export default function Mailblast() {
           ref={inputEl}
           type="email"
         />
-        <p className="message">
-          {message
-            ? message
-            : `I'll only send emails when each newsletter is posted. No emails being shared. No spam.`}
-        </p>
-        <button className="btn btn--ghost mono fs--sm" type="submit">
+        {renderMessage(message)}
+        <button className="btn mono fs--sm" type="submit">
           Join the list
         </button>
       </form>
+      <style jsx>{`
+        .mailblast {
+          padding: 2rem;
+          background: var(--secondary-bg-color);
+        }
+        .mailblast > *:first-child {
+          margin-top: 0;
+        }
+        button:hover {
+          cursor: pointer;
+        }
+        label {
+          font-weight: bold;
+          margin-right: 1rem;
+        }
+        input[type="email"] {
+          padding: 0.5rem;
+          width: 50%;
+        }
+        input[type="checkbox"] {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }
