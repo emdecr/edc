@@ -161,8 +161,9 @@ blockquote + p {
 }
 
 .btn--ghost {
+  border: 1px solid var(--link-sub) !important;
   background: transparent;
-  color: var(--link-btn) !important;
+  color: var(--link-sub) !important;
 }
 
 .btn:hover,

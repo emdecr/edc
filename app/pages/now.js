@@ -61,7 +61,7 @@ function renderGithubMessage(event) {
       return split[0];
     }
     return (
-      <p>
+      <p className="mt--xs">
         <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:{" "}
         <a href={repoURL(event)} target="_blank>">
           {event.repo.name}
@@ -91,7 +91,7 @@ function renderGithubMessage(event) {
     );
   } else if (event.type === "CommitCommentEvent") {
     return (
-      <p>
+      <p className="mt--xs">
         <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:{" "}
         <a href={repoURL(event)} target="_blank>">
           {event.repo.name}
@@ -113,7 +113,7 @@ function renderGithubMessage(event) {
     );
   } else {
     return (
-      <p>
+      <p className="mt--xs">
         <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:
         <a href={repoURL(event)} target="_blank>">
           {event.repo.name}
@@ -135,7 +135,7 @@ function renderGithub(githubActivity) {
   if (githubActivity) {
     const listItems = githubActivity.slice(0, 3).map((item, index) => (
       <li key={"item-" + index} className="grid--span-3">
-        <div className="">
+        <div>
           <span className="mono">
             {moment(item.created_at).fromNow()} –{" "}
             {moment(item.created_at).format("ll")}
