@@ -12,7 +12,7 @@ function renderContent(data) {
     return (
       <React.Fragment>
         <h1
-          className="mt--md mb--sm"
+          className="mt--md mb--sm single-title "
           dangerouslySetInnerHTML={renderHTML(data.page.data.title)}
         ></h1>
         <div

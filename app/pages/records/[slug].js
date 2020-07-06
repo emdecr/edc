@@ -15,7 +15,7 @@ function renderContent(record) {
     } else {
       return (
         <div className="grid--span-7">
-          <h1 className="mb--sm">{record.title}</h1>
+          <h1 className="mb--sm single-title">{record.title}</h1>
           <div
             className="content"
             dangerouslySetInnerHTML={renderHTML(record.content)}

@@ -94,6 +94,12 @@ export default function Records({ data }) {
           width: 150px;
           height: auto;
         }
+        @media only screen and (max-width: 900px) {
+          h3,
+          img {
+            margin-top: 1rem;
+          }
+        }
         @media only screen and (min-width: 900px) {
           li {
             display: grid;

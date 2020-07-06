@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { renderHTML } from "../helpers";
 
 const MB_LIST = process.env.NEXT_PUBLIC_MAILBLAST_LIST;
 const MB_TOKEN = process.env.NEXT_PUBLIC_MAILBLAST_TOKEN;
@@ -9,8 +10,11 @@ const MB_USER = process.env.NEXT_PUBLIC_MAILBLAST_USER;
 function renderMessage(message) {
   if (message.status === "success") {
     return (
-      <p className="message success">
-        {message.content}
+      <div>
+        <p
+          className="message success"
+          dangerouslySetInnerHTML={renderHTML(message.content)}
+        ></p>
         <style jsx>{`
           .message.success {
             padding: 1rem;
@@ -18,12 +22,15 @@ function renderMessage(message) {
             color: var(--main-bg-color);
           }
         `}</style>
-      </p>
+      </div>
     );
   } else if (message.status === "error") {
     return (
-      <p className="message error">
-        {message.content}
+      <div>
+        <p
+          className="message error"
+          dangerouslySetInnerHTML={renderHTML(message.content)}
+        ></p>
         <style jsx>{`
           .message.error {
             padding: 1rem;
@@ -31,7 +38,7 @@ function renderMessage(message) {
             color: var(--main-bg-color);
           }
         `}</style>
-      </p>
+      </div>
     );
   } else {
     return (
@@ -101,7 +108,7 @@ export default function Mailblast() {
             setMessage({
               status: "success",
               content:
-                "Success! 🎉 You'll receive an email to confirm your subscription shortly. Thanks!"
+                "Success! 🎉 You'll receive an email to confirm your subscription shortly. Check your spam folder if you can't find the confirmation email, or send me a note at '<a href='mailto:hello@emilydelacruz.com'>hello@emilydelacruz.com</a>'. Thanks!"
             });
           })
           .catch(function(error) {

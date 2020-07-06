@@ -114,7 +114,7 @@ function renderGithubMessage(event) {
   } else {
     return (
       <p className="mt--xs">
-        <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:
+        <strong className="mono">{getType(event)}</strong> | <strong>R</strong>:{" "}
         <a href={repoURL(event)} target="_blank>">
           {event.repo.name}
         </a>

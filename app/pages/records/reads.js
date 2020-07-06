@@ -230,6 +230,11 @@ const renderReads = reads => {
             width: 90%;
           }
         }
+        @media only screen and (min-width: 2000px) {
+          li {
+            grid-column: auto / span 4;
+          }
+        }
       `}</style>
     </li>
   ));
