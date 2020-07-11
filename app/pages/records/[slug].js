@@ -14,7 +14,7 @@ function renderContent(record) {
       return <ReadContent read={record} />;
     } else {
       return (
-        <div className="grid--span-7">
+        <div className="grid--span-7 mt--md">
           <h1 className="mb--sm single-title">{record.title}</h1>
           <div
             className="content"
@@ -66,10 +66,11 @@ function renderBackLink(record) {
 
 export default function SingleRecord({ data }) {
   const record = data.page != null ? data.page.data : null;
+  const title = record.read_title ? record.read_title : record.title;
   return (
     <DefaultLayout>
       <Head>
-        <title>{record.read_title} ← Emily Dela Cruz</title>
+        <title>{title} ← Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all mini-nav fs--sm">
