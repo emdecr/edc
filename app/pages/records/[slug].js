@@ -15,6 +15,9 @@ function renderContent(record) {
     } else {
       return (
         <div className="grid--span-7 mt--md">
+          <p className="mono fs--xs opacity--50 mb--sm">
+            {moment(record.date).format("ll")}
+          </p>
           <h1 className="mb--sm single-title">{record.title}</h1>
           <div
             className="content"
