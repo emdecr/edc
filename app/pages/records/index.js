@@ -25,16 +25,22 @@ export default function Records({ data }) {
         li {
           font-size: 1.1rem;
           line-height: 1.2;
-          padding: 2rem 0;
+          padding: 1.5rem 0;
         }
         li:not(:last-child) {
           border-bottom: 1px solid var(--list-border);
         }
-        @media only screen and (min-width: 900px) {
+        @media only screen and (max-width: 500px) {
+          li:first-child {
+            padding-top: 0;
+          }
+        }
+        @media only screen and (min-width: 700px) {
           li {
             display: grid;
             grid-template-columns: repeat(4, [col-start] 1fr);
             grid-gap: 20px;
+            padding: 2rem 0;
           }
         }
       `}</style>
@@ -84,7 +90,7 @@ export default function Records({ data }) {
         li {
           font-size: 1.1rem;
           line-height: 1.2;
-          padding: 2rem 0;
+          padding: 1.5rem 0;
         }
         li:not(:last-child) {
           border-bottom: 1px solid var(--list-border);
@@ -94,17 +100,23 @@ export default function Records({ data }) {
           width: 150px;
           height: auto;
         }
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: 500px) {
+          li:first-child {
+            padding-top: 0;
+          }
+        }
+        @media only screen and (max-width: 700px) {
           h3,
           img {
             margin-top: 1rem;
           }
         }
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 700px) {
           li {
             display: grid;
             grid-template-columns: repeat(4, [col-start] 1fr);
             grid-gap: 20px;
+            padding: 2rem 0;
           }
           img {
             width: 100%;
@@ -128,23 +140,21 @@ export default function Records({ data }) {
           className="content content-intro grid--span-7"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        <div className="grid--span-4 grid--start-1">
+        <div className="grid--span-4 grid--start-1 mb--lg">
           <h2>Writing</h2>
           <ul className="reset-list">{renderWriting}</ul>
           {/* <Link href="/records/writing">
             <a className="btn mt--md">View all</a>
           </Link> */}
         </div>
-        <div className="grid--span-4">
+        <div className="grid--span-4 mb--lg">
           <h2>Reads</h2>
           <ul className="reset-list">{renderReads}</ul>
           <Link href="/records/reads">
-            <a className="btn btn--ghost mt--md fs--xs opacity--80 mono">
-              View all
-            </a>
+            <a className="btn btn--ghost fs--xs opacity--80 mono">View all</a>
           </Link>
         </div>
-        <div className="grid--span-4">
+        <div className="grid--span-4 mb--lg">
           <h2>Music</h2>
           <p>Coming soon...hopefully.</p>
           {/* <Link href="/records/music">

@@ -31,7 +31,7 @@ const renderItems = items => {
         li {
           font-size: 1.2rem;
           line-height: 1.2;
-          padding: 2rem 1rem;
+          padding: 2rem 2rem 2rem 0;
           border-bottom: 1px solid var(--list-border);
         }
         span {
