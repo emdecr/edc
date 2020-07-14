@@ -12,26 +12,35 @@ function renderAuthors(authors, inline) {
   if (inline) {
     const authorList = authors.map((a, index) => {
       if (index != authors.length - 1) {
-        return a.first_name + " " + a.last_name + ", ";
+        if (a.last_name) {
+          return a.first_name + " " + a.last_name + ", ";
+        } else {
+          return a.first_name + ", ";
+        }
       } else {
-        return a.first_name + " " + a.last_name;
+        if (a.last_name) {
+          return a.first_name + " " + a.last_name;
+        } else {
+          return a.first_name;
+        }
       }
     });
     return <span className="display--b mono fs--xs">{authorList}</span>;
   } else {
     if (authors.length > 1) {
       const authorList = authors.map((a, index) => (
-        <span
-          key={`author-${index}`}
-          className="display--b mono fs--sm"
-        >{`${a.first_name} ${a.last_name}`}</span>
+        <span key={`author-${index}`} className="display--b mono fs--sm">{`${
+          a.first_name
+        } ${a.last_name ? a.last_name : ""}`}</span>
       ));
       return <div className="mt--sm fs--xs">{authorList}</div>;
     }
     if (authors.length > 0) {
       return (
         <span className="display--b mono fs--md mt--sm">
-          {authors[0].first_name + " " + authors[0].last_name}
+          {`${authors[0].first_name} ${
+            authors[0].last_name ? authors[0].last_name : ""
+          }`}
         </span>
       );
     }
