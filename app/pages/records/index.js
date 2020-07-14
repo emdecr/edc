@@ -137,7 +137,7 @@ export default function Records({ data }) {
           <NavRecords />
         </div>
         <div
-          className="content content-intro grid--span-7"
+          className="content content-intro grid--span-6"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
         <div className="grid--span-4 grid--start-1 mb--lg">
