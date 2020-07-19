@@ -70,7 +70,6 @@ export default function Mailblast() {
 
   const subscribe = async e => {
     e.preventDefault();
-    console.log(honeyEl.current.checked);
     if (!honeyEl.current.checked) {
       if (
         inputEl.current.value == "" ||
@@ -84,7 +83,7 @@ export default function Mailblast() {
       } else {
         // TKNOTE: First send this to an api with bcrypt-ed info
         // 3. Send a request to our API with the user's email address.
-        const res = await axios({
+        await axios({
           method: "post",
           url: `https://api.mailblast.io/v1/lists/${MB_LIST}/subscribers`,
           data: {
@@ -102,7 +101,6 @@ export default function Mailblast() {
         })
           .then(function(response) {
             // handle success
-            console.log(response);
             // 5. Clear the input value and show a success message.
             inputEl.current.value = "";
             setMessage({
@@ -156,10 +154,12 @@ export default function Mailblast() {
         . Sound up your alley? Sign up below. At most it'll be a monthly email.
       </p>
       <form onSubmit={subscribe}>
+        <label htmlFor="contact-box">If you’re human, leave me blank</label>
         <input
           ref={honeyEl}
           type="checkbox"
-          name="contact"
+          id="contact-box"
+          name="contact-box"
           value="1"
           tabIndex="-1"
           autoComplete="off"
@@ -197,6 +197,9 @@ export default function Mailblast() {
           padding: 0.5rem;
         }
         input[type="checkbox"] {
+          display: none;
+        }
+        label[for="contact-box"] {
           display: none;
         }
         @media only screen and (max-width: 500px) {

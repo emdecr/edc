@@ -76,6 +76,19 @@ export default function Records({ data }) {
       return null;
     }
   }
+  function renderEditors(item) {
+    if (item.meta_box._read_editors && item.meta_box._read_editors.length > 0) {
+      const editors = item.meta_box._read_editors.map((a, index) => (
+        <span
+          key={`author-${index}`}
+          className="display--b"
+        >{`${a.first_name} ${a.last_name}`}</span>
+      ));
+      return <p className="fs--sm mono opacity--50">{editors}</p>;
+    } else {
+      return null;
+    }
+  }
   const renderReads = data.reads.map((item, index) => (
     <li key={"item-" + index}>
       <span className="mono fs--xs grid--span-4 opacity--30">
@@ -84,7 +97,9 @@ export default function Records({ data }) {
       <img className="grid--span-1" src={getImageUrl(item)} />
       <div className="grid--span-3">
         <h3 className="fw--normal italic">{renderTitle(item)}</h3>
-        {renderAuthors(item)}
+        {item.meta_box._read_authors && item.meta_box._read_authors.length > 0
+          ? renderAuthors(item)
+          : renderEditors(item)}
       </div>
       <style jsx>{`
         li {
