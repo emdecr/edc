@@ -218,8 +218,8 @@ export default function ReadContent({ read }) {
 
       {renderRelated(read.related)}
 
-      <div className="grid--span-7 grid--start-4 single-content">
-        <h2>Highlights</h2>
+      <div className="grid--span-7 grid--start-4 single-content content">
+        <h2 className="content__main-heading">Highlights</h2>
         <div dangerouslySetInnerHTML={renderHTML(read.content)}></div>
       </div>
 

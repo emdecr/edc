@@ -18,8 +18,8 @@
   margin-bottom: 0.5rem;
 }
 
-.content ul li + li {
-  // margin-top: 0.5rem;
+.content__main-heading + div > h3:first-child {
+  margin-top: 1rem;
 }
 
 .content p + ul {
