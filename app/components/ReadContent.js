@@ -138,7 +138,7 @@ function renderPurchase(read) {
         <span>Purchase:</span>
         <br />
         <a target="_blank" href={read.purchase}>
-          Website
+          {read.purchase_label ? read.purchase_label : "Website"}
         </a>
       </p>
     );

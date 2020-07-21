@@ -123,6 +123,8 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                 $newObj->isbn = $isbn;
                 $purchase = get_post_meta( $postData->ID, '_read_purchase', true);
                 $newObj->purchase = $purchase;
+                $purchaseLabel = get_post_meta( $postData->ID, '_read_purchase_label', true);
+                $newObj->purchase_label = $purchaseLabel;
                 $rating = get_post_meta( $postData->ID, '_read_rating', true);
                 $newObj->rating = $rating;
                 $authors = get_post_meta( $postData->ID, '_read_authors', true);
