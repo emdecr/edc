@@ -131,6 +131,20 @@ function renderISBNSearch(read) {
   }
 }
 
+function renderPurchase(read) {
+  if (read.purchase && read.purchase != "") {
+    return (
+      <p className="fs--sm read-stats mono">
+        <span>Purchase:</span>
+        <br />
+        <a target="_blank" href={read.purchase}>
+          Website
+        </a>
+      </p>
+    );
+  }
+}
+
 const renderEachNote = items => {
   return items.map((item, index) => (
     <div className="single-note mt--md" key={`note-${index}`}>
@@ -212,6 +226,7 @@ export default function ReadContent({ read }) {
         {renderDate(read)}
         {renderRating(read)}
         {renderISBNSearch(read)}
+        {renderPurchase(read)}
       </div>
 
       {renderNotes(read.notes)}

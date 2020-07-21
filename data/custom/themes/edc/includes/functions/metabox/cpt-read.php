@@ -37,6 +37,11 @@ function read_meta_boxes( $meta_boxes) {
                 'type' => 'text',
             ),
             array(
+                'id'   => $prefix . 'purchase',
+                'name' => __( 'Purchase Link', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
                 'name'   => 'Author',
                 'id'     => $prefix . 'authors',
                 'type'   => 'group',
