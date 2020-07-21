@@ -25,7 +25,7 @@ function note_meta_boxes( $meta_boxes) {
             
                 // Query arguments. See https://codex.wordpress.org/Class_Reference/WP_Query
                 'query_args'  => array(
-                    'post_status'    => 'publish',
+                    'post_status'    => array('publish', 'draft', 'future'),
                     'posts_per_page' => - 1,
                 ),
             ),
