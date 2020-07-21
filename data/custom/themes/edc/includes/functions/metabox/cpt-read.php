@@ -117,11 +117,16 @@ function read_meta_boxes( $meta_boxes) {
                 'name' => __( 'External Link', 'textdomain' ),
                 'type' => 'text',
             ),
+            // array(
+            //     'id'   => $prefix . 'highlights',
+            //     'name' => __( 'Highlights', 'textdomain' ),
+            //     'type' => 'wysiwyg',
+            // ),
             array(
-                'id'   => $prefix . 'highlights',
-                'name' => __( 'Highlights', 'textdomain' ),
+                'id'   => $prefix . 'summary',
+                'name' => __( 'Summary', 'textdomain' ),
                 'type' => 'wysiwyg',
-            ),
+            )
         ),
     );
 

@@ -135,8 +135,10 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                 $newObj->published_date = $pubDate;
                 $pubYear = get_post_meta( $postData->ID, '_read_year', true);
                 $newObj->published_year = $pubYear;
-                $highlights = get_post_meta( $postData->ID, '_read_highlights', true);
-                $newObj->highlights = $highlights;
+                // $highlights = get_post_meta( $postData->ID, '_read_highlights', true);
+                // $newObj->highlights = $highlights;
+                $summary = get_post_meta( $postData->ID, '_read_summary', true);
+                $newObj->summary = $summary;
             }
             
             return new WP_REST_Response( 
