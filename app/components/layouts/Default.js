@@ -23,6 +23,11 @@ function DefaultLayout({ children }) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Material+Icons"
         />
+        <script
+          async
+          defer
+          src="https://scripts.withcabin.com/hello.js"
+        ></script>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
