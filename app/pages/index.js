@@ -13,7 +13,7 @@ export default function Home({ data }) {
       <Head>
         <title>Emily Dela Cruz</title>
       </Head>
-      <main className="container container--grid mt--lg" id="main-content">
+      <main className="container container--grid mt--md" id="main-content">
         <div className="grid--span-6">
           <div className="title flex-all flex--ai-c">
             <h1 className="display--ib">Emily Dela Cruz</h1>
@@ -26,12 +26,12 @@ export default function Home({ data }) {
             </a>
           </div>
           <div
-            className="content"
+            className="content mt--xs intro-bio"
             dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
           ></div>
         </div>
         <div
-          className="grid--span-6 nav-sentence"
+          className="grid--span-8 grid--start-1 nav-sentence fs--xl"
           dangerouslySetInnerHTML={renderHTML(
             data.page.meta_box._page_home_nav_sentence
           )}
@@ -47,15 +47,9 @@ export default function Home({ data }) {
         .title > a {
           margin-left: 20px;
         }
-        main {
-          min-height: 80vh;
-        }
-        .nav-sentence {
-          font-size: 2rem;
-        }
         @media only screen and (max-width: 500px) {
           h1 {
-            font-size: 34px;
+            font-size: 1.5rem;
           }
           .title {
             margin-bottom: 1rem;

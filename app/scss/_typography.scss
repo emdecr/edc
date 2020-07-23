@@ -39,6 +39,14 @@
   font-size: 1.1rem;
 }
 
+.fs--xl {
+  font-size: 1.5rem;
+}
+
+.fs--xxl {
+  font-size: 2rem;
+}
+
 // Text Align
 
 .text-align--c {
@@ -222,9 +230,26 @@ blockquote + p {
   color: rgb(37, 37, 37);
 }
 
+.nav-sentence p {
+  margin-top: 0;
+  a {
+    border-bottom: 2px solid #2195f379;
+  }
+}
+
+.intro-bio p {
+  margin-bottom: 0;
+}
+
 @media only screen and (max-width: 400px) {
   .btn--100 {
     width: 100%;
     text-align: center;
+  }
+  .fs--xl {
+    font-size: 1.2rem;
+  }
+  .nav-sentence {
+    margin-top: 1rem;
   }
 }
