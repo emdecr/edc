@@ -52,7 +52,14 @@ export default function Footer() {
             <a href="https://github.com/emdecr/edc" target="_blank">
               Github
             </a>{" "}
-            hosts the source code.
+            hosts the source code. Analytics provided by{" "}
+            <a
+              href="https://withcabin.com/public/emilydelacruz.com"
+              target="_blank"
+            >
+              Cabin
+            </a>
+            .
           </p>
           <p className="made mono text-align--r fs--xs">
             &copy; 2020 Emily Dela Cruz.
