@@ -62,7 +62,7 @@ export default function Footer() {
       <Mailblast />
       <style jsx>{`
         footer {
-          padding-top: 8rem;
+          padding-top: 4rem;
           padding-bottom: 4rem;
         }
       `}</style>

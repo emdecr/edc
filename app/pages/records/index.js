@@ -166,7 +166,9 @@ export default function Records({ data }) {
           <h2>Reads</h2>
           <ul className="reset-list">{renderReads}</ul>
           <Link href="/records/reads">
-            <a className="btn btn--ghost fs--xs opacity--80 mono">View all</a>
+            <a className="btn btn--ghost fs--xs opacity--80 mono">
+              View all reads
+            </a>
           </Link>
         </div>
         <div className="grid--span-4 mb--lg">
@@ -228,7 +230,7 @@ export async function getServerSideProps() {
       const remove = allReads.filter(
         (item, index, arr) => !item.flag.includes(24)
       );
-      reads = remove.slice(0, 5);
+      reads = remove.slice(0, 3);
     })
     .catch(function(error) {
       console.log("Reads error: " + error);
