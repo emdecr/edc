@@ -4,6 +4,22 @@ function pages_meta_boxes( $meta_boxes) {
     $prefix = '_page_';
 
     $meta_boxes[] = array(
+        'title'      => __( 'Nav Sentence', 'textdomain' ),
+        'post_types' => array( 'page' ),
+        'context'    => 'normal',
+        'include' => array(
+            'template'        => array( 'template-home.php' )
+        ),
+        'fields' => array(
+            array(
+                'id'   => $prefix . 'home_nav_sentence',
+                'name' => __( 'Copy', 'textdomain' ),
+                'type' => 'wysiwyg',
+            ),
+        ),
+    );
+
+    $meta_boxes[] = array(
         'title'      => __( 'Resume', 'textdomain' ),
         'post_types' => array( 'page' ),
         'context'    => 'normal',

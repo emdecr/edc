@@ -14,38 +14,28 @@ export default function Home({ data }) {
         <title>Emily Dela Cruz</title>
       </Head>
       <main className="container container--grid mt--lg" id="main-content">
-        <div className="grid--span-all title flex-all flex--ai-c">
-          <h1 className="display--ib">Emily Dela Cruz</h1>
-          <a
-            className="pronouns mono fs--sm"
-            href="https://www.mypronouns.org/she-her"
-            target="_blank"
-          >
-            she/her
-          </a>
+        <div className="grid--span-6">
+          <div className="title flex-all flex--ai-c">
+            <h1 className="display--ib">Emily Dela Cruz</h1>
+            <a
+              className="pronouns mono fs--sm"
+              href="https://www.mypronouns.org/she-her"
+              target="_blank"
+            >
+              she/her
+            </a>
+          </div>
+          <div
+            className="content"
+            dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
+          ></div>
         </div>
         <div
-          className="content grid--span-6"
-          dangerouslySetInnerHTML={renderHTML(data.page.content.rendered)}
+          className="grid--span-6 nav-sentence"
+          dangerouslySetInnerHTML={renderHTML(
+            data.page.meta_box._page_home_nav_sentence
+          )}
         ></div>
-        <div className="learn-more fs--sm grid--span-all mono">
-          <Link href="/about">
-            <a className="btn btn--ghost btn--100 opacity--80 fs--xs">
-              Learn more...
-            </a>
-          </Link>
-        </div>
-        <section className="grid--span-all mt--md">
-          <h2>Projects</h2>
-          <ProjectList items={data.projectList} />
-        </section>
-        <div className="learn-more fs--sm grid--span-all mono mt--sm">
-          <Link href="/projects">
-            <a className="btn btn--ghost btn--100 opacity--80 fs--xs">
-              View all projects...
-            </a>
-          </Link>
-        </div>
       </main>
 
       <style jsx>{`
@@ -56,6 +46,12 @@ export default function Home({ data }) {
         }
         .title > a {
           margin-left: 20px;
+        }
+        main {
+          min-height: 80vh;
+        }
+        .nav-sentence {
+          font-size: 2rem;
         }
         @media only screen and (max-width: 500px) {
           h1 {
