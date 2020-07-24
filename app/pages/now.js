@@ -250,6 +250,11 @@ function renderRead(read) {
             width: 100%;
             height: auto;
           }
+          @media only screen and (max-width: 600px) {
+            .mb--md {
+              margin-bottom: 3rem;
+            }
+          }
         `}</style>
       </div>
     );
@@ -322,6 +327,14 @@ export default function AboutNow({ data }) {
         }
         .updated {
           border-top: 1px solid var(--list-border);
+        }
+        @media only screen and (max-width: 600px) {
+          .mb--sm {
+            margin-bottom: 0;
+          }
+          .mb--md {
+            margin-bottom: 3rem;
+          }
         }
       `}</style>
     </DefaultLayout>
