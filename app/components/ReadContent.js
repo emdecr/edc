@@ -135,7 +135,7 @@ function renderPurchase(read) {
   if (read.purchase && read.purchase != "") {
     return (
       <p className="fs--sm read-stats mono">
-        <span>Purchase:</span>
+        <span>Website:</span>
         <br />
         <a target="_blank" href={read.purchase}>
           {read.purchase_label ? read.purchase_label : "Website"}
@@ -159,7 +159,7 @@ const renderEachNote = items => {
 function renderNotes(notes) {
   if (notes) {
     return (
-      <div className="grid--span-7 grid--start-4 notes">
+      <div className="notes">
         <h2>Notes</h2>
         {renderEachNote(notes)}
         <hr />
@@ -198,11 +198,21 @@ const renderRelatedReads = items => {
   ));
 };
 function renderRelated(related) {
-  if (related) {
+  if (related && related.length > 0) {
     return (
-      <div className="grid--span-7 grid--start-4 related single-content">
+      <div className="related single-content">
         <h2>Referenced Reads</h2>
         <ul className="reset-list mt--sm">{renderRelatedReads(related)}</ul>
+        <hr />
+      </div>
+    );
+  }
+}
+function renderSummary(summary) {
+  if (summary && summary != "") {
+    return (
+      <div className="related single-content summary">
+        <div dangerouslySetInnerHTML={renderHTML(summary)}></div>
         <hr />
       </div>
     );
@@ -229,13 +239,17 @@ export default function ReadContent({ read }) {
         {renderPurchase(read)}
       </div>
 
-      {renderNotes(read.notes)}
-
-      {renderRelated(read.related)}
-
       <div className="grid--span-7 grid--start-4 single-content content">
-        <h2 className="content__main-heading">Highlights</h2>
-        <div dangerouslySetInnerHTML={renderHTML(read.content)}></div>
+        {renderSummary(read.summary)}
+
+        {renderNotes(read.notes)}
+
+        {renderRelated(read.related)}
+
+        <div>
+          <h2 className="content__main-heading">Snippets</h2>
+          <div dangerouslySetInnerHTML={renderHTML(read.content)}></div>
+        </div>
       </div>
 
       <style jsx>{`

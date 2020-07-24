@@ -226,11 +226,18 @@ blockquote + p {
 }
 
 // Misc
-.message.success a {
-  color: rgb(37, 37, 37);
+.message.success a,
+.background-color {
+  color: #e0e0e0;
+  background-color: #1f8ae2ab !important;
 }
 
-.nav-sentence p {
+.background-color {
+  padding: 0 3px;
+}
+
+.nav-sentence p,
+.summary > div > p:first-child {
   margin-top: 0;
 }
 

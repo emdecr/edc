@@ -86,6 +86,9 @@ export default function SingleRecord({ data }) {
         {renderContent(record)}
       </main>
       <style jsx>{`
+        .container {
+          grid-auto-rows: minmax(min-content, max-content);
+        }
         a {
           display: inline-block;
           margin: 0 10px;

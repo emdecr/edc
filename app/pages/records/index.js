@@ -223,7 +223,7 @@ export async function getServerSideProps() {
   await axios
     .get(
       process.env.CMS_API_URL +
-        "wp-json/wp/v2/read?per_page=50&order=desc&_embed"
+        "wp-json/wp/v2/read?per_page=15&order=desc&_embed"
     )
     .then(function(response) {
       const allReads = response.data;

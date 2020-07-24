@@ -5,7 +5,6 @@ import axios from "axios";
 import { renderHTML } from "../helpers";
 
 import DefaultLayout from "../components/layouts/Default";
-import ProjectList from "../components/ProjectList";
 
 export default function Home({ data }) {
   return (
