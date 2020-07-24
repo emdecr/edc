@@ -260,6 +260,11 @@ export default function ReadContent({ read }) {
         h1 {
           line-height: 1.3;
         }
+        @media only screen and (max-width: 500px) {
+          .content {
+            margin-top: 2rem;
+          }
+        }
         @media only screen and (min-width: 900px) {
           img {
             width: 100%;

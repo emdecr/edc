@@ -226,9 +226,12 @@ blockquote + p {
 }
 
 // Misc
-.message.success a,
+.message.success a {
+  color: rgb(37, 37, 37);
+}
+
 .background-color {
-  color: #e0e0e0;
+  color: white;
   background-color: #1f8ae2ab !important;
 }
 
