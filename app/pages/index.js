@@ -12,6 +12,10 @@ export default function Home({ data }) {
     <DefaultLayout>
       <Head>
         <title>Emily Dela Cruz</title>
+        <meta
+          name="description"
+          content="I'm a developer who's also building up their research muscles. I try to help people whose work addresses environmental, social, and ethical issues."
+        />
       </Head>
       <main className="container container--grid mt--md" id="main-content">
         <div className="grid--span-6">
