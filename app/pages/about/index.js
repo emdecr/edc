@@ -23,7 +23,7 @@ export default function About({ data }) {
           className="content grid--start-1 grid--span-6"
           dangerouslySetInnerHTML={renderIntro(data)}
         ></div>
-        <div className="grid--start-8 grid--span-4">
+        <div className="grid--start-8 grid--span-4 skills">
           <h2>{data.page.meta_box._page_skills_title}</h2>
           <div
             className="mono fs--sm opacity--80"
@@ -55,6 +55,11 @@ export default function About({ data }) {
         h1 {
           margin: 0;
           line-height: 1;
+        }
+        @media only screen and (max-width: 600px) {
+          .skills {
+            margin: 3rem 0;
+          }
         }
       `}</style>
     </DefaultLayout>
