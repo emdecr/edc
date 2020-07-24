@@ -58,6 +58,15 @@ export default function Home({ data }) {
             margin-bottom: 1rem;
           }
         }
+        @media only screen and (min-width: 2000px) {
+          .grid--span-6 {
+            grid-column: auto / span 5;
+          }
+          .grid--span-8 {
+            grid-column: auto / span 6;
+            grid-column-start: 1;
+          }
+        }
       `}</style>
     </DefaultLayout>
   );

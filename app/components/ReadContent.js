@@ -270,6 +270,19 @@ export default function ReadContent({ read }) {
             width: 100%;
           }
         }
+        @media only screen and (min-width: 2000px) {
+          img {
+            width: 150px;
+          }
+          @media only screen and (min-width: 2000px) {
+            .grid--span-2 {
+              grid-column-start: 2;
+            }
+            .grid--span-7 {
+              grid-column-start: 4;
+            }
+          }
+        }
       `}</style>
     </React.Fragment>
   );

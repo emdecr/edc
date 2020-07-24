@@ -195,14 +195,9 @@
   padding-top: 2rem;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (max-width: 800px) {
   .container {
     padding: 0 4rem;
-  }
-  .container--grid {
-    display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    grid-gap: 20px;
   }
 }
 
@@ -237,5 +232,22 @@
 
   .pt--lg {
     padding-top: 4rem;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .container {
+    padding: 0 4rem;
+  }
+  .container--grid {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-gap: 20px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .grid--span-7 {
+    grid-column: auto / span 6;
   }
 }

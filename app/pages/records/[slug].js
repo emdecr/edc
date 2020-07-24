@@ -23,6 +23,13 @@ function renderContent(record) {
             className="content"
             dangerouslySetInnerHTML={renderHTML(record.content)}
           ></div>
+          <style jsx>{`
+            @media only screen and (min-width: 2000px) {
+              .grid--span-7 {
+                grid-column-start: 3;
+              }
+            }
+          `}</style>
         </div>
       );
     }
@@ -86,9 +93,6 @@ export default function SingleRecord({ data }) {
         {renderContent(record)}
       </main>
       <style jsx>{`
-        .container {
-          grid-auto-rows: minmax(min-content, max-content);
-        }
         a {
           display: inline-block;
           margin: 0 10px;

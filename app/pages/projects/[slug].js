@@ -43,7 +43,7 @@ export default function SingleProject({ data }) {
             <a>Back to all Projects</a>
           </Link>
         </div>
-        <div className="grid--span-7 ">{renderContent(data)}</div>
+        <div className="grid--span-7">{renderContent(data)}</div>
       </main>
 
       <style jsx>{`
@@ -51,7 +51,10 @@ export default function SingleProject({ data }) {
           display: inline-block;
           margin: 0 10px;
         }
-        .single-content img {
+        @media only screen and (min-width: 2000px) {
+          .grid--span-7 {
+            grid-column-start: 4;
+          }
         }
       `}</style>
     </DefaultLayout>
