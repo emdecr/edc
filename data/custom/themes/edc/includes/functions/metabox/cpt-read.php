@@ -47,6 +47,16 @@ function read_meta_boxes( $meta_boxes) {
                 'type' => 'text',
             ),
             array(
+                'id'   => $prefix . 'refer_label',
+                'name' => __( 'Referred From Label', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
+                'id'   => $prefix . 'refer',
+                'name' => __( 'Referred From Link', 'textdomain' ),
+                'type' => 'text',
+            ),
+            array(
                 'name'   => 'Author',
                 'id'     => $prefix . 'authors',
                 'type'   => 'group',

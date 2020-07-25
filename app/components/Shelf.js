@@ -3,6 +3,26 @@ import moment from "moment";
 
 import { renderFormat, renderHTML, getImageUrl } from "../helpers";
 
+function referNote(item) {
+  if (item.refer && item.refer != "") {
+    return (
+      <span mono opacity--50 fs--xs>
+        Heard about it from{" "}
+        <a href={rec.refer} target="_blank">
+          here
+        </a>
+        .
+        <style jsx>{`
+          span {
+            display: absolute;
+            bottom: 0;
+          }
+        `}</style>
+      </span>
+    );
+  }
+}
+
 const renderItems = items => {
   return items.map((item, index) => (
     <li key={"item-" + index} className="grid--span-3">

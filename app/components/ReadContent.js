@@ -101,6 +101,19 @@ function renderRating(read) {
     );
   }
 }
+function renderRefer(read) {
+  if (read.refer_label && read.refer_label != "") {
+    return (
+      <p className="fs--sm read-stats mono">
+        <span>Heard about it from:</span>
+        <br />
+        <a href={read.refer_link} targer="_blank">
+          {read.refer_label}
+        </a>
+      </p>
+    );
+  }
+}
 function renderFinishDate(read) {
   if (!read.currently_reading) {
     return (
@@ -237,6 +250,7 @@ export default function ReadContent({ read }) {
         {renderRating(read)}
         {renderISBNSearch(read)}
         {renderPurchase(read)}
+        {renderRefer(read)}
       </div>
 
       <div className="grid--span-7 grid--start-4 single-content content">

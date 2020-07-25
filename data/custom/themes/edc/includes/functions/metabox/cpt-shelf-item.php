@@ -15,6 +15,11 @@ function shelf_meta_boxes( $meta_boxes) {
                 'name' => __( 'Link', 'textdomain' ),
                 'type' => 'text',
             ),
+            array(
+                'id'   => $prefix . 'refer',
+                'name' => __( 'Referred from', 'textdomain' ),
+                'type' => 'text',
+            ),
         ),
     );
 
