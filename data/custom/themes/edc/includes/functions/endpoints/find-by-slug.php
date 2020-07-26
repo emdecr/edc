@@ -113,32 +113,50 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                     $newObj->related = false;
                     $newObj->notes = false;
                 }
+                // Title
                 $title = get_post_meta( $postData->ID, '_read_title', true);
                 $newObj->read_title = $title;
+                // Subitle
                 $subtitle = get_post_meta( $postData->ID, '_read_subtitle', true);
                 $newObj->read_subtitle = $subtitle;
+                // Search Title
                 $searchTitle = get_post_meta( $postData->ID, '_read_title_search', true);
                 $newObj->search_title = $searchTitle;
+                // ISBN
                 $isbn = get_post_meta( $postData->ID, '_read_isbn', true);
                 $newObj->isbn = $isbn;
+                // Purchase Search
                 $purchase = get_post_meta( $postData->ID, '_read_purchase', true);
                 $newObj->purchase = $purchase;
                 $purchaseLabel = get_post_meta( $postData->ID, '_read_purchase_label', true);
                 $newObj->purchase_label = $purchaseLabel;
+                // Refered From
+                $referLabel = get_post_meta( $postData->ID, '_read_refer_label', true);
+                $newObj->refer_label = $referLabel;
+                $referLink = get_post_meta( $postData->ID, '_read_refer', true);
+                $newObj->refer_link = $referLink;
+                // Rating
                 $rating = get_post_meta( $postData->ID, '_read_rating', true);
                 $newObj->rating = $rating;
+                // Authors
                 $authors = get_post_meta( $postData->ID, '_read_authors', true);
                 $newObj->authors = $authors;
+                // Editors
                 $editors = get_post_meta( $postData->ID, '_read_editors', true);
                 $newObj->editors = $editors;
+                // Publisher
                 $publisher = get_post_meta( $postData->ID, '_read_publisher', true);
                 $newObj->publisher = $publisher;
+                // Published Date
                 $pubDate = get_post_meta( $postData->ID, '_read_date', true);
                 $newObj->published_date = $pubDate;
+                // Published Year
                 $pubYear = get_post_meta( $postData->ID, '_read_year', true);
                 $newObj->published_year = $pubYear;
+                // Highlights
                 // $highlights = get_post_meta( $postData->ID, '_read_highlights', true);
                 // $newObj->highlights = $highlights;
+                // Summary
                 $summary = get_post_meta( $postData->ID, '_read_summary', true);
                 $newObj->summary = $summary;
             }
