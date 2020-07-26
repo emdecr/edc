@@ -29,7 +29,14 @@ class find_by_slug_custom_route extends WP_REST_Controller {
             'posts_per_page' => -1,
 			'post_type' => array( 'post', 'read', 'project' ),
             'post_status' => array( 'publish' ),
-            'name' => $request['slug']
+            'name' => $request['slug'],
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'flag',
+                    'terms'    => array( 24 ),
+                    'operator' => 'NOT IN'
+                ),
+            )
 		);
 		
 		$the_query = new WP_Query( $args );
