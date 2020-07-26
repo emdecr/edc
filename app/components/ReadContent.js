@@ -248,8 +248,8 @@ export default function ReadContent({ read }) {
         {renderPublisher(read)}
         {renderDate(read)}
         {renderRating(read)}
-        {renderISBNSearch(read)}
         {renderPurchase(read)}
+        {renderISBNSearch(read)}
         {renderRefer(read)}
       </div>
 

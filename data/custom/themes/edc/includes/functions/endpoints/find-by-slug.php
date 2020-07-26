@@ -33,6 +33,7 @@ class find_by_slug_custom_route extends WP_REST_Controller {
             'tax_query' => array(
                 array(
                     'taxonomy' => 'flag',
+                    'field'    => 'term_id',
                     'terms'    => array( 24 ),
                     'operator' => 'NOT IN'
                 ),
