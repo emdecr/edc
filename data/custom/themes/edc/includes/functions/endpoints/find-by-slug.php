@@ -31,10 +31,10 @@ class find_by_slug_custom_route extends WP_REST_Controller {
             'post_status' => array( 'publish' ),
             'name' => $request['slug'],
             'tax_query' => array(
+                'relation' => 'AND',
                 array(
                     'taxonomy' => 'flag',
-                    'field'    => 'term_id',
-                    'terms'    => array( 24 ),
+                    'terms'    => array(24),
                     'operator' => 'NOT IN'
                 ),
             )

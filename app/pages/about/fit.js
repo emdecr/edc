@@ -6,6 +6,7 @@ import axios from "axios";
 import { renderIntro, renderFormat, renderHTML } from "../../helpers";
 
 import DefaultLayout from "../../components/layouts/Default";
+import NavAbout from "../../components/nav/NavAbout";
 
 export default function Fit({ data }) {
   return (
@@ -16,6 +17,7 @@ export default function Fit({ data }) {
       <main className="container container--grid mt--lg" id="main-content">
         <div className="grid--span-all title flex-all flex--ai-ac">
           <h1>About 'Fit'</h1>
+          <NavAbout active="/about/fit" />
         </div>
         <div className="content grid--span-7">
           <div dangerouslySetInnerHTML={renderIntro(data)}></div>
