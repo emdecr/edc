@@ -106,7 +106,7 @@ export default function Mailblast() {
             setMessage({
               status: "success",
               content:
-                "Success! 🎉 You'll receive an email to confirm your subscription shortly. Check your spam folder if you can't find the confirmation email, or send me a note at '<a href='mailto:hello@emilydelacruz.com'>hello@emilydelacruz.com</a>'. Thanks!"
+                "Success! 🎉 You'll receive an email from 'do-not-reply@emdecr.com' to confirm your subscription shortly. Check your spam folder if you can't find the confirmation email, or send me a note at '<a href='mailto:hello@emilydelacruz.com'>hello@emilydelacruz.com</a>'. Thanks!"
             });
           })
           .catch(function(error) {
