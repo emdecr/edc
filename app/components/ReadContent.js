@@ -107,7 +107,7 @@ function renderRefer(read) {
       <p className="fs--sm read-stats mono">
         <span>Heard about it from:</span>
         <br />
-        <a href={read.refer_link} targer="_blank">
+        <a href={read.refer_link} target="_blank">
           {read.refer_label}
         </a>
       </p>
