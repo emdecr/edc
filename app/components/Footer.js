@@ -54,7 +54,7 @@ export default function Footer() {
             </a>{" "}
             hosts the source code. Analytics provided by{" "}
             <a
-              href="https://withcabin.com/public/emilydelacruz.com"
+              href="https://withcabin.com"
               target="_blank"
             >
               Cabin
