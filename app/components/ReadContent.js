@@ -260,8 +260,8 @@ export default function ReadContent({ read }) {
 
         {renderRelated(read.related)}
 
-        <div>
-          <h2 className="content__main-heading">Snippets</h2>
+        <div className="highlights">
+          <h2 className="content__main-heading">Highlights & Annotations</h2>
           <div dangerouslySetInnerHTML={renderHTML(read.content)}></div>
         </div>
       </div>
