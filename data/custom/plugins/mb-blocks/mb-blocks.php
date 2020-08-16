@@ -3,7 +3,7 @@
  * Plugin Name: MB Blocks
  * Plugin URI:  https://metabox.io/plugins/mb-blocks/
  * Description: Create custom Gutenberg blocks.
- * Version:     1.2.0
+ * Version:     1.2.3
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+
@@ -32,7 +32,7 @@ if ( ! function_exists( 'mb_blocks_load' ) ) {
 
 		list( , $url ) = RWMB_Loader::get_path( __DIR__ );
 		define( 'MB_BLOCKS_URL', $url );
-		define( 'MB_BLOCKS_VER', '1.1.1' );
+		define( 'MB_BLOCKS_VER', '1.2.3' );
 
 		new MBBlocks\Loader;
 

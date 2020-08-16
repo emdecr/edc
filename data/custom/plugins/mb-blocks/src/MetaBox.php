@@ -109,7 +109,7 @@ class MetaBox extends \RW_Meta_Box {
 		$this->render_block( $attributes, true, $post_id );
 	}
 
-	private function set_block_data( $attributes ) {
+	private function set_block_data( &$attributes ) {
 		$attributes['name'] = $this->id;
 		$data = isset( $attributes['data'] ) ? $attributes['data'] : [];
 		$this->storage->set_data( $data );

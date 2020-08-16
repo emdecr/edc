@@ -58,15 +58,15 @@
 }
 
 /* Sidebar */
-.edit-post-sidebar .components-panel .rwmb-meta-box {
+.edit-post-sidebar .mb-block-edit .rwmb-meta-box {
 	padding: 16px;
 	border-top: 1px solid #ddd;
 }
-.edit-post-sidebar .components-panel .rwmb-label,
-.edit-post-sidebar .components-panel .rwmb-input {
+.edit-post-sidebar .mb-block-edit .rwmb-label,
+.edit-post-sidebar .mb-block-edit .rwmb-input {
 	width: 100%;
 }
-.edit-post-sidebar .components-panel .rwmb-label {
+.edit-post-sidebar .mb-block-edit .rwmb-label {
 	margin-bottom: 3px;
 }
 
