@@ -15,7 +15,7 @@ require_once('includes/functions/metabox/cpt-life.php');
 require_once('includes/functions/metabox/mb-settings.php');
 
 // Load metabox custom blocks
-require_once('includes/functions/metabox/blocks/annotation.php');
+// require_once('includes/functions/metabox/blocks/annotation.php');
 
 // Load custom endpoints
 require_once('includes/functions/endpoints/life-overview.php');
