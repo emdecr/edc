@@ -8,6 +8,26 @@ import { renderHTML } from "../../helpers";
 import DefaultLayout from "../../components/layouts/Default";
 import ReadContent from "../../components/ReadContent";
 
+function renderSubtitle(record) {
+  if (record.subtitle && record.subtitle != "") {
+    return (
+      <React.Fragment>
+        {": "}
+        <span className="mono">
+          {read.read_subtitle}
+          <style jsx>{`
+            span {
+              display: block;
+              font-size: 1rem;
+              font-weight: normal;
+            }
+          `}</style>
+        </span>
+      </React.Fragment>
+    );
+  }
+}
+
 function renderContent(record) {
   if (record != null) {
     if (record.type == "read") {
@@ -18,7 +38,10 @@ function renderContent(record) {
           <p className="mono fs--xs opacity--50 mb--sm">
             {moment(record.date).format("ll")}
           </p>
-          <h1 className="mb--sm single-title">{record.title}</h1>
+          <h1 className="mb--sm single-title">
+            {record.title}
+            {renderSubtitle(record)}
+          </h1>
           <div
             className="content"
             dangerouslySetInnerHTML={renderHTML(record.content)}
