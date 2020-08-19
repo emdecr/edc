@@ -62,8 +62,21 @@ body {
   opacity: 0.3;
 }
 
+@media only screen and (min-width: 1000px) {
+  // For github gists on desktop
+  .gist {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: -30vw;
+  }
+}
+
 @media only screen and (min-width: 2000px) {
   body {
     font-size: 22px;
+  }
+  // For github gists on large desktops
+  .gist {
+    margin-right: -10vw;
   }
 }

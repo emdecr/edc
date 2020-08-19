@@ -13,10 +13,12 @@ function renderSubtitle(record) {
     return (
       <React.Fragment>
         {": "}
-        <span className="mono">
+        <span className="mono opacity--50">
           {record.subtitle}
           <style jsx>{`
             span {
+              margin-top: 0.3rem;
+              margin-bottom: 2rem;
               display: block;
               font-size: 1rem;
               font-weight: normal;
