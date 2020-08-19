@@ -14,7 +14,7 @@ function renderSubtitle(record) {
       <React.Fragment>
         {": "}
         <span className="mono">
-          {read.read_subtitle}
+          {record.subtitle}
           <style jsx>{`
             span {
               display: block;
