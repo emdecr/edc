@@ -19,7 +19,7 @@ function renderMessage(message) {
           .message.success {
             padding: 1rem;
             background: var(--success-bg);
-            color: var(--main-bg-color);
+            color: var(--dark-font-color);
           }
         `}</style>
       </div>
@@ -35,7 +35,7 @@ function renderMessage(message) {
           .message.error {
             padding: 1rem;
             background: var(--error-bg);
-            color: var(--main-bg-color);
+            color: var(--dark-font-color);
           }
         `}</style>
       </div>
