@@ -23,6 +23,7 @@ require_once('includes/functions/endpoints/life-overview-all.php');
 require_once('includes/functions/endpoints/pinterest.php');
 require_once('includes/functions/endpoints/find-by-slug.php');
 require_once('includes/functions/endpoints/now.php');
+require_once('includes/functions/endpoints/writing.php');
 
 // Enable Thumbnails
 add_theme_support('post-thumbnails'); 

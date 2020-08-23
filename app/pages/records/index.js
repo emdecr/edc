@@ -8,8 +8,8 @@ import { renderIntro, renderHTML, getImageUrl } from "../../helpers";
 import DefaultLayout from "../../components/layouts/Default";
 import NavRecords from "../../components/nav/NavRecords";
 
-export default function Records({ data }) {
-  const renderWriting = data.posts.map((item, index) => (
+function renderWriting(writing) {
+  return writing.map((item, index) => (
     <li key={"item-" + index}>
       <span className="mono fs--xs grid--span-4 opacity--30">
         {moment(item.date).format("ll")}
@@ -46,50 +46,54 @@ export default function Records({ data }) {
       `}</style>
     </li>
   ));
-  function renderTitle(item) {
-    if (item.meta_box._read_title && item.meta_box._read_title != "") {
-      return (
-        <Link href={"/records/" + item.slug}>
-          <a
-            dangerouslySetInnerHTML={renderHTML(item.meta_box._read_title)}
-          ></a>
-        </Link>
-      );
-    } else {
-      return (
-        <Link href={"/records/" + item.slug}>
-          <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
-        </Link>
-      );
-    }
+}
+
+function renderTitle(item) {
+  if (item.meta_box._read_title && item.meta_box._read_title != "") {
+    return (
+      <Link href={"/records/" + item.slug}>
+        <a dangerouslySetInnerHTML={renderHTML(item.meta_box._read_title)}></a>
+      </Link>
+    );
+  } else {
+    return (
+      <Link href={"/records/" + item.slug}>
+        <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+      </Link>
+    );
   }
-  function renderAuthors(item) {
-    if (item.meta_box._read_authors && item.meta_box._read_authors.length > 0) {
-      const authors = item.meta_box._read_authors.map((a, index) => (
-        <span
-          key={`author-${index}`}
-          className="display--b"
-        >{`${a.first_name} ${a.last_name}`}</span>
-      ));
-      return <p className="fs--sm mono opacity--50">{authors}</p>;
-    } else {
-      return null;
-    }
+}
+
+function renderAuthors(item) {
+  if (item.meta_box._read_authors && item.meta_box._read_authors.length > 0) {
+    const authors = item.meta_box._read_authors.map((a, index) => (
+      <span
+        key={`author-${index}`}
+        className="display--b"
+      >{`${a.first_name} ${a.last_name}`}</span>
+    ));
+    return <p className="fs--sm mono opacity--50">{authors}</p>;
+  } else {
+    return null;
   }
-  function renderEditors(item) {
-    if (item.meta_box._read_editors && item.meta_box._read_editors.length > 0) {
-      const editors = item.meta_box._read_editors.map((a, index) => (
-        <span
-          key={`author-${index}`}
-          className="display--b"
-        >{`${a.first_name} ${a.last_name}`}</span>
-      ));
-      return <p className="fs--sm mono opacity--50">{editors}</p>;
-    } else {
-      return null;
-    }
+}
+
+function renderEditors(item) {
+  if (item.meta_box._read_editors && item.meta_box._read_editors.length > 0) {
+    const editors = item.meta_box._read_editors.map((a, index) => (
+      <span
+        key={`author-${index}`}
+        className="display--b"
+      >{`${a.first_name} ${a.last_name}`}</span>
+    ));
+    return <p className="fs--sm mono opacity--50">{editors}</p>;
+  } else {
+    return null;
   }
-  const renderReads = data.reads.map((item, index) => (
+}
+
+function renderReads(reads) {
+  return reads.map((item, index) => (
     <li key={"item-" + index}>
       <span className="mono fs--xs grid--span-4 opacity--30">
         {moment(item.date).format("ll")}
@@ -140,6 +144,9 @@ export default function Records({ data }) {
       `}</style>
     </li>
   ));
+}
+
+export default function Records({ data }) {
   return (
     <DefaultLayout>
       <Head>
@@ -157,14 +164,14 @@ export default function Records({ data }) {
         ></div>
         <div className="grid--span-4 grid--start-1 mb--lg">
           <h2>Writing</h2>
-          <ul className="reset-list">{renderWriting}</ul>
+          <ul className="reset-list">{renderWriting(data.writing)}</ul>
           {/* <Link href="/records/writing">
             <a className="btn mt--md">View all</a>
           </Link> */}
         </div>
         <div className="grid--span-4 mb--lg">
           <h2>Reads</h2>
-          <ul className="reset-list">{renderReads}</ul>
+          <ul className="reset-list">{renderReads(data.reads)}</ul>
           <Link href="/records/reads">
             <a className="btn btn--ghost fs--xs opacity--80 mono">
               View all reads
@@ -208,15 +215,15 @@ export async function getServerSideProps() {
       recordsPage = null;
     });
   // Fetch posts
-  let posts;
+  let writing;
   await axios
-    .get(process.env.CMS_API_URL + "wp-json/wp/v2/posts?per_page=50&_embed")
+    .get(process.env.CMS_API_URL + "wp-json/edc/v1/writing")
     .then(function(response) {
-      posts = response.data;
+      writing = response.data;
     })
     .catch(function(error) {
       console.log("Posts error: " + error);
-      posts = null;
+      writing = null;
     });
   // Fetch reads
   let reads;
@@ -240,7 +247,7 @@ export async function getServerSideProps() {
   const data = {
     page: recordsPage,
     reads,
-    posts
+    writing
   };
 
   return { props: { data } };
