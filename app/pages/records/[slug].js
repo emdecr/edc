@@ -30,6 +30,83 @@ function renderSubtitle(record) {
   }
 }
 
+function renderAuthors(read) {
+  if (read.authors && read.authors != "") {
+    const authors = read.authors.map((a, index) => (
+      <span
+        key={`author-${index}`}
+        className="display--b"
+      >{`${a.first_name} ${a.last_name}`}</span>
+    ));
+    return (
+      <p className="fs--sm read-stats mono">
+        <span>Author(s):</span>
+        <br />
+        {authors}
+      </p>
+    );
+  }
+}
+
+function renderEditors(read) {
+  if (read.editors && read.editors != "") {
+    const editors = read.editors.map((e, index) => (
+      <span key={`editor-${index}`}>{`${e.first_name} ${e.last_name}`}</span>
+    ));
+    return (
+      <p className="fs--sm read-stats mono">
+        <span>Editor(s):</span>
+        <br />
+        {editors}
+      </p>
+    );
+  }
+}
+
+const renderRelatedReads = items => {
+  return items.map((item, index) => (
+    <li className="single-related mb--sm" key={`related-${index}`}>
+      <img className="grid--span-1" src={item.image_url} />
+      <div className="grid--span-5">
+        <h4>
+          <Link href={`/records/${item.slug}`}>
+            <a>{item.read_title}</a>
+          </Link>
+        </h4>
+        {renderAuthors(item)}
+        {renderEditors(item)}
+      </div>
+      <style jsx>{`
+        @media only screen and (min-width: 900px) {
+          li {
+            display: grid;
+            grid-template-columns: repeat(7, [col-start] 1fr);
+            grid-gap: 20px;
+          }
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      `}</style>
+    </li>
+  ));
+};
+function renderRelated(record) {
+  if (record.related && record.related.length > 0) {
+    return (
+      <div className="related single-content">
+        <br />
+        <hr />
+        <h2>Referenced Reads</h2>
+        <ul className="reset-list mt--sm">
+          {renderRelatedReads(record.related)}
+        </ul>
+      </div>
+    );
+  }
+}
+
 function renderContent(record) {
   if (record != null) {
     if (record.type == "read") {
@@ -48,6 +125,7 @@ function renderContent(record) {
             className="content"
             dangerouslySetInnerHTML={renderHTML(record.content)}
           ></div>
+          {renderRelated(record)}
           <style jsx>{`
             @media only screen and (min-width: 2000px) {
               .grid--span-7 {
