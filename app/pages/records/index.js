@@ -17,7 +17,7 @@ function renderWriting(writing) {
       <div className="grid--span-3">
         <h3 className="fw--normal italic">
           <Link href={"/records/" + item.slug}>
-            <a dangerouslySetInnerHTML={renderHTML(item.title.rendered)}></a>
+            <a dangerouslySetInnerHTML={renderHTML(item.title)}></a>
           </Link>
         </h3>
       </div>
@@ -219,7 +219,7 @@ export async function getServerSideProps() {
   await axios
     .get(process.env.CMS_API_URL + "wp-json/edc/v1/writing")
     .then(function(response) {
-      writing = response.data;
+      writing = response.data.data;
     })
     .catch(function(error) {
       console.log("Posts error: " + error);

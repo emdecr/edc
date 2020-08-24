@@ -27,7 +27,7 @@ class find_by_slug_custom_route extends WP_REST_Controller {
 
 		$args = array(
             'posts_per_page' => -1,
-			'post_type' => array( 'post', 'read', 'project' ),
+			'post_type' => array( 'post', 'read', 'project', 'note' ),
             'post_status' => array( 'publish' ),
             'name' => $request['slug'],
             'tax_query' => array(
