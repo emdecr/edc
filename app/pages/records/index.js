@@ -165,9 +165,11 @@ export default function Records({ data }) {
         <div className="grid--span-4 grid--start-1 mb--lg">
           <h2>Writing</h2>
           <ul className="reset-list">{renderWriting(data.writing)}</ul>
-          {/* <Link href="/records/writing">
-            <a className="btn mt--md">View all</a>
-          </Link> */}
+          <Link href="/records/writing">
+            <a className="btn btn--ghost fs--xs opacity--80 mono">
+              View all writing
+            </a>
+          </Link>
         </div>
         <div className="grid--span-4 mb--lg">
           <h2>Reads</h2>
@@ -182,7 +184,7 @@ export default function Records({ data }) {
           <h2>Music</h2>
           <p>Coming soon...hopefully.</p>
           {/* <Link href="/records/music">
-            <a className="btn mt--md">View all</a>
+            <a className="btn btn--ghost fs--xs opacity--80 mono">View all music</a>
           </Link> */}
         </div>
       </main>
@@ -219,7 +221,7 @@ export async function getServerSideProps() {
   await axios
     .get(process.env.CMS_API_URL + "wp-json/edc/v1/writing")
     .then(function(response) {
-      writing = response.data.data;
+      writing = response.data.data.slice(0, 4);
     })
     .catch(function(error) {
       console.log("Posts error: " + error);

@@ -19,6 +19,10 @@
     border-bottom: 2px solid var(--link-sub);
   }
 
+  .sub-nav a:visited:not(.active):hover {
+    border-bottom: 2px solid var(--link-active);
+  }
+
   a:hover,
   a:focus {
     /* font-weight: bold; */
