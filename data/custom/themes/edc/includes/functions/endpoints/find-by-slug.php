@@ -172,6 +172,36 @@ class find_by_slug_custom_route extends WP_REST_Controller {
                 $summary = get_post_meta( $postData->ID, '_read_summary', true);
                 $newObj->summary = $summary;
             }
+            if ($postData->post_type == "note") {
+                $relatedIds = array();
+                $notes = array();
+                $connected = get_post_meta( $postData->ID, '_note_related', false );
+                // Add the IDs to the existing list
+                $relatedIds = array_merge($relatedIds, $connected);
+                // Make sure there's only unique IDs
+                $uniqueIds = array_unique($relatedIds);
+                // Convert all the items to ints since WP stores data as String
+                $convertInts = array_map('intval', $uniqueIds);
+                // Create an array to hold all the related Reads data
+                $related = array();
+                foreach( $convertInts as $r ) {
+                    $relatedObj = new stdClass();
+                    $title = get_the_title($r);
+                    $relatedObj->read_title = $title;
+                    $subtitle = get_post_meta( $r, '_read_subtitle', true);
+                    $relatedObj->read_subtitle = $subtitle;
+                    $authors = get_post_meta( $r, '_read_authors', true);
+                    $relatedObj->authors = $authors;
+                    $editors = get_post_meta( $r, '_read_editors', true);
+                    $relatedObj->editors = $editors;
+                    $post_thumbnail_url = get_the_post_thumbnail_url( $r, 'medium');
+                    $relatedObj->image_url = $post_thumbnail_url;
+                    $slug = get_post_field( 'post_name', $r );
+                    $relatedObj->slug = $slug;
+                    array_push($related, $relatedObj);
+                }
+                $newObj->related = $related;
+            }
             
             return new WP_REST_Response( 
                 array(

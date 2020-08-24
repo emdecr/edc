@@ -80,7 +80,7 @@ function renderBackLink(record) {
         </React.Fragment>
       );
     }
-    if (record.type == "post") {
+    if (record.type == "post" || record.type == "note") {
       return (
         <React.Fragment>
           |
