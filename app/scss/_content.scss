@@ -47,10 +47,16 @@
   border-bottom: 1px solid var(--main-font-color);
 }
 
+// Make this more generic...
+// like .content__child
 .content .highlights p + hr,
 .content .highlights ul + hr,
 .content .highlights ol + hr,
 .content .highlights figure + hr,
+.content .single-note p + hr,
+.content .single-note ul + hr,
+.content .single-note ol + hr,
+.content .single-note figure + hr,
 .single-content .highlights hr {
   opacity: 0.1;
   width: 30%;

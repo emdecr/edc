@@ -231,6 +231,16 @@ function renderSummary(summary) {
     );
   }
 }
+function renderContent(content) {
+  if (content && content != "") {
+    return (
+      <div className="highlights">
+        <h2 className="content__main-heading">Highlights & Annotations</h2>
+        <div dangerouslySetInnerHTML={renderHTML(content)}></div>
+      </div>
+    );
+  }
+}
 
 export default function ReadContent({ read }) {
   return (
@@ -260,10 +270,7 @@ export default function ReadContent({ read }) {
 
         {renderRelated(read.related)}
 
-        <div className="highlights">
-          <h2 className="content__main-heading">Highlights & Annotations</h2>
-          <div dangerouslySetInnerHTML={renderHTML(read.content)}></div>
-        </div>
+        {renderContent(read.content)}
       </div>
 
       <style jsx>{`
