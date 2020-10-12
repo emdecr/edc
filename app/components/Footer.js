@@ -53,13 +53,20 @@ export default function Footer() {
               Github
             </a>{" "}
             hosts the source code. Analytics provided by{" "}
-            <a
-              href="https://withcabin.com"
-              target="_blank"
-            >
+            <a href="https://withcabin.com" target="_blank">
               Cabin
             </a>
             .
+          </p>
+          <p>
+            I operate out of Mississauga, Ontario and acknowledge{" "}
+            <a href="https://native-land.ca/" target="_blank">
+              these are the Treaty Lands and Territory of the Mississaugas of
+              the Credit and the traditional territory of the Anishinaabe, and
+              the Haudenosaunee
+            </a>
+            . I am grateful to have the opportunity to work and live in these
+            communities.
           </p>
           <p className="made mono text-align--r fs--xs">
             &copy; 2020 Emily Dela Cruz.
