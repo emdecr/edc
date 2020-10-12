@@ -58,7 +58,7 @@ export default function Footer() {
             </a>
             .
           </p>
-          <p>
+          <p className="mono text-align--r fs--xs mt--md">
             I operate out of Mississauga, Ontario and acknowledge{" "}
             <a href="https://native-land.ca/" target="_blank">
               these are the Treaty Lands and Territory of the Mississaugas of
