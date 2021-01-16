@@ -59,17 +59,17 @@ export default function Footer() {
             .
           </p>
           <p className="mono text-align--r fs--xs mt--md">
-            I operate out of Mississauga, Ontario and acknowledge{" "}
+            I operate out of{" "}
             <a href="https://native-land.ca/" target="_blank">
-              these are the Treaty Lands and Territory of the Mississaugas of
-              the Credit and the traditional territory of the Anishinaabe, and
-              the Haudenosaunee
+              the Treaty Lands and Territory of the Mississaugas of the Credit
+              and the traditional territory of the Anishinaabe, and the
+              Haudenosaunee
             </a>
             . I am grateful to have the opportunity to work and live in these
             communities.
           </p>
           <p className="made mono text-align--r fs--xs">
-            &copy; 2020 Emily Dela Cruz.
+            &copy; 2021 Emily Dela Cruz.
           </p>
         </div>
       </div>
